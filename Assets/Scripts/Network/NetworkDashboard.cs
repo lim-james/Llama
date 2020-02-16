@@ -14,11 +14,19 @@ public class NetworkDashboard : MonoBehaviour
     private InputField ipField;
     [SerializeField]
     private InputField hostPortField;
+    [SerializeField]
+    private Button joinButton;
+    [SerializeField]
+    private Button leaveButton;
 
     // Host
     [Header("Host")]
     [SerializeField]
     private InputField portField;
+    [SerializeField]
+    private Button startButton;
+    [SerializeField]
+    private Button stopButton;
 
     // Messages
     [Header("Messages")]
@@ -72,11 +80,17 @@ public class NetworkDashboard : MonoBehaviour
         string port = hostPortField.text;
         Debug.Log("[Dashboard] Connecting to server at " + ip + ":" + port);
         Client.Instance.Connect(ip, int.Parse(port));
+
+        joinButton.interactable = false;
+        leaveButton.interactable = true;
     }
 
     public void Leave()
     {
         Client.Instance.Disconnect();
+
+        joinButton.interactable = true;
+        leaveButton.interactable = false;
     }
 
     // Host
@@ -84,12 +98,18 @@ public class NetworkDashboard : MonoBehaviour
     {
         string port = portField.text;
         Debug.Log("[Dashboard] Creating server on " + port);
-        Server.Instance.StartServer(int.Parse(port), 2);
+        if (Server.Instance.StartServer(int.Parse(port), 2))
+        {
+            startButton.interactable = false;
+            stopButton.interactable = true;
+        }
     }
 
     public void StopServer()
     {
         Server.Instance.StopServer();
+        startButton.interactable = true;
+        stopButton.interactable = false;
     }
 
     // Message
