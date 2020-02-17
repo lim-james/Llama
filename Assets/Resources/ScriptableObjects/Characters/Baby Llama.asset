@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af19d009b216e064ea4908be44b1fe95, type: 3}
-  m_Name: Test Character
+  m_Name: Baby Llama
   m_EditorClassIdentifier: 
-  characterName: Test
+  characterName: Baby Llama
   characterPrefab: {fileID: 0}
-  stats: {fileID: 11400000, guid: 2785b10bde9919640943cc1b5875143a, type: 2}
+  stats: {fileID: 11400000, guid: 65fa5083817a98b429f93f0724ee0092, type: 2}
