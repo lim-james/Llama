@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1c0fd685484be4faa45e3a407af6f7, type: 3}
+  m_Script: {fileID: 11500000, guid: af19d009b216e064ea4908be44b1fe95, type: 3}
   m_Name: Test Character
   m_EditorClassIdentifier: 
-  characterName: Test Character
+  characterName: Test
   characterPrefab: {fileID: 0}
-  stats: {fileID: 11400000, guid: b25c0cc565393a348a3b29d34e789c57, type: 2}
+  stats: {fileID: 11400000, guid: 2785b10bde9919640943cc1b5875143a, type: 2}
