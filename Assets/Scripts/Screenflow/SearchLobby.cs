@@ -1,0 +1,30 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SearchLobby : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void OnGUI()
+    {
+        //searchText = GUILayout.TextField(searchText);
+        //for (int i = 0; i < words.Count; i++)
+        //{
+        //    if (string.IsNullOrEmpty(searchText) || words[i].Contains(searchText))
+        //    {
+        //        GUILayout.Button(words[i]);
+        //    }
+        //}
+    }
+}
