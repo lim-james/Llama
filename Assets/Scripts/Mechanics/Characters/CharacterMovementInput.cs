@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterMovementInput : MonoBehaviour
 {
@@ -16,10 +14,19 @@ public class CharacterMovementInput : MonoBehaviour
     public bool moveable = true;
     public bool pickup = false;
 
+    public int sendRate = 60;
+    private float sendFrequency;
+    private float sendTimer = 0.0f;
+
     public uint ID
     {
         set { id = value; }
         get { return id; }
+    }
+
+    private void Start()
+    {
+        sendFrequency = 1.0f / sendRate;
     }
 
     // Update is called once per frame
@@ -28,14 +35,20 @@ public class CharacterMovementInput : MonoBehaviour
         horizontal = Input.GetAxis(horizontalAxisName);
         vertical = Input.GetAxis(verticalAxisName);
         pickup = Input.GetButtonDown(pickUpName);
+
+        sendTimer += Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
         //Change this to phase locking call
-        GetComponent<CharacterMovement>().Move(horizontal, vertical);
+        if (sendTimer >= sendFrequency)
+        {
+            GetComponent<CharacterMovement>().Move(horizontal, vertical);
 
-        if (pickup)
-            GetComponent<CharacterMovement>().PickUpNearbyFruit();
+            if (pickup)
+                GetComponent<CharacterMovement>().PickUpNearbyFruit();
+            sendTimer = 0.0f;
+        }
     }
 }
