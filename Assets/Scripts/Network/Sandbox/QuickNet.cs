@@ -10,21 +10,37 @@ public class QuickNet : MonoBehaviour
     [SerializeField]
     private GameObject clientCube;
 
+    private Client client;
+    private Server server;
+
+    private List<NetworkObject> serverObjects;
+    private List<NetworkObject> clientObjects;
+
+    public float packetDelay = 0.5f;
+    private float packetTime;
+
     private void Awake()
     {
-        Client.Instance.handlers[(byte)Packets_ID.IG_SPAWN] = SpawnHandler;
+        client = Client.Instance;
+        server = Server.Instance;
+
+        serverObjects = new List<NetworkObject>();
+        clientObjects = new List<NetworkObject>();
+
+        client.handlers[(byte)Packets_ID.IG_SPAWN] = SpawnHandler;
+        client.handlers[(byte)Packets_ID.IG_TRANSFORM] = TransformHandler;
     }
 
     private void Start()
     {
-        int port = 12;
-        if (Server.Instance.StartServer(port, 2))
-            Client.Instance.Connect("localhost", port);
+        //int port = 12;
+        //if (server.StartServer(port, 2))
+        //    client.Connect("localhost", port);
     }
 
     private void OnDestroy()
     {
-        Server.Instance.StopServer();
+        server.StopServer();
     }
 
     private void Update()
@@ -33,19 +49,35 @@ public class QuickNet : MonoBehaviour
         {
             Transform instance = Instantiate(serverCube).transform;
             instance.position = new Vector3(0, 0, 0);
+            instance.localEulerAngles = new Vector3(Random.value * 90.0f, 0, Random.value * 90.0f);
 
-            Server.Instance.SendToAll(Packets_ID.IG_SPAWN,
-                new SpawnPacket(instance.position, instance.rotation)
+            NetworkObject network = instance.GetComponent<NetworkObject>();
+            network.id = serverObjects.Count;
+            serverObjects.Add(network);
+
+            server.SendToAll(Packets_ID.IG_SPAWN,
+                new SpawnPacket(network.id, instance.position, instance.rotation)
             );
-
-            //Server.Instance.SendToAll(Packets_ID.IG_SPAWN, "Hello world");
         }
     }
 
     private void FixedUpdate()
     {
-        Client.Instance.FixedUpdate();
-        Server.Instance.FixedUpdate();
+        client.FixedUpdate();
+        server.FixedUpdate();
+
+        packetTime += Time.fixedDeltaTime;
+        if (packetTime > packetDelay)
+        {
+            foreach (NetworkObject network in serverObjects)
+            {
+                server.SendToAll(Packets_ID.IG_TRANSFORM,
+                    new TransformPacket(network.id, packetTime, network.transform.position, network.transform.rotation)
+                );
+            }
+
+            packetTime = 0.0f;
+        }
     }
 
     #region Helper methods
@@ -54,12 +86,28 @@ public class QuickNet : MonoBehaviour
 
     private void SpawnHandler()
     {
-        Debug.Log("[Client] Received spawn packet ");
-        SpawnPacket packet = Client.Instance.m_NetworkReader.Read<SpawnPacket>();
+        SpawnPacket packet = client.m_NetworkReader.Read<SpawnPacket>();
+
         Transform instance = Instantiate(clientCube).transform;
         instance.position = packet.position.GetVector3();
         instance.rotation = packet.rotation.GetQuaternion();
+
+        NetworkObject network = instance.GetComponent<NetworkObject>();
+        network.id = packet.id;
+
+        clientObjects.Add(network);
     }
+    
+    private void TransformHandler()
+    {
+        TransformPacket packet = client.m_NetworkReader.Read<TransformPacket>();
+
+        Interpolator interpolator = clientObjects[packet.id].GetComponent<Interpolator>();
+        interpolator.t = packet.t;
+        interpolator.targetPosition = packet.position.GetVector3();
+        interpolator.targetRotation = packet.rotation.GetQuaternion();
+    }
+
 
     #endregion
 
