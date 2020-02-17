@@ -7,5 +7,7 @@ public class CharacterStats : ScriptableObject
 {
     [Header("Stats")]
     public float characterSpeed;
+    public float characterStrength;
+    public float balance;
     public int characterMaxFruitHold;
 }

@@ -4,37 +4,38 @@ using UnityEngine;
 
 public class CharacterMovementInput : MonoBehaviour
 {
+    private uint id;
     public string horizontalAxisName = "Horizontal";
     public string verticalAxisName = "Vertical";
+    public string pickUpName = "Jump";
 
     [SerializeField]
     private float horizontal = 0.0f;
     [SerializeField]
     private float vertical = 0.0f;
-
-    public int sendRate = 60;
-    private float sendFrequency = 0.0f;
-    private float sendTimer = 0.0f;
     public bool moveable = true;
+    public bool pickup = false;
 
-    // Start is called before the first frame update
-    void Start()
+    public uint ID
     {
-        sendFrequency = 1.0f / sendRate;
+        set { id = value; }
+        get { return id; }
     }
 
     // Update is called once per frame
     void Update()
     {
-        sendTimer += Time.unscaledDeltaTime;
         horizontal = Input.GetAxis(horizontalAxisName);
         vertical = Input.GetAxis(verticalAxisName);
+        pickup = Input.GetButtonDown(pickUpName);
+    }
 
-        if (sendTimer >= sendFrequency)
-        {
-            //Change this to phase locking call
-            GetComponent<CharacterMovement>().Move(horizontal, vertical);
-            sendTimer = 0.0f;
-        }
+    private void FixedUpdate()
+    {
+        //Change this to phase locking call
+        GetComponent<CharacterMovement>().Move(horizontal, vertical);
+
+        if (pickup)
+            GetComponent<CharacterMovement>().PickUpNearbyFruit();
     }
 }

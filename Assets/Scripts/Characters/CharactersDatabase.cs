@@ -10,12 +10,12 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "new characters database", menuName = "Character/Characters Database", order = 2)]
 public class CharactersDatabase : ScriptableObject
 {
-    public List<Character> characters = new List<Character>();
+    public List<CharacterData> characters = new List<CharacterData>();
 
     public void UpdateDatabase()
     {
         characters.Clear();
-        Character[] charactersList = Resources.FindObjectsOfTypeAll<Character>();
+        CharacterData[] charactersList = Resources.FindObjectsOfTypeAll<CharacterData>();
         characters.AddRange(charactersList.OrderBy(character => character.characterName));
 
 #if UNITY_EDITOR
