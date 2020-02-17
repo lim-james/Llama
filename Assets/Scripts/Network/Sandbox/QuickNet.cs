@@ -86,7 +86,8 @@ public class QuickNet : MonoBehaviour
 
     private void SpawnHandler()
     {
-        SpawnPacket packet = client.m_NetworkReader.Read<SpawnPacket>();
+        string raw = client.m_NetworkReader.ReadString();
+        SpawnPacket packet = Serializer.ToObject<SpawnPacket>(raw);
 
         Transform instance = Instantiate(clientCube).transform;
         instance.position = packet.position.GetVector3();
@@ -100,7 +101,8 @@ public class QuickNet : MonoBehaviour
     
     private void TransformHandler()
     {
-        TransformPacket packet = client.m_NetworkReader.Read<TransformPacket>();
+        string raw = client.m_NetworkReader.ReadString();
+        TransformPacket packet = Serializer.ToObject<TransformPacket>(raw);
 
         Interpolator interpolator = clientObjects[packet.id].GetComponent<Interpolator>();
         interpolator.t = packet.t;

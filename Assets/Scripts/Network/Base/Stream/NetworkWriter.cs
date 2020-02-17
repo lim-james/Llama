@@ -98,8 +98,6 @@ public class NetworkWriter
         if (value != null) writer.Write(value);
     }
 
-    public void Write<T>(T value) => Write(Serializer.ToString(value));
-
     // for byte arrays with consistent size, where the reader knows how many to read
     // (like a packet opcode that's always the same)
     public void Write(byte[] buffer, int offset, int count)

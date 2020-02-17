@@ -120,6 +120,8 @@ public class Client
         }
     }
 
+    #region Send Methods
+
     public void Send(Packets_ID id, string content)
     {
         if (m_NetworkWriter.StartWriting())
@@ -133,14 +135,10 @@ public class Client
 
     public void Send<T>(Packets_ID id, T content)
     {
-        if (m_NetworkWriter.StartWriting())
-        {
-            Debug.Log("Sending object");
-            m_NetworkWriter.WritePacketID((byte)id);
-            m_NetworkWriter.Write(content);
-            m_NetworkWriter.Send(serverGUID, Peer.Priority.Immediate, Peer.Reliability.Reliable, 0);
-        }
+        Send(id, Serializer.ToString(content));
     }
+
+    #endregion
 
     /// <summary>
     /// Parsing packet
