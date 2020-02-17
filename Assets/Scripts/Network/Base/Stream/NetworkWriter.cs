@@ -16,7 +16,7 @@ public class NetworkWriter
         writer = new BinaryWriter(new MemoryStream());
     }
 
-    public bool StartWritting()
+    public bool StartWriting()
     {
         if (peer == null)
         {
@@ -97,6 +97,8 @@ public class NetworkWriter
         writer.Write(value != null);
         if (value != null) writer.Write(value);
     }
+
+    public void Write<T>(T value) => Write(Serializer.ToString(value));
 
     // for byte arrays with consistent size, where the reader knows how many to read
     // (like a packet opcode that's always the same)

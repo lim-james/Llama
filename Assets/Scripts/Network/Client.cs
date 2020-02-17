@@ -122,8 +122,20 @@ public class Client
 
     public void Send(Packets_ID id, string content)
     {
-        if (m_NetworkWriter.StartWritting())
+        if (m_NetworkWriter.StartWriting())
         {
+            Debug.Log("Sending string");
+            m_NetworkWriter.WritePacketID((byte)id);
+            m_NetworkWriter.Write(content);
+            m_NetworkWriter.Send(serverGUID, Peer.Priority.Immediate, Peer.Reliability.Reliable, 0);
+        }
+    }
+
+    public void Send<T>(Packets_ID id, T content)
+    {
+        if (m_NetworkWriter.StartWriting())
+        {
+            Debug.Log("Sending object");
             m_NetworkWriter.WritePacketID((byte)id);
             m_NetworkWriter.Write(content);
             m_NetworkWriter.Send(serverGUID, Peer.Priority.Immediate, Peer.Reliability.Reliable, 0);
@@ -198,7 +210,7 @@ public class Client
     {
         serverGUID = peer.incomingGUID;
 
-        if (m_NetworkWriter.StartWritting())
+        if (m_NetworkWriter.StartWriting())
         {
             m_NetworkWriter.WritePacketID((byte)Packets_ID.CL_INFO);
             m_NetworkWriter.Write(m_ClientNetInfo.name);

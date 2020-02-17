@@ -53,6 +53,8 @@ public class NetworkReader
         return reader.ReadBoolean() ? reader.ReadString() : null; // null support, see NetworkWriter
     }
 
+    public T Read<T>() => Serializer.ToObject<T>(ReadString());
+
     public byte[] ReadBytes(int count) => reader.ReadBytes(count);
 
     public byte[] ReadBytesAndSize()

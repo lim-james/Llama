@@ -112,7 +112,17 @@ public class Server
 
     public void SendTo(ulong target, Packets_ID id, string content)
     {
-        if (m_NetworkWriter.StartWritting())
+        if (m_NetworkWriter.StartWriting())
+        {
+            m_NetworkWriter.WritePacketID((byte)id);
+            m_NetworkWriter.Write(content);
+            m_NetworkWriter.Send(target, Peer.Priority.Immediate, Peer.Reliability.Reliable, 0);
+        }
+    }
+
+    public void SendTo<T>(ulong target, Packets_ID id, T content)
+    {
+        if (m_NetworkWriter.StartWriting())
         {
             m_NetworkWriter.WritePacketID((byte)id);
             m_NetworkWriter.Write(content);
@@ -122,7 +132,24 @@ public class Server
 
     public void SendToOthers(ulong ignore, Packets_ID id, string content)
     {
-        if (m_NetworkWriter.StartWritting())
+        if (m_NetworkWriter.StartWriting())
+        {
+            m_NetworkWriter.WritePacketID((byte)id);
+            m_NetworkWriter.Write(content);
+
+            foreach (ulong guids in connectionByGUID.Keys)
+            {
+                if (guids == ignore)
+                    continue;
+
+                m_NetworkWriter.Send(guids, Priority.Immediate, Reliability.Reliable, 0);
+            }
+        }
+    }
+
+    public void SendToOthers<T>(ulong ignore, Packets_ID id, T content)
+    {
+        if (m_NetworkWriter.StartWriting())
         {
             m_NetworkWriter.WritePacketID((byte)id);
             m_NetworkWriter.Write(content);
@@ -139,7 +166,19 @@ public class Server
 
     public void SendToAll(Packets_ID id, string content)
     {
-        if (m_NetworkWriter.StartWritting())
+        if (m_NetworkWriter.StartWriting())
+        {
+            m_NetworkWriter.WritePacketID((byte)id);
+            m_NetworkWriter.Write(content);
+
+            foreach (ulong guids in connectionByGUID.Keys)
+                m_NetworkWriter.Send(guids, Priority.Immediate, Reliability.Reliable, 0);
+        }
+    }
+
+    public void SendToAll<T>(Packets_ID id, T content)
+    {
+        if (m_NetworkWriter.StartWriting())
         {
             m_NetworkWriter.WritePacketID((byte)id);
             m_NetworkWriter.Write(content);

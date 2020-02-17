@@ -6,8 +6,10 @@ public enum Packets_ID : byte
     CL_INFO,
     CL_FAKE,
     CL_BANNED,
+    CL_MESSAGE,
 
-    CL_MESSAGE
+    // In game actions
+    IG_SPAWN,
 
     /* unused in demo
     NET_SERVER_INFO,
