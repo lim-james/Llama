@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterMovement))]
+[RequireComponent(typeof(CharacterInventory))]
 public class CharacterInput : MonoBehaviour
 {
     private int id;
@@ -9,6 +10,7 @@ public class CharacterInput : MonoBehaviour
     public string pickUpName = "Jump";
 
     private CharacterMovement movement;
+    private CharacterInventory inventory;
 
     [SerializeField]
     private float horizontal = 0.0f;
@@ -26,6 +28,7 @@ public class CharacterInput : MonoBehaviour
     private void Awake()
     {
         movement = GetComponent<CharacterMovement>();
+        inventory = GetComponent<CharacterInventory>();
     }
 
     private void Start()
@@ -40,7 +43,7 @@ public class CharacterInput : MonoBehaviour
         pickup = Input.GetButtonDown(pickUpName + controllerID.ToString());
 
         if (pickup)
-            movement.PickUpNearbyFruit();
+            inventory.PickUpNearbyFruit();
 
         sendTimer += Time.deltaTime;
     }
