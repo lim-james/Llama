@@ -11,9 +11,9 @@ public class CharacterInput : MonoBehaviour
     private CharacterMovement movement;
 
     [SerializeField]
-    private float horizontal = 0.0f;
+    public float horizontal = 0.0f;
     [SerializeField]
-    private float vertical = 0.0f;
+    public float vertical = 0.0f;
     public bool moveable = true;
     public bool pickup = false;
 
@@ -21,7 +21,7 @@ public class CharacterInput : MonoBehaviour
     private float sendFrequency;
     private float sendTimer = 0.0f;
 
-    public int controllerID;
+    public int controllerID = 1;
 
     private void Awake()
     {
