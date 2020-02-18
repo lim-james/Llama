@@ -32,6 +32,16 @@ public class ClientInput : MonoBehaviour
         pickup = Input.GetButtonDown(pickUpName);
 
         sendTimer += Time.deltaTime;
+
+        if (pickup)
+        {
+            /*
+            Client.Instance.Send(Packets_ID.PICK_UP, new MovementPacket(
+                id, horizontal, vertical
+            ));
+            */
+            GetComponent<CharacterMovement>().PickUpNearbyFruit();
+        }
     }
 
     private void FixedUpdate()
@@ -39,13 +49,13 @@ public class ClientInput : MonoBehaviour
         //Change this to phase locking call
         if (sendTimer >= sendFrequency)
         {
-            //GetComponent<CharacterMovement>().Move(horizontal, vertical);
+            GetComponent<CharacterMovement>().Move(horizontal, vertical);
+            /*
             Client.Instance.Send(Packets_ID.IG_MOVEMENT, new MovementPacket(
                 id, horizontal, vertical
             ));
+            */
 
-            //if (pickup)
-            //    GetComponent<CharacterMovement>().PickUpNearbyFruit();
             sendTimer = 0.0f;
         }
     }
