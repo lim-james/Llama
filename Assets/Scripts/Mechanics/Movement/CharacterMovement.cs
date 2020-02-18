@@ -35,6 +35,8 @@ public class CharacterMovement : MonoBehaviour
         CheckGround();
         CalculateGroundAngle();
         Debug.DrawRay(transform.position + new Vector3(0, characterOrginOffset, 0), -transform.up * groundDistance, Color.red);
+
+        Debug.DrawRay(transform.position + new Vector3(0, characterOrginOffset, 0), forward, Color.blue);
     }
 
     public void Move(float x, float y)

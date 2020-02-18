@@ -21,6 +21,8 @@ public class CharacterInput : MonoBehaviour
     private float sendFrequency;
     private float sendTimer = 0.0f;
 
+    public int controllerID;
+
     private void Awake()
     {
         movement = GetComponent<CharacterMovement>();
@@ -33,9 +35,12 @@ public class CharacterInput : MonoBehaviour
 
     private void Update()
     {
-        horizontal = Input.GetAxis(horizontalAxisName);
-        vertical = Input.GetAxis(verticalAxisName);
-        pickup = Input.GetButtonDown(pickUpName);
+        horizontal = Input.GetAxis(horizontalAxisName + controllerID.ToString());
+        vertical = Input.GetAxis(verticalAxisName + controllerID.ToString());
+        pickup = Input.GetButtonDown(pickUpName + controllerID.ToString());
+
+        if (pickup)
+            movement.PickUpNearbyFruit();
 
         sendTimer += Time.deltaTime;
     }
@@ -45,9 +50,6 @@ public class CharacterInput : MonoBehaviour
         if (sendTimer >= sendFrequency)
         {
             movement.Move(horizontal, vertical);
-
-            if (pickup)
-                movement.PickUpNearbyFruit();
             sendTimer = 0.0f;
         }
     }
