@@ -32,7 +32,7 @@ public class SceneManagement : MonoBehaviour
         switch (gameObject.name)
         {
             case "Lobbies":
-                SceneManager.LoadScene("Lobbies");
+                SceneManager.LoadScene("Lobby");
                 break;
             case "Options":
                 SceneManager.LoadScene("Options");
