@@ -1254,7 +1254,6 @@ GameObject:
   - component: {fileID: 1572857007}
   - component: {fileID: 1572857013}
   - component: {fileID: 1572857014}
-  - component: {fileID: 1572857015}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1379,7 +1378,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1572857006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37628ee225683c548a6afa7c5883fed3, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ccbbb1d66e95b143ae29c22c59aeb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalAxisName: Horizontal
@@ -1403,19 +1402,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruits: []
---- !u!114 &1572857015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1572857006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a5126529ed68c1469adf0cef866a2bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
 --- !u!1 &1574680084
 GameObject:
   m_ObjectHideFlags: 0
