@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af19d009b216e064ea4908be44b1fe95, type: 3}
-  m_Name: Sniper Llama
+  m_Script: {fileID: 11500000, guid: c22343c468a69b745b925837c8354af3, type: 3}
+  m_Name: Fruit 2
   m_EditorClassIdentifier: 
-  characterName: Sniper Llama
-  characterPrefab: {fileID: 0}
-  stats: {fileID: 11400000, guid: a6bb615bb01b5c6438e6bb7a4d1ee0e2, type: 2}
+  fruitName: fruit 1
+  fruitPrefab: {fileID: 0}
