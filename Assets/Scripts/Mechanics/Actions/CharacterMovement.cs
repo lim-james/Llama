@@ -81,7 +81,6 @@ public class CharacterMovement : MonoBehaviour
         {
             grounded = true;
             groundNormal = hit.normal;
-            Debug.Log(hit.collider.gameObject.name);
             forward = Vector3.Cross(transform.right, groundNormal);
         }
         else 

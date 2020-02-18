@@ -11,6 +11,8 @@ public class CharacterInventory : MonoBehaviour
 
     public void PickUpNearbyFruit()
     {
+        Debug.Log("called");
+
         Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius);
 
         float nearestDist = float.MaxValue;
