@@ -35,6 +35,8 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < fruits.Count; ++i)
         {
             //WIP
+            FruitManager.instance.SpawnFruit(fruits[i].fruitName);
+            //Send Data to the client
         }
 
         fruits.Clear();
