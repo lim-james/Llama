@@ -81,7 +81,6 @@ public class CharacterMovement : MonoBehaviour
         {
             grounded = true;
             groundNormal = hit.normal;
-            Debug.Log(hit.collider.gameObject.name);
             forward = Vector3.Cross(transform.right, groundNormal);
         }
         else 
@@ -143,5 +142,10 @@ public class CharacterMovement : MonoBehaviour
         fruit.GetComponent<Rigidbody>().isKinematic = false;
         fruit.GetComponent<Collider>().isTrigger = false;
         fruit.GetComponent<Rigidbody>().AddForce(transform.forward * stats.characterStrength, ForceMode.Impulse);
+    }
+
+    public void ActivateAdrenaline()
+    {
+
     }
 }

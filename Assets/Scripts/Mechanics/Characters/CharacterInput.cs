@@ -7,6 +7,7 @@ public class CharacterInput : MonoBehaviour
     public string horizontalAxisName = "Horizontal";
     public string verticalAxisName = "Vertical";
     public string pickUpName = "Jump";
+    public string adrenalineButtonName = "Adrenaline";
 
     private CharacterMovement movement;
 
@@ -15,11 +16,6 @@ public class CharacterInput : MonoBehaviour
     [SerializeField]
     public float vertical = 0.0f;
     public bool moveable = true;
-    public bool pickup = false;
-
-    public int sendRate = 60;
-    private float sendFrequency;
-    private float sendTimer = 0.0f;
 
     public int controllerID = 1;
 
@@ -28,29 +24,22 @@ public class CharacterInput : MonoBehaviour
         movement = GetComponent<CharacterMovement>();
     }
 
-    private void Start()
-    {
-        sendFrequency = 1.0f / sendRate;
-    }
-
     private void Update()
     {
+        if (!moveable)
+            return;
+
         horizontal = Input.GetAxis(horizontalAxisName + controllerID.ToString());
         vertical = Input.GetAxis(verticalAxisName + controllerID.ToString());
-        pickup = Input.GetButtonDown(pickUpName + controllerID.ToString());
 
-        if (pickup)
+        if (Input.GetButtonDown(pickUpName + controllerID.ToString()))
             movement.PickUpNearbyFruit();
-
-        sendTimer += Time.deltaTime;
+        if (Input.GetButtonDown(adrenalineButtonName + controllerID.ToString()))
+            movement.ActivateAdrenaline();
     }
 
     private void FixedUpdate()
     {
-        if (sendTimer >= sendFrequency)
-        {
-            movement.Move(horizontal, vertical);
-            sendTimer = 0.0f;
-        }
+        movement.Move(horizontal, vertical);
     }
 }
