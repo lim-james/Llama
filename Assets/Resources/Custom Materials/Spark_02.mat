@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Spark_01
+  m_Name: Spark_02
   m_Shader: {fileID: -6465566751694194690, guid: 534106e5b7ddd8543a96ab1be277c413,
     type: 3}
   m_ShaderKeywords: _ENVIRONMENTREFLECTIONS_OFF
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_AFBE276A:
-        m_Texture: {fileID: 2800000, guid: ca56b8db5b7e3b240a5a051de1ab0191, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6eef85c20f103f8429c530cfc2c95a81, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
