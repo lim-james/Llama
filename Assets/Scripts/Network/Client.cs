@@ -126,7 +126,6 @@ public class Client
     {
         if (m_NetworkWriter.StartWriting())
         {
-            Debug.Log("Sending string");
             m_NetworkWriter.WritePacketID((byte)id);
             m_NetworkWriter.Write(content);
             m_NetworkWriter.Send(serverGUID, Peer.Priority.Immediate, Peer.Reliability.Reliable, 0);

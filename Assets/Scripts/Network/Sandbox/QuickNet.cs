@@ -5,6 +5,7 @@ using UnityEngine;
 public class QuickNet : MonoBehaviour
 {
 
+    [Header("References")]
     [SerializeField]
     private GameObject serverCube;
     [SerializeField]
@@ -16,7 +17,13 @@ public class QuickNet : MonoBehaviour
     private List<NetworkObject> serverObjects;
     private List<NetworkObject> clientObjects;
 
-    public float packetDelay = 0.5f;
+    [Header("Attributes")]
+    [SerializeField]
+    private bool autoconnect = true;
+    [SerializeField]
+    private int port = 8080;
+    [SerializeField]
+    private float packetDelay = 0.5f;
     private float packetTime;
 
     private void Awake()
@@ -33,9 +40,8 @@ public class QuickNet : MonoBehaviour
 
     private void Start()
     {
-        //int port = 12;
-        //if (server.StartServer(port, 2))
-        //    client.Connect("localhost", port);
+        if (autoconnect && server.StartServer(port, 2))
+            client.Connect("localhost", port);
     }
 
     private void OnDestroy()

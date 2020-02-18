@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(NetworkObject))]
 public class CharacterMovement : MonoBehaviour
 {
-    private uint id;
+    private Server server;
+    private int id;
+
     private Rigidbody rig;
     public CharacterStats stats;
     public float turnSpeed = 1.0f;
@@ -18,17 +21,30 @@ public class CharacterMovement : MonoBehaviour
 
     private float pickupRadius = 2.0f;
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
+        server = Server.Instance;
+        server.handlers[(byte)Packets_ID.IG_MOVEMENT] = MovementHandler;
+
         rig = GetComponent<Rigidbody>();
         playerCamera = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
+    {
+        id = GetComponent<NetworkObject>().id;
+    }
+
+    private void Update()
     {
         Debug.DrawRay(transform.position + new Vector3(0, characterOrginOffset, 0), -transform.up * groundDistance, Color.red);
+    }
+
+    private void MovementHandler()
+    {
+        string raw = server.m_NetworkReader.ReadString();
+        MovementPacket packet = Serializer.ToObject<MovementPacket>(raw);
+        Move(packet.horizontal, packet.vertical);
     }
 
     public void Move(float x, float y)

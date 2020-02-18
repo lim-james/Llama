@@ -11,6 +11,7 @@ public enum Packets_ID : byte
     // In game actions
     IG_SPAWN,
     IG_TRANSFORM,
+    IG_MOVEMENT,
 
     /* unused in demo
     NET_SERVER_INFO,
