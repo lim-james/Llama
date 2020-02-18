@@ -7,9 +7,9 @@ public class QuickNet : MonoBehaviour
 
     [Header("References")]
     [SerializeField]
-    private GameObject serverCube;
+    private List<GameObject> serverReferences = new List<GameObject>();
     [SerializeField]
-    private GameObject clientCube;
+    private List<GameObject> clientReferences = new List<GameObject>();
 
     private Client client;
     private Server server;
@@ -53,17 +53,7 @@ public class QuickNet : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Transform instance = Instantiate(serverCube).transform;
-            instance.position = new Vector3(0, 0, 0);
-            instance.localEulerAngles = new Vector3(Random.value * 90.0f, 0, Random.value * 90.0f);
-
-            NetworkObject network = instance.GetComponent<NetworkObject>();
-            network.id = serverObjects.Count;
-            serverObjects.Add(network);
-
-            server.SendToAll(Packets_ID.IG_SPAWN,
-                new SpawnPacket(network.id, instance.position, instance.rotation)
-            );
+            SpawnObject(0, new Vector3(0, 1, 0), Vector3.zero);
         }
     }
 
@@ -90,12 +80,27 @@ public class QuickNet : MonoBehaviour
 
     // encapsulate 
 
+    public void SpawnObject(int type, Vector3 position, Vector3 rotation)
+    {
+        Transform instance = Instantiate(serverReferences[type]).transform;
+        instance.position = position;
+        instance.localEulerAngles = rotation;
+
+        NetworkObject network = instance.GetComponent<NetworkObject>();
+        network.id = serverObjects.Count;
+        serverObjects.Add(network);
+
+        server.SendToAll(Packets_ID.IG_SPAWN,
+            new SpawnPacket(network.id, type, instance.position, instance.rotation)
+        );
+    }
+
     private void SpawnHandler()
     {
         string raw = client.m_NetworkReader.ReadString();
         SpawnPacket packet = Serializer.ToObject<SpawnPacket>(raw);
 
-        Transform instance = Instantiate(clientCube).transform;
+        Transform instance = Instantiate(clientReferences[packet.type]).transform;
         instance.position = packet.position.GetVector3();
         instance.rotation = packet.rotation.GetQuaternion();
 
