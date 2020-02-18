@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Interpolator))]
-public class ClientInput : MonoBehaviour
+[RequireComponent(typeof(CharacterMovement))]
+public class CharacterInput : MonoBehaviour
 {
     private int id;
     public string horizontalAxisName = "Horizontal";
     public string verticalAxisName = "Vertical";
     public string pickUpName = "Jump";
+
+    private CharacterMovement movement;
 
     [SerializeField]
     private float horizontal = 0.0f;
@@ -19,9 +21,13 @@ public class ClientInput : MonoBehaviour
     private float sendFrequency;
     private float sendTimer = 0.0f;
 
+    private void Awake()
+    {
+        movement = GetComponent<CharacterMovement>();
+    }
+
     private void Start()
     {
-        id = GetComponent<NetworkObject>().id;
         sendFrequency = 1.0f / sendRate;
     }
 
@@ -36,16 +42,12 @@ public class ClientInput : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Change this to phase locking call
         if (sendTimer >= sendFrequency)
         {
-            //GetComponent<CharacterMovement>().Move(horizontal, vertical);
-            Client.Instance.Send(Packets_ID.IG_MOVEMENT, new MovementPacket(
-                id, horizontal, vertical
-            ));
+            movement.Move(horizontal, vertical);
 
-            //if (pickup)
-            //    GetComponent<CharacterMovement>().PickUpNearbyFruit();
+            if (pickup)
+                movement.PickUpNearbyFruit();
             sendTimer = 0.0f;
         }
     }
