@@ -38,7 +38,7 @@ public class Server
         if (peer == null)
         {
             peer = new Peer();
-            peer = CreateServer("127.0.0.1", port, maxConnections);
+            peer = CreateServer("192.168.86.174", port, maxConnections);
 
             if (peer != null)
             {
