@@ -34,7 +34,7 @@ public class CameraEffects : MonoBehaviour
 
     private void Update()
     {
-        // PlayFrenzyEffect();
+        
     }
 
     public void PlayFrenzyEffect()
@@ -48,6 +48,7 @@ public class CameraEffects : MonoBehaviour
         vignette.color.value = new Color(0, 0, 0);
         vignette.intensity.value = 0;
     }
+
     // Get stun effect, Param duration > Time taken for the transition
     public void PlayStunEffect()
     {
