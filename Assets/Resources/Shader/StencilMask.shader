@@ -6,11 +6,11 @@
 	SubShader
 	{
 		Tags
-	{
-		"RenderPipeline" = "UniversalPipeline"
-		"RenderType" = "Opaque"
-		"Queue" = "Geometry-100"
-	}
+		{
+			"RenderPipeline" = "UniversalPipeline"
+			"RenderType" = "Opaque"
+			"Queue" = "Geometry-100"
+		}
 
 		Pass
 	{
@@ -21,7 +21,7 @@
 	}
 
 		ColorMask 0
-		Zwrite off
+		ZWrite off
 
 		// Render State
 		Blend One Zero, One Zero
@@ -31,9 +31,9 @@
 		// ColorMask: <None>
 
 		Stencil{
-		Ref 1
-		Pass replace
-	}
+			Ref 1
+			Pass replace
+		}
 
 		HLSLPROGRAM
 #pragma vertex vert
