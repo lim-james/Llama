@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class MapScaling : MonoBehaviour
 {
-    public float speed;
+    [SerializeField]
+    private float duration;
+    [SerializeField]
+    private float delay;
+    [SerializeField]
+    private Vector3 startScale;
+    [SerializeField]
+    private Vector3 endScale;
 
-    // Start is called before the first frame update
-    void Start()
+    private float et;
+
+    private void Start()
     {
-        
+        et = -delay;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        transform.localScale = new Vector3(-speed * Time.deltaTime, -speed * Time.deltaTime, 0);
+        et += Time.deltaTime;
+
+        if (et >= 0.0f && et < duration)
+        {
+            transform.localScale = (endScale - startScale) * et / duration + startScale;
+        }
     }
 }
