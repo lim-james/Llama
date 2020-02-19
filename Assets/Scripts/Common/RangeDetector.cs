@@ -9,7 +9,7 @@ public class RangeHandler : UnityEvent<Transform> { }
 [System.Serializable]
 public class RangeState
 {
-    public Transform target;
+    public LayerMask mask;
     public float range;
     public bool inRange;
 
@@ -31,25 +31,38 @@ public class RangeDetector : MonoBehaviour
     {
         foreach (RangeState state in states)
         {
-            float distance = (state.target.position - transform.position).magnitude;
-            
-            if (active && distance < state.range)
+            Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, state.range, state.mask);
+
+            if (objectsNearBy.Length == 0)
             {
-                // in range
-                if (state.inRange)
+                state.exit.Invoke(null);
+                continue;
+            }
+
+            foreach (Collider collider in objectsNearBy)
+            {
+                Transform target = collider.transform;
+
+                float distance = (target.position - transform.position).magnitude;
+
+                if (active && distance < state.range)
                 {
-                    state.stay.Invoke(state.target);
+                    // in range
+                    if (state.inRange)
+                    {
+                        state.stay.Invoke(target);
+                    }
+                    else
+                    {
+                        state.inRange = true;
+                        state.enter.Invoke(target);
+                    }
                 }
                 else
                 {
-                    state.inRange = true;
-                    state.enter.Invoke(state.target);
+                    state.inRange = false;
+                    state.exit.Invoke(target);
                 }
-            }
-            else
-            {
-                state.inRange = false;
-                state.exit.Invoke(state.target);
             }
         }
     }

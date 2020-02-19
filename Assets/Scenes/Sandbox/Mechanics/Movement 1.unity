@@ -313,8 +313,6 @@ MonoBehaviour:
   horizontal: 0
   vertical: 0
   moveable: 1
-  pickup: 0
-  sendRate: 60
   controllerID: 2
 --- !u!114 &338039466
 MonoBehaviour:
@@ -1086,8 +1084,6 @@ MonoBehaviour:
   horizontal: 0
   vertical: 0
   moveable: 1
-  pickup: 0
-  sendRate: 60
   controllerID: 1
 --- !u!114 &1068840519
 MonoBehaviour:
