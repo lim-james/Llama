@@ -140,9 +140,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   states:
-  - target: {fileID: 0}
+  - mask:
+      serializedVersion: 2
+      m_Bits: 256
     range: 3
-    inRange: 0
+    inRange: 1
     enter:
       m_PersistentCalls:
         m_Calls:

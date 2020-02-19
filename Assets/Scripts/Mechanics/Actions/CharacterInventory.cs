@@ -14,12 +14,30 @@ public class CharacterInventory : MonoBehaviour
     private Transform selected;
 
     private float magnitude;
-    private int selectedIndex;
     private int itemCount;
+
+    private int _selectedIndex;
+    public int SelectedIndex
+    {
+        get { return _selectedIndex; }
+        set
+        {
+            if (value < 0)
+                _selectedIndex = slots.Count - 1;
+            else if (value >= slots.Count)
+                _selectedIndex = 0;
+            else
+                _selectedIndex = value;
+
+            selected.position = slots[SelectedIndex].transform.position;
+        }
+    }
+
     private Dictionary<int, Fruit> inventory;
 
     private void Awake()
     {
+        SelectedIndex = 0;
         inventory = new Dictionary<int, Fruit>();
     }
 
@@ -27,17 +45,11 @@ public class CharacterInventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            --selectedIndex;
-            if (selectedIndex < 0)
-                selectedIndex = slots.Count - 1;
-            selected.position = slots[selectedIndex].transform.position;
+            --SelectedIndex;
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            ++selectedIndex;
-            if (selectedIndex == slots.Count)
-                selectedIndex = 0;
-            selected.position = slots[selectedIndex].transform.position;
+            ++SelectedIndex;
         }
         else if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
@@ -90,8 +102,11 @@ public class CharacterInventory : MonoBehaviour
         nearestFruit.GetComponent<RangeDetector>().active = false;
         nearestFruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
-        slots[selectedIndex].item.transform = nearestFruit.transform;
-        inventory[selectedIndex] = nearestFruit.GetComponent<Fruit>();
+        while (inventory.ContainsKey(SelectedIndex))
+            ++SelectedIndex;
+
+        slots[SelectedIndex].item.transform = nearestFruit.transform;
+        inventory[SelectedIndex] = nearestFruit.GetComponent<Fruit>();
         ++itemCount;
     }
 
@@ -99,7 +114,7 @@ public class CharacterInventory : MonoBehaviour
     {
         if (itemCount == 0) return;
 
-        Fruit fruit = inventory[selectedIndex];
+        Fruit fruit = inventory[SelectedIndex];
 
         if (fruit == null) return;
         --itemCount;
@@ -112,8 +127,7 @@ public class CharacterInventory : MonoBehaviour
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
 
-        slots[selectedIndex].item.transform = null;
-
-        inventory[selectedIndex] = null;
+        slots[SelectedIndex].item.transform = null;
+        inventory[SelectedIndex] = null;
     }
 }
