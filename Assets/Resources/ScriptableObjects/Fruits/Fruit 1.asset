@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Fruit 1
   m_EditorClassIdentifier: 
   fruitName: fruit 1
-  fruitPrefab: {fileID: 0}
+  fruitPrefab: {fileID: 1686551757957227803, guid: a4ecf85ff8988674188b3ac631e93975,
+    type: 3}
