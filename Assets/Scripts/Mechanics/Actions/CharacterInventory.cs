@@ -102,7 +102,7 @@ public class CharacterInventory : MonoBehaviour
         nearestFruit.GetComponent<RangeDetector>().active = false;
         nearestFruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
-        while (inventory.ContainsKey(SelectedIndex))
+        while (inventory.ContainsKey(SelectedIndex) && inventory[SelectedIndex] != null)
             ++SelectedIndex;
 
         slots[SelectedIndex].item.transform = nearestFruit.transform;
