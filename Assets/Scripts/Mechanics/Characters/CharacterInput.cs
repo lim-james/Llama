@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterMovement))]
+[RequireComponent(typeof(CharacterInventory))]
 public class CharacterInput : MonoBehaviour
 {
     private int id;
@@ -10,6 +11,7 @@ public class CharacterInput : MonoBehaviour
     public string adrenalineButtonName = "Adrenaline";
 
     private CharacterMovement movement;
+    private CharacterInventory inventory;
 
     [SerializeField]
     public float horizontal = 0.0f;
@@ -22,6 +24,7 @@ public class CharacterInput : MonoBehaviour
     private void Awake()
     {
         movement = GetComponent<CharacterMovement>();
+        inventory = GetComponent<CharacterInventory>();
     }
 
     private void Update()
@@ -32,10 +35,10 @@ public class CharacterInput : MonoBehaviour
         horizontal = Input.GetAxis(horizontalAxisName + controllerID.ToString());
         vertical = Input.GetAxis(verticalAxisName + controllerID.ToString());
 
-        if (Input.GetButtonDown(pickUpName + controllerID.ToString()))
-            movement.PickUpNearbyFruit();
         if (Input.GetButtonDown(adrenalineButtonName + controllerID.ToString()))
             movement.ActivateAdrenaline();
+        if (Input.GetButtonDown(pickUpName + controllerID.ToString()))
+            inventory.PickUpNearbyFruit();
     }
 
     private void FixedUpdate()
