@@ -38,4 +38,10 @@ public class FruitManager : MonoBehaviour
 
         return Instantiate(fruitGameObjectDic[fruitName]);
     }
+
+    public GameObject SpawnRandomFruit()
+    {
+        int randomFruitNum = Random.Range(0, fruitDatabase.fruits.Count -1);
+        return Instantiate(fruitDatabase.fruits[randomFruitNum].fruitPrefab);
+    }
 }
