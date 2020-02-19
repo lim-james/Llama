@@ -24,6 +24,8 @@ public class RangeDetector : MonoBehaviour
     [SerializeField]
     private List<RangeState> states = new List<RangeState>();
 
+    public bool active = true;
+
     // Update is called once per frame
     private void Update()
     {
@@ -31,7 +33,7 @@ public class RangeDetector : MonoBehaviour
         {
             float distance = (state.target.position - transform.position).magnitude;
             
-            if (distance < state.range)
+            if (active && distance < state.range)
             {
                 // in range
                 if (state.inRange)

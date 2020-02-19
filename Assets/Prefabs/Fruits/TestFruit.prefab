@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1034749965197947820}
   - component: {fileID: 5619539209212460337}
   - component: {fileID: 8147915154547903988}
+  - component: {fileID: 7369868421922548642}
   m_Layer: 0
   m_Name: TestFruit
   m_TagString: Untagged
@@ -126,6 +127,98 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   fruitName: fruit 1
+--- !u!114 &7369868421922548642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686551757957227803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7725f40e0eac6b4bb3b4b5652a498aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states:
+  - target: {fileID: 0}
+    range: 3
+    inRange: 0
+    enter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2384612294414322093}
+          m_MethodName: set_isOpened
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 2085069853287761131}
+          m_MethodName: set_isOpened
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 5095085630064098053}
+          m_MethodName: set_isOpened
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    stay:
+      m_PersistentCalls:
+        m_Calls: []
+    exit:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2384612294414322093}
+          m_MethodName: set_isOpened
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2085069853287761131}
+          m_MethodName: set_isOpened
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5095085630064098053}
+          m_MethodName: set_isOpened
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  active: 1
 --- !u!1 &3098058012352104643
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42c68b9dc177da40bae9c21753a130f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
 --- !u!114 &2384612294414322093
 MonoBehaviour:
   m_ObjectHideFlags: 0
