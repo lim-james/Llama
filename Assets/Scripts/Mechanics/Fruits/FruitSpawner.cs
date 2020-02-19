@@ -11,6 +11,7 @@ public class FruitSpawner : MonoBehaviour
     private bool spawn = true;
 
     public float heightOffset;
+    private float testHeightOffset = 1000;
     public Vector2 size;
 
     private void Awake()
@@ -33,13 +34,19 @@ public class FruitSpawner : MonoBehaviour
     {
         GameObject fruit = FruitManager.instance.SpawnRandomFruit();
         fruit.transform.position = GetRandomPos();
+        if (Random.Range(0, 100) <= 50)
+            fruit.GetComponent<Rigidbody>().AddForce(Vector3.up * 10, ForceMode.Impulse);
+        else
+            fruit.transform.position = new Vector3(fruit.transform.position.x, fruit.transform.position.y + heightOffset, fruit.transform.position.z);
     }
 
     public Vector3 GetRandomPos()
     {
-        Vector3 randomPos = new Vector3(Random.Range(-size.x, size.x), transform.position.y + heightOffset, Random.Range(-size.y, size.y));
-        if (Physics.Raycast(randomPos, -Vector3.up))
+        Vector3 randomPos = new Vector3(Random.Range(-size.x, size.x), transform.position.y + heightOffset + testHeightOffset, Random.Range(-size.y, size.y));
+        RaycastHit hit;
+        if (Physics.Raycast(randomPos, -Vector3.up, out hit))
         {
+            randomPos.y = hit.point.y;
             return randomPos;
         }
 
