@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -903,7 +903,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f8ec2b3e699fe34eb9c88d358d5df9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1811,7 +1811,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f8ec2b3e699fe34eb9c88d358d5df9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1985,7 +1985,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 2785b10bde9919640943cc1b5875143a, type: 2}
   turnSpeed: 15
-  groundNormal: {x: 0, y: 0, z: 0}
+  grounded: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  maxGroundAngle: 0
+  characterOrginOffset: -0.5
+  groundDistance: 0.3
+  pickupRadius: 2
 --- !u!54 &1572857008
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2034,7 +2041,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f8ec2b3e699fe34eb9c88d358d5df9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
