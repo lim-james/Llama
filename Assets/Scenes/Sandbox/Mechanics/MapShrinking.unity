@@ -903,7 +903,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f8ec2b3e699fe34eb9c88d358d5df9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1811,7 +1811,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f8ec2b3e699fe34eb9c88d358d5df9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1905,7 +1905,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5297ffbda8a34fe4eb2355259800dc6f, type: 2}
+  - {fileID: 2100000, guid: a90b4254231c22c44871a5db34356fba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1985,7 +1985,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 2785b10bde9919640943cc1b5875143a, type: 2}
   turnSpeed: 15
-  groundNormal: {x: 0, y: 0, z: 0}
+  grounded: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  maxGroundAngle: 0
+  characterOrginOffset: -0.5
+  groundDistance: 0.3
+  pickupRadius: 2
 --- !u!54 &1572857008
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2034,7 +2041,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f8ec2b3e699fe34eb9c88d358d5df9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2090,14 +2097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924f41753d80f254cad519943bef1da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAxisName: Horizontal
-  verticalAxisName: Vertical
-  pickUpName: Jump
-  horizontal: 0
-  vertical: 0
-  moveable: 1
-  pickup: 0
-  sendRate: 60
 --- !u!114 &1572857014
 MonoBehaviour:
   m_ObjectHideFlags: 0
