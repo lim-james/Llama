@@ -15,11 +15,12 @@ public class CharacterInventory : MonoBehaviour
 
     private float magnitude;
     private int selectedIndex;
-    private List<Fruit> inventory;
+    private int itemCount;
+    private Dictionary<int, Fruit> inventory;
 
     private void Awake()
     {
-        inventory = new List<Fruit>();
+        inventory = new Dictionary<int, Fruit>();
     }
 
     private void Update()
@@ -50,12 +51,11 @@ public class CharacterInventory : MonoBehaviour
         {
             DropFruit();
         }
-        
     }
 
     public void PickUpNearbyFruit()
     {
-        if (inventory.Count == stats.characterMaxFruitHold) return;
+        if (itemCount == stats.characterMaxFruitHold) return;
 
         Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius);
 
@@ -73,10 +73,6 @@ public class CharacterInventory : MonoBehaviour
             if (dist >= nearestDist)
                 continue;
 
-            //RaycastHit hit;
-            //if (!Physics.Raycast(transform.position, dir, out hit))
-            //    continue;
-
             if (Vector3.Dot(transform.forward, dir) < 0)
                 continue;
 
@@ -87,8 +83,6 @@ public class CharacterInventory : MonoBehaviour
         if (!nearestFruit)
             return;
 
-        //Need server code here
-        //Destroy(nearestFruit);
         nearestFruit.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
         nearestFruit.GetComponent<Rigidbody>().useGravity = false;
         nearestFruit.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -96,16 +90,19 @@ public class CharacterInventory : MonoBehaviour
         nearestFruit.GetComponent<RangeDetector>().active = false;
         nearestFruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
-        slots[inventory.Count].item.transform = nearestFruit.transform;
-
-        inventory.Add(nearestFruit.GetComponent<Fruit>());
+        slots[selectedIndex].item.transform = nearestFruit.transform;
+        inventory[selectedIndex] = nearestFruit.GetComponent<Fruit>();
+        ++itemCount;
     }
 
     public void DropFruit()
     {
-        if (selectedIndex >= inventory.Count) return;
+        if (itemCount == 0) return;
 
         Fruit fruit = inventory[selectedIndex];
+
+        if (fruit == null) return;
+        --itemCount;
 
         fruit.transform.position = transform.position + transform.forward + new Vector3(0.0f, 1.0f, 0.0f);
         fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
@@ -117,14 +114,6 @@ public class CharacterInventory : MonoBehaviour
 
         slots[selectedIndex].item.transform = null;
 
-        inventory.Remove(fruit);
-    }
-
-    public void ThrowFruit(Fruit fruit)
-    {
-        fruit.transform.SetParent(null);
-        fruit.GetComponent<Rigidbody>().isKinematic = false;
-        fruit.GetComponent<Collider>().isTrigger = false;
-        fruit.GetComponent<Rigidbody>().AddForce(transform.forward * stats.characterStrength, ForceMode.Impulse);
+        inventory[selectedIndex] = null;
     }
 }
