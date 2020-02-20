@@ -314,6 +314,121 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Lobby"",
+            ""id"": ""03bb0b3b-fc78-48a1-bc02-864c9f757983"",
+            ""actions"": [
+                {
+                    ""name"": ""Switch (Team)"",
+                    ""type"": ""Button"",
+                    ""id"": ""6bcd6cbe-99ea-4cea-a25b-2067ce609b16"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Bumper (Controller)"",
+                    ""id"": ""bdd8bb0e-63e8-4939-8629-b752ebd02b36"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""100d4c48-caf6-4640-8ed0-38a8c59eacff"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""15170d9b-117a-4d33-a8b5-04d08e04265d"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""DPad (Controller)"",
+                    ""id"": ""bbbfe613-6394-4636-8248-7d742df663a9"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""94da15ca-792f-40d1-98ee-ff190ff8e7ef"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""ae0e040b-aaeb-43ab-a2c6-fbfda68a40a4"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrows (Keyboard)"",
+                    ""id"": ""23192b29-dcee-4f17-824d-85be081174b2"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""8dd70f93-26a7-45ba-98a6-6ae61d8fc100"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""f8c3e78e-36ed-47e8-b839-694fec2683ec"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -336,6 +451,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Switch = m_Player.FindAction("Switch", throwIfNotFound: true);
         m_Player_Release = m_Player.FindAction("Release", throwIfNotFound: true);
         m_Player_Consume = m_Player.FindAction("Consume", throwIfNotFound: true);
+        // Lobby
+        m_Lobby = asset.FindActionMap("Lobby", throwIfNotFound: true);
+        m_Lobby_SwitchTeam = m_Lobby.FindAction("Switch (Team)", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -446,6 +564,39 @@ public class @InputMaster : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Lobby
+    private readonly InputActionMap m_Lobby;
+    private ILobbyActions m_LobbyActionsCallbackInterface;
+    private readonly InputAction m_Lobby_SwitchTeam;
+    public struct LobbyActions
+    {
+        private @InputMaster m_Wrapper;
+        public LobbyActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SwitchTeam => m_Wrapper.m_Lobby_SwitchTeam;
+        public InputActionMap Get() { return m_Wrapper.m_Lobby; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(LobbyActions set) { return set.Get(); }
+        public void SetCallbacks(ILobbyActions instance)
+        {
+            if (m_Wrapper.m_LobbyActionsCallbackInterface != null)
+            {
+                @SwitchTeam.started -= m_Wrapper.m_LobbyActionsCallbackInterface.OnSwitchTeam;
+                @SwitchTeam.performed -= m_Wrapper.m_LobbyActionsCallbackInterface.OnSwitchTeam;
+                @SwitchTeam.canceled -= m_Wrapper.m_LobbyActionsCallbackInterface.OnSwitchTeam;
+            }
+            m_Wrapper.m_LobbyActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @SwitchTeam.started += instance.OnSwitchTeam;
+                @SwitchTeam.performed += instance.OnSwitchTeam;
+                @SwitchTeam.canceled += instance.OnSwitchTeam;
+            }
+        }
+    }
+    public LobbyActions @Lobby => new LobbyActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -471,5 +622,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnSwitch(InputAction.CallbackContext context);
         void OnRelease(InputAction.CallbackContext context);
         void OnConsume(InputAction.CallbackContext context);
+    }
+    public interface ILobbyActions
+    {
+        void OnSwitchTeam(InputAction.CallbackContext context);
     }
 }

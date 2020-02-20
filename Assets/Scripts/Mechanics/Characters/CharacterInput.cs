@@ -32,13 +32,6 @@ public class CharacterInput : MonoBehaviour
         input = new InputMaster();
         input.Enable();
 
-        movement = GetComponent<CharacterMovement>();
-        inventory = GetComponent<CharacterInventory>();
-        adrenaline = GetComponent<CharacterAdrenaline>();
-    }
-
-    private void Start()
-    {
         // bind handlers
         if (controllerID == 0)
             input.devices = new[] { InputDevice.all[0] };
@@ -61,6 +54,10 @@ public class CharacterInput : MonoBehaviour
         };
         // consume
         input.Player.Consume.performed += _ => adrenaline.Consume();
+
+        movement = GetComponent<CharacterMovement>();
+        inventory = GetComponent<CharacterInventory>();
+        adrenaline = GetComponent<CharacterAdrenaline>();
     }
 
     private void FixedUpdate()
