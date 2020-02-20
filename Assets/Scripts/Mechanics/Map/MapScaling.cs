@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class MapScaling : MonoBehaviour
 {
     [SerializeField]
@@ -9,11 +8,17 @@ public class MapScaling : MonoBehaviour
     [SerializeField]
     private float delay;
     [SerializeField]
-    private Vector3 startScale;
+    private Vector3 startSize;
     [SerializeField]
-    private Vector3 endScale;
+    private Vector3 endSize;
 
     private float et;
+    private BoxCollider boxCollider;
+
+    private void Awake()
+    {
+        boxCollider = GetComponent<BoxCollider>();
+    }
 
     private void Start()
     {
@@ -26,7 +31,7 @@ public class MapScaling : MonoBehaviour
 
         if (et >= 0.0f && et < duration)
         {
-            transform.localScale = (endScale - startScale) * et / duration + startScale;
+            boxCollider.size = (endSize - startSize) * et / duration + startSize;
         }
     }
 }
