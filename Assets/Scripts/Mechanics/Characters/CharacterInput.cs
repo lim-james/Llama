@@ -29,13 +29,6 @@ public class CharacterInput : MonoBehaviour
     {
         input = new InputMaster();
         input.Enable();
-
-        movement = GetComponent<CharacterMovement>();
-        inventory = GetComponent<CharacterInventory>();
-    }
-
-    private void Start()
-    {
         // bind handlers
         if (controllerID == 0)
             input.devices = new[] { InputDevice.all[0] };
@@ -56,6 +49,9 @@ public class CharacterInput : MonoBehaviour
             else
                 inventory.ReleaseFruit();
         };
+
+        movement = GetComponent<CharacterMovement>();
+        inventory = GetComponent<CharacterInventory>();
     }
 
     private void FixedUpdate()
