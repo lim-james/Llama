@@ -130,4 +130,25 @@ public class CharacterInventory : MonoBehaviour
         slots[SelectedIndex].item.transform = null;
         inventory[SelectedIndex] = null;
     }
+
+    public void DropFruit(float force)
+    {
+        if (itemCount == 0) return;
+
+        Fruit fruit = inventory[SelectedIndex];
+
+        if (fruit == null) return;
+        --itemCount;
+
+        fruit.transform.position = transform.position + transform.forward + new Vector3(0.0f, 1.0f, 0.0f);
+        fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        fruit.GetComponent<Rigidbody>().useGravity = true;
+        fruit.GetComponent<Rigidbody>().velocity = transform.forward * force * stats.characterStrength;
+        fruit.GetComponent<Collider>().enabled = true;
+        fruit.GetComponent<RangeDetector>().active = true;
+        fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+
+        slots[SelectedIndex].item.transform = null;
+        inventory[SelectedIndex] = null;
+    }
 }

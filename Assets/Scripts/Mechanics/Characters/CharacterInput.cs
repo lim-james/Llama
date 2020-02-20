@@ -9,14 +9,17 @@ public class CharacterInput : MonoBehaviour
     public string verticalAxisName = "Vertical";
     public string pickUpName = "Jump";
     public string adrenalineButtonName = "Adrenaline";
+    public string throwButtonName = "Throw";
 
     private CharacterMovement movement;
     private CharacterInventory inventory;
 
     [SerializeField]
-    public float horizontal = 0.0f;
+    private float horizontal = 0.0f;
     [SerializeField]
-    public float vertical = 0.0f;
+    private float vertical = 0.0f;
+    [SerializeField]
+    private float throwForce = 0.0f;
     public bool moveable = true;
 
     public int controllerID = 1;
@@ -39,6 +42,13 @@ public class CharacterInput : MonoBehaviour
             movement.ActivateAdrenaline();
         if (Input.GetButtonDown(pickUpName + controllerID.ToString()))
             inventory.PickUpNearbyFruit();
+        if (Input.GetButton(throwButtonName + controllerID.ToString()))
+            throwForce = Mathf.Min(throwForce + Time.deltaTime * movement.stats.characterStrength * movement.stats.characterStrength, movement.stats.characterStrength * movement.stats.characterStrength);
+        if (Input.GetButtonUp(throwButtonName + controllerID.ToString()))
+        {
+            inventory.DropFruit(throwForce);
+            throwForce = 0.0f;
+        }
     }
 
     private void FixedUpdate()
