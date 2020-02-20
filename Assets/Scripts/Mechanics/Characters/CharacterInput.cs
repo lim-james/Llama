@@ -1,58 +1,80 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
+
+[System.Serializable]
+public class MoveHandler : UnityEvent<Vector2> { }
 
 [RequireComponent(typeof(CharacterMovement))]
 [RequireComponent(typeof(CharacterInventory))]
 public class CharacterInput : MonoBehaviour
 {
     private int id;
-    public string horizontalAxisName = "Horizontal";
-    public string verticalAxisName = "Vertical";
-    public string pickUpName = "Jump";
-    public string adrenalineButtonName = "Adrenaline";
-    public string throwButtonName = "Throw";
 
+    private InputMaster input;
     private CharacterMovement movement;
     private CharacterInventory inventory;
 
+    [Header("Axes values")]
     [SerializeField]
     private float horizontal = 0.0f;
     [SerializeField]
     private float vertical = 0.0f;
-    [SerializeField]
-    private float throwForce = 0.0f;
-    public bool moveable = true;
 
-    public int controllerID = 1;
+    public bool moveable = true;
+    public int controllerID = 0;
 
     private void Awake()
     {
+        input = new InputMaster();
+        input.Enable();
+
         movement = GetComponent<CharacterMovement>();
         inventory = GetComponent<CharacterInventory>();
     }
 
-    private void Update()
+    private void Start()
     {
-        if (!moveable)
-            return;
-
-        horizontal = Input.GetAxis(horizontalAxisName + controllerID.ToString());
-        vertical = Input.GetAxis(verticalAxisName + controllerID.ToString());
-
-        if (Input.GetButtonDown(adrenalineButtonName + controllerID.ToString()))
-            movement.ActivateAdrenaline();
-        if (Input.GetButtonDown(pickUpName + controllerID.ToString()))
-            inventory.PickUpNearbyFruit();
-        if (Input.GetButton(throwButtonName + controllerID.ToString()))
-            throwForce = Mathf.Min(throwForce + Time.deltaTime * movement.stats.characterStrength * movement.stats.characterStrength, movement.stats.characterStrength * movement.stats.characterStrength);
-        if (Input.GetButtonUp(throwButtonName + controllerID.ToString()))
+        // bind handlers
+        if (controllerID == 0)
+            input.devices = new[] { InputDevice.all[0] };
+        else
+            input.devices = new[] { Gamepad.all[controllerID - 1] };
+        // movement
+        input.Player.Move.performed += context => OnMove(context);
+        input.Player.Move.canceled += context => OnMove(context);
+        // pick up
+        input.Player.Pickup.performed += _ => inventory.PickUpNearbyFruit();
+        // switch
+        input.Player.Switch.performed += context => OnSwitch(context);
+        // release 
+        input.Player.Release.performed += context =>
         {
-            inventory.DropFruit(throwForce);
-            throwForce = 0.0f;
-        }
+            if (context.ReadValue<float>() > 0.5f)
+                inventory.HoldFruit();
+            else
+                inventory.ReleaseFruit();
+        };
     }
 
     private void FixedUpdate()
     {
-        movement.Move(horizontal, vertical);
+        if (moveable) movement.Move(horizontal, vertical);
     }
+
+    /// Input handlers
+    
+    private void OnMove(InputAction.CallbackContext context)
+    {
+        Vector2 v = context.ReadValue<Vector2>();
+        horizontal = v.x;
+        vertical = v.y;
+    }
+
+    private void OnSwitch(InputAction.CallbackContext context)
+    {
+        inventory.SelectedIndex += (int)context.ReadValue<float>();
+    }
+
 }

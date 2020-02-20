@@ -32,4 +32,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Merge/Base.unity
     guid: 79b5c722dc246f142961320484989389
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 19753f716f54ebc42a6418d3a459d513,
+      type: 2}
