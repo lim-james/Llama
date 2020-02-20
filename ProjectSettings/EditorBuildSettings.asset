@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sandbox/Screenflow/Loading.unity
     guid: 218aa386ddcb9144e8ef82e41f5c3cbf
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/Mechanics/Movement 1.unity
+    guid: 3868350982b4d23488033de63709a5c8
+  - enabled: 0
+    path: Assets/Scenes/Merge/Base.unity
+    guid: 79b5c722dc246f142961320484989389
   m_configObjects: {}
