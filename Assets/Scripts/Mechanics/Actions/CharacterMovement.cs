@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 public class CharacterMovement : MonoBehaviour
@@ -48,6 +49,12 @@ public class CharacterMovement : MonoBehaviour
         ApplyGravity();
         //Move(GetComponent<CharacterInput>().horizontal, GetComponent<CharacterInput>().vertical);
     }
+
+    public void OnMove()
+    {
+        Debug.Log("Hello there");
+    }
+
     public void ApplyGravity()
     {
         if (grounded)
@@ -66,7 +73,6 @@ public class CharacterMovement : MonoBehaviour
         move = Vector3.ProjectOnPlane(move, groundNormal);
         float rotationAmount = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
         float force = Mathf.Sqrt(x * x + y * y) * stats.characterSpeed;
-
 
         rig.AddForce(forward * force, ForceMode.Impulse);
         rig.rotation = Quaternion.RotateTowards(rig.rotation, Quaternion.Euler(0, rig.transform.localEulerAngles.y + rotationAmount, 0), turnSpeed);

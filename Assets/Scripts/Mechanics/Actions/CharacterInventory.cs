@@ -14,6 +14,7 @@ public class CharacterInventory : MonoBehaviour
     private Transform selected;
 
     private float magnitude;
+    private bool holding;
     private int itemCount;
 
     private int _selectedIndex;
@@ -37,32 +38,29 @@ public class CharacterInventory : MonoBehaviour
 
     private void Awake()
     {
+        holding = true;
         SelectedIndex = 0;
         inventory = new Dictionary<int, Fruit>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            --SelectedIndex;
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            ++SelectedIndex;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            magnitude = 0.0f;
-        }
-        else if (Input.GetKey(KeyCode.LeftAlt))
-        {
-            magnitude += Time.deltaTime * stats.characterStrength * stats.characterStrength;
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftAlt))
-        {
-            DropFruit();
-        }
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    --SelectedIndex;
+        //}
+        //else if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    ++SelectedIndex;
+        //}
+        
+        if (holding)
+            magnitude += Time.deltaTime * stats.characterStrength * stats.characterStrength; 
+    }
+
+    private void OnPickup()
+    {
+        Debug.Log("pick up");
     }
 
     public void PickUpNearbyFruit()
@@ -110,8 +108,15 @@ public class CharacterInventory : MonoBehaviour
         ++itemCount;
     }
 
-    public void DropFruit()
+    public void HoldFruit()
     {
+        holding = true;
+        magnitude = 0.0f;
+    }
+
+    public void ReleaseFruit()
+    {
+        holding = false;
         if (itemCount == 0) return;
 
         Fruit fruit = inventory[SelectedIndex];
@@ -131,24 +136,4 @@ public class CharacterInventory : MonoBehaviour
         inventory[SelectedIndex] = null;
     }
 
-    public void DropFruit(float force)
-    {
-        if (itemCount == 0) return;
-
-        Fruit fruit = inventory[SelectedIndex];
-
-        if (fruit == null) return;
-        --itemCount;
-
-        fruit.transform.position = transform.position + transform.forward + new Vector3(0.0f, 1.0f, 0.0f);
-        fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        fruit.GetComponent<Rigidbody>().useGravity = true;
-        fruit.GetComponent<Rigidbody>().velocity = transform.forward * force * stats.characterStrength;
-        fruit.GetComponent<Collider>().enabled = true;
-        fruit.GetComponent<RangeDetector>().active = true;
-        fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-
-        slots[SelectedIndex].item.transform = null;
-        inventory[SelectedIndex] = null;
-    }
 }
