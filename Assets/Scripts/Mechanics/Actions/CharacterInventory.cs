@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterStatistics))]
 public class CharacterInventory : MonoBehaviour
 {
-    [SerializeField]
-    private CharacterStats stats;
     [SerializeField]
     private float pickupRadius = 3.0f;
     [SerializeField]
@@ -13,6 +12,7 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField]
     private Transform selected;
 
+    private CharacterStats stats;
     private float magnitude;
     private bool holding;
     private int itemCount;
@@ -43,17 +43,13 @@ public class CharacterInventory : MonoBehaviour
         inventory = new Dictionary<int, Fruit>();
     }
 
+    private void Start()
+    {
+        stats = GetComponent<CharacterStatistics>().stats;
+    }
+
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    --SelectedIndex;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    ++SelectedIndex;
-        //}
-        
         if (holding)
             magnitude += Time.deltaTime * stats.characterStrength * stats.characterStrength; 
     }

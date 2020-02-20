@@ -8,6 +8,7 @@ public class MoveHandler : UnityEvent<Vector2> { }
 
 [RequireComponent(typeof(CharacterMovement))]
 [RequireComponent(typeof(CharacterInventory))]
+[RequireComponent(typeof(CharacterAdrenaline))]
 public class CharacterInput : MonoBehaviour
 {
     private int id;
@@ -15,6 +16,7 @@ public class CharacterInput : MonoBehaviour
     private InputMaster input;
     private CharacterMovement movement;
     private CharacterInventory inventory;
+    private CharacterAdrenaline adrenaline;
 
     [Header("Axes values")]
     [SerializeField]
@@ -32,6 +34,7 @@ public class CharacterInput : MonoBehaviour
 
         movement = GetComponent<CharacterMovement>();
         inventory = GetComponent<CharacterInventory>();
+        adrenaline = GetComponent<CharacterAdrenaline>();
     }
 
     private void Start()
@@ -56,6 +59,8 @@ public class CharacterInput : MonoBehaviour
             else
                 inventory.ReleaseFruit();
         };
+        // consume
+        input.Player.Consume.performed += _ => adrenaline.Consume();
     }
 
     private void FixedUpdate()

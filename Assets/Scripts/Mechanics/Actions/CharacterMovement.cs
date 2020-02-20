@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CharacterStatistics))]
 public class CharacterMovement : MonoBehaviour
 {
     private int id;
 
     private Rigidbody rig;
-    public CharacterStats stats;
+    private CharacterStats stats;
     public float turnSpeed = 1.0f;
     private Camera playerCamera;
 
@@ -31,6 +32,11 @@ public class CharacterMovement : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         playerCamera = Camera.main;
+    }
+
+    private void Start()
+    {
+        stats = GetComponent<CharacterStatistics>().stats;
     }
 
     private void Update()
