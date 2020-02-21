@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Sandbox/Polishing/Fruits.unity
+    guid: 6f83e9230ae2ddd43ae9e3a2f788a007
+  - enabled: 1
     path: Assets/Scenes/Sandbox/Polishing/Characters.unity
     guid: eb08135a11a947944a3ea9db164a4a36
   - enabled: 1
