@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c22343c468a69b745b925837c8354af3, type: 3}
-  m_Name: Fruit 4
+  m_Script: {fileID: 11500000, guid: cbb2bcb69ee92ad42ab32405bd1c689f, type: 3}
+  m_Name: Fruit 3 Stats
   m_EditorClassIdentifier: 
-  fruitName: fruit 4
-  fruitPrefab: {fileID: 1686551757957227803, guid: a4ecf85ff8988674188b3ac631e93975,
-    type: 3}
-  stats: {fileID: 11400000, guid: db5c59eb86c0a164cb90cda5ab223ad2, type: 2}
+  speed: 0
+  strength: 0
+  balance: 0
+  points: 0

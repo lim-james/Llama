@@ -78,7 +78,7 @@ public class CharacterMovement : MonoBehaviour
         move = transform.InverseTransformDirection(move);
         move = Vector3.ProjectOnPlane(move, groundNormal);
         float rotationAmount = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
-        float force = Mathf.Sqrt(x * x + y * y) * stats.characterSpeed;
+        float force = Mathf.Sqrt(x * x + y * y) * stats.speed;
 
         rig.AddForce(forward * force, ForceMode.Impulse);
         rig.rotation = Quaternion.RotateTowards(rig.rotation, Quaternion.Euler(0, rig.transform.localEulerAngles.y + rotationAmount, 0), turnSpeed);

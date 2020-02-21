@@ -15,3 +15,4 @@ MonoBehaviour:
   fruitName: fruit 2
   fruitPrefab: {fileID: 5782842056274934100, guid: acbc35386b90d204aaf4126e828f1d3b,
     type: 3}
+  stats: {fileID: 11400000, guid: 1ec5504b879edaf489c6e6ff3e6b9c3b, type: 2}

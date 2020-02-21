@@ -51,7 +51,7 @@ public class CharacterInventory : MonoBehaviour
     private void Update()
     {
         if (holding)
-            magnitude += Time.deltaTime * stats.characterStrength * stats.characterStrength; 
+            magnitude += Time.deltaTime * stats.strength * stats.strength; 
     }
 
     private void OnPickup()
@@ -61,7 +61,7 @@ public class CharacterInventory : MonoBehaviour
 
     public void PickUpNearbyFruit()
     {
-        if (itemCount == stats.characterMaxFruitHold) return;
+        if (itemCount == stats.maxHold) return;
 
         Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius);
 
@@ -123,7 +123,7 @@ public class CharacterInventory : MonoBehaviour
         fruit.transform.position = transform.position + transform.forward + new Vector3(0.0f, 1.0f, 0.0f);
         fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         fruit.GetComponent<Rigidbody>().useGravity = true;
-        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * stats.characterStrength;
+        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * stats.strength;
         fruit.GetComponent<Collider>().enabled = true;
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
