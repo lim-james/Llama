@@ -730,10 +730,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 6222583365223758156, guid: ee28d6f658bdac443816f7664de85e34,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222583365223758156, guid: ee28d6f658bdac443816f7664de85e34,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6222583365223758159, guid: ee28d6f658bdac443816f7664de85e34,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6222583366250799229, guid: ee28d6f658bdac443816f7664de85e34,
         type: 3}
