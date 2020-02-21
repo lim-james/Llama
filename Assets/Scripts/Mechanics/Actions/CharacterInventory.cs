@@ -128,7 +128,7 @@ public class CharacterInventory : MonoBehaviour
 
         if (fruit == null) return;
 
-        fruit.transform.position = transform.position + transform.forward + new Vector3(0.0f, 1.0f, 0.0f);
+        fruit.transform.position = transform.position + transform.forward + new Vector3(0.0f, 0.5f, 0.0f);
         fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         fruit.GetComponent<Rigidbody>().useGravity = true;
         fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * stats.strength;
