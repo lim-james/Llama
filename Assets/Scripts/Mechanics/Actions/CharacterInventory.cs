@@ -12,10 +12,27 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField]
     private Transform selected;
 
-    private CharacterStats stats;
+    // references
+    private CharacterStatistics stats;
+
+    // member attributes
     private float magnitude;
     private bool holding;
-    private int itemCount;
+
+    private int _itemCount; 
+    public int itemCount
+    {
+        get
+        {
+            return _itemCount;
+        }
+        set
+        {
+            magnitude = 0.0f;
+            holding = false;
+            _itemCount = value;
+        }
+    }
 
     private int _selectedIndex;
     public int SelectedIndex
@@ -34,29 +51,21 @@ public class CharacterInventory : MonoBehaviour
         }
     }
 
-    private Dictionary<int, Fruit> inventory;
+    public Dictionary<int, Fruit> inventory { get; private set; }
 
     private void Awake()
     {
+        stats = GetComponent<CharacterStatistics>();
+        
         holding = true;
         SelectedIndex = 0;
         inventory = new Dictionary<int, Fruit>();
-    }
-
-    private void Start()
-    {
-        stats = GetComponent<CharacterStatistics>().stats;
     }
 
     private void Update()
     {
         if (holding)
             magnitude += Time.deltaTime * stats.strength * stats.strength; 
-    }
-
-    private void OnPickup()
-    {
-        Debug.Log("pick up");
     }
 
     public void PickUpNearbyFruit()
@@ -118,7 +127,6 @@ public class CharacterInventory : MonoBehaviour
         Fruit fruit = inventory[SelectedIndex];
 
         if (fruit == null) return;
-        --itemCount;
 
         fruit.transform.position = transform.position + transform.forward + new Vector3(0.0f, 1.0f, 0.0f);
         fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
@@ -128,6 +136,7 @@ public class CharacterInventory : MonoBehaviour
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
 
+        --itemCount;
         slots[SelectedIndex].item.transform = null;
         inventory[SelectedIndex] = null;
     }

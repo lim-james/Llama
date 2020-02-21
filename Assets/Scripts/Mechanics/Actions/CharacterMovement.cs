@@ -10,7 +10,7 @@ public class CharacterMovement : MonoBehaviour
     private int id;
 
     private Rigidbody rig;
-    private CharacterStats stats;
+    private CharacterStatistics stats;
     public float turnSpeed = 1.0f;
     private Camera playerCamera;
 
@@ -31,12 +31,8 @@ public class CharacterMovement : MonoBehaviour
     private void Awake()
     {
         rig = GetComponent<Rigidbody>();
+        stats = GetComponent<CharacterStatistics>();
         playerCamera = Camera.main;
-    }
-
-    private void Start()
-    {
-        stats = GetComponent<CharacterStatistics>().stats;
     }
 
     private void Update()
@@ -49,16 +45,10 @@ public class CharacterMovement : MonoBehaviour
         Debug.DrawRay(transform.position + new Vector3(0, 0, characterOrginOffset), forward * 100, Color.blue);
     }
 
-
     private void FixedUpdate()
     {
         ApplyGravity();
         //Move(GetComponent<CharacterInput>().horizontal, GetComponent<CharacterInput>().vertical);
-    }
-
-    public void OnMove()
-    {
-        Debug.Log("Hello there");
     }
 
     public void ApplyGravity()
