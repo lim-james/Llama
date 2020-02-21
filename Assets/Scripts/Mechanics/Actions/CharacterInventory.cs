@@ -12,7 +12,10 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField]
     private Transform selected;
 
-    private CharacterStats stats;
+    // references
+    private CharacterStatistics stats;
+
+    // member attributes
     private float magnitude;
     private bool holding;
     private int itemCount;
@@ -34,29 +37,21 @@ public class CharacterInventory : MonoBehaviour
         }
     }
 
-    private Dictionary<int, Fruit> inventory;
+    public Dictionary<int, Fruit> inventory { get; private set; }
 
     private void Awake()
     {
+        stats = GetComponent<CharacterStatistics>();
+        
         holding = true;
         SelectedIndex = 0;
         inventory = new Dictionary<int, Fruit>();
-    }
-
-    private void Start()
-    {
-        stats = GetComponent<CharacterStatistics>().stats;
     }
 
     private void Update()
     {
         if (holding)
             magnitude += Time.deltaTime * stats.strength * stats.strength; 
-    }
-
-    private void OnPickup()
-    {
-        Debug.Log("pick up");
     }
 
     public void PickUpNearbyFruit()
