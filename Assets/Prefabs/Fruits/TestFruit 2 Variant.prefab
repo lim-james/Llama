@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestFruit 2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3834700463829450085, guid: a4ecf85ff8988674188b3ac631e93975,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3834700464815662165, guid: a4ecf85ff8988674188b3ac631e93975,
         type: 3}
       propertyPath: m_Parameters.widthMultiplier
