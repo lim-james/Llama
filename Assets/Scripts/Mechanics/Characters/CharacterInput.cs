@@ -76,7 +76,7 @@ public class CharacterInput : MonoBehaviour
 
     private void OnSwitch(InputAction.CallbackContext context)
     {
-        inventory.SelectedIndex += (int)context.ReadValue<float>();
+        inventory.selectedIndex += (int)context.ReadValue<float>();
     }
 
 }

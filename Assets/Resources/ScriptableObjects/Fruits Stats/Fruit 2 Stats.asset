@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Fruit 2 Stats
   m_EditorClassIdentifier: 
   speed: 0
-  strength: 5
+  strength: 3
   balance: 0
-  points: 0
+  points: 1

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Hipster Llama
   m_EditorClassIdentifier: 
   characterName: Hipster Llama
-  characterPrefab: {fileID: 0}
+  characterPrefab: {fileID: 1341381891492109688, guid: ccb4ee4680e74014cbf6bc07797f44f6,
+    type: 3}
   stats: {fileID: 11400000, guid: 159c4cb68a2269b4fbf7c7d49203913a, type: 2}

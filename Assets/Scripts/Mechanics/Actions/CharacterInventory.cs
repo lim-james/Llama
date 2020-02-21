@@ -35,19 +35,19 @@ public class CharacterInventory : MonoBehaviour
     }
 
     private int _selectedIndex;
-    public int SelectedIndex
+    public int selectedIndex
     {
         get { return _selectedIndex; }
         set
         {
             if (value < 0)
                 _selectedIndex = slots.Count - 1;
-            else if (value >= slots.Count)
+            else if (value >= stats.maxHold)
                 _selectedIndex = 0;
             else
                 _selectedIndex = value;
 
-            selected.position = slots[SelectedIndex].transform.position;
+            selected.position = slots[selectedIndex].transform.position;
         }
     }
 
@@ -58,7 +58,7 @@ public class CharacterInventory : MonoBehaviour
         stats = GetComponent<CharacterStatistics>();
         
         holding = true;
-        SelectedIndex = 0;
+        selectedIndex = 0;
         inventory = new Dictionary<int, Fruit>();
     }
 
@@ -105,11 +105,11 @@ public class CharacterInventory : MonoBehaviour
         nearestFruit.GetComponent<RangeDetector>().active = false;
         nearestFruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
-        while (inventory.ContainsKey(SelectedIndex) && inventory[SelectedIndex] != null)
-            ++SelectedIndex;
+        while (inventory.ContainsKey(selectedIndex) && inventory[selectedIndex] != null)
+            ++selectedIndex;
 
-        slots[SelectedIndex].item.transform = nearestFruit.transform;
-        inventory[SelectedIndex] = nearestFruit.GetComponent<Fruit>();
+        slots[selectedIndex].item.transform = nearestFruit.transform;
+        inventory[selectedIndex] = nearestFruit.GetComponent<Fruit>();
         ++itemCount;
     }
 
@@ -124,7 +124,7 @@ public class CharacterInventory : MonoBehaviour
         holding = false;
         if (itemCount == 0) return;
 
-        Fruit fruit = inventory[SelectedIndex];
+        Fruit fruit = inventory[selectedIndex];
 
         if (fruit == null) return;
 
@@ -137,8 +137,8 @@ public class CharacterInventory : MonoBehaviour
         fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
 
         --itemCount;
-        slots[SelectedIndex].item.transform = null;
-        inventory[SelectedIndex] = null;
+        slots[selectedIndex].item.transform = null;
+        inventory[selectedIndex] = null;
     }
 
 }
