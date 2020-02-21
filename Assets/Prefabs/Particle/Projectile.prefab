@@ -14732,7 +14732,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -19286,7 +19286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6222583364798933707
 Transform:
   m_ObjectHideFlags: 0
@@ -24175,7 +24175,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6222583365223758159}
   serializedVersion: 6
-  lengthInSec: 3
+  lengthInSec: 1.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -24250,8 +24250,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.6
-      minScalar: 0.3
+      scalar: 1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -24741,7 +24741,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -25001,7 +25001,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 200
-      minScalar: 30
+      minScalar: 80
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -26210,7 +26210,7 @@ ParticleSystem:
     m_Curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 0.2
+      scalar: 0.4
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -28960,10 +28960,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.25
+  m_Time: 0.35
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.5
+    widthMultiplier: 1
     widthCurve:
       serializedVersion: 2
       m_Curve:
