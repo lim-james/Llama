@@ -18,7 +18,21 @@ public class CharacterInventory : MonoBehaviour
     // member attributes
     private float magnitude;
     private bool holding;
-    private int itemCount;
+
+    private int _itemCount; 
+    public int itemCount
+    {
+        get
+        {
+            return _itemCount;
+        }
+        set
+        {
+            magnitude = 0.0f;
+            holding = false;
+            _itemCount = value;
+        }
+    }
 
     private int _selectedIndex;
     public int SelectedIndex
@@ -113,7 +127,6 @@ public class CharacterInventory : MonoBehaviour
         Fruit fruit = inventory[SelectedIndex];
 
         if (fruit == null) return;
-        --itemCount;
 
         fruit.transform.position = transform.position + transform.forward + new Vector3(0.0f, 1.0f, 0.0f);
         fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
@@ -123,6 +136,7 @@ public class CharacterInventory : MonoBehaviour
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
 
+        --itemCount;
         slots[SelectedIndex].item.transform = null;
         inventory[SelectedIndex] = null;
     }

@@ -42,6 +42,8 @@ public class CharacterAdrenaline : MonoBehaviour
     public void Consume()
     {
         bool boosted = false;
+        inventory.itemCount = 0;
+
         foreach (Fruit fruit in inventory.inventory.Values)
         {
             if (fruit != null)
