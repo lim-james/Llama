@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a419f8cf35602429acba2b111a40cf, type: 3}
   m_Name: Hipster Llama Stats
   m_EditorClassIdentifier: 
-  characterSpeed: 2
-  characterStrength: 2
+  speed: 2
+  strength: 2
   balance: 2
-  characterMaxFruitHold: 3
+  maxHold: 3

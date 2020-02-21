@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Baby Llama
   m_EditorClassIdentifier: 
   characterName: Baby Llama
-  characterPrefab: {fileID: 0}
+  characterPrefab: {fileID: 1341381891492109688, guid: 3e0e296de4db67d4caab359d57272776,
+    type: 3}
   stats: {fileID: 11400000, guid: 65fa5083817a98b429f93f0724ee0092, type: 2}
