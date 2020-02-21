@@ -7,6 +7,7 @@ public class CharacterMovement : MonoBehaviour
 {
     private int id;
 
+    private Animator animator;
     private Rigidbody rig;
     private CharacterStatistics stats;
     private CharacterInventory inventory;
@@ -32,12 +33,18 @@ public class CharacterMovement : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         rig = GetComponent<Rigidbody>();
         stats = GetComponent<CharacterStatistics>();
         inventory = GetComponent<CharacterInventory>();
         playerCamera = Camera.main;
 
         bt = 0.0f;
+    }
+
+    private void Start()
+    {
+        animator.SetTrigger("TriggerIdle");
     }
 
     private void Update()
