@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a419f8cf35602429acba2b111a40cf, type: 3}
   m_Name: Sniper Llama Stats
   m_EditorClassIdentifier: 
-  characterSpeed: 1
-  characterStrength: 4
+  speed: 1
+  strength: 5
   balance: 2
-  characterMaxFruitHold: 1
+  maxHold: 1
