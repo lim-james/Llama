@@ -17,8 +17,8 @@ public class SelectionInput : MonoBehaviour
     private TeamGroup teams;
     [SerializeField]
     private CharacterGroup characters;
-    //[SerializeField]
-    public GameObject characterModel;
+    [SerializeField]
+    private GameObject characterModel;
 
     // referneces
     private Image background;

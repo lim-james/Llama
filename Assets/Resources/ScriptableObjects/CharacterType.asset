@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: CharacterChange
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterGroup
+  m_Script: {fileID: 11500000, guid: c70709c7453293a4491fdfee05c03b68, type: 3}
+  m_Name: CharacterType
+  m_EditorClassIdentifier: 
   group:
   - characterModel: {fileID: 6310764715377578174, guid: e50b8cb0661ad1d4981942cb4d7a9350,
       type: 3}
