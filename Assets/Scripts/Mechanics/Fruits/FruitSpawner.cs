@@ -14,6 +14,8 @@ public class FruitSpawner : MonoBehaviour
     private float testHeightOffset = 1000;
     public Vector2 size;
 
+    public GameObject spawnEffectPrefab;
+
     private void Awake()
     {
     }
@@ -34,10 +36,20 @@ public class FruitSpawner : MonoBehaviour
     {
         GameObject fruit = FruitManager.instance.SpawnRandomFruit();
         fruit.transform.position = GetRandomPos();
+        GameObject spawnEffect = Instantiate(spawnEffectPrefab);
+
+
         if (Random.Range(0, 100) <= 50)
-            fruit.GetComponent<Rigidbody>().AddForce(Vector3.up * 10, ForceMode.Impulse);
+        {
+            fruit.GetComponent<Rigidbody>().AddForce(Vector3.up * 1000, ForceMode.Impulse);
+            spawnEffect.transform.position = fruit.transform.position;
+        }
         else
+        {
             fruit.transform.position = new Vector3(fruit.transform.position.x, fruit.transform.position.y + heightOffset, fruit.transform.position.z);
+            spawnEffect.transform.position = fruit.transform.position;
+            spawnEffect.transform.localEulerAngles = new Vector3(spawnEffect.transform.localEulerAngles.x + 180.0f, spawnEffect.transform.localEulerAngles.y, spawnEffect.transform.localEulerAngles.z);
+        }
     }
 
     public Vector3 GetRandomPos()
