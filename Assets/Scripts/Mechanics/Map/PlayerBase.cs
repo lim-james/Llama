@@ -12,7 +12,7 @@ public class PlayerBase : MonoBehaviour
         if (!other.GetComponent<Fruit>())
             return;
 
-        ++fruitCount;
+        fruitCount += other.GetComponent<Fruit>().stats.points;
     }
 
     private void OnTriggerExit(Collider other)
@@ -20,6 +20,6 @@ public class PlayerBase : MonoBehaviour
         if (!other.GetComponent<Fruit>())
             return;
 
-        --fruitCount;
+        fruitCount -= other.GetComponent<Fruit>().stats.points;
     }
 }
