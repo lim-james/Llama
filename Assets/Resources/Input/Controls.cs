@@ -320,9 +320,25 @@ public class @InputMaster : IInputActionCollection, IDisposable
             ""id"": ""03bb0b3b-fc78-48a1-bc02-864c9f757983"",
             ""actions"": [
                 {
-                    ""name"": ""Switch (Team)"",
+                    ""name"": ""Switch (Character)"",
                     ""type"": ""Button"",
                     ""id"": ""6bcd6cbe-99ea-4cea-a25b-2067ce609b16"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Switch (Team)"",
+                    ""type"": ""Button"",
+                    ""id"": ""2ee9517e-7ec7-497a-8c86-345bd1f672f5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Show Stats"",
+                    ""type"": ""Button"",
+                    ""id"": ""966806c5-08a3-4c0d-a4af-acf4049caf56"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -330,13 +346,46 @@ public class @InputMaster : IInputActionCollection, IDisposable
             ],
             ""bindings"": [
                 {
+                    ""name"": ""Joystick (Controller)"",
+                    ""id"": ""7167f947-ae05-489a-b3b7-66075e8f5cab"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Character)"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""3357f5f8-6ac2-4077-8a76-a2a9bbe6e756"",
+                    ""path"": ""<Joystick>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Character)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""a6de73b2-2407-4a5d-8e3b-6e32786f588f"",
+                    ""path"": ""<Joystick>/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Character)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""Bumper (Controller)"",
                     ""id"": ""bdd8bb0e-63e8-4939-8629-b752ebd02b36"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Switch (Team)"",
+                    ""action"": ""Switch (Character)"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -347,7 +396,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Switch (Team)"",
+                    ""action"": ""Switch (Character)"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -358,7 +407,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Switch (Team)"",
+                    ""action"": ""Switch (Character)"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -369,7 +418,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Switch (Team)"",
+                    ""action"": ""Switch (Character)"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -380,7 +429,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Switch (Team)"",
+                    ""action"": ""Switch (Character)"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -391,7 +440,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Switch (Team)"",
+                    ""action"": ""Switch (Character)"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -402,7 +451,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Switch (Team)"",
+                    ""action"": ""Switch (Character)"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -413,7 +462,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Switch (Team)"",
+                    ""action"": ""Switch (Character)"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -424,9 +473,185 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
+                    ""action"": ""Switch (Character)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""AD (Keyboard)"",
+                    ""id"": ""57bcb9d5-4f16-469d-94f0-50219b194c8c"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Character)"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""f6467d52-f8a6-476f-a61f-7f497571c85c"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Switch (Character)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""c18f8e95-4353-451f-8942-39ea54a94b40"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Switch (Character)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""WS (Keyboard)"",
+                    ""id"": ""7808754a-a82b-402c-8f58-463e185bee89"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""9db27ec1-ebd4-45d6-8d37-32b4a0fd63b2"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Switch (Team)"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""60445629-95f7-4084-b9fc-d50eb10d1d33"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrows (Keyboard)"",
+                    ""id"": ""8cfa794d-e2d3-4bb5-9abe-ac16543e6095"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""3366edbd-3318-40b7-8e07-440aafd49447"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a6d47fa8-f752-42f6-9867-0c22436b631c"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""DPad (Controller)"",
+                    ""id"": ""d2c879ab-4638-4295-a23e-fcbbc5407acf"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e3f8bc3f-a1e5-487e-8f42-70fe27992876"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""fd91a926-3460-4bb4-9516-444eed75646d"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Joystick (Controller)"",
+                    ""id"": ""d66c851d-4406-407c-8ac3-fa9977043547"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""3b395565-d856-4041-9d1a-dc716e0e7865"",
+                    ""path"": ""<Joystick>/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a7167337-c424-4c9f-aa57-c1202ee1e15e"",
+                    ""path"": ""<Joystick>/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch (Team)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""865e53ce-4b0b-4865-8738-5869dab8e62f"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Show Stats"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -453,7 +678,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Consume = m_Player.FindAction("Consume", throwIfNotFound: true);
         // Lobby
         m_Lobby = asset.FindActionMap("Lobby", throwIfNotFound: true);
+        m_Lobby_SwitchCharacter = m_Lobby.FindAction("Switch (Character)", throwIfNotFound: true);
         m_Lobby_SwitchTeam = m_Lobby.FindAction("Switch (Team)", throwIfNotFound: true);
+        m_Lobby_ShowStats = m_Lobby.FindAction("Show Stats", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -568,12 +795,16 @@ public class @InputMaster : IInputActionCollection, IDisposable
     // Lobby
     private readonly InputActionMap m_Lobby;
     private ILobbyActions m_LobbyActionsCallbackInterface;
+    private readonly InputAction m_Lobby_SwitchCharacter;
     private readonly InputAction m_Lobby_SwitchTeam;
+    private readonly InputAction m_Lobby_ShowStats;
     public struct LobbyActions
     {
         private @InputMaster m_Wrapper;
         public LobbyActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SwitchCharacter => m_Wrapper.m_Lobby_SwitchCharacter;
         public InputAction @SwitchTeam => m_Wrapper.m_Lobby_SwitchTeam;
+        public InputAction @ShowStats => m_Wrapper.m_Lobby_ShowStats;
         public InputActionMap Get() { return m_Wrapper.m_Lobby; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -583,16 +814,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_LobbyActionsCallbackInterface != null)
             {
+                @SwitchCharacter.started -= m_Wrapper.m_LobbyActionsCallbackInterface.OnSwitchCharacter;
+                @SwitchCharacter.performed -= m_Wrapper.m_LobbyActionsCallbackInterface.OnSwitchCharacter;
+                @SwitchCharacter.canceled -= m_Wrapper.m_LobbyActionsCallbackInterface.OnSwitchCharacter;
                 @SwitchTeam.started -= m_Wrapper.m_LobbyActionsCallbackInterface.OnSwitchTeam;
                 @SwitchTeam.performed -= m_Wrapper.m_LobbyActionsCallbackInterface.OnSwitchTeam;
                 @SwitchTeam.canceled -= m_Wrapper.m_LobbyActionsCallbackInterface.OnSwitchTeam;
+                @ShowStats.started -= m_Wrapper.m_LobbyActionsCallbackInterface.OnShowStats;
+                @ShowStats.performed -= m_Wrapper.m_LobbyActionsCallbackInterface.OnShowStats;
+                @ShowStats.canceled -= m_Wrapper.m_LobbyActionsCallbackInterface.OnShowStats;
             }
             m_Wrapper.m_LobbyActionsCallbackInterface = instance;
             if (instance != null)
             {
+                @SwitchCharacter.started += instance.OnSwitchCharacter;
+                @SwitchCharacter.performed += instance.OnSwitchCharacter;
+                @SwitchCharacter.canceled += instance.OnSwitchCharacter;
                 @SwitchTeam.started += instance.OnSwitchTeam;
                 @SwitchTeam.performed += instance.OnSwitchTeam;
                 @SwitchTeam.canceled += instance.OnSwitchTeam;
+                @ShowStats.started += instance.OnShowStats;
+                @ShowStats.performed += instance.OnShowStats;
+                @ShowStats.canceled += instance.OnShowStats;
             }
         }
     }
@@ -625,6 +868,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
     }
     public interface ILobbyActions
     {
+        void OnSwitchCharacter(InputAction.CallbackContext context);
         void OnSwitchTeam(InputAction.CallbackContext context);
+        void OnShowStats(InputAction.CallbackContext context);
     }
 }
