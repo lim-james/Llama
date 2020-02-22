@@ -149,7 +149,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c9449e49ac93d3244b106126a0001b1c,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Hipster Model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9449e49ac93d3244b106126a0001b1c, type: 3}

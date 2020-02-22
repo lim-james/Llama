@@ -422,6 +422,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3489193299060763109, guid: 930a997250db076458f67135ca3fdd7c,
+        type: 3}
+      propertyPath: m_RootBone
+      value: 
+      objectReference: {fileID: 1166347795}
     - target: {fileID: 3555717483276159898, guid: 930a997250db076458f67135ca3fdd7c,
         type: 3}
       propertyPath: m_Controller
@@ -745,6 +750,12 @@ MonoBehaviour:
   bloomMaxIntensity: 0.5
   vignetteMaxIntensity: 0.5
   frenzyColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &1166347795 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 348384881566182080, guid: 930a997250db076458f67135ca3fdd7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 524574011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1191763983
 GameObject:
   m_ObjectHideFlags: 0
