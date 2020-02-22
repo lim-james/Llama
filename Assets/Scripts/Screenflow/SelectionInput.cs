@@ -23,6 +23,7 @@ public class SelectionInput : MonoBehaviour
     // referneces
     private Image background;
     private Text label;
+    private bool connected;
 
     private GameObject temp;
 
@@ -33,12 +34,27 @@ public class SelectionInput : MonoBehaviour
 
         // bind handlers
         if (controllerID == 0)
+        {
+            connected = true;
             input.devices = new[] { InputDevice.all[0] };
+            input.Lobby.SwitchTeam.performed += context => SwitchTeamHandler(context);
+            input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);
+        }
         else
-            input.devices = new[] { Gamepad.all[controllerID - 1] };
+        {
+            if (Gamepad.all.Count >= controllerID)
+            {
+                connected = true;
+                input.devices = new[] { Gamepad.all[controllerID - 1] };
+                input.Lobby.SwitchTeam.performed += context => SwitchTeamHandler(context);
+                input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);
+            }
+            else
+            {
+                connected = false;
+            }
+        }
 
-        input.Lobby.SwitchTeam.performed += context => SwitchTeamHandler(context);
-        input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);
 
         background = GetComponent<Image>();
         label = GetComponentInChildren<Text>();
@@ -50,6 +66,20 @@ public class SelectionInput : MonoBehaviour
         background.color = teams.group[index].color;
 
         temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.position, characterModel.transform.rotation);
+    }
+
+    private void FixedUpdate()
+    {
+        if (!connected)
+        {
+            if (Gamepad.all.Count >= controllerID)
+            {
+                connected = true;
+                input.devices = new[] { Gamepad.all[controllerID - 1] };
+                input.Lobby.SwitchTeam.performed += context => SwitchTeamHandler(context);
+                input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);
+            }
+        }
     }
 
     private void SwitchTeamHandler(InputAction.CallbackContext context)
