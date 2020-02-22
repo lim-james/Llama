@@ -2141,6 +2141,8 @@ MonoBehaviour:
   spawnDelay: 2
   heightOffset: 15
   size: {x: 100, y: 100}
+  spawnEffectPrefab: {fileID: 6163046197496866098, guid: 33d8f5065325a37488c46bb2f3b68c16,
+    type: 3}
 --- !u!4 &2016681252
 Transform:
   m_ObjectHideFlags: 0

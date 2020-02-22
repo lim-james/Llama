@@ -11,57 +11,83 @@ public class CharacterInventory : MonoBehaviour
     private List<Container> slots = new List<Container>();
     [SerializeField]
     private Transform selected;
+    [SerializeField]
+    private Transform indicator;
 
-    private CharacterStats stats;
-    private float magnitude;
-    private bool holding;
-    private int itemCount;
+    // references
+    private CharacterStatistics stats;
+
+    // member attributes
+    public bool holding { get; private set; }
+    public float _magnitude { get; private set; }
+    private float magnitude
+    {
+        get { return _magnitude; }
+        set
+        {
+            _magnitude = value;
+            indicator.localPosition = new Vector3(0.0f, -0.45f, _magnitude * 0.5f + 2.0f);
+            indicator.localScale = new Vector3(_magnitude, 0.2f, 0.2f);
+        }
+    }
+
+    private int _itemCount; 
+    public int itemCount
+    {
+        get
+        {
+            return _itemCount;
+        }
+        set
+        {
+            magnitude = 0.0f;
+            holding = false;
+            _itemCount = value;
+        }
+    }
 
     private int _selectedIndex;
-    public int SelectedIndex
+    public int selectedIndex
     {
         get { return _selectedIndex; }
         set
         {
             if (value < 0)
                 _selectedIndex = slots.Count - 1;
-            else if (value >= slots.Count)
+            else if (value >= stats.maxHold)
                 _selectedIndex = 0;
             else
                 _selectedIndex = value;
 
-            selected.position = slots[SelectedIndex].transform.position;
+            selected.position = slots[selectedIndex].transform.position;
         }
     }
 
-    private Dictionary<int, Fruit> inventory;
+    public Dictionary<int, Fruit> inventory { get; private set; }
 
     private void Awake()
     {
-        holding = true;
-        SelectedIndex = 0;
+        stats = GetComponent<CharacterStatistics>();
+        
+        holding = false;
+        selectedIndex = 0;
         inventory = new Dictionary<int, Fruit>();
     }
 
     private void Start()
     {
-        stats = GetComponent<CharacterStatistics>().stats;
+        magnitude = 0.0f;
     }
 
     private void Update()
     {
         if (holding)
-            magnitude += Time.deltaTime * stats.characterStrength * stats.characterStrength; 
-    }
-
-    private void OnPickup()
-    {
-        Debug.Log("pick up");
+            magnitude += Time.deltaTime * stats.strength; 
     }
 
     public void PickUpNearbyFruit()
     {
-        if (itemCount == stats.characterMaxFruitHold) return;
+        if (itemCount == stats.maxHold) return;
 
         Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius);
 
@@ -96,11 +122,11 @@ public class CharacterInventory : MonoBehaviour
         nearestFruit.GetComponent<RangeDetector>().active = false;
         nearestFruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
-        while (inventory.ContainsKey(SelectedIndex) && inventory[SelectedIndex] != null)
-            ++SelectedIndex;
+        while (inventory.ContainsKey(selectedIndex) && inventory[selectedIndex] != null)
+            ++selectedIndex;
 
-        slots[SelectedIndex].item.transform = nearestFruit.transform;
-        inventory[SelectedIndex] = nearestFruit.GetComponent<Fruit>();
+        slots[selectedIndex].item.transform = nearestFruit.transform;
+        inventory[selectedIndex] = nearestFruit.GetComponent<Fruit>();
         ++itemCount;
     }
 
@@ -115,21 +141,21 @@ public class CharacterInventory : MonoBehaviour
         holding = false;
         if (itemCount == 0) return;
 
-        Fruit fruit = inventory[SelectedIndex];
+        Fruit fruit = inventory[selectedIndex];
 
         if (fruit == null) return;
-        --itemCount;
 
-        fruit.transform.position = transform.position + transform.forward + new Vector3(0.0f, 1.0f, 0.0f);
+        fruit.transform.position = transform.position + transform.forward;// + new Vector3(0.0f, 0.5f, 0.0f);
         fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         fruit.GetComponent<Rigidbody>().useGravity = true;
-        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * stats.characterStrength;
+        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude;
         fruit.GetComponent<Collider>().enabled = true;
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
 
-        slots[SelectedIndex].item.transform = null;
-        inventory[SelectedIndex] = null;
+        --itemCount;
+        slots[selectedIndex].item.transform = null;
+        inventory[selectedIndex] = null;
     }
 
 }

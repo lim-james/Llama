@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  fruitName: fruit 3
+  stats: {fileID: 11400000, guid: 1ec5504b879edaf489c6e6ff3e6b9c3b, type: 2}
 --- !u!114 &1812094074916897683
 MonoBehaviour:
   m_ObjectHideFlags: 0

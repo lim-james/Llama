@@ -188,7 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9536b40e541876a45978acd351bc1a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 2785b10bde9919640943cc1b5875143a, type: 2}
   pickupRadius: 2.5
   slots:
   - {fileID: 299906303}
@@ -220,14 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccbbb1d66e95b143ae29c22c59aeb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAxisName: Horizontal
-  verticalAxisName: Vertical
-  pickUpName: Jump
-  adrenalineButtonName: Adrenaline
-  throwButtonName: Throw
   horizontal: 0
   vertical: 0
-  throwForce: 0
   moveable: 1
   controllerID: 1
 --- !u!114 &10995266
@@ -242,7 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5485a0213c7afd74abc31b4065b2717e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 2785b10bde9919640943cc1b5875143a, type: 2}
   turnSpeed: 15
   grounded: 0
   groundLayer:
@@ -1253,7 +1245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f9071128094c84da1205adfe1a529a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 4
+  playerID: 3
   fruitCount: 0
 --- !u!1001 &573578474
 PrefabInstance:
@@ -1633,7 +1625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f9071128094c84da1205adfe1a529a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 1
+  playerID: 0
   fruitCount: 0
 --- !u!1 &720049446
 GameObject:
@@ -1789,7 +1781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f9071128094c84da1205adfe1a529a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 2
+  playerID: 1
   fruitCount: 0
 --- !u!1 &926957985
 GameObject:
@@ -2253,7 +2245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f9071128094c84da1205adfe1a529a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 3
+  playerID: 2
   fruitCount: 0
 --- !u!1 &1432321366
 GameObject:
@@ -2925,7 +2917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9536b40e541876a45978acd351bc1a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 2785b10bde9919640943cc1b5875143a, type: 2}
   pickupRadius: 2.5
   slots:
   - {fileID: 129186551}
@@ -2957,14 +2948,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccbbb1d66e95b143ae29c22c59aeb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAxisName: Horizontal
-  verticalAxisName: Vertical
-  pickUpName: Jump
-  adrenalineButtonName: Adrenaline
-  throwButtonName: Throw
   horizontal: 0
   vertical: 0
-  throwForce: 0
   moveable: 1
   controllerID: 2
 --- !u!114 &2072542042
@@ -2979,7 +2964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5485a0213c7afd74abc31b4065b2717e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 2785b10bde9919640943cc1b5875143a, type: 2}
   turnSpeed: 15
   grounded: 0
   groundLayer:
@@ -3208,8 +3192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 10
   delay: 0
-  startScale: {x: 10, y: 10, z: 10}
-  endScale: {x: 4, y: 4, z: 4}
+  startSize: {x: 0, y: 0, z: 0}
+  endSize: {x: 0, y: 0, z: 0}
 --- !u!64 &2130487613
 MeshCollider:
   m_ObjectHideFlags: 0

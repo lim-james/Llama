@@ -9,7 +9,8 @@ public class Fruit : MonoBehaviour
     private uint id;
     private Rigidbody rig;
 
-    public string fruitName;
+    //public string fruitName;
+    public FruitStats stats;
 
     public uint ID
     {

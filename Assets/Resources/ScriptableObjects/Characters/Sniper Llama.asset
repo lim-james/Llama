@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Sniper Llama
   m_EditorClassIdentifier: 
   characterName: Sniper Llama
-  characterPrefab: {fileID: 0}
+  characterPrefab: {fileID: 1341381891492109688, guid: 182615243c5084c4895e3dcd65b63520,
+    type: 3}
   stats: {fileID: 11400000, guid: a6bb615bb01b5c6438e6bb7a4d1ee0e2, type: 2}

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  fruitName: fruit 1
+  stats: {fileID: 11400000, guid: 3a4d8b9b9a050644daddd69d8e84e70b, type: 2}
 --- !u!114 &7369868421922548642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,10 +730,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 6222583365223758156, guid: ee28d6f658bdac443816f7664de85e34,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222583365223758156, guid: ee28d6f658bdac443816f7664de85e34,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6222583365223758159, guid: ee28d6f658bdac443816f7664de85e34,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6222583366250799229, guid: ee28d6f658bdac443816f7664de85e34,
         type: 3}

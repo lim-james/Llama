@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CharacterStatistics))]
+[RequireComponent(typeof(CharacterInventory))]
 public class CharacterMovement : MonoBehaviour
 {
     private int id;
 
+    private Animator animator;
     private Rigidbody rig;
-    private CharacterStats stats;
+    private CharacterStatistics stats;
+    private CharacterInventory inventory;
     public float turnSpeed = 1.0f;
     private Camera playerCamera;
 
@@ -27,16 +27,24 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField]
     private float pickupRadius = 2.0f;
+    [SerializeField]
+    private float autoAimBounce = 0.1f;
+    private float bt;
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         rig = GetComponent<Rigidbody>();
+        stats = GetComponent<CharacterStatistics>();
+        inventory = GetComponent<CharacterInventory>();
         playerCamera = Camera.main;
+
+        bt = 0.0f;
     }
 
     private void Start()
     {
-        stats = GetComponent<CharacterStatistics>().stats;
+        animator.SetTrigger("TriggerIdle");
     }
 
     private void Update()
@@ -45,20 +53,13 @@ public class CharacterMovement : MonoBehaviour
         CalculateGroundAngle();
         ApplyGravity();
         Debug.DrawRay(transform.position + new Vector3(0, characterOrginOffset, 0), -transform.up * groundDistance, Color.red);
-
         Debug.DrawRay(transform.position + new Vector3(0, 0, characterOrginOffset), forward * 100, Color.blue);
     }
-
 
     private void FixedUpdate()
     {
         ApplyGravity();
         //Move(GetComponent<CharacterInput>().horizontal, GetComponent<CharacterInput>().vertical);
-    }
-
-    public void OnMove()
-    {
-        Debug.Log("Hello there");
     }
 
     public void ApplyGravity()
@@ -78,10 +79,43 @@ public class CharacterMovement : MonoBehaviour
         move = transform.InverseTransformDirection(move);
         move = Vector3.ProjectOnPlane(move, groundNormal);
         float rotationAmount = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
-        float force = Mathf.Sqrt(x * x + y * y) * stats.characterSpeed;
+        float force = Mathf.Sqrt(x * x + y * y) * stats.speed;
+
+        float rAngle = rig.transform.localEulerAngles.y + rotationAmount;
+
+        if (inventory.holding)
+        {
+            Collider[] nearbyPlayers = Physics.OverlapSphere(transform.position, inventory._magnitude, LayerMask.GetMask("Character"));
+
+            Vector3 p1 = transform.position;
+
+            float closest = float.MaxValue;
+            float angle = 0.0f;
+
+            foreach (Collider player in nearbyPlayers)
+            {
+                if (transform.position == player.transform.position) continue;
+                Vector3 p2 = player.transform.position;
+                Vector3 diff = p2 - p1;
+                if (Vector3.Dot(diff, transform.forward) < 0.0f) continue;
+
+                float temp = Mathf.Atan2(diff.x, diff.z) * Mathf.Rad2Deg;
+                float da = Mathf.Abs(temp - rAngle);
+
+                while (da > 360.0f) da -= 360.0f;
+
+                if (da > 60.0f || da > closest) continue;
+
+                closest = da;
+                angle = temp;
+            }
+
+            if (angle != 0.0f)
+                rAngle = angle;
+        }
 
         rig.AddForce(forward * force, ForceMode.Impulse);
-        rig.rotation = Quaternion.RotateTowards(rig.rotation, Quaternion.Euler(0, rig.transform.localEulerAngles.y + rotationAmount, 0), turnSpeed);
+        rig.rotation = Quaternion.RotateTowards(rig.rotation, Quaternion.Euler(0, rAngle, 0), turnSpeed);
     }
 
     void CheckGround()

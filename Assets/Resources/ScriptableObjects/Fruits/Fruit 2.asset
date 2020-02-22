@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Fruit 2
   m_EditorClassIdentifier: 
   fruitName: fruit 2
-  fruitPrefab: {fileID: 5782842056274934100, guid: acbc35386b90d204aaf4126e828f1d3b,
+  fruitPrefab: {fileID: 1686551757957227803, guid: bd20312e4afe4d946aa2d1a8be67c120,
     type: 3}
+  stats: {fileID: 11400000, guid: 1ec5504b879edaf489c6e6ff3e6b9c3b, type: 2}
