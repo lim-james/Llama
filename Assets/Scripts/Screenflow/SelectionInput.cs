@@ -26,6 +26,8 @@ public class SelectionInput : MonoBehaviour
 
     private GameObject temp;
 
+    private Versus versusText;
+
     private void Awake()
     {
         input = new InputMaster();
@@ -63,6 +65,8 @@ public class SelectionInput : MonoBehaviour
 
         background.color = teams.group[index].color;
         label.text = teams.group[index].name;
+
+        versusText.ChangeText();
     }
 
     private void SwitchCharacterHandler(InputAction.CallbackContext context)
