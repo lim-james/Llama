@@ -29,17 +29,19 @@ public class FruitSpawner : MonoBehaviour
         {
             //spawn = false;
             // spawn
-            SpawnFruit();
-            spawnTime = 0.0f;
+            if (SpawnFruit())
+                spawnTime = 0.0f;
         }
     }
 
-    public void SpawnFruit()
+    public bool SpawnFruit()
     {
-        GameObject fruit = FruitManager.instance.SpawnRandomFruit();
-        fruit.transform.position = GetRandomPos();
-        GameObject spawnEffect = Instantiate(spawnEffectPrefab);
+        Vector3 randomPosition = Vector3.zero;
+        if (!GetRandomPos(ref randomPosition)) return false;
 
+        GameObject fruit = FruitManager.instance.SpawnRandomFruit();
+        fruit.transform.position = randomPosition;
+        GameObject spawnEffect = Instantiate(spawnEffectPrefab);
 
         if (Random.Range(0, 100) <= 50)
         {
@@ -52,23 +54,25 @@ public class FruitSpawner : MonoBehaviour
             spawnEffect.transform.position = fruit.transform.position;
             spawnEffect.transform.localEulerAngles = new Vector3(spawnEffect.transform.localEulerAngles.x + 180.0f, spawnEffect.transform.localEulerAngles.y, spawnEffect.transform.localEulerAngles.z);
         }
+
+        return true;
     }
 
-    public Vector3 GetRandomPos()
+    public bool GetRandomPos(ref Vector3 position)
     {
-        Vector3 randomPos = new Vector3(Random.Range(-size.x, size.x), transform.position.y + heightOffset + testHeightOffset, Random.Range(-size.y, size.y));
+        position = new Vector3(Random.Range(-size.x, size.x), transform.position.y + heightOffset + testHeightOffset, Random.Range(-size.y, size.y));
         RaycastHit hit;
-        if (Physics.Raycast(randomPos, -Vector3.up, out hit))
+        if (Physics.Raycast(position, -Vector3.up, out hit))
         {
             if ((avoidLayer.value & 1 << hit.collider.gameObject.layer) == 1 << hit.collider.gameObject.layer)
-                return GetRandomPos();
+                return false;
 
             Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
-            randomPos.y = hit.point.y;
-            return randomPos;
+            position.y = hit.point.y;
+            return true;
         }
 
-        return GetRandomPos();
+        return false;
     }
 
     public void OnDrawGizmosSelected()

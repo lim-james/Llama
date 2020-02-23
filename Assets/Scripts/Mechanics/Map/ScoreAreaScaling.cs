@@ -21,12 +21,12 @@ public class ScoreAreaScaling : MonoBehaviour
     {
         for (int i = 0; i < scoringArea.Count; ++i)
         {
-            Vector3 dir = (scoringArea[i].position - target.position).normalized;
+            Vector3 dir = (scoringArea[i].position - target.position).Sign();
             originalPositions.Add(scoringArea[i].position);
-            endPositions.Add(target.position + new Vector3(dir.x * minOffset.x, dir.y * minOffset.y, dir.z * minOffset.z));
+            endPositions.Add(target.position + Vector3.Scale(dir, minOffset));
         }
 
-        multipler = 1 / duration;
+        multipler = 1f / duration;
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class ScoreAreaScaling : MonoBehaviour
 
         for (int i = 0; i < scoringArea.Count; ++i)
         {
-            Vector3 dir = (scoringArea[i].position - target.position).normalized;
+            Vector3 dir = (scoringArea[i].position - target.position).Sign();
             Gizmos.DrawLine(scoringArea[i].position, target.position + new Vector3(dir.x * minOffset.x, dir.y * minOffset.y, dir.z * minOffset.z));
 
             if (scoringArea[i].GetComponent<BoxCollider>())
