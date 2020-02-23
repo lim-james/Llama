@@ -132,6 +132,7 @@ public class CharacterInventory : MonoBehaviour
 
     public void HoldFruit()
     {
+        if (inventory[selectedIndex] == null) return;
         holding = true;
         magnitude = 0.0f;
     }
@@ -152,6 +153,8 @@ public class CharacterInventory : MonoBehaviour
         fruit.GetComponent<Collider>().enabled = true;
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+
+        magnitude = 0.0f;
 
         --itemCount;
         slots[selectedIndex].item.transform = null;
