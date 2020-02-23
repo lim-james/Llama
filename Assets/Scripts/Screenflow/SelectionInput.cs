@@ -57,7 +57,6 @@ public class SelectionInput : MonoBehaviour
             }
         }
 
-
         background = GetComponent<Image>();
         label = GetComponentInChildren<Text>();
         //characterModel = GetComponent<GameObject>();

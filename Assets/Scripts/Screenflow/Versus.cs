@@ -16,17 +16,20 @@ public class Versus : MonoBehaviour
     [SerializeField]
     private Image player4;
 
-    public Text text;
+    private Image[] players = new Image[4];
 
-    private Image[] players;
+    private void Awake()
+    {
+        players[0] = player1;
+        players[1] = player2;
+        players[2] = player3;
+        players[3] = player4;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        players[0] = player1.GetComponent<Image>();
-        players[1] = player2.GetComponent<Image>();
-        players[2] = player3.GetComponent<Image>();
-        players[3] = player4.GetComponent<Image>();
+        
     }
 
     // Update is called once per frame
@@ -54,17 +57,17 @@ public class Versus : MonoBehaviour
         }
 
         if (red == 4 || blue == 4 || green == 4 || yellow == 4)
-            text.text = "CHOOSE A TEAM";
+            gameObject.GetComponent<Text>().text = "CHOOSE A TEAM";
         else if(red == 1 && blue == 1 && green == 1 && yellow == 1)
-            text.text = "DEATHMATCH";
+            gameObject.GetComponent<Text>().text = "DEATHMATCH";
         else if(red == 1 || blue == 1 || green == 1 || yellow == 1)
         {
             if(red == 3 || blue == 3 || green == 3 || yellow == 3)
-                text.text = "1 VS 3";
+                gameObject.GetComponent<Text>().text = "1 VS 3";
             else if(red == 2 || blue == 2 || green == 2 || yellow == 2)
-                text.text = "1 VS 1 VS 2";
+                gameObject.GetComponent<Text>().text = "1 VS 1 VS 2";
         }
         else
-            text.text = "2 VS 2";
+            gameObject.GetComponent<Text>().text = "2 VS 2";
     }
 }
