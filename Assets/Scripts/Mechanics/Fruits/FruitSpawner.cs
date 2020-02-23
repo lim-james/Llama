@@ -6,15 +6,17 @@ public class FruitSpawner : MonoBehaviour
 {
     [SerializeField]
     private float spawnDelay;
-    private float spawnTime;
-
-    private bool spawn = true;
-
-    public float heightOffset;
-    private float testHeightOffset = 1000;
+    [SerializeField]
+    private float heightOffset;
     public Vector2 size;
-
     public GameObject spawnEffectPrefab;
+
+    [SerializeField]
+    private bool spawn = true;
+    private float spawnTime;
+    private float testHeightOffset = 1000;
+
+    public LayerMask avoidLayer;
 
     private void Awake()
     {
@@ -58,6 +60,10 @@ public class FruitSpawner : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(randomPos, -Vector3.up, out hit))
         {
+            if ((avoidLayer.value & 1 << hit.collider.gameObject.layer) == 1 << hit.collider.gameObject.layer)
+                return GetRandomPos();
+
+            Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
             randomPos.y = hit.point.y;
             return randomPos;
         }
@@ -67,7 +73,7 @@ public class FruitSpawner : MonoBehaviour
 
     public void OnDrawGizmosSelected()
     {
-        Gizmos.color = new Color(Color.blue.r, Color.blue.g, Color.blue.b, 0.2f);
+        Gizmos.color = Color.white;
         Gizmos.DrawWireCube(transform.position + new Vector3(0, heightOffset, 0), new Vector3(size.x, 1, size.y));
     }
 }
