@@ -99,7 +99,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (inventory.holding)
         {
-            Collider[] nearbyPlayers = Physics.OverlapSphere(transform.position, inventory._magnitude, LayerMask.GetMask("Character"));
+            Collider[] nearbyPlayers = Physics.OverlapSphere(transform.position, 50.0f, LayerMask.GetMask("Character"));
 
             Vector3 p1 = transform.position;
 

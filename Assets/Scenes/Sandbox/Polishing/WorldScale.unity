@@ -299,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36676505}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 40.653156, z: -30.58889}
+  m_LocalPosition: {x: 0, y: 43.10952, z: -32.361618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -356,10 +356,10 @@ MonoBehaviour:
   endOffset: {x: 0, y: 0, z: -5}
   rotation: {x: 60, y: 0, z: 0}
   style: 0
-  duration: 20
+  duration: 200
   delay: 5
-  time: 3.057779
-  distance: 46.942223
+  time: 2.214131
+  distance: 49.778587
   followMultipler: 1
 --- !u!1 &77943966
 GameObject:
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f9071128094c84da1205adfe1a529a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 3
+  playerID: 2
   animatorObj: {fileID: 0}
 --- !u!65 &77943969
 BoxCollider:
@@ -633,7 +633,7 @@ PrefabInstance:
     - target: {fileID: 1341381891492109688, guid: 182615243c5084c4895e3dcd65b63520,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109710, guid: 182615243c5084c4895e3dcd65b63520,
         type: 3}
@@ -1080,7 +1080,12 @@ PrefabInstance:
     - target: {fileID: 1341381891492109683, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
       propertyPath: controllerID
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109683, guid: ccb4ee4680e74014cbf6bc07797f44f6,
+        type: 3}
+      propertyPath: moveable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109685, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
@@ -1111,6 +1116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hipster Llama
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109688, guid: ccb4ee4680e74014cbf6bc07797f44f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109710, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
@@ -1698,7 +1708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f9071128094c84da1205adfe1a529a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 2
+  playerID: 1
   animatorObj: {fileID: 0}
 --- !u!65 &866468776
 BoxCollider:
@@ -1853,10 +1863,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3677a1fd55ea512418329998452ae502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 20
+  duration: 200
   delay: 5
   startSize: {x: 10, y: 0.2, z: 10}
-  endSize: {x: 6, y: 0.2, z: 6}
+  endSize: {x: 5, y: 0.2, z: 5}
 --- !u!65 &946425763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2109,6 +2119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sniper Llama
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109688, guid: 182615243c5084c4895e3dcd65b63520,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109710, guid: 182615243c5084c4895e3dcd65b63520,
         type: 3}
@@ -2443,7 +2458,7 @@ PrefabInstance:
     - target: {fileID: 1341381891492109683, guid: 3e0e296de4db67d4caab359d57272776,
         type: 3}
       propertyPath: controllerID
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109685, guid: 3e0e296de4db67d4caab359d57272776,
         type: 3}
@@ -2474,6 +2489,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Baby Llama
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109688, guid: 3e0e296de4db67d4caab359d57272776,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109710, guid: 3e0e296de4db67d4caab359d57272776,
         type: 3}
@@ -2854,6 +2874,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swole Llama
       objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109688, guid: 220f44db48088224d88d12de4d2dd5b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109710, guid: 220f44db48088224d88d12de4d2dd5b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2953,7 +2978,7 @@ MonoBehaviour:
   - {fileID: 866468774}
   - {fileID: 77943967}
   - {fileID: 2116266484}
-  duration: 20
+  duration: 200
   delay: 5
   startTimer: 1
 --- !u!4 &1689396796
@@ -3054,7 +3079,7 @@ PrefabInstance:
     - target: {fileID: 1341381891492109688, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109710, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
@@ -3695,7 +3720,7 @@ PrefabInstance:
     - target: {fileID: 1341381891492109688, guid: 3e0e296de4db67d4caab359d57272776,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109710, guid: 3e0e296de4db67d4caab359d57272776,
         type: 3}
@@ -3959,7 +3984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f9071128094c84da1205adfe1a529a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 1
+  playerID: 0
   animatorObj: {fileID: 0}
 --- !u!65 &1976220803
 BoxCollider:
@@ -4004,7 +4029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 922935263}
-  spawnDelay: 5
+  spawnDelay: 1
   heightOffset: 15
   size: {x: 100, y: 100}
   spawnEffectPrefab: {fileID: 6163046197496866098, guid: 33d8f5065325a37488c46bb2f3b68c16,
@@ -4133,7 +4158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f9071128094c84da1205adfe1a529a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 4
+  playerID: 3
   animatorObj: {fileID: 0}
 --- !u!65 &2116266486
 BoxCollider:
