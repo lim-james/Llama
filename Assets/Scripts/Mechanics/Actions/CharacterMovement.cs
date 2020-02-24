@@ -81,11 +81,13 @@ public class CharacterMovement : MonoBehaviour
         float rotationAmount = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
         float force = Mathf.Sqrt(x * x + y * y) * stats.speed;
 
-        if (move.magnitude != 0 && (!animator.GetCurrentAnimatorStateInfo(0).IsName("Damaged") || animator.GetCurrentAnimatorStateInfo(0).IsName("Pickup"))) animator.SetBool("IsWalking", true);
-        else animator.SetBool("IsWalking", false);
-
-        //if (move.magnitude > 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) animator.SetTrigger("TriggerWalk");
-        //else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Walk") && move.magnitude == 0) animator.SetTrigger("TriggerIdle");
+        if(animator)
+        {
+            if (move.magnitude != 0 && (!animator.GetCurrentAnimatorStateInfo(0).IsName("Damaged") || animator.GetCurrentAnimatorStateInfo(0).IsName("Pickup"))) 
+                animator.SetBool("IsWalking", true);
+            else 
+                animator.SetBool("IsWalking", false);
+        }
 
         float rAngle = rig.transform.localEulerAngles.y + rotationAmount;
 
