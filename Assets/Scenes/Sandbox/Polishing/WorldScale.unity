@@ -358,7 +358,7 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 5
-  time: -2.661877
+  time: -2.6836925
   distance: 50
   followMultipler: 1
 --- !u!1 &77943966
@@ -650,7 +650,7 @@ PrefabInstance:
     - target: {fileID: 1341381891492109682, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
       propertyPath: m_Constraints
-      value: 124
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109683, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
