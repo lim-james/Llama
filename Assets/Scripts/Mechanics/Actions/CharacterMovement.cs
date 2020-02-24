@@ -44,7 +44,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void Start()
     {
-        animator.SetTrigger("TriggerIdle");
+        //animator.SetTrigger("TriggerIdle"); // on entry state, it'll be idle always.
     }
 
     private void Update()
@@ -80,6 +80,12 @@ public class CharacterMovement : MonoBehaviour
         move = Vector3.ProjectOnPlane(move, groundNormal);
         float rotationAmount = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
         float force = Mathf.Sqrt(x * x + y * y) * stats.speed;
+
+        if (move.magnitude != 0 && (!animator.GetCurrentAnimatorStateInfo(0).IsName("Damaged") || animator.GetCurrentAnimatorStateInfo(0).IsName("Pickup"))) animator.SetBool("IsWalking", true);
+        else animator.SetBool("IsWalking", false);
+
+        //if (move.magnitude > 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) animator.SetTrigger("TriggerWalk");
+        //else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Walk") && move.magnitude == 0) animator.SetTrigger("TriggerIdle");
 
         float rAngle = rig.transform.localEulerAngles.y + rotationAmount;
 
