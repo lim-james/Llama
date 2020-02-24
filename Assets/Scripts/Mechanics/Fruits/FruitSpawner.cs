@@ -26,10 +26,7 @@ public class FruitSpawner : MonoBehaviour
             //spawn = false;
             // spawn
             if (SpawnFruit())
-            {
-                Debug.Log("Spawned");
                 spawnTime = 0.0f;
-            }
         }
     }
 
@@ -66,7 +63,7 @@ public class FruitSpawner : MonoBehaviour
             if ((avoidLayer.value & 1 << hit.collider.gameObject.layer) == 1 << hit.collider.gameObject.layer)
                 return false;
 
-            Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
+            //Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
             position.y = hit.point.y;
             return true;
         }
