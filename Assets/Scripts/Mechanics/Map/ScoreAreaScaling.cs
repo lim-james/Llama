@@ -12,12 +12,14 @@ public class ScoreAreaScaling : MonoBehaviour
     public List<Transform> scoringArea = new List<Transform>();
 
     public float duration = 1.0f;
+    public float delay = 0.0f;
+
     private float multipler = 0.0f;
     private float timer = 0.0f;
     public bool startTimer = false;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         for (int i = 0; i < scoringArea.Count; ++i)
         {
@@ -26,19 +28,24 @@ public class ScoreAreaScaling : MonoBehaviour
             endPositions.Add(target.position + Vector3.Scale(dir, minOffset));
         }
 
-        multipler = 1f / duration;
+        timer = -delay;
+        //multipler = 1f / duration;
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (!startTimer)
+        if (!startTimer || timer < 0.0f)
             return;
-
-        timer += Time.deltaTime * multipler;
+        
         for (int i = 0; i < scoringArea.Count; ++i)
         {
-            scoringArea[i].position = Vector3.Lerp(originalPositions[i], endPositions[i], timer);
+            scoringArea[i].position = Vector3.Lerp(originalPositions[i], endPositions[i], timer / duration);
         }
     }
 

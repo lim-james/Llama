@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FruitSpawner : MonoBehaviour
 {
+    [SerializeField]
+    private Transform container;
     [SerializeField]
     private float spawnDelay;
     [SerializeField]
@@ -37,7 +37,9 @@ public class FruitSpawner : MonoBehaviour
 
         GameObject fruit = FruitManager.instance.SpawnRandomFruit();
         fruit.transform.position = randomPosition;
+        fruit.transform.parent = container;
         GameObject spawnEffect = Instantiate(spawnEffectPrefab);
+
 
         if (Random.Range(0, 100) <= 50)
         {
