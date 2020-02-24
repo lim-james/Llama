@@ -1,11 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBase : MonoBehaviour
 {
     public int playerID;
-    public int fruitCount;
+
+    private int _fruitCount;
+    public int fruitCount
+    {
+        get { return _fruitCount; }
+        set
+        {
+            _fruitCount = value;
+            scoreLabel.text = _fruitCount.ToString();
+        }
+    }
+
+    // references
+    private Text scoreLabel;
+
+    private void Awake()
+    {
+        scoreLabel = GetComponentInChildren<Text>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
