@@ -14,10 +14,23 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private Camera followCamera;
     public Rigidbody target;
-    public float distance;
+    public float startDistance;
+    public float endDistance;
     public float heightOffset;
     public Vector3 rotation;
     public FollowStyle style;
+
+
+    [SerializeField]
+    private float duration;
+    [SerializeField]
+    private float delay;
+    [SerializeField]
+    private float time;
+
+    private float magnitude;
+    [SerializeField]
+    private float distance;
 
     [SerializeField]
     private float followMultipler = 1.0f;
@@ -32,14 +45,24 @@ public class CameraFollow : MonoBehaviour
             followCamera = GetComponent<Camera>();
             startPos = followCamera.transform.position;
         }
+
+        time = -delay;
+        magnitude = 1.0f / (startDistance - endDistance);
     }
 
     void Update()
     {
-        if (Application.isPlaying)
-            return;
         if (!target)
             return;
+
+        time += Time.deltaTime;
+
+        if (time < 0.0f)
+            distance = startDistance;
+        else if (time < duration)
+            distance = startDistance + (endDistance - startDistance) * time / duration;
+        else
+            distance = endDistance;
 
         MoveCamera();
     }
@@ -61,7 +84,6 @@ public class CameraFollow : MonoBehaviour
             case FollowStyle.SNAP_FOLLOW:
                 followCamera.transform.position = target.position + new Vector3(0, heightOffset, 0) + Quaternion.Euler(rotation) * Vector3.back * distance;
                 break;
-
             case FollowStyle.SMOOTH_FOLLOW:
                 if (target.velocity.magnitude > 0)
                 {
