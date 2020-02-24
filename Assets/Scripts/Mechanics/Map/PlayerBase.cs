@@ -20,10 +20,12 @@ public class PlayerBase : MonoBehaviour
 
     // references
     private Text scoreLabel;
+    private Animator animator;
 
     private void Awake()
     {
         scoreLabel = GetComponentInChildren<Text>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,6 +34,8 @@ public class PlayerBase : MonoBehaviour
             return;
 
         fruitCount += other.GetComponent<Fruit>().stats.points;
+
+        //animator.Play("ScoreAdd", 0);
     }
 
     private void OnTriggerExit(Collider other)
