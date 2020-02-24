@@ -160,9 +160,4 @@ public class CharacterMovement : MonoBehaviour
 
         groundAngle = Vector3.Angle(groundHit.normal, transform.forward);
     }
-
-    public void ActivateAdrenaline()
-    {
-
-    }
 }

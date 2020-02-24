@@ -659,7 +659,7 @@ PrefabInstance:
     - target: {fileID: 1341381891492109685, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
       propertyPath: groundLayer.m_Bits
-      value: 1079
+      value: 7223
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109685, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
@@ -2486,6 +2486,7 @@ MonoBehaviour:
   - {fileID: 2116266484}
   duration: 20
   delay: 5
+  timer: 0
   startTimer: 1
 --- !u!4 &1689396796
 Transform:
@@ -2829,7 +2830,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 15
 --- !u!222 &1840351961
 CanvasRenderer:
   m_ObjectHideFlags: 0
