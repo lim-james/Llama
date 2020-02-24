@@ -18,10 +18,6 @@ public class FruitSpawner : MonoBehaviour
 
     public LayerMask avoidLayer;
 
-    private void Awake()
-    {
-    }
-
     private void Update()
     {
         spawnTime += Time.deltaTime;
@@ -67,7 +63,7 @@ public class FruitSpawner : MonoBehaviour
             if ((avoidLayer.value & 1 << hit.collider.gameObject.layer) == 1 << hit.collider.gameObject.layer)
                 return false;
 
-            Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
+            //Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
             position.y = hit.point.y;
             return true;
         }

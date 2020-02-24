@@ -195,6 +195,7 @@ MonoBehaviour:
   - {fileID: 1915436791}
   - {fileID: 720049448}
   selected: {fileID: 681386439}
+  indicator: {fileID: 0}
 --- !u!114 &10995264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +246,7 @@ MonoBehaviour:
   characterOrginOffset: -0.5
   groundDistance: 0.3
   pickupRadius: 2
+  autoAimBounce: 0.1
 --- !u!136 &10995267
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -319,9 +321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 2785b10bde9919640943cc1b5875143a, type: 2}
-  speedBoost: 0
-  strengthBoost: 0
-  balanceBoost: 0
 --- !u!1 &116899781
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +353,12 @@ MonoBehaviour:
   spawnDelay: 2
   heightOffset: 15
   size: {x: 20, y: 20}
+  spawnEffectPrefab: {fileID: 6163046197496866098, guid: 33d8f5065325a37488c46bb2f3b68c16,
+    type: 3}
+  spawn: 1
+  avoidLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &116899783
 Transform:
   m_ObjectHideFlags: 0
