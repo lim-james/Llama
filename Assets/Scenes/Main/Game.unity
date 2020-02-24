@@ -511,10 +511,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1677704185}
     m_Modifications:
+    - target: {fileID: 1341381891492109682, guid: ccb4ee4680e74014cbf6bc07797f44f6,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109683, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
       propertyPath: controllerID
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109685, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
@@ -1049,7 +1054,7 @@ PrefabInstance:
     - target: {fileID: 1341381891492109683, guid: 182615243c5084c4895e3dcd65b63520,
         type: 3}
       propertyPath: controllerID
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109683, guid: 182615243c5084c4895e3dcd65b63520,
         type: 3}
@@ -1139,7 +1144,7 @@ PrefabInstance:
     - target: {fileID: 1341381891492109683, guid: 3e0e296de4db67d4caab359d57272776,
         type: 3}
       propertyPath: controllerID
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109685, guid: 3e0e296de4db67d4caab359d57272776,
         type: 3}
@@ -1495,7 +1500,7 @@ PrefabInstance:
     - target: {fileID: 1341381891492109683, guid: 220f44db48088224d88d12de4d2dd5b4,
         type: 3}
       propertyPath: controllerID
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109685, guid: 220f44db48088224d88d12de4d2dd5b4,
         type: 3}
