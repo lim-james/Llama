@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1686551757957227803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 1021695509719715487}
   - {fileID: 3834700463498653645}
@@ -148,7 +148,7 @@ MonoBehaviour:
   - mask:
       serializedVersion: 2
       m_Bits: 256
-    range: 3
+    range: 5.5
     inRange: 1
     enter:
       m_PersistentCalls:

@@ -14,6 +14,9 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField]
     private Transform indicator;
 
+    [SerializeField]
+    private float displacement;
+
     // references
     private CharacterStatistics stats;
 
@@ -146,8 +149,8 @@ public class CharacterInventory : MonoBehaviour
 
         if (fruit == null) return;
 
-        fruit.transform.position = transform.position + transform.forward;// + new Vector3(0.0f, 0.5f, 0.0f);
-        fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        fruit.transform.position = transform.position + transform.forward * displacement;
+        fruit.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
         fruit.GetComponent<Rigidbody>().useGravity = true;
         fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude;
         fruit.GetComponent<Collider>().enabled = true;
