@@ -11,13 +11,25 @@ public class CharacterInventory : MonoBehaviour
     private List<Container> slots = new List<Container>();
     [SerializeField]
     private Transform selected;
+    [SerializeField]
+    private Transform indicator;
 
     // references
     private CharacterStatistics stats;
 
     // member attributes
-    private float magnitude;
-    private bool holding;
+    public bool holding { get; private set; }
+    public float _magnitude { get; private set; }
+    private float magnitude
+    {
+        get { return _magnitude; }
+        set
+        {
+            _magnitude = value;
+            indicator.localPosition = new Vector3(0.0f, -0.45f, _magnitude * 0.5f + 2.0f);
+            indicator.localScale = new Vector3(_magnitude, 0.2f, 0.2f);
+        }
+    }
 
     private int _itemCount; 
     public int itemCount
@@ -57,15 +69,20 @@ public class CharacterInventory : MonoBehaviour
     {
         stats = GetComponent<CharacterStatistics>();
         
-        holding = true;
+        holding = false;
         selectedIndex = 0;
         inventory = new Dictionary<int, Fruit>();
+    }
+
+    private void Start()
+    {
+        magnitude = 0.0f;
     }
 
     private void Update()
     {
         if (holding)
-            magnitude += Time.deltaTime * stats.strength * stats.strength; 
+            magnitude += Time.deltaTime * stats.strength; 
     }
 
     public void PickUpNearbyFruit()
@@ -115,6 +132,7 @@ public class CharacterInventory : MonoBehaviour
 
     public void HoldFruit()
     {
+        if (inventory[selectedIndex] == null) return;
         holding = true;
         magnitude = 0.0f;
     }
@@ -128,13 +146,15 @@ public class CharacterInventory : MonoBehaviour
 
         if (fruit == null) return;
 
-        fruit.transform.position = transform.position + transform.forward + new Vector3(0.0f, 1.0f, 0.0f);
+        fruit.transform.position = transform.position + transform.forward;// + new Vector3(0.0f, 0.5f, 0.0f);
         fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         fruit.GetComponent<Rigidbody>().useGravity = true;
-        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * stats.strength;
+        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude;
         fruit.GetComponent<Collider>().enabled = true;
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+
+        magnitude = 0.0f;
 
         --itemCount;
         slots[selectedIndex].item.transform = null;
