@@ -18,10 +18,6 @@ public class FruitSpawner : MonoBehaviour
 
     public LayerMask avoidLayer;
 
-    private void Awake()
-    {
-    }
-
     private void Update()
     {
         spawnTime += Time.deltaTime;
@@ -30,7 +26,10 @@ public class FruitSpawner : MonoBehaviour
             //spawn = false;
             // spawn
             if (SpawnFruit())
+            {
+                Debug.Log("Spawned");
                 spawnTime = 0.0f;
+            }
         }
     }
 
