@@ -1,26 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndGame : MonoBehaviour
 {
     public float delayBeforeGameEnd;
-    private bool startEndGame;
+    private bool startEndGame = false;
     private float timer = 0.0f;
+
+    public Text timerText;
+    public string endText;
 
     public void StartEndGame()
     {
         startEndGame = true;
+        timerText.enabled = true;
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         timer = delayBeforeGameEnd;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (startEndGame)
+            return;
+
         timer -= Time.deltaTime;
 
         if (timer <= 0)
@@ -34,22 +41,11 @@ public class EndGame : MonoBehaviour
                 characters[i].moveable = false;
             }
 
-            if(CheckIfDraw(playerBases))
-            {
-
-            }
-            else
-            {
-                int winningPlayer = -1;
-                int highestPoints = int.MinValue;
-                for (int i = 0; i < playerBases.Length; ++i)
-                {
-                    if (highestPoints < playerBases[i].fruitCount)
-                    {
-
-                    }
-                }
-            }
+            timerText.text = endText;
+        }
+        else
+        {
+            timerText.text = Mathf.CeilToInt(timer).ToString();
         }
     }
 
