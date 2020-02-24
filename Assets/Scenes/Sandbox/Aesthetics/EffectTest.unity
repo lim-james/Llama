@@ -1628,6 +1628,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrenzyHue
       objectReference: {fileID: 0}
+    - target: {fileID: 7436891019829458658, guid: a68d0bb3bace8ae4bb7b7f4ed09264c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7436891019829458669, guid: a68d0bb3bace8ae4bb7b7f4ed09264c3,
         type: 3}
       propertyPath: m_LocalPosition.x
