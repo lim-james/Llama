@@ -1,37 +1,12 @@
 fileFormatVersion: 2
-guid: 40425513b114be44b890767794143df5
+guid: da8bd4a67a76dbc469a8b2bbbe153eaf
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: '[Baby] Attack'
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Baby_Llama_AO
-    second: {fileID: 2800000, guid: 9b88873854bfe894cb163c34bce154fd, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Baby_Llama_M
-    second: {fileID: 2800000, guid: 69decc56915816641820705e274c693b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Baby_Llama_NM
-    second: {fileID: 2800000, guid: 947c1d61ab1c8554990f58d97ed45b2c, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Baby_Llama_R
-    second: {fileID: 2800000, guid: 19fbefab103dd9148b66047d286b1654, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Red
-    second: {fileID: 2800000, guid: f7259c76e68037d408b794efb04506d4, type: 3}
+    second: '[Baby] Idle 2'
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -60,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: '[Baby] Attack'
+      name: '[Baby] Idle 2'
       takeName: Take 001
       internalID: 0
       firstFrame: 1
-      lastFrame: 20
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
