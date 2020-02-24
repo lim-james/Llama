@@ -12,6 +12,8 @@ public class Fruit : MonoBehaviour
     //public string fruitName;
     public FruitStats stats;
 
+    public LayerMask layer;
+
     public uint ID
     {
         set { id = value; }
@@ -22,5 +24,22 @@ public class Fruit : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         rig.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+    }
+
+    private void Update()
+    {
+        if (!Physics.Raycast(transform.position, Vector3.down, float.MaxValue, layer))
+        {
+            rig.AddForce(Physics.gravity, ForceMode.Force);
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.gameObject.GetComponent<CharacterMovement>())
+            return;
+
+        Vector3 dir = (collision.transform.position - transform.position).normalized;
+        collision.gameObject.GetComponent<Rigidbody>().AddForce(dir * rig.velocity.magnitude, ForceMode.Impulse);
     }
 }

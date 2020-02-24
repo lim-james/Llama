@@ -36,7 +36,8 @@ public class PlayerBase : MonoBehaviour
         fruitCount += other.GetComponent<Fruit>().stats.points;
 
         animator = animatorObj.GetComponent<Animator>();
-        animator.SetTrigger("Add");
+        if (animator)
+            animator.SetTrigger("Add");
     }
 
     private void OnTriggerExit(Collider other)
@@ -47,6 +48,7 @@ public class PlayerBase : MonoBehaviour
         fruitCount -= other.GetComponent<Fruit>().stats.points;
 
         animator = animatorObj.GetComponent<Animator>();
-        animator.SetTrigger("Add");
+        if (animator)
+            animator.SetTrigger("Add");
     }
 }
