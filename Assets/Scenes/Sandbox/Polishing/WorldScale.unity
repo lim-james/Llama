@@ -358,7 +358,7 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 5
-  time: -2.6836925
+  time: -0.9996096
   distance: 50
   followMultipler: 1
 --- !u!1 &77943966
@@ -1633,7 +1633,7 @@ PrefabInstance:
     - target: {fileID: 1341381891492109683, guid: 182615243c5084c4895e3dcd65b63520,
         type: 3}
       propertyPath: controllerID
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109683, guid: 182615243c5084c4895e3dcd65b63520,
         type: 3}
