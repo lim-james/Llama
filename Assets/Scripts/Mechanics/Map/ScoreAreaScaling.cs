@@ -15,8 +15,12 @@ public class ScoreAreaScaling : MonoBehaviour
     public float delay = 0.0f;
 
     private float multipler = 0.0f;
+
+    [SerializeField]
     private float timer = 0.0f;
     public bool startTimer = false;
+
+    private bool activatedEndGame = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -35,6 +39,12 @@ public class ScoreAreaScaling : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
+
+        if (timer >= duration && !activatedEndGame)
+        {
+            GameObject.FindObjectOfType<EndGame>().StartEndGame();
+            activatedEndGame = true;
+        }
     }
 
     // Update is called once per frame
