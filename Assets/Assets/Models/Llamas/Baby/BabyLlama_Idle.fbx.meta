@@ -1,12 +1,37 @@
 fileFormatVersion: 2
-guid: 0e351f378f006234faa1fef0625b1375
+guid: 4a2040f73943ba04593e89d9e4999bac
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: '[Hipster] Sluggish'
-  externalObjects: {}
+    second: '[Baby] Idle'
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Baby_Llama_AO
+    second: {fileID: 2800000, guid: b7124c86f685fed42995d08d4a053ba9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Baby_Llama_M
+    second: {fileID: 2800000, guid: 9de96228af1027f4383b369dbe0b0f4e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Baby_Llama_NM
+    second: {fileID: 2800000, guid: 9c4af29f49d502e4cbcdbd6de5ec20fe, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Baby_Llama_R
+    second: {fileID: 2800000, guid: 6580679b375418a4297fb4e9ff266a94, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2800000, guid: 529615807c9a22b46b6c7bd1aeca1797, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -35,18 +60,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: '[Hipster] Sluggish'
+      name: '[Baby] Idle'
       takeName: Take 001
       internalID: 0
       firstFrame: 1
-      lastFrame: 60
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -113,7 +138,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: 
+    rootMotionBoneName: Spring1_CTRL
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
@@ -121,7 +146,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

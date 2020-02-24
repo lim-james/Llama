@@ -1,12 +1,18 @@
 fileFormatVersion: 2
-guid: 0e351f378f006234faa1fef0625b1375
+guid: 1a6dd9bf403f4574d852647419627e42
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: '[Hipster] Sluggish'
-  externalObjects: {}
+    second: '[Baby] Slug'
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baby_Llama
+    second: {fileID: 5093430939128597115, guid: 4a2040f73943ba04593e89d9e4999bac,
+      type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -35,7 +41,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: '[Hipster] Sluggish'
+      name: '[Baby] Slug'
       takeName: Take 001
       internalID: 0
       firstFrame: 1
@@ -46,7 +52,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -113,15 +119,16 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: 
+    rootMotionBoneName: Spring1_CTRL
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4a2040f73943ba04593e89d9e4999bac,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
