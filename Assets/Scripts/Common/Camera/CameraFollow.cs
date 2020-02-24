@@ -13,10 +13,13 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField]
     private Camera followCamera;
+    [SerializeField]
     public Rigidbody target;
+
     public float startDistance;
     public float endDistance;
-    public float heightOffset;
+    public Vector3 startOffset;
+    public Vector3 endOffset;
     public Vector3 rotation;
     public FollowStyle style;
 
@@ -28,6 +31,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private float time;
 
+    private Vector3 offset;
     private float magnitude;
     [SerializeField]
     private float distance;
@@ -58,11 +62,21 @@ public class CameraFollow : MonoBehaviour
         time += Time.deltaTime;
 
         if (time < 0.0f)
+        {
+            offset = startOffset;
             distance = startDistance;
+        }
         else if (time < duration)
-            distance = startDistance + (endDistance - startDistance) * time / duration;
+        {
+            float m = time / duration;
+            offset = startOffset + (endOffset - startOffset) * m;
+            distance = startDistance + (endDistance - startDistance) * m;
+        }
         else
+        {
+            offset = endOffset;
             distance = endDistance;
+        }
 
         MoveCamera();
     }
@@ -82,7 +96,7 @@ public class CameraFollow : MonoBehaviour
         switch (style)
         {
             case FollowStyle.SNAP_FOLLOW:
-                followCamera.transform.position = target.position + new Vector3(0, heightOffset, 0) + Quaternion.Euler(rotation) * Vector3.back * distance;
+                followCamera.transform.position = target.position + offset + Quaternion.Euler(rotation) * Vector3.back * distance;
                 break;
             case FollowStyle.SMOOTH_FOLLOW:
                 if (target.velocity.magnitude > 0)
@@ -94,7 +108,7 @@ public class CameraFollow : MonoBehaviour
                 {
                     followTimer = Mathf.Clamp01(followTimer + Time.deltaTime * followMultipler);
                 }
-                followCamera.transform.position = Vector3.Lerp(startPos, target.position + new Vector3(0, heightOffset, 0) + Quaternion.Euler(rotation) * Vector3.back * distance, followTimer);
+                followCamera.transform.position = Vector3.Lerp(startPos, target.position + offset + Quaternion.Euler(rotation) * Vector3.back * distance, followTimer);
                 break;
         }
     }
