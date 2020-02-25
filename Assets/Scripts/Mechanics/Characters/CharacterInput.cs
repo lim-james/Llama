@@ -35,7 +35,10 @@ public class CharacterInput : MonoBehaviour
 
         input = new InputMaster();
         input.Enable();
+    }
 
+    private void Start()
+    {
         // bind handlers
         if (!info.AI)
         {
