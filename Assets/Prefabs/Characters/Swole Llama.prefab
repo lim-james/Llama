@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1341381890921496562}
   - component: {fileID: 1341381890921496561}
   - component: {fileID: 1341381890921496560}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,6 +266,7 @@ MonoBehaviour:
   characterOrginOffset: -0.5
   groundDistance: 0.3
   pickupRadius: 2
+  autoAimBounce: 0.1
 --- !u!114 &1341381891492109686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +287,7 @@ MonoBehaviour:
   - {fileID: 3993117655114371623}
   selected: {fileID: 1341381891625220969}
   indicator: {fileID: 525521629408978152}
+  displacement: 0
 --- !u!114 &1341381891492109687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +301,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostDuration: 10
+  frenzy: 0
+  frenzySpeedBoost: 20
+  frenzyStrengthBoost: 20
+  frenzyBalanceBoost: 20
 --- !u!1 &1341381891561888277
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +316,7 @@ GameObject:
   - component: {fileID: 1341381891561888276}
   - component: {fileID: 1341381891561888275}
   - component: {fileID: 1341381891561888274}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1341381891625220969}
   - component: {fileID: 1341381891625220968}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +542,7 @@ GameObject:
   - component: {fileID: 1341381892460606078}
   - component: {fileID: 1341381892460606077}
   - component: {fileID: 1341381892460606076}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Circle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +639,7 @@ GameObject:
   - component: {fileID: 7376718829335761856}
   - component: {fileID: 3226824845213568597}
   - component: {fileID: 3993117655114371623}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Circle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1341381890921496562}
   - component: {fileID: 1341381890921496561}
   - component: {fileID: 1341381890921496560}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,6 +300,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostDuration: 10
+  frenzy: 0
+  frenzySpeedBoost: 20
+  frenzyStrengthBoost: 20
+  frenzyBalanceBoost: 20
 --- !u!1 &1341381891561888277
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +315,7 @@ GameObject:
   - component: {fileID: 1341381891561888276}
   - component: {fileID: 1341381891561888275}
   - component: {fileID: 1341381891561888274}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1341381891625220969}
   - component: {fileID: 1341381891625220968}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
