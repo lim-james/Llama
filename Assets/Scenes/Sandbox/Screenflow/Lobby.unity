@@ -1227,7 +1227,6 @@ MonoBehaviour:
   player2: {fileID: 932324201}
   player3: {fileID: 2085095069}
   player4: {fileID: 710514460}
-  text: {fileID: 681964364}
 --- !u!1 &710514458
 GameObject:
   m_ObjectHideFlags: 0

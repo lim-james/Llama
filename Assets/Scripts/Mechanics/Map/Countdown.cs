@@ -16,7 +16,7 @@ public class Countdown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad >= 15 && Time.timeSinceLevelLoad < 16)
+            if (Time.timeSinceLevelLoad >= 15 && Time.timeSinceLevelLoad < 16)
             GetComponent<Text>().text = "5";
         else if (Time.timeSinceLevelLoad >= 16 && Time.timeSinceLevelLoad < 17)
             GetComponent<Text>().text = "4";
