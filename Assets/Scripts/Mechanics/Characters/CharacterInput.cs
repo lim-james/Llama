@@ -11,12 +11,12 @@ public class MoveHandler : UnityEvent<Vector2> { }
 [RequireComponent(typeof(CharacterAdrenaline))]
 public class CharacterInput : MonoBehaviour
 {
-    private int id;
-
-    private InputMaster input;
+    private CharacterInfo info;
     private CharacterMovement movement;
     private CharacterInventory inventory;
     private CharacterAdrenaline adrenaline;
+
+    private InputMaster input;
 
     [Header("Axes values")]
     [SerializeField]
@@ -25,18 +25,22 @@ public class CharacterInput : MonoBehaviour
     private float vertical = 0.0f;
 
     public bool moveable = true;
-    public int controllerID = 0;
 
     private void Awake()
     {
+        info = GetComponent<CharacterInfo>();
+        movement = GetComponent<CharacterMovement>();
+        inventory = GetComponent<CharacterInventory>();
+        adrenaline = GetComponent<CharacterAdrenaline>();
+
         input = new InputMaster();
         input.Enable();
 
         // bind handlers
-        if (controllerID == 0)
+        if (info.playerID == 0)
             input.devices = new[] { InputDevice.all[0] };
         else
-            input.devices = new[] { Gamepad.all[controllerID - 1] };
+            input.devices = new[] { Gamepad.all[info.playerID - 1] };
         // movement
         input.Player.Move.performed += context => OnMove(context);
         input.Player.Move.canceled += context => OnMove(context);
@@ -54,10 +58,6 @@ public class CharacterInput : MonoBehaviour
         };
         // consume
         input.Player.Consume.performed += _ => adrenaline.Consume();
-
-        movement = GetComponent<CharacterMovement>();
-        inventory = GetComponent<CharacterInventory>();
-        adrenaline = GetComponent<CharacterAdrenaline>();
     }
 
     private void FixedUpdate()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterStatistics))]
+[RequireComponent(typeof(CharacterInfo))]
 public class CharacterInventory : MonoBehaviour
 {
     [SerializeField]
@@ -18,7 +18,7 @@ public class CharacterInventory : MonoBehaviour
     private float displacement;
 
     // references
-    private CharacterStatistics stats;
+    private CharacterInfo info;
 
     // member attributes
     private bool _holding; 
@@ -49,7 +49,7 @@ public class CharacterInventory : MonoBehaviour
             _magnitude = value;
 
             float length = 5.0f * magnitude;
-            indicator.localPosition = new Vector3(0.0f, 0.5f, length * 0.5f + 2.0f);
+            //indicator.localPosition = new Vector3(0.0f, 0.5f, length * 0.5f + 2.0f);
             indicator.localScale = new Vector3(length, 0.2f, 0.2f);
         }
 
@@ -80,7 +80,7 @@ public class CharacterInventory : MonoBehaviour
         {
             if (value < 0)
                 _selectedIndex = slots.Count - 1;
-            else if (value >= stats.maxHold)
+            else if (value >= info.maxHold)
                 _selectedIndex = 0;
             else
                 _selectedIndex = value;
@@ -93,10 +93,10 @@ public class CharacterInventory : MonoBehaviour
 
     private void Awake()
     {
-        stats = GetComponent<CharacterStatistics>();
+        info = GetComponent<CharacterInfo>();
         
         holding = false;
-        holdDelay = 0.5f;
+        holdDelay = 0.2f;
 
         selectedIndex = 0;
         inventory = new Dictionary<int, Fruit>();
@@ -111,20 +111,28 @@ public class CharacterInventory : MonoBehaviour
     {
         if (holding)
         {
-            bt += Time.deltaTime * stats.strength;
-
-            float m = magnitude + 1.0f;
-            if (bt > holdDelay * m)
+            if (bt < holdDelay)
             {
-                magnitude = Mathf.Min(m, 3.0f);
-                bt = 0.0f;
+                bt += Time.deltaTime;
+            }
+            else
+            {
+                bt += Time.deltaTime * info.strength;
+
+                float m = magnitude + 1.0f;
+                if (bt > holdDelay * m)
+                {
+                    magnitude = Mathf.Min(m, 3.0f);
+                    bt = holdDelay;
+                }
             }
         }
     }
 
     public void PickUpNearbyFruit()
     {
-        if (itemCount == stats.maxHold) return;
+        if (itemCount == info.maxHold) return;
+
 
         Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius);
 
@@ -151,6 +159,8 @@ public class CharacterInventory : MonoBehaviour
 
         if (!nearestFruit)
             return;
+
+        gameObject.GetComponent<CharacterMovement>().GetAnimator.SetTrigger("TriggerPickup");
 
         nearestFruit.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
         nearestFruit.GetComponent<Rigidbody>().useGravity = false;
@@ -182,10 +192,10 @@ public class CharacterInventory : MonoBehaviour
 
         if (fruit == null) return;
 
-        fruit.transform.position = transform.position + transform.forward * displacement + new Vector3(0.0f, 3.0f, 0.0f);
+        fruit.transform.position = indicator.position + transform.forward * displacement + new Vector3(0.0f, 3.0f, 0.0f);
         fruit.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
         fruit.GetComponent<Rigidbody>().useGravity = true;
-        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * stats.strength * 10.0f;
+        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * info.strength * 10.0f;
         fruit.GetComponent<Collider>().enabled = true;
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;

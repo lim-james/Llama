@@ -1,13 +1,18 @@
 ﻿using System;
 using UnityEngine;
 
+public enum TeamName
+{
+    RED, BLUE, GREEN, YELLOW
+};
+
 [Serializable]
 public class Team
 {
     public Color color;
-    public string name;
+    public TeamName name;
 
-    public Team(Color _color, string _name)
+    public Team(Color _color, TeamName _name)
     {
         color = _color;
         name = _name;

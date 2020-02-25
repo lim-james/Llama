@@ -20,7 +20,7 @@ public class KillZone : MonoBehaviour
     {
         for (int i = 0; i < scoringAreas.scoringArea.Count; ++i)
         {
-            if (scoringAreas.scoringArea[i].GetComponent<PlayerBase>().playerID != character.GetComponent<CharacterInput>().controllerID)
+            if (scoringAreas.scoringArea[i].GetComponent<PlayerBase>().playerID != character.GetComponent<CharacterInfo>().playerID)
                 continue;
 
             GameObject portal = Instantiate(portalPrefab);

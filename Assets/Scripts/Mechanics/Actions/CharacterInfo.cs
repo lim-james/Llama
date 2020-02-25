@@ -1,8 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-public class CharacterStatistics : MonoBehaviour
+public class CharacterInfo : MonoBehaviour
 {
+    public int playerID;
+    public TeamName team;
+
     [SerializeField]
     private CharacterStats stats;
 
