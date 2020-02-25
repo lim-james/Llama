@@ -280,13 +280,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9536b40e541876a45978acd351bc1a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupRadius: 2.5
+  pickupRadius: 5
   slots:
   - {fileID: 1341381890921496560}
   - {fileID: 1341381891561888274}
   selected: {fileID: 1341381891625220969}
   indicator: {fileID: 8161218948421277674}
-  displacement: 0
+  displacement: 4
 --- !u!114 &1341381891492109687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +300,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostDuration: 10
+  frenzy: 0
+  frenzySpeedBoost: 20
+  frenzyStrengthBoost: 20
+  frenzyBalanceBoost: 20
 --- !u!1 &1341381891561888277
 GameObject:
   m_ObjectHideFlags: 0
