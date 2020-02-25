@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+using System;
 
 public class EndGame : MonoBehaviour
 {
@@ -11,6 +13,12 @@ public class EndGame : MonoBehaviour
 
     public Text timerText;
     public string endText;
+
+    public struct TeamScore
+    {
+        public int points;
+        public TeamName teamName;
+    };
 
     public void StartEndGame()
     {
@@ -41,13 +49,39 @@ public class EndGame : MonoBehaviour
             CharacterInput[] characters = GameObject.FindObjectsOfType<CharacterInput>();
             PlayerBase[] playerBases = GameObject.FindObjectsOfType<PlayerBase>();
 
+            timerText.text = endText;
+
             //Stop all character movement
             for (int i = 0; i < characters.Length; ++i)
             {
                 characters[i].moveable = false;
             }
 
-            timerText.text = endText;
+            //Get All points
+            int[] points = new int[sizeof(TeamName)];
+            for (int i = 0; i < playerBases.Length; ++i)
+            {
+                int playerID = playerBases[i].playerID;
+                for (int j = 0; i < characters.Length; ++j)
+                {
+                    if (characters[j].GetComponent<CharacterInfo>().playerID != playerID)
+                        continue;
+
+                    points[(int)characters[j].GetComponent<CharacterInfo>().team] += playerBases[i].fruitCount;
+                    break;
+                }
+            }
+
+            //Check if it is a draw situation
+            if (CheckIfDraw(points))
+            {
+                //Do Pondium Here
+                return;
+            }
+
+            //Sort the score
+            List<TeamScore> teamScores = GetPlacement(points);
+            //Do Pondium here
         }
         else
         {
@@ -55,14 +89,28 @@ public class EndGame : MonoBehaviour
         }
     }
 
-    public bool CheckIfDraw(PlayerBase[] playerBases)
+    public bool CheckIfDraw(int[] points)
     {
-        for (int i = 0; i < playerBases.Length - 1; ++i)
+        for (int i = 0; i < points.Length - 1; ++i)
         {
-            if (playerBases[i].fruitCount != playerBases[i + 1].fruitCount)
+            if (points[i] != points[i + 1])
                 return false;
         }
 
         return true;
+    }
+
+    public List<TeamScore> GetPlacement(int[] points)
+    {
+        List<TeamScore> teamScores = new List<TeamScore>();
+        for (int i = 0; i < points.Length; ++i)
+        {
+            TeamScore teamScore = new TeamScore();
+            teamScore.points = points[i];
+            teamScore.teamName = (TeamName)i;
+            teamScores.Add(teamScore);
+        }
+
+        return (teamScores.OrderByDescending(x => x.points).ToList());
     }
 }
