@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -9,12 +10,13 @@ public class JoinInfo
     public bool isAI;
 }
 
-
 public class PlayerManager : MonoBehaviour
 {
+    public static List<JoinInfo> playerQueue = new List<JoinInfo>();
+
     [Header("Players")]
     [SerializeField]
-    private JoinInfo[] players;
+    private List<JoinInfo> players;
     [SerializeField]
     private Transform container;
 
@@ -31,14 +33,21 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         // exception handling
-        if (players == null)
+        if (players == null || players.Count == 0)
         {
-            Debug.LogError("Yo where the players at.");
-            return;
+            if (playerQueue.Count == 0)
+            {
+                Debug.LogError("Yo where the players at.");
+                return;
+            }
+            else
+            {
+                players = playerQueue;
+            }
         }
 
         // spawn 
-        for (int i = 0; i < players.Length; ++i)
+        for (int i = 0; i < players.Count; ++i)
         {
             JoinInfo joinInfo = players[i];
             // create game object accordingly

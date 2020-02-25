@@ -9,10 +9,11 @@ public class SelectionInput : MonoBehaviour
     [SerializeField]
     private int controllerID = 0;
 
-    [SerializeField]
-    private int index;
-    [SerializeField]
-    private int characterIndex;
+    [Header("Player input")]
+    public int index;
+    public int characterIndex;
+
+    [Header("Data")]
     [SerializeField]
     private TeamGroup teams;
     [SerializeField]
@@ -20,10 +21,10 @@ public class SelectionInput : MonoBehaviour
     [SerializeField]
     private GameObject characterModel;
 
-    // referneces
+    // references
     private Image background;
     private Text label;
-    private bool connected;
+    public bool connected { get; private set; }
 
     private GameObject temp;
 
