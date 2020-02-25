@@ -89,6 +89,7 @@ public class CharacterInventory : MonoBehaviour
     {
         if (itemCount == stats.maxHold) return;
 
+
         Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius);
 
         float nearestDist = float.MaxValue;
@@ -114,6 +115,8 @@ public class CharacterInventory : MonoBehaviour
 
         if (!nearestFruit)
             return;
+
+        gameObject.GetComponent<CharacterMovement>().GetAnimator.SetTrigger("TriggerPickup");
 
         nearestFruit.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
         nearestFruit.GetComponent<Rigidbody>().useGravity = false;

@@ -31,6 +31,11 @@ public class CharacterMovement : MonoBehaviour
     private float autoAimBounce = 0.1f;
     private float bt;
 
+    public Animator GetAnimator
+    {
+        get { return animator; }
+    }
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
