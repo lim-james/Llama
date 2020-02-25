@@ -96,7 +96,7 @@ public class CharacterInventory : MonoBehaviour
         stats = GetComponent<CharacterStatistics>();
         
         holding = false;
-        holdDelay = 0.5f;
+        holdDelay = 0.2f;
 
         selectedIndex = 0;
         inventory = new Dictionary<int, Fruit>();
@@ -111,13 +111,20 @@ public class CharacterInventory : MonoBehaviour
     {
         if (holding)
         {
-            bt += Time.deltaTime * stats.strength;
-
-            float m = magnitude + 1.0f;
-            if (bt > holdDelay * m)
+            if (bt < holdDelay)
             {
-                magnitude = Mathf.Min(m, 3.0f);
-                bt = 0.0f;
+                bt += Time.deltaTime;
+            }
+            else
+            {
+                bt += Time.deltaTime * stats.strength;
+
+                float m = magnitude + 1.0f;
+                if (bt > holdDelay * m)
+                {
+                    magnitude = Mathf.Min(m, 3.0f);
+                    bt = holdDelay;
+                }
             }
         }
     }
