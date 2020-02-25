@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterStatistics))]
+[RequireComponent(typeof(CharacterInfo))]
 public class CharacterInventory : MonoBehaviour
 {
     [SerializeField]
@@ -18,7 +18,7 @@ public class CharacterInventory : MonoBehaviour
     private float displacement;
 
     // references
-    private CharacterStatistics stats;
+    private CharacterInfo info;
 
     // member attributes
     private bool _holding; 
@@ -80,7 +80,7 @@ public class CharacterInventory : MonoBehaviour
         {
             if (value < 0)
                 _selectedIndex = slots.Count - 1;
-            else if (value >= stats.maxHold)
+            else if (value >= info.maxHold)
                 _selectedIndex = 0;
             else
                 _selectedIndex = value;
@@ -93,7 +93,7 @@ public class CharacterInventory : MonoBehaviour
 
     private void Awake()
     {
-        stats = GetComponent<CharacterStatistics>();
+        info = GetComponent<CharacterInfo>();
         
         holding = false;
         holdDelay = 0.2f;
@@ -117,7 +117,7 @@ public class CharacterInventory : MonoBehaviour
             }
             else
             {
-                bt += Time.deltaTime * stats.strength;
+                bt += Time.deltaTime * info.strength;
 
                 float m = magnitude + 1.0f;
                 if (bt > holdDelay * m)
@@ -131,7 +131,7 @@ public class CharacterInventory : MonoBehaviour
 
     public void PickUpNearbyFruit()
     {
-        if (itemCount == stats.maxHold) return;
+        if (itemCount == info.maxHold) return;
 
         Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius);
 
@@ -192,7 +192,7 @@ public class CharacterInventory : MonoBehaviour
         fruit.transform.position = transform.position + transform.forward * displacement + new Vector3(0.0f, 3.0f, 0.0f);
         fruit.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
         fruit.GetComponent<Rigidbody>().useGravity = true;
-        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * stats.strength * 10.0f;
+        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * info.strength * 10.0f;
         fruit.GetComponent<Collider>().enabled = true;
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;

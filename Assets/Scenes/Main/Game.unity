@@ -299,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36676505}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 56.29165, z: -32.5}
+  m_LocalPosition: {x: 0, y: 31.962208, z: -18.45339}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -358,8 +358,8 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 5
-  time: -4.98
-  distance: 65
+  time: 14.04661
+  distance: 36.90678
   followMultipler: 1
 --- !u!1 &77943966
 GameObject:
@@ -656,6 +656,11 @@ PrefabInstance:
         type: 3}
       propertyPath: controllerID
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109684, guid: ccb4ee4680e74014cbf6bc07797f44f6,
+        type: 3}
+      propertyPath: playerID
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109685, guid: ccb4ee4680e74014cbf6bc07797f44f6,
         type: 3}
@@ -1645,6 +1650,11 @@ PrefabInstance:
       propertyPath: moveable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109684, guid: 182615243c5084c4895e3dcd65b63520,
+        type: 3}
+      propertyPath: team
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109685, guid: 182615243c5084c4895e3dcd65b63520,
         type: 3}
       propertyPath: groundLayer.m_Bits
@@ -2003,6 +2013,16 @@ PrefabInstance:
     - target: {fileID: 1341381891492109683, guid: 3e0e296de4db67d4caab359d57272776,
         type: 3}
       propertyPath: controllerID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109684, guid: 3e0e296de4db67d4caab359d57272776,
+        type: 3}
+      propertyPath: playerID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109684, guid: 3e0e296de4db67d4caab359d57272776,
+        type: 3}
+      propertyPath: team
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109685, guid: 3e0e296de4db67d4caab359d57272776,
@@ -2369,6 +2389,16 @@ PrefabInstance:
     - target: {fileID: 1341381891492109683, guid: 220f44db48088224d88d12de4d2dd5b4,
         type: 3}
       propertyPath: controllerID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109684, guid: 220f44db48088224d88d12de4d2dd5b4,
+        type: 3}
+      propertyPath: playerID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109684, guid: 220f44db48088224d88d12de4d2dd5b4,
+        type: 3}
+      propertyPath: team
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109685, guid: 220f44db48088224d88d12de4d2dd5b4,

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   group:
   - color: {r: 0.9490197, g: 0.3803922, b: 0.34509805, a: 1}
-    name: RED TEAM
+    name: 0
   - color: {r: 0.34509805, g: 0.41176474, b: 0.9490197, a: 1}
-    name: BLUE TEAM
+    name: 1
   - color: {r: 0.54901963, g: 0.96470594, b: 0.43921572, a: 1}
-    name: GREEN TEAM
+    name: 2
   - color: {r: 0.9921569, g: 0.98823535, b: 0, a: 1}
-    name: YELLOW TEAM
+    name: 3

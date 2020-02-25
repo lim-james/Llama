@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CharacterStatistics))]
+[RequireComponent(typeof(CharacterInfo))]
 [RequireComponent(typeof(CharacterInventory))]
 public class CharacterMovement : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class CharacterMovement : MonoBehaviour
 
     private Animator animator;
     private Rigidbody rig;
-    private CharacterStatistics stats;
+    private CharacterInfo info;
     private CharacterInventory inventory;
     public float turnSpeed = 1.0f;
     private Camera playerCamera;
@@ -35,7 +35,7 @@ public class CharacterMovement : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         rig = GetComponent<Rigidbody>();
-        stats = GetComponent<CharacterStatistics>();
+        info = GetComponent<CharacterInfo>();
         inventory = GetComponent<CharacterInventory>();
         playerCamera = Camera.main;
 
@@ -76,7 +76,7 @@ public class CharacterMovement : MonoBehaviour
         Vector3 moveDir = transform.InverseTransformDirection(move);
         moveDir = Vector3.ProjectOnPlane(moveDir, groundNormal);
         float rotationAmount = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
-        float force = move.magnitude * stats.speed;
+        float force = move.magnitude * info.speed;
 
         if (groundAngle < maxGroundAngle)
         {
