@@ -358,7 +358,7 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 5
-  time: -1.6066668
+  time: -4.96
   distance: 65
   followMultipler: 1
 --- !u!1 &77943966
@@ -1868,7 +1868,7 @@ PrefabInstance:
     - target: {fileID: 4148404687856083114, guid: 182615243c5084c4895e3dcd65b63520,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.5
+      value: 3.592
       objectReference: {fileID: 0}
     - target: {fileID: 4148404687856083114, guid: 182615243c5084c4895e3dcd65b63520,
         type: 3}
