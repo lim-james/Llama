@@ -41,5 +41,6 @@ public class Fruit : MonoBehaviour
 
         Vector3 dir = (collision.transform.position - transform.position).normalized;
         collision.gameObject.GetComponent<Rigidbody>().AddForce(dir * rig.velocity.magnitude, ForceMode.Impulse);
+        rig.velocity = Vector3.Reflect(rig.velocity.normalized, collision.contacts[0].normal);
     }
 }
