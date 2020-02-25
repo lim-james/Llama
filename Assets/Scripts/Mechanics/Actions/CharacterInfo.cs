@@ -5,6 +5,7 @@ public class CharacterInfo : MonoBehaviour
 {
     public int playerID;
     public TeamName team;
+    public bool AI = false;
 
     [SerializeField]
     private CharacterStats stats;
