@@ -37,27 +37,30 @@ public class CharacterInput : MonoBehaviour
         input.Enable();
 
         // bind handlers
-        if (info.playerID == 0)
-            input.devices = new[] { InputDevice.all[0] };
-        else
-            input.devices = new[] { Gamepad.all[info.playerID - 1] };
-        // movement
-        input.Player.Move.performed += context => OnMove(context);
-        input.Player.Move.canceled += context => OnMove(context);
-        // pick up
-        input.Player.Pickup.performed += _ => inventory.PickUpNearbyFruit();
-        // switch
-        input.Player.Switch.performed += context => OnSwitch(context);
-        // release 
-        input.Player.Release.performed += context =>
+        if (!info.AI)
         {
-            if (context.ReadValue<float>() > 0.5f)
-                inventory.HoldFruit();
+            if (info.playerID == 0)
+                input.devices = new[] { InputDevice.all[0] };
             else
-                inventory.ReleaseFruit();
-        };
-        // consume
-        input.Player.Consume.performed += _ => adrenaline.Consume();
+                input.devices = new[] { Gamepad.all[info.playerID - 1] };
+            // movement
+            input.Player.Move.performed += context => OnMove(context);
+            input.Player.Move.canceled += context => OnMove(context);
+            // pick up
+            input.Player.Pickup.performed += _ => inventory.PickUpNearbyFruit();
+            // switch
+            input.Player.Switch.performed += context => OnSwitch(context);
+            // release 
+            input.Player.Release.performed += context =>
+            {
+                if (context.ReadValue<float>() > 0.5f)
+                    inventory.HoldFruit();
+                else
+                    inventory.ReleaseFruit();
+            };
+            // consume
+            input.Player.Consume.performed += _ => adrenaline.Consume();
+        }
     }
 
     private void FixedUpdate()
