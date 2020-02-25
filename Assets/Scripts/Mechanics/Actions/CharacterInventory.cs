@@ -49,7 +49,7 @@ public class CharacterInventory : MonoBehaviour
             _magnitude = value;
 
             float length = 5.0f * magnitude;
-            indicator.localPosition = new Vector3(0.0f, 0.5f, length * 0.5f + 2.0f);
+            //indicator.localPosition = new Vector3(0.0f, 0.5f, length * 0.5f + 2.0f);
             indicator.localScale = new Vector3(length, 0.2f, 0.2f);
         }
 
@@ -189,7 +189,7 @@ public class CharacterInventory : MonoBehaviour
 
         if (fruit == null) return;
 
-        fruit.transform.position = transform.position + transform.forward * displacement + new Vector3(0.0f, 3.0f, 0.0f);
+        fruit.transform.position = indicator.position + transform.forward * displacement + new Vector3(0.0f, 3.0f, 0.0f);
         fruit.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
         fruit.GetComponent<Rigidbody>().useGravity = true;
         fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * stats.strength * 10.0f;
