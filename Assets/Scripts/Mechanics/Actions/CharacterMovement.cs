@@ -72,14 +72,20 @@ public class CharacterMovement : MonoBehaviour
 
     public void Move(float x, float y)
     {
+        Vector3 move = new Vector3(x, 0, y);
+        Vector3 moveDir = transform.InverseTransformDirection(move);
+        moveDir = Vector3.ProjectOnPlane(moveDir, groundNormal);
+        float rotationAmount = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
+        float force = move.magnitude * stats.speed;
+
+        if (groundAngle < maxGroundAngle)
+        {
+            Vector3 slope = Vector3.ProjectOnPlane(transform.forward, groundNormal);
+            animator.transform.forward = slope.normalized;
+        }
+
         if (groundAngle >= maxGroundAngle)
             return;
-
-        Vector3 move = new Vector3(x, 0, y);
-        move = transform.InverseTransformDirection(move);
-        move = Vector3.ProjectOnPlane(move, groundNormal);
-        float rotationAmount = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
-        float force = Mathf.Sqrt(x * x + y * y) * stats.speed;
 
         if(animator)
         {
@@ -93,7 +99,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (inventory.holding)
         {
-            Collider[] nearbyPlayers = Physics.OverlapSphere(transform.position, inventory._magnitude, LayerMask.GetMask("Character"));
+            Collider[] nearbyPlayers = Physics.OverlapSphere(transform.position, 50.0f, LayerMask.GetMask("Character"));
 
             Vector3 p1 = transform.position;
 
@@ -153,10 +159,5 @@ public class CharacterMovement : MonoBehaviour
         }
 
         groundAngle = Vector3.Angle(groundHit.normal, transform.forward);
-    }
-
-    public void ActivateAdrenaline()
-    {
-
     }
 }

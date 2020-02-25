@@ -77,10 +77,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5619539209212460337, guid: a4ecf85ff8988674188b3ac631e93975,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8147915154547903988, guid: a4ecf85ff8988674188b3ac631e93975,
         type: 3}
       propertyPath: fruitName
       value: fruit 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147915154547903988, guid: a4ecf85ff8988674188b3ac631e93975,
+        type: 3}
+      propertyPath: layer.m_Bits
+      value: 3895
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4ecf85ff8988674188b3ac631e93975, type: 3}

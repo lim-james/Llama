@@ -13,6 +13,16 @@ public class CharacterAdrenaline : MonoBehaviour
     private CharacterStatistics stats;
     private CharacterInventory inventory;
 
+    [SerializeField]
+    private bool frenzy = false;
+
+    [SerializeField]
+    private int frenzySpeedBoost = 20;
+    [SerializeField]
+    private int frenzyStrengthBoost = 20;
+    [SerializeField]
+    private int frenzyBalanceBoost = 20;
+
     private void Awake()
     {
         stats = GetComponent<CharacterStatistics>();
@@ -48,14 +58,28 @@ public class CharacterAdrenaline : MonoBehaviour
         {
             if (fruit != null)
             {
-                boosted = true;
-                stats.speedBoost += fruit.stats.speed;
-                stats.strengthBoost += fruit.stats.strength;
-                stats.balanceBoost += fruit.stats.balance;
+                if (!frenzy)
+                {
+                    boosted = true;
+                    stats.speedBoost += fruit.stats.speed;
+                    stats.strengthBoost += fruit.stats.strength;
+                    stats.balanceBoost += fruit.stats.balance;
+                }
+
                 Destroy(fruit.gameObject);
             }
         }
 
         if (boosted) boostTimeLeft += boostDuration; 
+    }
+
+    public void ActivateFrenzy(float duration)
+    {
+        stats.speedBoost = frenzySpeedBoost;
+        stats.strengthBoost = frenzyStrengthBoost;
+        stats.balanceBoost = frenzyBalanceBoost;
+
+        boostTimeLeft = duration;
+        frenzy = true;
     }
 }
