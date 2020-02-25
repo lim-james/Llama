@@ -44,5 +44,7 @@ public class Fruit : MonoBehaviour
 
         if(rig.velocity.magnitude > 1) // Fruit must be in motion to trigger damage?
             collision.gameObject.GetComponent<CharacterMovement>().GetAnimator.SetTrigger("TriggerDamage");
+
+        rig.velocity = Vector3.Reflect(rig.velocity.normalized, collision.contacts[0].normal);
     }
 }

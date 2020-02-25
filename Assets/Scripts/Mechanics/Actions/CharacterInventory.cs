@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterStatistics))]
+[RequireComponent(typeof(CharacterInfo))]
 public class CharacterInventory : MonoBehaviour
 {
     [SerializeField]
@@ -14,22 +14,49 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField]
     private Transform indicator;
 
+    [SerializeField]
+    private float displacement;
+
     // references
-    private CharacterStatistics stats;
+    private CharacterInfo info;
 
     // member attributes
-    public bool holding { get; private set; }
-    public float _magnitude { get; private set; }
-    private float magnitude
+    private bool _holding; 
+    public bool holding
     {
-        get { return _magnitude; }
-        set
+        get
         {
-            _magnitude = value;
-            indicator.localPosition = new Vector3(0.0f, -0.45f, _magnitude * 0.5f + 2.0f);
-            indicator.localScale = new Vector3(_magnitude, 0.2f, 0.2f);
+            return _holding;
+        }
+        private set
+        {
+            _holding = value;
+
+            if (holding) magnitude = 0.0f;
+            bt = 0.0f;
         }
     }
+
+    private float _magnitude;
+    public float magnitude
+    {
+        get
+        {
+            return _magnitude;
+        }
+        private set
+        {
+            _magnitude = value;
+
+            float length = 5.0f * magnitude;
+            //indicator.localPosition = new Vector3(0.0f, 0.5f, length * 0.5f + 2.0f);
+            indicator.localScale = new Vector3(length, 0.2f, 0.2f);
+        }
+
+    }
+
+    private float holdDelay;
+    private float bt;
 
     private int _itemCount; 
     public int itemCount
@@ -40,7 +67,6 @@ public class CharacterInventory : MonoBehaviour
         }
         set
         {
-            magnitude = 0.0f;
             holding = false;
             _itemCount = value;
         }
@@ -54,7 +80,7 @@ public class CharacterInventory : MonoBehaviour
         {
             if (value < 0)
                 _selectedIndex = slots.Count - 1;
-            else if (value >= stats.maxHold)
+            else if (value >= info.maxHold)
                 _selectedIndex = 0;
             else
                 _selectedIndex = value;
@@ -67,9 +93,11 @@ public class CharacterInventory : MonoBehaviour
 
     private void Awake()
     {
-        stats = GetComponent<CharacterStatistics>();
+        info = GetComponent<CharacterInfo>();
         
         holding = false;
+        holdDelay = 0.2f;
+
         selectedIndex = 0;
         inventory = new Dictionary<int, Fruit>();
     }
@@ -82,12 +110,28 @@ public class CharacterInventory : MonoBehaviour
     private void Update()
     {
         if (holding)
-            magnitude += Time.deltaTime * stats.strength; 
+        {
+            if (bt < holdDelay)
+            {
+                bt += Time.deltaTime;
+            }
+            else
+            {
+                bt += Time.deltaTime * info.strength;
+
+                float m = magnitude + 1.0f;
+                if (bt > holdDelay * m)
+                {
+                    magnitude = Mathf.Min(m, 3.0f);
+                    bt = holdDelay;
+                }
+            }
+        }
     }
 
     public void PickUpNearbyFruit()
     {
-        if (itemCount == stats.maxHold) return;
+        if (itemCount == info.maxHold) return;
 
 
         Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius);
@@ -137,7 +181,6 @@ public class CharacterInventory : MonoBehaviour
     {
         if (inventory[selectedIndex] == null) return;
         holding = true;
-        magnitude = 0.0f;
     }
 
     public void ReleaseFruit()
@@ -149,10 +192,10 @@ public class CharacterInventory : MonoBehaviour
 
         if (fruit == null) return;
 
-        fruit.transform.position = transform.position + transform.forward;// + new Vector3(0.0f, 0.5f, 0.0f);
-        fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        fruit.transform.position = indicator.position + transform.forward * displacement + new Vector3(0.0f, 3.0f, 0.0f);
+        fruit.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
         fruit.GetComponent<Rigidbody>().useGravity = true;
-        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude;
+        fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * info.strength * 10.0f;
         fruit.GetComponent<Collider>().enabled = true;
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;

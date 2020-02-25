@@ -10,12 +10,22 @@ public class CharacterAdrenaline : MonoBehaviour
 
     private float boostTimeLeft;
 
-    private CharacterStatistics stats;
+    private CharacterInfo info;
     private CharacterInventory inventory;
+
+    [SerializeField]
+    private bool frenzy = false;
+
+    [SerializeField]
+    private int frenzySpeedBoost = 20;
+    [SerializeField]
+    private int frenzyStrengthBoost = 20;
+    [SerializeField]
+    private int frenzyBalanceBoost = 20;
 
     private void Awake()
     {
-        stats = GetComponent<CharacterStatistics>();
+        info = GetComponent<CharacterInfo>();
         inventory = GetComponent<CharacterInventory>();
     }
 
@@ -33,9 +43,9 @@ public class CharacterAdrenaline : MonoBehaviour
         else
         {
             boostTimeLeft = 0.0f;
-            stats.speedBoost = 0.0f;
-            stats.strengthBoost = 0.0f;
-            stats.balanceBoost = 0.0f;
+            info.speedBoost = 0.0f;
+            info.strengthBoost = 0.0f;
+            info.balanceBoost = 0.0f;
         }
     }
 
@@ -48,14 +58,28 @@ public class CharacterAdrenaline : MonoBehaviour
         {
             if (fruit != null)
             {
-                boosted = true;
-                stats.speedBoost += fruit.stats.speed;
-                stats.strengthBoost += fruit.stats.strength;
-                stats.balanceBoost += fruit.stats.balance;
+                if (!frenzy)
+                {
+                    boosted = true;
+                    info.speedBoost += fruit.stats.speed;
+                    info.strengthBoost += fruit.stats.strength;
+                    info.balanceBoost += fruit.stats.balance;
+                }
+
                 Destroy(fruit.gameObject);
             }
         }
 
         if (boosted) boostTimeLeft += boostDuration; 
+    }
+
+    public void ActivateFrenzy(float duration)
+    {
+        info.speedBoost = frenzySpeedBoost;
+        info.strengthBoost = frenzyStrengthBoost;
+        info.balanceBoost = frenzyBalanceBoost;
+
+        boostTimeLeft = duration;
+        frenzy = true;
     }
 }

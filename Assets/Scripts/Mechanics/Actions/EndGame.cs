@@ -15,7 +15,13 @@ public class EndGame : MonoBehaviour
     public void StartEndGame()
     {
         startEndGame = true;
-        timerText.enabled = true;
+        timerText.gameObject.SetActive(true);
+
+        CharacterAdrenaline[] characterAdrenalines = GameObject.FindObjectsOfType<CharacterAdrenaline>();
+        for (int i = 0; i < characterAdrenalines.Length; ++i)
+        {
+            characterAdrenalines[i].ActivateFrenzy(delayBeforeGameEnd);
+        }
     }
 
     void Start()
@@ -25,7 +31,7 @@ public class EndGame : MonoBehaviour
 
     void Update()
     {
-        if (startEndGame)
+        if (!startEndGame)
             return;
 
         timer -= Time.deltaTime;
