@@ -49,6 +49,6 @@ public class PlayerBase : MonoBehaviour
 
         animator = animatorObj.GetComponent<Animator>();
         if (animator)
-            animator.SetTrigger("Add");
+            animator.SetTrigger("Minus");
     }
 }
