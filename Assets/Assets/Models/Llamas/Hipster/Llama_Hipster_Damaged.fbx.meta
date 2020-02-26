@@ -107,7 +107,277 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Llama_Hipster 1(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Main_CTRL
+      parentName: Llama_Hipster 1(Clone)
+      position: {x: -0, y: 0, z: 0.25968337}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Vehicle_CTRL
+      parentName: Main_CTRL
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Wheel_CTRL
+      parentName: Vehicle_CTRL
+      position: {x: -1.6274699, y: 0.5391471, z: -0.5638593}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Wheel1
+      parentName: L_Wheel_CTRL
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform1
+      parentName: L_Wheel1
+      position: {x: 1.6274699, y: -0.5391471, z: 0.30417594}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_WheelPoly
+      parentName: L_Wheel_CTRL
+      position: {x: 1.6274699, y: -0.5391471, z: 0.30417594}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Wheel_CTRL
+      parentName: Vehicle_CTRL
+      position: {x: 1.6304479, y: 0.5391471, z: -0.5638593}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Wheel1
+      parentName: R_Wheel_CTRL
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform3
+      parentName: R_Wheel1
+      position: {x: -1.6304479, y: -0.5391471, z: 0.30417594}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_WheelPoly
+      parentName: R_Wheel_CTRL
+      position: {x: -1.6304479, y: -0.5391471, z: 0.30417594}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Vehicle2
+      parentName: Vehicle_CTRL
+      position: {x: 0.0014890432, y: 1.1851311, z: 0.09109361}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform5
+      parentName: Vehicle2
+      position: {x: -0.0014890432, y: -1.1851311, z: -0.35077697}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Base_CTRL
+      parentName: Vehicle_CTRL
+      position: {x: -0, y: 1.4750981, z: -0.34984812}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Torso_CTRL
+      parentName: Base_CTRL
+      position: {x: -0, y: 0.48581934, z: 1.3877788e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Shoulder_CTRL
+      parentName: Torso_CTRL
+      position: {x: -0.24600059, y: 0.059578657, z: -0.055247694}
+      rotation: {x: 0, y: 0.097857445, z: -0, w: 0.99520046}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Arm_CTRL
+      parentName: L_Shoulder_CTRL
+      position: {x: -0.2604487, y: 0.018755674, z: -0.013354838}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_ELbow_CTRL
+      parentName: L_Arm_CTRL
+      position: {x: -0.54638994, y: -0.014297221, z: -0.296197}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Wrist_CTRL
+      parentName: L_ELbow_CTRL
+      position: {x: -0.5436251, y: -0.06286579, z: 0.13816962}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Shoulder_Ctrl
+      parentName: Torso_CTRL
+      position: {x: 0.246001, y: 0.05958247, z: -0.055247232}
+      rotation: {x: -0.0069784853, y: -0.004948903, z: -0.0062711327, w: 0.99994373}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Arm_CTRL
+      parentName: R_Shoulder_Ctrl
+      position: {x: 0.26044798, y: 0.018749952, z: -0.013355002}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_ELbow_CTRL
+      parentName: R_Arm_CTRL
+      position: {x: 0.632231, y: -0.008829832, z: -0.037279993}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Wrist_CTRL
+      parentName: R_ELbow_CTRL
+      position: {x: 0.54772556, y: -0.05474254, z: 0.12860103}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Neck_CTRL
+      parentName: Torso_CTRL
+      position: {x: -0, y: 0.5580878, z: -1.3877788e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Ear_01_CTRL
+      parentName: Neck_CTRL
+      position: {x: -0.2452042, y: 0.8118403, z: -0.23042177}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Ear_02_CTRL
+      parentName: L_Ear_01_CTRL
+      position: {x: -0.005996838, y: 0.23309779, z: -0.055950046}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Ear_01_CTRL
+      parentName: Neck_CTRL
+      position: {x: 0.245204, y: 0.81184435, z: -0.23042141}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Ear_02_CTRL
+      parentName: R_Ear_01_CTRL
+      position: {x: 0.006077677, y: 0.23269558, z: -0.05589211}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hipster_Shades_CTRL
+      parentName: Neck_CTRL
+      position: {x: -0, y: 0.68378174, z: 0.5522128}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hipster_Shades
+      parentName: Hipster_Shades_CTRL
+      position: {x: -0.10325596, y: 0.0014799949, z: 0.000725225}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Joystick_CTRL
+      parentName: Base_CTRL
+      position: {x: -0, y: 0.3652736, z: 1.1929616}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hipster_Blender
+      parentName: Vehicle_CTRL
+      position: {x: 0.0014890432, y: 1.1851311, z: 0.09235556}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Base
+      parentName: Vehicle_CTRL
+      position: {x: -0, y: 1.4750981, z: -0.34984812}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Torso
+      parentName: Base
+      position: {x: -0, y: 0.48581934, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Neck
+      parentName: Torso
+      position: {x: -0, y: 0.5580877, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Neck
+      position: {x: -0, y: 0.9326676, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Ear01
+      parentName: Neck
+      position: {x: -0.2452042, y: 0.81184036, z: -0.23042177}
+      rotation: {x: -0.07786886, y: 0.9200152, z: 0.23711534, w: 0.3021337}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: L_Ear02
+      parentName: L_Ear01
+      position: {x: 0.038, y: 0.184, z: 0.149}
+      rotation: {x: -0.30854994, y: -0.7355054, z: -0.31682414, w: -0.51327497}
+      scale: {x: 1.0000006, y: 1.0000002, z: 1.0000007}
+    - name: L_EarTip
+      parentName: L_Ear02
+      position: {x: 0.1842617, y: 0.22894205, z: -0.08554634}
+      rotation: {x: 0.040061396, y: 0.8000709, z: 0.053765148, w: 0.59614676}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000004}
+    - name: R_Ear01
+      parentName: Neck
+      position: {x: 0.245204, y: 0.81184435, z: -0.23042142}
+      rotation: {x: 0.3021337, y: -0.23711534, z: 0.9200152, w: 0.07786886}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: R_Ear02
+      parentName: R_Ear01
+      position: {x: -0.03803073, y: -0.18369353, z: -0.14872272}
+      rotation: {x: 0.30854994, y: 0.7355054, z: 0.3168241, w: 0.513275}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000004}
+    - name: R_EarTip
+      parentName: R_Ear02
+      position: {x: -0.18435211, y: -0.22933821, z: 0.08560501}
+      rotation: {x: -0.040061366, y: -0.800071, z: -0.053765148, w: -0.5961467}
+      scale: {x: 1, y: 1.0000005, z: 1.0000005}
+    - name: _Shoulder
+      parentName: Torso
+      position: {x: -0.24600059, y: 0.059578765, z: -0.055247698}
+      rotation: {x: -0.44562495, y: 0.553709, z: 0.5153177, w: 0.47882417}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
+    - name: L_Arm
+      parentName: _Shoulder
+      position: {x: -1.110223e-16, y: 0.26146442, z: -5.4547747e-16}
+      rotation: {x: -0.038806804, y: 0.001043543, z: 0.052298952, w: 0.9978766}
+      scale: {x: 1.0000002, y: 1.0000005, z: 1.0000002}
+    - name: L_Elbow
+      parentName: L_Arm
+      position: {x: 0.19484358, y: 0.62338215, z: -0.00013966655}
+      rotation: {x: -0.0069614206, y: -0.012229563, z: -0.0134864915, w: 0.99981004}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: L_Wrist
+      parentName: L_Elbow
+      position: {x: 0.07347859, y: 0.5596159, z: -0.0014505804}
+      rotation: {x: 0.4752411, y: -0.51569235, z: -0.5667678, w: 0.43241364}
+      scale: {x: 1, y: 1.0000004, z: 1.0000001}
+    - name: _Shoulder1
+      parentName: Torso
+      position: {x: 0.246001, y: 0.059582528, z: -0.055247232}
+      rotation: {x: -0.4984348, y: -0.5069651, z: -0.4714693, w: 0.5217911}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: R_Arm
+      parentName: _Shoulder1
+      position: {x: 5.7245875e-17, y: 0.26146334, z: -1.049135e-15}
+      rotation: {x: -0.04284385, y: 0.00011077523, z: 0.003831178, w: 0.9990745}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: R_Elbow
+      parentName: R_Arm
+      position: {x: -0.029061856, y: 0.6437931, z: 0.00066874165}
+      rotation: {x: -0.0009787788, y: -0.0035301899, z: 0.01855108, w: -0.99982125}
+      scale: {x: 0.9999999, y: 1.0000001, z: 0.99999994}
+    - name: R_Wrist
+      parentName: R_Elbow
+      position: {x: 0.031148806, y: 0.564416, z: -0.0016024621}
+      rotation: {x: -0.43241346, y: -0.5667682, z: 0.5156908, w: 0.47524256}
+      scale: {x: 1.0000001, y: 1.0000006, z: 1.0000006}
+    - name: Joystick_Base
+      parentName: Base
+      position: {x: -0, y: 0.17086875, z: 1.1929616}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Joystick_Rod
+      parentName: Joystick_Base
+      position: {x: -0, y: 0.19440484, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Joystick_Rod 1
+      parentName: Joystick_Rod
+      position: {x: -0, y: 0.6320604, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Llama_Main
+      parentName: Llama_Hipster 1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -118,13 +388,14 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: Main_CTRL
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c9449e49ac93d3244b106126a0001b1c,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

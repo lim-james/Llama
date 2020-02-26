@@ -20,6 +20,14 @@ public class SelectionInput : MonoBehaviour
     private CharacterGroup characters;
     [SerializeField]
     private GameObject characterModel;
+    [SerializeField]
+    private RawImage strength;
+    [SerializeField]
+    private RawImage speed;
+    [SerializeField]
+    private RawImage weight;
+    [SerializeField]
+    private RawImage balance;
 
     // references
     private Image background;
@@ -67,7 +75,12 @@ public class SelectionInput : MonoBehaviour
     {
         background.color = teams.group[index].color;
 
-        temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.position, characterModel.transform.rotation);
+        temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.localPosition, characterModel.transform.localRotation);
+
+        strength.texture = characters.group[characterIndex].strength;
+        speed.texture = characters.group[characterIndex].speed;
+        weight.texture = characters.group[characterIndex].weight;
+        balance.texture = characters.group[characterIndex].balance;
     }
 
     private void FixedUpdate()
@@ -109,6 +122,11 @@ public class SelectionInput : MonoBehaviour
             characterIndex = 0;
 
         Destroy(temp);
-        temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.position, characterModel.transform.rotation);
+        temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.localPosition, characterModel.transform.localRotation);
+
+        strength.texture = characters.group[characterIndex].strength;
+        speed.texture = characters.group[characterIndex].speed;
+        weight.texture = characters.group[characterIndex].weight;
+        balance.texture = characters.group[characterIndex].balance;
     }
 }

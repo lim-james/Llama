@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlatformRise : MonoBehaviour
 {
+    public TeamName team;
     public int testPoints;
-    int totalPoints;
-    int tempPoints;
+    public bool startMove = false;
+    //int totalPoints;
+    //int tempPoints;
     float scalePerPoint = 0.1f;
     float posPerPoint = 0.05f;
     private bool reached;
@@ -17,7 +19,7 @@ public class PlatformRise : MonoBehaviour
     void Start()
     {
         //totalPoints = 10;
-        tempPoints = 0;
+        //tempPoints = 0;
         reached = false;
         up = false;
     }
@@ -25,11 +27,14 @@ public class PlatformRise : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!startMove)
+            return;
+
         if (transform.localScale.y < testPoints * scalePerPoint) //totalPoints* scalePerPoint
         {
             time += Time.deltaTime;
 
-            transform.localPosition += new Vector3(0, posPerPoint * (Time.deltaTime * 1.5f), 0);
+            transform.localPosition += new Vector3(0, posPerPoint * (Time.deltaTime * 1), 0);
             //transform.localScale += new Vector3(0, scalePerPoint * (Time.deltaTime * 3.0f), 0);
 
             if (!up && transform.localScale.y < 1.2f * scalePerPoint * time * 1.5f)
