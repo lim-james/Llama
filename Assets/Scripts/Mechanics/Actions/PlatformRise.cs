@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlatformRise : MonoBehaviour
 {
+    public TeamName team;
     public int testPoints;
+    public bool startMove = false;
     //int totalPoints;
     //int tempPoints;
     float scalePerPoint = 0.1f;
@@ -25,6 +27,9 @@ public class PlatformRise : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!startMove)
+            return;
+
         if (transform.localScale.y < testPoints * scalePerPoint) //totalPoints* scalePerPoint
         {
             time += Time.deltaTime;
