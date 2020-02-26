@@ -20,7 +20,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.87288135
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -89,7 +89,7 @@ AnimatorStateMachine:
     m_Position: {x: 680, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2704475123592453124}
-    m_Position: {x: 380, y: 50, z: 0}
+    m_Position: {x: 400, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6045649226834704016}
     m_Position: {x: 680, y: -50, z: 0}
@@ -98,7 +98,7 @@ AnimatorStateMachine:
     m_Position: {x: 160, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -848817717923652317}
-    m_Position: {x: 380, y: -170, z: 0}
+    m_Position: {x: 400, y: -240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5987566663489945587}
     m_Position: {x: 680, y: -120, z: 0}
@@ -283,6 +283,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: IsSlugging
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsWalking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2704475123592453124}
   m_Solo: 0
@@ -331,7 +334,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsWalking
+    m_ConditionEvent: IsSlugging
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2704475123592453124}
@@ -551,7 +554,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.74137926
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -623,7 +626,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.87288135
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -753,6 +756,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: IsWalking
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsSlugging
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2704475123592453124}
   m_Solo: 0
@@ -881,7 +887,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: TriggerAttack
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5987566663489945587}
   m_Solo: 0

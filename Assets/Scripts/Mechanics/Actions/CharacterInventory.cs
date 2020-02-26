@@ -167,7 +167,11 @@ public class CharacterInventory : MonoBehaviour
         nearestFruit.GetComponent<Rigidbody>().velocity = Vector3.zero;
         nearestFruit.GetComponent<Collider>().enabled = false;
         nearestFruit.GetComponent<RangeDetector>().active = false;
-        nearestFruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        // TODO: Remove when all fruit now use the model gameobject as the child
+        if (nearestFruit.GetComponent<MeshRenderer>()) // Change to get MeshRenderer in gameobject child when theres a fruit. 
+            nearestFruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        else
+            nearestFruit.transform.GetChild(2).GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
         while (inventory.ContainsKey(selectedIndex) && inventory[selectedIndex] != null)
             ++selectedIndex;
@@ -192,13 +196,20 @@ public class CharacterInventory : MonoBehaviour
 
         if (fruit == null) return;
 
+        Debug.Log("Trigger attack");
+        gameObject.GetComponent<CharacterMovement>().GetAnimator.SetTrigger("TriggerAttack");
+
         fruit.transform.position = indicator.position + transform.forward * displacement + new Vector3(0.0f, 3.0f, 0.0f);
         fruit.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
         fruit.GetComponent<Rigidbody>().useGravity = true;
         fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * info.strength * 10.0f;
         fruit.GetComponent<Collider>().enabled = true;
         fruit.GetComponent<RangeDetector>().active = true;
-        fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+        // TODO: Remove when all fruit now use the model gameobject as the child
+        if (fruit.GetComponent<MeshRenderer>())
+            fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+        else
+            fruit.transform.GetChild(2).GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
 
         magnitude = 0.0f;
 
