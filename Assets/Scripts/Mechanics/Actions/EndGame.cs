@@ -13,6 +13,9 @@ public class EndGame : MonoBehaviour
 
     public Text timerText;
     public string endText;
+    public Camera endGameCamera;
+
+    private bool doOnce = false;
 
     public struct TeamScore
     {
@@ -44,10 +47,11 @@ public class EndGame : MonoBehaviour
 
         timer -= Time.deltaTime;
 
-        if (timer <= 0)
+        if (timer <= 0 && !doOnce)
         {
             CharacterInput[] characters = GameObject.FindObjectsOfType<CharacterInput>();
             PlayerBase[] playerBases = GameObject.FindObjectsOfType<PlayerBase>();
+            PlatformRise[] platforms = GameObject.FindObjectsOfType<PlatformRise>();
 
             timerText.text = endText;
 
@@ -62,7 +66,7 @@ public class EndGame : MonoBehaviour
             for (int i = 0; i < playerBases.Length; ++i)
             {
                 int playerID = playerBases[i].playerID;
-                for (int j = 0; i < characters.Length; ++j)
+                for (int j = 0; j < characters.Length; ++j)
                 {
                     if (characters[j].GetComponent<CharacterInfo>().playerID != playerID)
                         continue;
@@ -73,17 +77,47 @@ public class EndGame : MonoBehaviour
             }
 
             //Check if it is a draw situation
+            /*
             if (CheckIfDraw(points))
             {
                 //Do Pondium Here
                 return;
             }
+            */
 
             //Sort the score
             List<TeamScore> teamScores = GetPlacement(points);
+
             //Do Pondium here
+            for (int i = 0; i < platforms.Length; ++i)
+            {
+                for (int j = 0; j < teamScores.Count; ++j)
+                {
+                    if (platforms[i].team == teamScores[j].teamName)
+                    {
+                        platforms[i].testPoints = teamScores[j].points;
+                        break;
+                    }
+                }
+
+                for (int j = 0; j < characters.Length; ++j)
+                {
+                    if (characters[j].GetComponent<CharacterInfo>().team == platforms[i].team)
+                    {
+                        characters[j].transform.position = platforms[i].transform.position;
+                        break;
+                    }
+                }
+
+                platforms[i].startMove = true;
+            }
+
+            Camera.main.gameObject.SetActive(false);
+            endGameCamera.gameObject.SetActive(true);
+            endGameCamera.tag = "MainCamera";
+            doOnce = true;
         }
-        else
+        else if(!doOnce)
         {
             timerText.text = Mathf.CeilToInt(timer).ToString();
         }
