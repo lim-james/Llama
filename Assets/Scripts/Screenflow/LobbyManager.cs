@@ -14,7 +14,7 @@ public class LobbyManager : MonoBehaviour
             JoinInfo info = new JoinInfo();
             info.characterType = input.characterIndex;
             info.team = input.index;
-            info.isAI = input.connected;
+            info.isAI = !input.connected;
             PlayerManager.playerQueue.Add(info);
         }
 
