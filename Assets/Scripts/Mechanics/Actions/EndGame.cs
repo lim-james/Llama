@@ -118,9 +118,9 @@ public class EndGame : MonoBehaviour
             doOnce = true;
 
             //if()
-            {
-                endGameCamera.transform.up += new Vector3(0, Time.deltaTime, 0);
-            }
+            //{
+            //    endGameCamera.transform.up += new Vector3(0, Time.deltaTime, 0);
+            //}
         }
         else if(!doOnce)
         {
