@@ -11,13 +11,15 @@ public class MapScaling : MonoBehaviour
     private Vector3 startSize;
     [SerializeField]
     private Vector3 endSize;
-
+    
     private float et;
     private BoxCollider boxCollider;
+    private MeshRenderer mesh;
 
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider>();
+        mesh = GetComponent<MeshRenderer>();
     }
 
     private void Start()
@@ -28,6 +30,7 @@ public class MapScaling : MonoBehaviour
     private void Update()
     {
         et += Time.deltaTime;
+        mesh.material.SetFloat("Vector1_DD476967", et);
 
         if (et >= 0.0f && et < duration)
         {
