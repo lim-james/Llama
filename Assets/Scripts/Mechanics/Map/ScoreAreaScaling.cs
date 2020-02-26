@@ -21,6 +21,7 @@ public class ScoreAreaScaling : MonoBehaviour
     public bool startTimer = false;
 
     private bool activatedEndGame = false;
+    private bool activateStartGame = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -44,6 +45,16 @@ public class ScoreAreaScaling : MonoBehaviour
         {
             GameObject.FindObjectOfType<EndGame>().StartEndGame();
             activatedEndGame = true;
+        }
+
+        if (timer >= 0 && !activateStartGame)
+        {
+            CharacterInput[] characterMovements = GameObject.FindObjectsOfType<CharacterInput>();
+            for (int i = 0; i < characterMovements.Length; ++i)
+            {
+                characterMovements[i].moveable = true;
+            }
+            activateStartGame = true;
         }
     }
 
