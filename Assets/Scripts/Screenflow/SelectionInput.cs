@@ -107,7 +107,7 @@ public class SelectionInput : MonoBehaviour
             index = 0;
 
         background.color = teams.group[index].color;
-        label.text = teams.group[index].name.ToString();
+        label.text = teams.group[index].name.ToString() + " TEAM";
 
         versusText.ChangeText();
     }
