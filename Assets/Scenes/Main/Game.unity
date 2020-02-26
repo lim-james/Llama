@@ -358,7 +358,7 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 21
-  time: -20.646666
+  time: -20.96
   distance: 65
   followMultipler: 1
 --- !u!1 &64373649
@@ -770,7 +770,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189668840}
-  m_LocalRotation: {x: -0.07490372, y: 0.6073195, z: 0.057669517, w: 0.7888135}
+  m_LocalRotation: {x: -0.07490373, y: 0.6073195, z: 0.057669517, w: 0.78881353}
   m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1892,7 +1892,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384363002}
-  m_LocalRotation: {x: 0.1466444, y: 0.45024794, z: -0.07523859, w: 0.8775599}
+  m_LocalRotation: {x: 0.14664888, y: 0.4502477, z: -0.07524092, w: 0.8775591}
   m_LocalPosition: {x: -21, y: 28, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2484,7 +2484,7 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 21
-  time: -20.646666
+  time: -20.96
   distance: 65
   followMultipler: 1
 --- !u!114 &477282917
@@ -4366,7 +4366,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972665132}
-  m_LocalRotation: {x: 0.0008442508, y: 0.99266964, z: -0.120656714, w: 0.0069457735}
+  m_LocalRotation: {x: 0.00084433245, y: 0.99266833, z: -0.12066765, w: 0.0069458056}
   m_LocalPosition: {x: 21, y: 28, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5581,7 +5581,7 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 5
-  time: -4.6466665
+  time: -4.96
   distance: 65
   followMultipler: 1
 --- !u!114 &1088370995
@@ -6748,7 +6748,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475759004}
-  m_LocalRotation: {x: 0.10220922, y: -0.045664188, z: 0.0046968563, w: 0.9937032}
+  m_LocalRotation: {x: 0.10220913, y: -0.04566412, z: 0.0046968455, w: 0.9937032}
   m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8652,7 +8652,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af6843b84a881d42af42157b9319617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: []
+  players:
+  - characterType: 0
+    team: 0
+    isAI: 0
+  - characterType: 1
+    team: 0
+    isAI: 0
   container: {fileID: 1677704185}
   characters: {fileID: 11400000, guid: b8fdd0601afdfd940a59f9a0dbe5eeac, type: 2}
   teams: {fileID: 11400000, guid: f7ea20a7b0bd24440b00473755ae796b, type: 2}
