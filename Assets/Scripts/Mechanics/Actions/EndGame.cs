@@ -15,6 +15,8 @@ public class EndGame : MonoBehaviour
     public string endText;
     public Camera endGameCamera;
 
+    public GameObject[] fireworks;
+    public Transform[] fireworksLocation;
     private bool doOnce = false;
 
     public struct TeamScore
@@ -118,6 +120,15 @@ public class EndGame : MonoBehaviour
             endGameCamera.tag = "MainCamera";
             doOnce = true;
 
+            Instantiate(fireworks[0], fireworksLocation[0].position, fireworksLocation[0].rotation);
+            Instantiate(fireworks[1], fireworksLocation[1].position, fireworksLocation[1].rotation);
+                                 
+            Instantiate(fireworks[0], fireworksLocation[2].position, fireworksLocation[2].rotation);
+            Instantiate(fireworks[1], fireworksLocation[3].position, fireworksLocation[3].rotation);
+                                 
+            Instantiate(fireworks[0], fireworksLocation[4].position, fireworksLocation[4].rotation);
+            Instantiate(fireworks[1], fireworksLocation[5].position, fireworksLocation[5].rotation);
+            
             //if()
             //{
             //    endGameCamera.transform.up += new Vector3(0, Time.deltaTime, 0);
