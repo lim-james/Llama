@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 287bd77eb7d323a4e832c6c6c9f45e73
+guid: 4e9913df6c0ab154caa1da8c01e5f035
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
-      74: 2312838991893289549
-    second: '[Sniper] Walking'
+      74: 2157117808382569344
+    second: Damaged
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: '[Sniper] Walking'
-      takeName: mov
+      name: Damaged
+      takeName: Damaged
       internalID: 0
-      firstFrame: 1
-      lastFrame: 90
+      firstFrame: 0
+      lastFrame: 46
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -62,18 +62,18 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.5
+    globalScale: 0.6
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
+    importCameras: 0
     importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -112,12 +112,12 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.5
+    globalScale: 0.6
     rootMotionBoneName: Main_CTRL
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 66cf3b9d40da2f44a9aee342fa98f9dd,
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: b905df35a5b410140a1d4f7e8535bbba,
     type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
