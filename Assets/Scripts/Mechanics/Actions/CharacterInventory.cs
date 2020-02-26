@@ -48,9 +48,9 @@ public class CharacterInventory : MonoBehaviour
         {
             _magnitude = value;
 
-            float length = 5.0f * magnitude;
-            //indicator.localPosition = new Vector3(0.0f, 0.5f, length * 0.5f + 2.0f);
-            indicator.localScale = new Vector3(length, 0.2f, 0.2f);
+            float length = magnitude * 0.25f;
+            indicator.localPosition = new Vector3(0.0f, 1.0f, length * 0.5f + 4.0f);
+            indicator.localScale = new Vector3(0.2f, length, 0.2f);
         }
 
     }
