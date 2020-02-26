@@ -13,11 +13,27 @@ MonoBehaviour:
   m_Name: CharacterType
   m_EditorClassIdentifier: 
   group:
-  - characterModel: {fileID: 6310764715377578174, guid: e50b8cb0661ad1d4981942cb4d7a9350,
+  - characterModel: {fileID: 9165447892462473620, guid: e96234b0e5fbf0b4896ad3372e8b5bab,
       type: 3}
+    strength: {fileID: 2800000, guid: 618597a6d0e3ccf49be12a4e4789999a, type: 3}
+    speed: {fileID: 2800000, guid: 03f5bad041b795545a672a6493e59ea5, type: 3}
+    weight: {fileID: 2800000, guid: 542de4115e913f24ab9df586d7d9a399, type: 3}
+    balance: {fileID: 2800000, guid: 08aa3278e52a0bd4f8d9342af65a5f18, type: 3}
   - characterModel: {fileID: 6310764715377578174, guid: c5e48b2169be9ca4db6e75fde7e84990,
       type: 3}
-  - characterModel: {fileID: 6310764715377578174, guid: b8d6d10ff1b0867499515a650dd7407b,
+    strength: {fileID: 2800000, guid: 3136f464fcadb0249846ce6fc57f3231, type: 3}
+    speed: {fileID: 2800000, guid: 03f5bad041b795545a672a6493e59ea5, type: 3}
+    weight: {fileID: 2800000, guid: 2094b476bb08c7a40a15decffe50778d, type: 3}
+    balance: {fileID: 2800000, guid: 08aa3278e52a0bd4f8d9342af65a5f18, type: 3}
+  - characterModel: {fileID: 3588101147206997429, guid: 1ec9ea366c7eba146ac5b3de2697304a,
       type: 3}
-  - characterModel: {fileID: 6310764715377578174, guid: fb3ae46cfbd5b0b4d866eca80617c55b,
+    strength: {fileID: 2800000, guid: 5a3c3750f0957504881ad2f51d226cb4, type: 3}
+    speed: {fileID: 2800000, guid: 2724589946464df4bbf33fee889a99c3, type: 3}
+    weight: {fileID: 2800000, guid: 9e095f8f9ff7e054ab7ecae92d9af96b, type: 3}
+    balance: {fileID: 2800000, guid: 74a124f7587165344b905015ab7b2099, type: 3}
+  - characterModel: {fileID: 7604653628284998899, guid: 930a997250db076458f67135ca3fdd7c,
       type: 3}
+    strength: {fileID: 2800000, guid: a635d3c4b00c9404181cedad1872cc35, type: 3}
+    speed: {fileID: 2800000, guid: 4eaf9177dfafc054a9030f9ea188d324, type: 3}
+    weight: {fileID: 2800000, guid: 8f72df4e335a17c44b9e0c46138fd95c, type: 3}
+    balance: {fileID: 2800000, guid: 08aa3278e52a0bd4f8d9342af65a5f18, type: 3}
