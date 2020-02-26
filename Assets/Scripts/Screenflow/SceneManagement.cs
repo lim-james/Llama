@@ -31,8 +31,8 @@ public class SceneManagement : MonoBehaviour
     {
         switch (gameObject.name)
         {
-            case "Options":
-                SceneManager.LoadScene("Options");
+            case "Controls":
+                SceneManager.LoadScene("Controls");
                 break;
             case "BackToHome":
                 SceneManager.LoadScene("Home");
