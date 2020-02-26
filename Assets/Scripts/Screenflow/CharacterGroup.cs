@@ -1,10 +1,15 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Serializable]
 public class CharacterType
 {
     public GameObject characterModel;
+    public Texture strength;
+    public Texture speed;
+    public Texture weight;
+    public Texture balance;
 
     public CharacterType(GameObject _characterModel)
     {
