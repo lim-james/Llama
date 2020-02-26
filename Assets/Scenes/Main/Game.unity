@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -299,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36676505}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 54.978058, z: -31.741598}
+  m_LocalPosition: {x: 0, y: 56.29165, z: -32.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -358,8 +358,8 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 21
-  time: 0.758401
-  distance: 63.483196
+  time: -4.475144
+  distance: 65
   followMultipler: 1
 --- !u!1 &64373649
 GameObject:
@@ -770,7 +770,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189668840}
-  m_LocalRotation: {x: -0.07490372, y: 0.6073195, z: 0.057669517, w: 0.7888135}
+  m_LocalRotation: {x: -0.07490373, y: 0.6073195, z: 0.057669517, w: 0.78881353}
   m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2072,7 +2072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &468952483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2162,13 +2162,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468952482}
-  m_LocalRotation: {x: 0.21493626, y: -0, z: -0, w: 0.97662807}
-  m_LocalPosition: {x: 172.42, y: 93, z: -67.82}
+  m_LocalRotation: {x: 0.18324773, y: -0, z: -0, w: 0.9830668}
+  m_LocalPosition: {x: 172.42, y: 94.83, z: -66.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 24.824001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 21.118002, y: 0, z: 0}
 --- !u!1 &473072952
 GameObject:
   m_ObjectHideFlags: 3
@@ -2484,7 +2484,7 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 21
-  time: -20.98
+  time: -4.475144
   distance: 65
   followMultipler: 1
 --- !u!114 &477282917
@@ -3335,6 +3335,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sniper Llama (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341381891492109688, guid: 182615243c5084c4895e3dcd65b63520,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341381891492109710, guid: 182615243c5084c4895e3dcd65b63520,
         type: 3}
@@ -4361,7 +4366,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972665132}
-  m_LocalRotation: {x: 0.00084650633, y: 0.99267, z: -0.12065267, w: 0.0069648796}
+  m_LocalRotation: {x: 0.0008465335, y: 0.99267, z: -0.12065267, w: 0.0069648395}
   m_LocalPosition: {x: 21, y: 28, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5571,8 +5576,8 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 5
-  time: -4.98
-  distance: 65
+  time: 11.524843
+  distance: 41.950314
   followMultipler: 1
 --- !u!114 &1088370995
 MonoBehaviour:

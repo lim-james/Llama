@@ -7,6 +7,7 @@ public class Countdown : MonoBehaviour
 {
     private bool large;
     private bool done;
+    private bool end;
     [SerializeField]
     private Camera cam;
     [SerializeField]
@@ -23,6 +24,7 @@ public class Countdown : MonoBehaviour
     {
         large = false;
         done = false;
+        end = false;
     }
 
     // Update is called once per frame
@@ -94,12 +96,13 @@ public class Countdown : MonoBehaviour
             if (GetComponent<Text>().fontSize > 200)
                 GetComponent<Text>().fontSize = GetComponent<Text>().fontSize - (int)(Time.deltaTime * 800);
         }
-        else if (Time.timeSinceLevelLoad >= 21)
+        else if (!end && Time.timeSinceLevelLoad >= 21)
         {
             gameObject.active = false;
             //cam.cullingMask |= (1 << LayerMask.NameToLayer("UI"));
             maincam.gameObject.active = true;
             cam.gameObject.active = false;
+            end = true;
         }
     }
 }

@@ -116,6 +116,11 @@ public class EndGame : MonoBehaviour
             endGameCamera.gameObject.SetActive(true);
             endGameCamera.tag = "MainCamera";
             doOnce = true;
+
+            //if()
+            {
+                endGameCamera.transform.up += new Vector3(0, Time.deltaTime, 0);
+            }
         }
         else if(!doOnce)
         {
