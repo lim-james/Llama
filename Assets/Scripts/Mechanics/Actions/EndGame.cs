@@ -112,6 +112,7 @@ public class EndGame : MonoBehaviour
                 platforms[i].startMove = true;
             }
 
+            timerText.gameObject.SetActive(false);
             Camera.main.gameObject.SetActive(false);
             endGameCamera.gameObject.SetActive(true);
             endGameCamera.tag = "MainCamera";
