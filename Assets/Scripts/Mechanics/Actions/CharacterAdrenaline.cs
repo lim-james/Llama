@@ -17,11 +17,11 @@ public class CharacterAdrenaline : MonoBehaviour
     private bool frenzy = false;
 
     [SerializeField]
-    private int frenzySpeedBoost = 20;
+    private int frenzySpeedBoost = 5;
     [SerializeField]
-    private int frenzyStrengthBoost = 20;
+    private int frenzyStrengthBoost = 5;
     [SerializeField]
-    private int frenzyBalanceBoost = 20;
+    private int frenzyBalanceBoost = 5;
 
     private void Awake()
     {
