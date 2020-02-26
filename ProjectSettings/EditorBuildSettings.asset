@@ -18,9 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Sandbox/Screenflow/Home.unity
     guid: 9c489d7add87af14baf97d22e336faac
   - enabled: 1
-    path: Assets/Scenes/Sandbox/Screenflow/Lobbies.unity
-    guid: 51c7d7fbda608b344b0623fddd7f6a4b
-  - enabled: 1
     path: Assets/Scenes/Sandbox/Screenflow/Lobby.unity
     guid: 5a6d2c910b2489644a2248a536d96ea6
   - enabled: 1
@@ -35,6 +32,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Merge/Base.unity
     guid: 79b5c722dc246f142961320484989389
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/Screenflow/Credits.unity
+    guid: c7f0b39e98c66b7479dd8e6ee8b1c927
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/Screenflow/Controls.unity
+    guid: 5c169fd143842224b8f916d85e946c5a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 19753f716f54ebc42a6418d3a459d513,
       type: 2}

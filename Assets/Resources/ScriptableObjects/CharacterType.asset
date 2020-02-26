@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CharacterType
   m_EditorClassIdentifier: 
   group:
-  - characterModel: {fileID: 9165447892462473620, guid: e96234b0e5fbf0b4896ad3372e8b5bab,
+  - characterModel: {fileID: 4344219893659585650, guid: 0314dcb41f938e14c9dbb43adf65f8f6,
       type: 3}
     strength: {fileID: 2800000, guid: 618597a6d0e3ccf49be12a4e4789999a, type: 3}
     speed: {fileID: 2800000, guid: 03f5bad041b795545a672a6493e59ea5, type: 3}
