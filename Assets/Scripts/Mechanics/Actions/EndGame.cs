@@ -112,10 +112,16 @@ public class EndGame : MonoBehaviour
                 platforms[i].startMove = true;
             }
 
+            timerText.gameObject.SetActive(false);
             Camera.main.gameObject.SetActive(false);
             endGameCamera.gameObject.SetActive(true);
             endGameCamera.tag = "MainCamera";
             doOnce = true;
+
+            //if()
+            //{
+            //    endGameCamera.transform.up += new Vector3(0, Time.deltaTime, 0);
+            //}
         }
         else if(!doOnce)
         {

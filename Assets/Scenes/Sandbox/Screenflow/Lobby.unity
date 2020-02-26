@@ -994,7 +994,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RED TEAM
+  m_Text: BLUE TEAM
 --- !u!222 &340646135
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1401,7 +1401,7 @@ PrefabInstance:
     - target: {fileID: 6105298088399532709, guid: c5e48b2169be9ca4db6e75fde7e84990,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6105298088399532709, guid: c5e48b2169be9ca4db6e75fde7e84990,
         type: 3}
@@ -3872,7 +3872,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RED TEAM
+  m_Text: YELLOW TEAM
 --- !u!222 &1904821571
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3949,7 +3949,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RED TEAM
+  m_Text: GREEN TEAM
 --- !u!222 &1913016672
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4028,7 +4028,7 @@ PrefabInstance:
     - target: {fileID: 6105298088399532709, guid: e50b8cb0661ad1d4981942cb4d7a9350,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6105298088399532709, guid: e50b8cb0661ad1d4981942cb4d7a9350,
         type: 3}
