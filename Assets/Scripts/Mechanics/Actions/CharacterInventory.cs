@@ -48,9 +48,9 @@ public class CharacterInventory : MonoBehaviour
         {
             _magnitude = value;
 
-            float length = 5.0f * magnitude;
-            //indicator.localPosition = new Vector3(0.0f, 0.5f, length * 0.5f + 2.0f);
-            indicator.localScale = new Vector3(length, 0.2f, 0.2f);
+            float length = magnitude * 0.25f;
+            indicator.localPosition = new Vector3(0.0f, 1.0f, length * 0.5f + 4.0f);
+            indicator.localScale = new Vector3(0.2f, length, 0.2f);
         }
 
     }
@@ -162,7 +162,7 @@ public class CharacterInventory : MonoBehaviour
 
         gameObject.GetComponent<CharacterMovement>().GetAnimator.SetTrigger("TriggerPickup");
 
-        nearestFruit.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+        nearestFruit.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
         nearestFruit.GetComponent<Rigidbody>().useGravity = false;
         nearestFruit.GetComponent<Rigidbody>().velocity = Vector3.zero;
         nearestFruit.GetComponent<Collider>().enabled = false;
@@ -200,7 +200,7 @@ public class CharacterInventory : MonoBehaviour
         gameObject.GetComponent<CharacterMovement>().GetAnimator.SetTrigger("TriggerAttack");
 
         fruit.transform.position = indicator.position + transform.forward * displacement + new Vector3(0.0f, 3.0f, 0.0f);
-        fruit.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+        fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         fruit.GetComponent<Rigidbody>().useGravity = true;
         fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * info.strength * 10.0f;
         fruit.GetComponent<Collider>().enabled = true;

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Toon
-  m_Shader: {fileID: -6465566751694194690, guid: bace61da4d5194349a999ba4e04ffbaa,
+  m_Shader: {fileID: -6465566751694194690, guid: bf4641cea51268b439b45dd0857996ab,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -19,21 +19,17 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - Texture2D_38F7D49:
+        m_Texture: {fileID: 2800000, guid: 6184d329e9661114384a69e583e58ecb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_3101DEC7: 0.2
-    - Vector1_8BCEC8ED: 1
-    - Vector1_99333218: 0.09
-    - Vector1_9F7E8220: 0.032
-    - Vector1_D9D6BB97: 4
+    - Vector1_3817649F: 0.3
+    - Vector1_FA1205ED: 0.5
     m_Colors:
-    - Color_3B617471: {r: 0.011764706, g: 0.011764706, b: 0.011764706, a: 1}
-    - Color_4F82A922: {r: 0.47843137, g: 0.47843137, b: 0.47843137, a: 1}
-    - Color_97AC7344: {r: 1, g: 1, b: 1, a: 1}
-    - Color_9D263AC1: {r: 1, g: 1, b: 1, a: 1}
-    - Color_C5CFFE14: {r: 1, g: 1, b: 1, a: 1}
-    - Color_DFF5EF3C: {r: 1, g: 1, b: 1, a: 1}
-    - Vector3_7551E12: {r: 0.48, g: 2, b: -2, a: 0}
+    - Color_586483B: {r: 1, g: 1, b: 1, a: 1}
+    - Color_BE670611: {r: 1, g: 0.5566038, b: 0.5566038, a: 1}
 --- !u!114 &703026737772403873
 MonoBehaviour:
   m_ObjectHideFlags: 11

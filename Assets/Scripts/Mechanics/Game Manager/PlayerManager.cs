@@ -63,8 +63,7 @@ public class PlayerManager : MonoBehaviour
             llama.position = position;
             // add to container
             llama.parent = container;
+            llama.GetComponent<CharacterInput>().moveable = false;
         }
-        
     }
-
 }
