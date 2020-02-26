@@ -7,6 +7,16 @@ public class Countdown : MonoBehaviour
 {
     private bool large;
     private bool done;
+    [SerializeField]
+    private Camera cam;
+    [SerializeField]
+    private Camera maincam;
+
+    private GameObject cameraObj;
+    private void Awake()
+    {
+       
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -85,6 +95,11 @@ public class Countdown : MonoBehaviour
                 GetComponent<Text>().fontSize = GetComponent<Text>().fontSize - (int)(Time.deltaTime * 800);
         }
         else if (Time.timeSinceLevelLoad >= 21)
+        {
             gameObject.active = false;
+            //cam.cullingMask |= (1 << LayerMask.NameToLayer("UI"));
+            maincam.gameObject.active = true;
+            cam.gameObject.active = false;
+        }
     }
 }
