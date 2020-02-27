@@ -73,6 +73,7 @@ public class SelectionInput : MonoBehaviour
 
     private void Start()
     {
+        input.Enable();
         background.color = teams.group[index].color;
 
         temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.localPosition, characterModel.transform.localRotation);
@@ -95,6 +96,11 @@ public class SelectionInput : MonoBehaviour
                 input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);
             }
         }
+    }
+
+    public void Unbind()
+    {
+        input.Disable();
     }
 
     private void SwitchTeamHandler(InputAction.CallbackContext context)
