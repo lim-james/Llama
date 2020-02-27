@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: baby_Llama_Cel
+  m_Name: Green
   m_Shader: {fileID: -6465566751694194690, guid: bf4641cea51268b439b45dd0857996ab,
     type: 3}
   m_ShaderKeywords: 
@@ -21,15 +21,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_38F7D49:
-        m_Texture: {fileID: 2800000, guid: a4b12218b7ec1b34489616e071403d07, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2aa2d7c9c755c7a41b33c05e308b1920, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_39FBBE5B:
-        m_Texture: {fileID: 2800000, guid: f7dc37f958b634f44b07afdec34cc933, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7042cfec559232843882b45cfb91ad7d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_4988FEEB:
-        m_Texture: {fileID: 2800000, guid: e736edf8f5eecc849b5878e5910f09e8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 696adc47bd83b7145be03c8e600fcfaa, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_50969C62:
@@ -37,19 +37,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_7EA75246:
-        m_Texture: {fileID: 2800000, guid: 1bbe53cd7688f1b4d9b3e7576bdddcad, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7ccf37929c8a784478241229c6568257, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_B40F2BE1:
-        m_Texture: {fileID: 2800000, guid: 89a5def4e742b514c93e87aa384f73e8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 691ac129c45428944982b5a146626870, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_F4DF77C4:
-        m_Texture: {fileID: 2800000, guid: ec946c8c12e3f3c4ba298c321e7781e4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 24f6d3a97969dcc47a07df5587fb70cb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 89a5def4e742b514c93e87aa384f73e8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 691ac129c45428944982b5a146626870, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -57,19 +57,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1bbe53cd7688f1b4d9b3e7576bdddcad, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7ccf37929c8a784478241229c6568257, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: ec946c8c12e3f3c4ba298c321e7781e4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 24f6d3a97969dcc47a07df5587fb70cb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: f7dc37f958b634f44b07afdec34cc933, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7042cfec559232843882b45cfb91ad7d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 2800000, guid: e736edf8f5eecc849b5878e5910f09e8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 696adc47bd83b7145be03c8e600fcfaa, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -79,7 +79,7 @@ Material:
     - Boolean_424468B5: 1
     - Boolean_61B05CA7: 1
     - Boolean_BE58E13: 1
-    - Vector1_3817649F: 0.5
+    - Vector1_3817649F: 0.35
     - Vector1_4A8194BE: 0
     - Vector1_E49B8461: 0
     - _Glossiness: 0.33
