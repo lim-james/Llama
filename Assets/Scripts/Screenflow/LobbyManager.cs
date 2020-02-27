@@ -15,6 +15,8 @@ public class LobbyManager : MonoBehaviour
             info.characterType = input.characterIndex;
             info.team = input.index;
             info.isAI = !input.connected;
+
+            input.Unbind();
             PlayerManager.playerQueue.Add(info);
         }
 
