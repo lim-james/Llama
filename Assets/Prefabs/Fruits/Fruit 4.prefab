@@ -514,7 +514,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.0000000025029294, y: 0}
+  m_SizeDelta: {x: -1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5926076889573689916
 CanvasRenderer:
@@ -546,7 +546,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 1
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
@@ -555,9 +555,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'ApexApple
-
-'
+  m_Text: ApexApple
 --- !u!1 &9006177537170877691
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,12 +732,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: aa6a44b2a138ff140a9de1cc4fc2c7e4, type: 2}
+      objectReference: {fileID: 2100000, guid: a88957543f0042a43be38aeb48d94496, type: 2}
     - target: {fileID: -1504981713932161579, guid: 6690970730aa4de45a3cf984947cc65a,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: aa6a44b2a138ff140a9de1cc4fc2c7e4, type: 2}
+      objectReference: {fileID: 2100000, guid: d15b3cecc9fd3a745862ca4b338e9fdc, type: 2}
     - target: {fileID: -927199367670048503, guid: 6690970730aa4de45a3cf984947cc65a,
         type: 3}
       propertyPath: m_Name
