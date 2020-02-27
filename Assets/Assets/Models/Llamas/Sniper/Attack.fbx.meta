@@ -6,7 +6,17 @@ ModelImporter:
   - first:
       74: 6720303635017113406
     second: Attack
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StingrayPBS1
+    second: {fileID: 2100000, guid: a11fae86893ef974b98eafbbc720c17c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StingrayPBS2
+    second: {fileID: 2100000, guid: 0e12d3488bcd1c241884ea1fbbd6dd6d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
