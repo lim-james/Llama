@@ -131,7 +131,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 3eeaaa284309d7341b272c01f9e409d2, type: 2}
   layer:
     serializedVersion: 2
-    m_Bits: 3895
+    m_Bits: 1847
 --- !u!114 &7369868421922548642
 MonoBehaviour:
   m_ObjectHideFlags: 0

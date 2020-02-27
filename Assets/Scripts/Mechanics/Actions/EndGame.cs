@@ -60,6 +60,8 @@ public class EndGame : MonoBehaviour
             //Stop all character movement
             for (int i = 0; i < characters.Length; ++i)
             {
+                characters[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+                characters[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
                 characters[i].moveable = false;
             }
 
@@ -107,6 +109,7 @@ public class EndGame : MonoBehaviour
                     if (characters[j].GetComponent<CharacterInfo>().team == platforms[i].team)
                     {
                         characters[j].transform.position = platforms[i].transform.position;
+                        characters[j].transform.localEulerAngles = new Vector3(0, platforms[i].transform.localEulerAngles.y, 0);
                         break;
                     }
                 }
