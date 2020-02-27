@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlatformRise : MonoBehaviour
 {
     public TeamName team;
-    public int testPoints;
+    public float testPoints;
     public bool startMove = false;
     //int totalPoints;
     //int tempPoints;
@@ -30,7 +30,7 @@ public class PlatformRise : MonoBehaviour
         if (!startMove)
             return;
 
-        if (transform.localScale.y < testPoints * scalePerPoint) //totalPoints* scalePerPoint
+        if (transform.localScale.y < testPoints) //totalPoints* scalePerPoint
         {
             time += Time.deltaTime;
 

@@ -64,6 +64,11 @@ public class PlayerManager : MonoBehaviour
             // add to container
             llama.parent = container;
             llama.GetComponent<CharacterInput>().moveable = false;
+
+            if(i < 2)
+            {
+                llama.transform.rotation = new Quaternion(0, 180, 0, 0);
+            }
         }
     }
 }
