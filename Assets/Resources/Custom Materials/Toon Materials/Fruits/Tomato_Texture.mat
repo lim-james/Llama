@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Yellow
+  m_Name: Tomato_Texture
   m_Shader: {fileID: -6465566751694194690, guid: bf4641cea51268b439b45dd0857996ab,
     type: 3}
   m_ShaderKeywords: 
@@ -25,11 +25,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_39FBBE5B:
-        m_Texture: {fileID: 2800000, guid: 7042cfec559232843882b45cfb91ad7d, type: 3}
+        m_Texture: {fileID: 2800000, guid: f5eb10aff90c1b94bb8370a102ee99ac, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_4988FEEB:
-        m_Texture: {fileID: 2800000, guid: 696adc47bd83b7145be03c8e600fcfaa, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8d1f57f9bea006040b60aa5ba7df948b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_50969C62:
@@ -37,19 +37,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_7EA75246:
-        m_Texture: {fileID: 2800000, guid: 7ccf37929c8a784478241229c6568257, type: 3}
+        m_Texture: {fileID: 2800000, guid: d8d211118af082848b300d4184548573, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_B40F2BE1:
-        m_Texture: {fileID: 2800000, guid: 691ac129c45428944982b5a146626870, type: 3}
+        m_Texture: {fileID: 2800000, guid: 18e14ca701cd7cd4cada8a498dbf499a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_F4DF77C4:
-        m_Texture: {fileID: 2800000, guid: 24f6d3a97969dcc47a07df5587fb70cb, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 691ac129c45428944982b5a146626870, type: 3}
+        m_Texture: {fileID: 2800000, guid: 18e14ca701cd7cd4cada8a498dbf499a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -61,39 +61,40 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7ccf37929c8a784478241229c6568257, type: 3}
+        m_Texture: {fileID: 2800000, guid: d8d211118af082848b300d4184548573, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 24f6d3a97969dcc47a07df5587fb70cb, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 7042cfec559232843882b45cfb91ad7d, type: 3}
+        m_Texture: {fileID: 2800000, guid: f5eb10aff90c1b94bb8370a102ee99ac, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 2800000, guid: 696adc47bd83b7145be03c8e600fcfaa, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8d1f57f9bea006040b60aa5ba7df948b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Boolean_107A9F88: 1
     - Boolean_2CA50234: 0
-    - Boolean_2D475567: 1
+    - Boolean_2D475567: 0
     - Boolean_424468B5: 1
     - Boolean_61B05CA7: 1
     - Boolean_BE58E13: 1
+    - Vector1_30B933D4: 0
     - Vector1_3817649F: 0.35
     - Vector1_4A8194BE: 0
     - Vector1_E49B8461: 0
-    - _Ambient: 0.35
+    - _Ambient: 0.3
     - _EmissionIntensity: 1
     - _Glossiness: 0.33
     - _Metallic: 0
     - _UseAoMap: 1
     - _UseColorMap: 1
     - _UseEmissiveMap: 0
-    - _UseMetallicMap: 1
+    - _UseMetallicMap: 0
     - _UseNormalMap: 1
     - _UseRoughnessMap: 1
     m_Colors:
