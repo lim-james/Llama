@@ -95,6 +95,16 @@ public class EndGame : MonoBehaviour
             //Sort the score
             List<TeamScore> teamScores = GetPlacement(points);
 
+            // find player with highest score
+            float highestScore = 0; ;
+            for(int i = 0; i < teamScores.Count; ++i)
+            {
+                if(teamScores[i].points > highestScore)
+                {
+                    highestScore = teamScores[i].points;
+                }
+            }
+
             //Do Pondium here
             for (int i = 0; i < platforms.Length; ++i)
             {
@@ -102,7 +112,11 @@ public class EndGame : MonoBehaviour
                 {
                     if (platforms[i].team == teamScores[j].teamName)
                     {
-                        platforms[i].testPoints = teamScores[j].points;
+                        if (teamScores[j].points == highestScore) // player with highest score
+                            platforms[i].testPoints = 2.2f;
+                        else
+                            platforms[i].testPoints = (teamScores[j].points / highestScore) * 2.2f;
+
                         break;
                     }
                 }
