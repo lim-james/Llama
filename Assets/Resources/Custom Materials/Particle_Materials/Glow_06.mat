@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Glow_03
+  m_Name: Glow_06
   m_Shader: {fileID: -6465566751694194690, guid: 534106e5b7ddd8543a96ab1be277c413,
     type: 3}
   m_ShaderKeywords: 
@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_CEB7AAFB: -1
+    - Vector1_CEB7AAFB: -0.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

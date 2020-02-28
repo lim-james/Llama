@@ -7,16 +7,24 @@ public class Versus : MonoBehaviour
 {
     [SerializeField]
     private TeamGroup teams;
+    //[SerializeField]
+    //private Image player1;
+    //[SerializeField]
+    //private Image player2;
+    //[SerializeField]
+    //private Image player3;
+    //[SerializeField]
+    //private Image player4;
     [SerializeField]
-    private Image player1;
+    private RawImage player1;
     [SerializeField]
-    private Image player2;
+    private RawImage player2;
     [SerializeField]
-    private Image player3;
+    private RawImage player3;
     [SerializeField]
-    private Image player4;
+    private RawImage player4;
 
-    private Image[] players = new Image[4];
+    private RawImage[] players = new RawImage[4];
 
     private void Awake()
     {
@@ -46,13 +54,13 @@ public class Versus : MonoBehaviour
 
         for(int i = 0; i < 4; ++i)
         {
-            if (players[i].color == teams.group[0].color)
+            if (players[i].texture == teams.group[0].teamBackground)
                 red++;
-            else if (players[i].color == teams.group[1].color)
+            else if (players[i].texture == teams.group[1].teamBackground)
                 blue++;
-            else if (players[i].color == teams.group[2].color)
+            else if (players[i].texture == teams.group[2].teamBackground)
                 green++;
-            else if(players[i].color == teams.group[3].color)
+            else if(players[i].texture == teams.group[3].teamBackground)
                 yellow++;
         }
 

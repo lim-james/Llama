@@ -15,6 +15,7 @@ public class EndGame : MonoBehaviour
     public string endText;
     public Camera endGameCamera;
 
+    public GameObject frenzyHue;
     public GameObject Shockwave;
     public GameObject[] fireworks;
     public Transform[] fireworksLocation;
@@ -31,7 +32,8 @@ public class EndGame : MonoBehaviour
         startEndGame = true;
         timerText.gameObject.SetActive(true);
 
-        Instantiate(Shockwave);
+        Instantiate(Shockwave,new Vector3(0,1,0),new Quaternion(0,0,0,0));
+        frenzyHue.SetActive(true);
 
         CharacterAdrenaline[] characterAdrenalines = GameObject.FindObjectsOfType<CharacterAdrenaline>();
         for (int i = 0; i < characterAdrenalines.Length; ++i)
@@ -148,6 +150,9 @@ public class EndGame : MonoBehaviour
                                  
             Instantiate(fireworks[0], fireworksLocation[4].position, fireworksLocation[4].rotation);
             Instantiate(fireworks[1], fireworksLocation[5].position, fireworksLocation[5].rotation);
+
+            // deactive the hue
+            frenzyHue.SetActive(false);
             
             //if()
             //{
