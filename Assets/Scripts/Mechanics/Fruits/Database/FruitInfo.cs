@@ -4,6 +4,7 @@
 public class FruitInfo : ScriptableObject
 {
     public string fruitName;
+    public int maxCount;
     public GameObject fruitPrefab;
     public FruitStats stats;
 }

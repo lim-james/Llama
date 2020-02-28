@@ -299,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36676505}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 54.34019, z: -31.373325}
+  m_LocalPosition: {x: 0, y: 56.29165, z: -32.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 100847213}
@@ -358,8 +358,8 @@ MonoBehaviour:
   style: 0
   duration: 60
   delay: 21
-  time: 3.380026
-  distance: 62.74665
+  time: -16.535635
+  distance: 65
   followMultipler: 1
 --- !u!1 &64373649
 GameObject:
@@ -1992,7 +1992,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384363002}
-  m_LocalRotation: {x: 0.14664571, y: 0.4502321, z: -0.07523582, w: 0.87756807}
+  m_LocalRotation: {x: 0.14664567, y: 0.45023197, z: -0.07523589, w: 0.8775681}
   m_LocalPosition: {x: -21, y: 28, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2584,8 +2584,8 @@ MonoBehaviour:
   style: 0
   duration: 60
   delay: 21
-  time: 3.380026
-  distance: 62.74665
+  time: -16.535635
+  distance: 65
   followMultipler: 1
 --- !u!114 &477282917
 MonoBehaviour:
@@ -2668,8 +2668,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477282912}
-  m_LocalRotation: {x: 0.108267464, y: -0.7614162, z: 0.13181007, w: 0.62541956}
-  m_LocalPosition: {x: 37.37, y: 8.07, z: 24.71}
+  m_LocalRotation: {x: -0.050401382, y: 0.9319286, z: -0.32964534, w: -0.14248796}
+  m_LocalPosition: {x: 20.946775, y: 51.68564, z: 66.89887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 100847213}
@@ -4510,7 +4510,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972665132}
-  m_LocalRotation: {x: 0.0008485548, y: 0.9926684, z: -0.12066487, w: 0.0069808015}
+  m_LocalRotation: {x: 0.0008485583, y: 0.9926684, z: -0.12066487, w: 0.0069808303}
   m_LocalPosition: {x: 21, y: 28, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5755,8 +5755,8 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 5
-  time: 19.380024
-  distance: 26.239952
+  time: -0.5356431
+  distance: 65
   followMultipler: 1
 --- !u!114 &1088370995
 MonoBehaviour:
@@ -6972,7 +6972,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475759004}
-  m_LocalRotation: {x: 0.102212474, y: -0.04568154, z: 0.004698788, w: 0.99370205}
+  m_LocalRotation: {x: 0.10221295, y: -0.04568158, z: 0.0046988153, w: 0.993702}
   m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7308,7 +7308,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.3
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -9074,6 +9074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafb52f9c97562c47a24e73ef31b60aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fruitSpawner: {fileID: 1981463682}
   scoringAreas: {fileID: 1689396795}
   portalPrefab: {fileID: 6163046197496866098, guid: 33d8f5065325a37488c46bb2f3b68c16,
     type: 3}
