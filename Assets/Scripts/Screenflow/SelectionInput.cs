@@ -95,12 +95,12 @@ public class SelectionInput : MonoBehaviour
         weight.texture = characters.group[characterIndex].weight;
         balance.texture = characters.group[characterIndex].balance;
 
-        //animateLabel = false;
-        //labelLarge = false;
-        //animateModel = false;
-        //modelLarge = false;
-        //originalLabelScale = background.transform.localScale;
-        //originalModelScale = temp.transform.localScale;
+        animateLabel = false;
+        labelLarge = false;
+        animateModel = false;
+        modelLarge = false;
+        originalLabelScale = background.GetComponent<RawImage>().transform.localScale;
+        originalModelScale = temp.transform.localScale;
     }
 
     private void FixedUpdate()
@@ -135,9 +135,9 @@ public class SelectionInput : MonoBehaviour
         background.texture = teams.group[index].teamBackground;
         label.text = teams.group[index].name.ToString() + " TEAM";
 
-        versusText.ChangeText();
-
         animateLabel = true;
+
+        versusText.ChangeText();
     }
 
     private void SwitchCharacterHandler(InputAction.CallbackContext context)
@@ -152,6 +152,7 @@ public class SelectionInput : MonoBehaviour
         Destroy(temp);
         temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.localPosition, characterModel.transform.localRotation);
         temp.transform.localScale = characters.group[characterIndex].modelScale;
+        originalModelScale = temp.transform.localScale;
 
         animateModel = true;
 
@@ -161,22 +162,44 @@ public class SelectionInput : MonoBehaviour
         balance.texture = characters.group[characterIndex].balance;
     }
 
-    void Update()
+    private void Update()
     {
-        //if(animateLabel)
-        //{
-        //    //if(!labelLarge && )
-        //    {
-        //
-        //    }
-        //}
-        //
-        //if(animateModel)
-        //{
-        //    if(!modelLarge)
-        //    {
-        //
-        //    }
-        //}
+        if(animateLabel)
+        {
+            if (!labelLarge && background.GetComponent<RawImage>().transform.localScale.x < originalLabelScale.x * 1.3)
+            {
+                background.GetComponent<RawImage>().transform.localScale += new Vector3(Time.deltaTime * 3, Time.deltaTime * 3, 0);
+                label.transform.localScale += new Vector3(Time.deltaTime * 3, Time.deltaTime * 3, 0);
+            }
+            else if (!labelLarge && background.GetComponent<RawImage>().transform.localScale.x > originalLabelScale.x * 1.3)
+                labelLarge = true;
+
+            if (labelLarge && background.GetComponent<RawImage>().transform.localScale.x > originalLabelScale.x)
+            {
+                background.GetComponent<RawImage>().transform.localScale -= new Vector3(Time.deltaTime * 3, Time.deltaTime * 3, 0);
+                label.transform.localScale -= new Vector3(Time.deltaTime * 3, Time.deltaTime * 3, 0);
+            }
+            else if(labelLarge && background.GetComponent<RawImage>().transform.localScale.x < originalLabelScale.x)
+            {
+                labelLarge = false;
+                animateLabel = false;
+            }
+        }
+        
+        if(animateModel)
+        {
+            if (!modelLarge && temp.transform.localScale.x < originalModelScale.x * 1.3)
+                temp.transform.localScale += new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, Time.deltaTime * 2);
+            else if (!modelLarge && temp.transform.localScale.x > originalModelScale.x * 1.3)
+                modelLarge = true;
+        
+            if (modelLarge && temp.transform.localScale.x > originalModelScale.x)
+                temp.transform.localScale -= new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, Time.deltaTime * 2);
+            else if(modelLarge && temp.transform.localScale.x < originalModelScale.x)
+            {
+                modelLarge = false;
+                animateModel = false;
+            }
+        }
     }
 }
