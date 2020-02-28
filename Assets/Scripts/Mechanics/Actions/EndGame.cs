@@ -15,6 +15,7 @@ public class EndGame : MonoBehaviour
     public string endText;
     public Camera endGameCamera;
 
+    public GameObject Shockwave;
     public GameObject[] fireworks;
     public Transform[] fireworksLocation;
     private bool doOnce = false;
@@ -29,6 +30,8 @@ public class EndGame : MonoBehaviour
     {
         startEndGame = true;
         timerText.gameObject.SetActive(true);
+
+        Instantiate(Shockwave);
 
         CharacterAdrenaline[] characterAdrenalines = GameObject.FindObjectsOfType<CharacterAdrenaline>();
         for (int i = 0; i < characterAdrenalines.Length; ++i)
