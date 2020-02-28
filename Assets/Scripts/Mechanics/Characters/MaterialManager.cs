@@ -28,5 +28,4 @@ public class MaterialManager : MonoBehaviour
                 r.material = pack.secondary;
     }
 
-
 }
