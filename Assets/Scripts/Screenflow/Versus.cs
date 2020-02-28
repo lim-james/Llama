@@ -26,6 +26,14 @@ public class Versus : MonoBehaviour
 
     private RawImage[] players = new RawImage[4];
 
+    // animation
+    private bool animate;
+    private bool large;
+    private Vector3 originalScale;
+    private string previoustext;
+    [SerializeField]
+    private RawImage background;
+
     private void Awake()
     {
         players[0] = player1;
@@ -37,13 +45,38 @@ public class Versus : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        animate = false;
+        large = false;
+        originalScale = new Vector3(1, 1, 1);
+        previoustext = "DEATHMATCH";
     }
 
     // Update is called once per frame
     void Update()
     {
         ChangeText();
+
+        if (animate)
+        {
+            if (!large && transform.localScale.x < originalScale.x * 1.3)
+            {
+                transform.localScale += new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, Time.deltaTime * 2);
+                background.transform.localScale += new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, Time.deltaTime * 2); ;
+            }
+            else if (!large && transform.localScale.x > originalScale.x * 1.3)
+                large = true;
+        
+            if(large && transform.localScale.x > originalScale.x)
+            {
+                transform.localScale -= new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, Time.deltaTime * 2);
+                background.transform.localScale -= new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, Time.deltaTime * 2);
+            }
+            else if(large && transform.localScale.x < originalScale.x)
+            {
+                animate = false;
+                large = false;
+            }
+        }
     }
 
     public void ChangeText()
@@ -77,5 +110,11 @@ public class Versus : MonoBehaviour
         }
         else
             gameObject.GetComponent<Text>().text = "2 VS 2";
+
+        if(previoustext != gameObject.GetComponent<Text>().text)
+        {
+            animate = true;
+            previoustext = gameObject.GetComponent<Text>().text;
+        }
     }
 }
