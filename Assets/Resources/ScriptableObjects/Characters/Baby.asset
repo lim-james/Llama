@@ -10,9 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af19d009b216e064ea4908be44b1fe95, type: 3}
-  m_Name: Baby Llama
+  m_Name: Baby
   m_EditorClassIdentifier: 
   characterName: Baby Llama
   characterPrefab: {fileID: 1341381891492109688, guid: 3e0e296de4db67d4caab359d57272776,
     type: 3}
   stats: {fileID: 11400000, guid: 65fa5083817a98b429f93f0724ee0092, type: 2}
+  teamMaterials:
+  - primary: {fileID: 2100000, guid: cbfd84e09f3ac1b418745cd153156516, type: 2}
+    secondary: {fileID: 0}
+  - primary: {fileID: 2100000, guid: 2d0a89cd3d1f9114581295543ecb4da9, type: 2}
+    secondary: {fileID: 0}
+  - primary: {fileID: 2100000, guid: f1964d5a534d2454cb451b9719c38432, type: 2}
+    secondary: {fileID: 0}
+  - primary: {fileID: 2100000, guid: 85e1106a6816df54084093bccefeca52, type: 2}
+    secondary: {fileID: 0}
