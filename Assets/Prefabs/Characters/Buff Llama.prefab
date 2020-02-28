@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9536b40e541876a45978acd351bc1a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupRadius: 2.5
+  pickupRadius: 4.5
   slots:
   - {fileID: 1341381890921496560}
   - {fileID: 1341381891561888274}
@@ -897,6 +897,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1341381891492109710}
     m_Modifications:
+    - target: {fileID: 2702470173101084099, guid: c1c722b8bdfefce44be7fca20f333369,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5280492403533781759, guid: c1c722b8bdfefce44be7fca20f333369,
         type: 3}
       propertyPath: m_Name
