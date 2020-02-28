@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af19d009b216e064ea4908be44b1fe95, type: 3}
+  m_Name: Sniper
+  m_EditorClassIdentifier: 
+  characterName: Sniper Llama
+  characterPrefab: {fileID: 1341381891492109688, guid: 182615243c5084c4895e3dcd65b63520,
+    type: 3}
+  stats: {fileID: 11400000, guid: a6bb615bb01b5c6438e6bb7a4d1ee0e2, type: 2}
+  teamMaterials:
+  - primary: {fileID: 2100000, guid: 4872d6beaf4698743bdcf74eab80b53a, type: 2}
+    secondary: {fileID: 2100000, guid: 27f4d7321d8c9764b88fe9bfb1bffe21, type: 2}
+  - primary: {fileID: 2100000, guid: 99e25573ce0ca304fb130034c3cd102d, type: 2}
+    secondary: {fileID: 2100000, guid: c1632c2e749b0414f93487e30a319617, type: 2}
+  - primary: {fileID: 2100000, guid: dfa828b7e03c36346bb7e22da7d9636c, type: 2}
+    secondary: {fileID: 2100000, guid: 530448042a4fa3d4e856ae0a311696a2, type: 2}
+  - primary: {fileID: 2100000, guid: 781f74d592480d944bf801d80e908830, type: 2}
+    secondary: {fileID: 2100000, guid: 78807d35dfbad8b4183100d5937e2e3a, type: 2}

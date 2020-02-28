@@ -13,7 +13,7 @@ public class LobbyManager : MonoBehaviour
         {
             JoinInfo info = new JoinInfo();
             info.characterType = input.characterIndex;
-            info.team = input.index;
+            info.team = input.teamIndex;
             info.isAI = !input.connected;
 
             input.Unbind();

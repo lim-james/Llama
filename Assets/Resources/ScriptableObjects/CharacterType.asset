@@ -13,29 +13,29 @@ MonoBehaviour:
   m_Name: CharacterType
   m_EditorClassIdentifier: 
   group:
-  - characterModel: {fileID: 3588101147206997429, guid: 1ec9ea366c7eba146ac5b3de2697304a,
-      type: 3}
+  - character: {fileID: 11400000, guid: 5486fc457d9168447b6e4fda9b07d40b, type: 2}
+    model: {fileID: 3588101147206997429, guid: 1ec9ea366c7eba146ac5b3de2697304a, type: 3}
     modelScale: {x: 1, y: 1, z: 1}
     strength: {fileID: 2800000, guid: 5a3c3750f0957504881ad2f51d226cb4, type: 3}
     speed: {fileID: 2800000, guid: 2724589946464df4bbf33fee889a99c3, type: 3}
     weight: {fileID: 2800000, guid: 9e095f8f9ff7e054ab7ecae92d9af96b, type: 3}
     balance: {fileID: 2800000, guid: 74a124f7587165344b905015ab7b2099, type: 3}
-  - characterModel: {fileID: 7604653628284998899, guid: 930a997250db076458f67135ca3fdd7c,
-      type: 3}
+  - character: {fileID: 11400000, guid: 0c9d5afe89d965940a2c151d462549d5, type: 2}
+    model: {fileID: 7604653628284998899, guid: 930a997250db076458f67135ca3fdd7c, type: 3}
     modelScale: {x: 0.8, y: 0.8, z: 0.8}
     strength: {fileID: 2800000, guid: a635d3c4b00c9404181cedad1872cc35, type: 3}
     speed: {fileID: 2800000, guid: 4eaf9177dfafc054a9030f9ea188d324, type: 3}
     weight: {fileID: 2800000, guid: 8f72df4e335a17c44b9e0c46138fd95c, type: 3}
     balance: {fileID: 2800000, guid: 08aa3278e52a0bd4f8d9342af65a5f18, type: 3}
-  - characterModel: {fileID: 4344219893659585650, guid: 0314dcb41f938e14c9dbb43adf65f8f6,
-      type: 3}
+  - character: {fileID: 11400000, guid: f894987198dc7334ba57715ac3d908b1, type: 2}
+    model: {fileID: 4344219893659585650, guid: 0314dcb41f938e14c9dbb43adf65f8f6, type: 3}
     modelScale: {x: 0.7, y: 0.7, z: 0.7}
     strength: {fileID: 2800000, guid: 618597a6d0e3ccf49be12a4e4789999a, type: 3}
     speed: {fileID: 2800000, guid: 03f5bad041b795545a672a6493e59ea5, type: 3}
     weight: {fileID: 2800000, guid: 542de4115e913f24ab9df586d7d9a399, type: 3}
     balance: {fileID: 2800000, guid: 08aa3278e52a0bd4f8d9342af65a5f18, type: 3}
-  - characterModel: {fileID: 5280492403533781759, guid: c1c722b8bdfefce44be7fca20f333369,
-      type: 3}
+  - character: {fileID: 11400000, guid: d633f6217f4f58c47a7478d7804185dd, type: 2}
+    model: {fileID: 5280492403533781759, guid: c1c722b8bdfefce44be7fca20f333369, type: 3}
     modelScale: {x: 0.7, y: 0.7, z: 0.7}
     strength: {fileID: 2800000, guid: 3136f464fcadb0249846ce6fc57f3231, type: 3}
     speed: {fileID: 2800000, guid: 03f5bad041b795545a672a6493e59ea5, type: 3}

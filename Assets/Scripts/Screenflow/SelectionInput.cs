@@ -11,7 +11,7 @@ public class SelectionInput : MonoBehaviour
     private int controllerID = 0;
 
     [Header("Player input")]
-    public int index;
+    public int teamIndex;
     public int characterIndex;
 
     [Header("Data")]
@@ -36,9 +36,7 @@ public class SelectionInput : MonoBehaviour
     private Text label;
     public bool connected { get; private set; }
 
-    private GameObject temp;
-
-    private Versus versusText;
+    private MaterialManager selected;
 
     // animation
     [SerializeField]
@@ -79,16 +77,9 @@ public class SelectionInput : MonoBehaviour
     private void Start()
     {
         input.Enable();
-        //background.color = teams.group[index].color;
-        background.texture = teams.group[index].teamBackground;
+        background.texture = teams.group[teamIndex].teamBackground;
 
-        temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.localPosition, characterModel.transform.localRotation);
-        temp.transform.localScale = characters.group[characterIndex].modelScale;
-
-        strength.texture = characters.group[characterIndex].strength;
-        speed.texture = characters.group[characterIndex].speed;
-        weight.texture = characters.group[characterIndex].weight;
-        balance.texture = characters.group[characterIndex].balance;
+        UpdateCharacter();
     }
 
     private void FixedUpdate()
@@ -112,20 +103,21 @@ public class SelectionInput : MonoBehaviour
 
     private void SwitchTeamHandler(InputAction.CallbackContext context)
     {
-        index += (int)context.ReadValue<float>();
+        teamIndex += (int)context.ReadValue<float>();
 
-        if (index < 0)
-            index = teams.group.Length - 1;
-        else if (index >= teams.group.Length)
-            index = 0;
+        if (teamIndex < 0)
+            teamIndex = teams.group.Length - 1;
+        else if (teamIndex >= teams.group.Length)
+            teamIndex = 0;
 
         //background.color = teams.group[index].color;
-        background.texture = teams.group[index].teamBackground;
-        label.text = teams.group[index].name.ToString() + " TEAM";
+        background.texture = teams.group[teamIndex].teamBackground;
+        label.text = teams.group[teamIndex].name.ToString() + " TEAM";
+
+        MaterialPack pack = characters.group[characterIndex].character.teamMaterials[teamIndex];
+        selected.SetMaterialPack(pack);
 
         if (OnModeChange != null) OnModeChange.Invoke();
-
-        versusText.ChangeText();
     }
 
     private void SwitchCharacterHandler(InputAction.CallbackContext context)
@@ -137,22 +129,33 @@ public class SelectionInput : MonoBehaviour
         else if (characterIndex >= teams.group.Length)
             characterIndex = 0;
 
-        Destroy(temp);
-        temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.localPosition, characterModel.transform.localRotation);
-        temp.transform.localScale = characters.group[characterIndex].modelScale;
-        //originalModelScale = temp.transform.localScale;
+        Destroy(selected.gameObject);
+        UpdateCharacter();
+    }
 
-        BounceAnimation bounce = temp.AddComponent<BounceAnimation>();
+    private void UpdateCharacter()
+    {
+        GameObject go = Instantiate(characters.group[characterIndex].model, characterModel.transform.localPosition, characterModel.transform.localRotation);
+
+        selected = go.GetComponent<MaterialManager>();
+        selected.transform.localScale = characters.group[characterIndex].modelScale;
+
+        // set team texture
+        MaterialPack pack = characters.group[characterIndex].character.teamMaterials[teamIndex];
+        selected.GetComponent<MaterialManager>().SetMaterialPack(pack);
+
+        // bounce model
+        BounceAnimation bounce = go.AddComponent<BounceAnimation>();
         bounce.duration = 0.5f;
         bounce.scale = new Vector3(1.1f, 1.1f, 1.1f);
         bounce.Start();
         bounce.Animate();
 
-        //if (OnModeChange != null) OnModeChange.Invoke();
-
+        // set stats 
         strength.texture = characters.group[characterIndex].strength;
         speed.texture = characters.group[characterIndex].speed;
         weight.texture = characters.group[characterIndex].weight;
         balance.texture = characters.group[characterIndex].balance;
     }
+
 }

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c22343c468a69b745b925837c8354af3, type: 3}
-  m_Name: Fruit 1
+  m_Name: Rambustun
   m_EditorClassIdentifier: 
-  fruitName: fruit 1
-  maxCount: 1
-  fruitPrefab: {fileID: 1686551757957227803, guid: bdaf8070edfde9c4595bc88702d33782,
+  fruitName: Rambustun
+  maxCount: 8
+  fruitPrefab: {fileID: 1686551757957227803, guid: bd20312e4afe4d946aa2d1a8be67c120,
     type: 3}
-  stats: {fileID: 11400000, guid: 3a4d8b9b9a050644daddd69d8e84e70b, type: 2}
+  stats: {fileID: 11400000, guid: 1ec5504b879edaf489c6e6ff3e6b9c3b, type: 2}

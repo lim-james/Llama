@@ -405,7 +405,7 @@ PrefabInstance:
     - target: {fileID: 544978588184029094, guid: 1ec9ea366c7eba146ac5b3de2697304a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 544978588184029094, guid: 1ec9ea366c7eba146ac5b3de2697304a,
         type: 3}
@@ -1533,7 +1533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerID: 1
-  index: 1
+  teamIndex: 1
   characterIndex: 1
   teams: {fileID: 11400000, guid: f7ea20a7b0bd24440b00473755ae796b, type: 2}
   characters: {fileID: 11400000, guid: c8d192cf0a700734481615d798ebea40, type: 2}
@@ -3465,7 +3465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerID: 0
-  index: 0
+  teamIndex: 0
   characterIndex: 0
   teams: {fileID: 11400000, guid: f7ea20a7b0bd24440b00473755ae796b, type: 2}
   characters: {fileID: 11400000, guid: c8d192cf0a700734481615d798ebea40, type: 2}
@@ -4302,7 +4302,7 @@ PrefabInstance:
     - target: {fileID: 544978588184029094, guid: 1ec9ea366c7eba146ac5b3de2697304a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 544978588184029094, guid: 1ec9ea366c7eba146ac5b3de2697304a,
         type: 3}
@@ -4856,7 +4856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerID: 3
-  index: 3
+  teamIndex: 3
   characterIndex: 3
   teams: {fileID: 11400000, guid: f7ea20a7b0bd24440b00473755ae796b, type: 2}
   characters: {fileID: 11400000, guid: c8d192cf0a700734481615d798ebea40, type: 2}
@@ -5322,7 +5322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerID: 2
-  index: 2
+  teamIndex: 2
   characterIndex: 2
   teams: {fileID: 11400000, guid: f7ea20a7b0bd24440b00473755ae796b, type: 2}
   characters: {fileID: 11400000, guid: c8d192cf0a700734481615d798ebea40, type: 2}

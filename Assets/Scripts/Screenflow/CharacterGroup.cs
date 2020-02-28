@@ -5,17 +5,18 @@ using UnityEngine.UI;
 [Serializable]
 public class CharacterType
 {
-    public GameObject characterModel;
+    public CharacterData character;
+    public GameObject model;
     public Vector3 modelScale;
     public Texture strength;
     public Texture speed;
     public Texture weight;
     public Texture balance;
 
-    public CharacterType(GameObject _characterModel)
-    {
-        characterModel = _characterModel;
-    }
+    //public CharacterType(GameObject _characterModel)
+    //{
+    //    characterModel = _characterModel;
+    //}
 }
 
 [CreateAssetMenu(fileName = "new character group", menuName = "Character group", order = 0)]
