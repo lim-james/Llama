@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CharacterType
 {
     public GameObject characterModel;
+    public Vector3 modelScale;
     public Texture strength;
     public Texture speed;
     public Texture weight;

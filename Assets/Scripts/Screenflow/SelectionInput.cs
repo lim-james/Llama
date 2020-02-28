@@ -30,13 +30,22 @@ public class SelectionInput : MonoBehaviour
     private RawImage balance;
 
     // references
-    private Image background;
+    //private Image background;
+    private RawImage background;
     private Text label;
     public bool connected { get; private set; }
 
     private GameObject temp;
 
     private Versus versusText;
+
+    // animation
+    private bool animateLabel;
+    private bool labelLarge;
+    private bool animateModel;
+    private bool modelLarge;
+    private Vector3 originalLabelScale;
+    private Vector3 originalModelScale;
 
     private void Awake()
     {
@@ -66,7 +75,8 @@ public class SelectionInput : MonoBehaviour
             }
         }
 
-        background = GetComponent<Image>();
+        //background = GetComponent<Image>();
+        background = GetComponent<RawImage>();
         label = GetComponentInChildren<Text>();
         //characterModel = GetComponent<GameObject>();
     }
@@ -74,14 +84,23 @@ public class SelectionInput : MonoBehaviour
     private void Start()
     {
         input.Enable();
-        background.color = teams.group[index].color;
+        //background.color = teams.group[index].color;
+        background.texture = teams.group[index].teamBackground;
 
         temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.localPosition, characterModel.transform.localRotation);
+        temp.transform.localScale = characters.group[characterIndex].modelScale;
 
         strength.texture = characters.group[characterIndex].strength;
         speed.texture = characters.group[characterIndex].speed;
         weight.texture = characters.group[characterIndex].weight;
         balance.texture = characters.group[characterIndex].balance;
+
+        //animateLabel = false;
+        //labelLarge = false;
+        //animateModel = false;
+        //modelLarge = false;
+        //originalLabelScale = background.transform.localScale;
+        //originalModelScale = temp.transform.localScale;
     }
 
     private void FixedUpdate()
@@ -112,10 +131,13 @@ public class SelectionInput : MonoBehaviour
         else if (index >= teams.group.Length)
             index = 0;
 
-        background.color = teams.group[index].color;
+        //background.color = teams.group[index].color;
+        background.texture = teams.group[index].teamBackground;
         label.text = teams.group[index].name.ToString() + " TEAM";
 
         versusText.ChangeText();
+
+        animateLabel = true;
     }
 
     private void SwitchCharacterHandler(InputAction.CallbackContext context)
@@ -129,10 +151,32 @@ public class SelectionInput : MonoBehaviour
 
         Destroy(temp);
         temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.localPosition, characterModel.transform.localRotation);
+        temp.transform.localScale = characters.group[characterIndex].modelScale;
+
+        animateModel = true;
 
         strength.texture = characters.group[characterIndex].strength;
         speed.texture = characters.group[characterIndex].speed;
         weight.texture = characters.group[characterIndex].weight;
         balance.texture = characters.group[characterIndex].balance;
+    }
+
+    void Update()
+    {
+        //if(animateLabel)
+        //{
+        //    //if(!labelLarge && )
+        //    {
+        //
+        //    }
+        //}
+        //
+        //if(animateModel)
+        //{
+        //    if(!modelLarge)
+        //    {
+        //
+        //    }
+        //}
     }
 }

@@ -11,11 +11,13 @@ public class Team
 {
     public Color color;
     public TeamName name;
+    public Texture teamBackground;
 
-    public Team(Color _color, TeamName _name)
+    public Team(Color _color, TeamName _name, Texture _teamBackground)
     {
         color = _color;
         name = _name;
+        teamBackground = _teamBackground;
     }
 }
 
