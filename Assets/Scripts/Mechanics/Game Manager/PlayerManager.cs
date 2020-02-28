@@ -50,18 +50,22 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < players.Count; ++i)
         {
             JoinInfo joinInfo = players[i];
+            CharacterData data = characters.characters[joinInfo.characterType];
             // create game object accordingly
-            Transform llama = Instantiate(characters.characters[joinInfo.characterType].characterPrefab).transform;
-            // Set character info
+            Transform llama = Instantiate(data.characterPrefab).transform;
+            // Material
+            MaterialPack pack =  data.teamMaterials[joinInfo.team];
+            llama.GetComponentInChildren<MaterialManager>().SetMaterialPack(pack);
+            // Character info
             CharacterInfo info = llama.GetComponent<CharacterInfo>();
             info.playerID = i;
             info.team = teams.group[joinInfo.team].name;
             info.AI = joinInfo.isAI;
-            // Set character position
+            // Character position
             Vector3 position = bases.scoringArea[i].transform.position;
             position.y = 1;
             llama.position = position;
-            // add to container
+            // Add to container
             llama.parent = container;
             llama.GetComponent<CharacterInput>().moveable = false;
 
