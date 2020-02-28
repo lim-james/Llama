@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class KillZone : MonoBehaviour
 {
+    [SerializeField]
+    private FruitSpawner fruitSpawner;
+    
     public ScoreAreaScaling scoringAreas;
     public GameObject portalPrefab;
     public float respawnHeightOffset = 2.0f;
@@ -13,7 +16,7 @@ public class KillZone : MonoBehaviour
         if (other.GetComponent<CharacterMovement>())
             ResetCharacter(other.gameObject);
         else if (other.GetComponent<Fruit>())
-            DestroyFruit(other.gameObject);
+            ResetFruit(other.gameObject);
     }
 
     public void ResetCharacter(GameObject character)
@@ -32,9 +35,8 @@ public class KillZone : MonoBehaviour
         //Trigger Inivisibility
     }
 
-    public void DestroyFruit(GameObject fruit)
+    public void ResetFruit(GameObject fruit)
     {
-
-        Destroy(fruit);
+        fruitSpawner.ResetFruit(fruit);
     }
 }

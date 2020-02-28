@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class FruitSpawner : MonoBehaviour
 {
@@ -18,15 +19,27 @@ public class FruitSpawner : MonoBehaviour
 
     public LayerMask avoidLayer;
 
+    // queued for resetting
+    private List<GameObject> queuedObjects;
+
+    private void Awake()
+    {
+        queuedObjects = new List<GameObject>();
+    }
+
     private void Update()
     {
         spawnTime += Time.deltaTime;
-        if (spawn && spawnTime > spawnDelay)
+        if (spawn)
         {
-            //spawn = false;
-            // spawn
-            if (SpawnFruit())
+            if (spawnTime > spawnDelay && SpawnFruit())
                 spawnTime = 0.0f;
+        }
+        else if (queuedObjects.Count > 0)
+        {
+            int i = Random.Range(0, queuedObjects.Count);
+            if (PositionFruit(queuedObjects[i]))
+                queuedObjects.RemoveAt(i);
         }
     }
 
@@ -36,14 +49,27 @@ public class FruitSpawner : MonoBehaviour
         if (!GetRandomPos(ref randomPosition)) return false;
 
         GameObject fruit = FruitManager.instance.SpawnRandomFruit();
-        fruit.transform.position = randomPosition;
+        if (fruit == null)
+        {
+            spawn = false;
+            return false;
+        }
+
+        return PositionFruit(fruit, randomPosition);
+    }
+
+    private bool PositionFruit(GameObject fruit, Vector3 position)
+    {
+        fruit.transform.position = position;
         fruit.transform.parent = container;
         GameObject spawnEffect = Instantiate(spawnEffectPrefab);
 
-
+        Rigidbody rb = fruit.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        
         if (Random.Range(0, 100) <= 50)
         {
-            fruit.GetComponent<Rigidbody>().AddForce(Vector3.up * 1000, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 1000, ForceMode.Impulse);
             spawnEffect.transform.position = fruit.transform.position;
         }
         else
@@ -54,6 +80,18 @@ public class FruitSpawner : MonoBehaviour
         }
 
         return true;
+    }
+
+    private bool PositionFruit(GameObject fruit)
+    {
+        Vector3 randomPosition = Vector3.zero;
+        if (!GetRandomPos(ref randomPosition)) return false;
+        return PositionFruit(fruit, randomPosition);
+    }
+
+    public void ResetFruit(GameObject fruit)
+    {
+        queuedObjects.Add(fruit);
     }
 
     public bool GetRandomPos(ref Vector3 position)
