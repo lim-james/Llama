@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbb2bcb69ee92ad42ab32405bd1c689f, type: 3}
-  m_Name: Fruit 2 Stats
+  m_Name: ApexApple
   m_EditorClassIdentifier: 
-  speed: 2
-  strength: 0
+  speed: 3
+  strength: 3
   balance: 0
-  points: 1
+  points: 20
