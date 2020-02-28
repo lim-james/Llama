@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fruit 1
   m_EditorClassIdentifier: 
   fruitName: fruit 1
+  maxCount: 1
   fruitPrefab: {fileID: 1686551757957227803, guid: bdaf8070edfde9c4595bc88702d33782,
     type: 3}
   stats: {fileID: 11400000, guid: 3a4d8b9b9a050644daddd69d8e84e70b, type: 2}

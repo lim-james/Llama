@@ -5,11 +5,23 @@ using UnityEngine;
 public class FruitManager : MonoBehaviour
 {
     public static FruitManager instance;
+
     public FruitDatabase fruitDatabase;
 
-    private Dictionary<string, GameObject> fruitGameObjectDic = new Dictionary<string, GameObject>();
+    private Dictionary<string, GameObject> fruitGameObjectDic;
+    private Dictionary<string, int> fruitMaxCount;
+    private Dictionary<string, int> fruitCount;
+    private List<int> spawnIndexes; // list of possible fruits left to spawn
 
-    void Start()
+    private void Awake()
+    {
+        fruitGameObjectDic = new Dictionary<string, GameObject>();
+        fruitMaxCount = new Dictionary<string, int>();
+        fruitCount = new Dictionary<string, int>();
+        spawnIndexes = new List<int>();
+    }
+
+    private void Start()
     {
         if (!instance)
         {
@@ -23,17 +35,24 @@ public class FruitManager : MonoBehaviour
         }
     }
 
-    void InitializeDictationary()
+    private void InitializeDictationary()
     {
         for (int i = 0; i < fruitDatabase.fruits.Count; ++i)
         {
-            fruitGameObjectDic.Add(fruitDatabase.fruits[i].fruitName, fruitDatabase.fruits[i].fruitPrefab);
+            FruitInfo fruit = fruitDatabase.fruits[i];
+            string name = fruit.fruitName;
+            fruitGameObjectDic.Add(name, fruit.fruitPrefab);
+            fruitMaxCount.Add(name, fruit.maxCount);
+            fruitCount.Add(name, 0);
+            spawnIndexes.Add(i);
         }
     }
 
     public GameObject SpawnFruit(string fruitName)
     {
-        if (!fruitGameObjectDic.ContainsKey(fruitName))
+        if (spawnIndexes.Count == 0 ||
+            !fruitGameObjectDic.ContainsKey(fruitName) ||
+            fruitCount[fruitName] > fruitMaxCount[fruitName])
             return null;
 
         return Instantiate(fruitGameObjectDic[fruitName]);
@@ -41,7 +60,17 @@ public class FruitManager : MonoBehaviour
 
     public GameObject SpawnRandomFruit()
     {
-        int randomFruitNum = Random.Range(0, fruitDatabase.fruits.Count);
-        return Instantiate(fruitDatabase.fruits[randomFruitNum].fruitPrefab);
+        if (spawnIndexes.Count == 0) return null;
+
+        int i = Random.Range(0, spawnIndexes.Count);
+        int randomIndex = spawnIndexes[i];
+        FruitInfo fruit = fruitDatabase.fruits[randomIndex];
+        string name = fruit.fruitName;
+
+        ++fruitCount[name];
+        if (fruitCount[name] >= fruitMaxCount[name])
+            spawnIndexes.RemoveAt(i);
+
+        return Instantiate(fruitDatabase.fruits[randomIndex].fruitPrefab);
     }
 }
