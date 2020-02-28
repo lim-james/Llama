@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class SelectionInput : MonoBehaviour
 {
@@ -40,12 +41,8 @@ public class SelectionInput : MonoBehaviour
     private Versus versusText;
 
     // animation
-    private bool animateLabel;
-    private bool labelLarge;
-    private bool animateModel;
-    private bool modelLarge;
-    private Vector3 originalLabelScale;
-    private Vector3 originalModelScale;
+    [SerializeField]
+    private UnityEvent OnModeChange;
 
     private void Awake()
     {
@@ -75,10 +72,8 @@ public class SelectionInput : MonoBehaviour
             }
         }
 
-        //background = GetComponent<Image>();
         background = GetComponent<RawImage>();
         label = GetComponentInChildren<Text>();
-        //characterModel = GetComponent<GameObject>();
     }
 
     private void Start()
@@ -94,13 +89,6 @@ public class SelectionInput : MonoBehaviour
         speed.texture = characters.group[characterIndex].speed;
         weight.texture = characters.group[characterIndex].weight;
         balance.texture = characters.group[characterIndex].balance;
-
-        //animateLabel = false;
-        //labelLarge = false;
-        //animateModel = false;
-        //modelLarge = false;
-        //originalLabelScale = background.transform.localScale;
-        //originalModelScale = temp.transform.localScale;
     }
 
     private void FixedUpdate()
@@ -135,9 +123,9 @@ public class SelectionInput : MonoBehaviour
         background.texture = teams.group[index].teamBackground;
         label.text = teams.group[index].name.ToString() + " TEAM";
 
-        versusText.ChangeText();
+        if (OnModeChange != null) OnModeChange.Invoke();
 
-        animateLabel = true;
+        versusText.ChangeText();
     }
 
     private void SwitchCharacterHandler(InputAction.CallbackContext context)
@@ -152,31 +140,19 @@ public class SelectionInput : MonoBehaviour
         Destroy(temp);
         temp = Instantiate(characters.group[characterIndex].characterModel, characterModel.transform.localPosition, characterModel.transform.localRotation);
         temp.transform.localScale = characters.group[characterIndex].modelScale;
+        //originalModelScale = temp.transform.localScale;
 
-        animateModel = true;
+        BounceAnimation bounce = temp.AddComponent<BounceAnimation>();
+        bounce.duration = 0.5f;
+        bounce.scale = new Vector3(1.1f, 1.1f, 1.1f);
+        bounce.Start();
+        bounce.Animate();
+
+        //if (OnModeChange != null) OnModeChange.Invoke();
 
         strength.texture = characters.group[characterIndex].strength;
         speed.texture = characters.group[characterIndex].speed;
         weight.texture = characters.group[characterIndex].weight;
         balance.texture = characters.group[characterIndex].balance;
-    }
-
-    void Update()
-    {
-        //if(animateLabel)
-        //{
-        //    //if(!labelLarge && )
-        //    {
-        //
-        //    }
-        //}
-        //
-        //if(animateModel)
-        //{
-        //    if(!modelLarge)
-        //    {
-        //
-        //    }
-        //}
     }
 }

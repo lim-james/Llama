@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main/DGAD/Lobby.unity
+    guid: 5a6d2c910b2489644a2248a536d96ea6
+  - enabled: 1
     path: Assets/Scenes/Sandbox/Polishing/Fruits/Spawning.unity
     guid: 6f83e9230ae2ddd43ae9e3a2f788a007
   - enabled: 1
@@ -17,9 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/DGAD/Home.unity
     guid: 9c489d7add87af14baf97d22e336faac
-  - enabled: 1
-    path: Assets/Scenes/Main/DGAD/Lobby.unity
-    guid: 5a6d2c910b2489644a2248a536d96ea6
   - enabled: 1
     path: Assets/Scenes/Sandbox/Screenflow/Options.unity
     guid: 08848836085b8a841804a00c5313d82d

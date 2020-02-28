@@ -84,7 +84,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 40425513b114be44b890767794143df5,
         type: 3}
       propertyPath: m_Name
-      value: BabyLlama_Attack
+      value: BabyLlama
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40425513b114be44b890767794143df5, type: 3}
