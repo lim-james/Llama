@@ -21,6 +21,18 @@ public class EndGame : MonoBehaviour
     public Transform[] fireworksLocation;
     private bool doOnce = false;
 
+    [SerializeField]
+    private float maxHeight;
+    [SerializeField]
+    private float minHeight;
+
+    public Text player1Placement;
+    public Text player2Placement;
+    public Text player3Placement;
+    public Text player4Placement;
+
+    private Text[] placements = new Text[4];
+
     public struct TeamScore
     {
         public int points;
@@ -45,6 +57,14 @@ public class EndGame : MonoBehaviour
     void Start()
     {
         timer = delayBeforeGameEnd;
+        placements[0] = player1Placement;
+        placements[1] = player2Placement;
+        placements[2] = player3Placement;
+        placements[3] = player4Placement;
+        for(int i = 0; i < 4; ++i)
+        {
+            placements[i].text = "0";
+        }
     }
 
     void Update()
@@ -98,26 +118,35 @@ public class EndGame : MonoBehaviour
             List<TeamScore> teamScores = GetPlacement(points);
 
             // find player with highest score
-            float highestScore = 0; ;
+            float highestScore = 0;
+            float lowestScore = teamScores[0].points;
             for(int i = 0; i < teamScores.Count; ++i)
             {
                 if(teamScores[i].points > highestScore)
                 {
                     highestScore = teamScores[i].points;
                 }
+                if (teamScores[i].points < lowestScore)
+                {
+                    lowestScore = teamScores[i].points;
+                }
             }
 
-            //Do Pondium here
+            float range = maxHeight - minHeight;
+
+            //Do Podium here
             for (int i = 0; i < platforms.Length; ++i)
             {
                 for (int j = 0; j < teamScores.Count; ++j)
                 {
+                    // (score - lowestScore) / (highest score - lowestScore) * (max height - min height)
                     if (platforms[i].team == teamScores[j].teamName)
                     {
-                        if (teamScores[j].points == highestScore) // player with highest score
-                            platforms[i].testPoints = 2.2f;
-                        else
-                            platforms[i].testPoints = (teamScores[j].points / highestScore) * 2.2f;
+                        platforms[i].testPoints = (((teamScores[j].points - lowestScore) / (highestScore - lowestScore)) * range) + minHeight;
+                        //if (teamScores[j].points == highestScore) // player with highest score
+                        //    platforms[i].testPoints = 2.2f;
+                        //else
+                        //    platforms[i].testPoints = (teamScores[j].points / highestScore) * 2.2f;
 
                         break;
                     }
