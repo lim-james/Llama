@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -360,7 +360,7 @@ MonoBehaviour:
   style: 0
   duration: 60
   delay: 21
-  time: -20.939999
+  time: -20.606665
   distance: 65
   followMultipler: 1
 --- !u!114 &36676511
@@ -2020,7 +2020,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384363002}
-  m_LocalRotation: {x: 0.14664969, y: 0.45023662, z: -0.07523891, w: 0.8775648}
+  m_LocalRotation: {x: 0.14732362, y: 0.43802592, z: -0.0730162, w: 0.88379735}
   m_LocalPosition: {x: -21, y: 28, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2521,7 +2521,7 @@ MonoBehaviour:
   style: 0
   duration: 60
   delay: 21
-  time: -20.939999
+  time: -20.606665
   distance: 65
   followMultipler: 1
 --- !u!114 &477282917
@@ -4576,7 +4576,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972665132}
-  m_LocalRotation: {x: 0.00084725826, y: 0.9926685, z: -0.120664425, w: 0.0069701774}
+  m_LocalRotation: {x: 0.004080256, y: 0.9922571, z: -0.11941367, w: 0.033904687}
   m_LocalPosition: {x: 21, y: 28, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5821,7 +5821,7 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 5
-  time: -4.94
+  time: -4.6066666
   distance: 65
   followMultipler: 1
 --- !u!114 &1088370995
@@ -7003,7 +7003,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475759004}
-  m_LocalRotation: {x: 0.10221427, y: -0.045676224, z: 0.0046983175, w: 0.9937021}
+  m_LocalRotation: {x: 0.10193491, y: -0.059014536, z: 0.0060579497, w: 0.9930206}
   m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7604,7 +7604,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642112581}
-  m_LocalRotation: {x: 0.10826391, y: -0.76142305, z: 0.1318085, w: 0.6254122}
+  m_LocalRotation: {x: 0.11070035, y: -0.7451217, z: 0.12785852, w: 0.64512897}
   m_LocalPosition: {x: 21, y: 28, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9146,13 +9146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af6843b84a881d42af42157b9319617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - characterType: 1
-    team: 0
-    isAI: 0
-  - characterType: 1
-    team: 0
-    isAI: 0
+  players: []
   container: {fileID: 1677704185}
   characters: {fileID: 11400000, guid: b8fdd0601afdfd940a59f9a0dbe5eeac, type: 2}
   teams: {fileID: 11400000, guid: f7ea20a7b0bd24440b00473755ae796b, type: 2}
