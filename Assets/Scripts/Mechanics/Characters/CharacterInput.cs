@@ -84,5 +84,4 @@ public class CharacterInput : MonoBehaviour
     {
         inventory.selectedIndex += (int)context.ReadValue<float>();
     }
-
 }

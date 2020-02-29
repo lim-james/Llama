@@ -57,6 +57,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""f596da41-de3f-458e-b8c3-e9361c6f99d0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -310,6 +318,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Consume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a29184a-4992-4ed9-b9a9-93f50f28a9d1"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -925,6 +944,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Switch = m_Player.FindAction("Switch", throwIfNotFound: true);
         m_Player_Release = m_Player.FindAction("Release", throwIfNotFound: true);
         m_Player_Consume = m_Player.FindAction("Consume", throwIfNotFound: true);
+        m_Player_Restart = m_Player.FindAction("Restart", throwIfNotFound: true);
         // Lobby
         m_Lobby = asset.FindActionMap("Lobby", throwIfNotFound: true);
         m_Lobby_SwitchCharacter = m_Lobby.FindAction("Switch (Character)", throwIfNotFound: true);
@@ -990,6 +1010,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Switch;
     private readonly InputAction m_Player_Release;
     private readonly InputAction m_Player_Consume;
+    private readonly InputAction m_Player_Restart;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -999,6 +1020,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Switch => m_Wrapper.m_Player_Switch;
         public InputAction @Release => m_Wrapper.m_Player_Release;
         public InputAction @Consume => m_Wrapper.m_Player_Consume;
+        public InputAction @Restart => m_Wrapper.m_Player_Restart;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1023,6 +1045,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Consume.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsume;
                 @Consume.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsume;
                 @Consume.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsume;
+                @Restart.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1042,6 +1067,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Consume.started += instance.OnConsume;
                 @Consume.performed += instance.OnConsume;
                 @Consume.canceled += instance.OnConsume;
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
             }
         }
     }
@@ -1177,6 +1205,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnSwitch(InputAction.CallbackContext context);
         void OnRelease(InputAction.CallbackContext context);
         void OnConsume(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
     public interface ILobbyActions
     {
