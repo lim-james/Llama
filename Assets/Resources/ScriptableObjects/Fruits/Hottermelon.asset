@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22343c468a69b745b925837c8354af3, type: 3}
+  m_Name: Hottermelon
+  m_EditorClassIdentifier: 
+  fruitName: Hottermelon
+  maxCount: 6
+  fruitPrefab: {fileID: 1686551757957227803, guid: cf54d97b68fc5c547b66154b62e4770b,
+    type: 3}
+  stats: {fileID: 11400000, guid: e12e21d9da38e6a48930f61933a48461, type: 2}
