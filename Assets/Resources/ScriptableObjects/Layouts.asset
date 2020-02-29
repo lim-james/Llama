@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da054492d9811b41b2a907dc66871f5, type: 3}
+  m_Name: Layouts
+  m_EditorClassIdentifier: Assembly-CSharp::LayoutGroup
+  group:
+  - {fileID: 3718737127091160912, guid: da12bc20d54f4c140932a3ba7e3a6748, type: 3}
