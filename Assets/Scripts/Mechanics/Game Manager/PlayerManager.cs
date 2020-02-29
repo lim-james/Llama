@@ -32,6 +32,14 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private ScoreAreaScaling bases;
 
+    // hacky
+    private List<Transform> rotate;
+
+    private void Awake()
+    {
+        rotate = new List<Transform>();
+    }
+
     private void Start()
     {
         // exception handling
@@ -77,10 +85,17 @@ public class PlayerManager : MonoBehaviour
             llama.parent = container;
             llama.GetComponent<CharacterInput>().moveable = false;
 
-            if(i < 2)
-            {
-                llama.transform.rotation = new Quaternion(0, 180, 0, 0);
-            }
+            if(i < 2) rotate.Add(llama);
+        }
+    }
+
+    private void Update()
+    {
+        if (rotate != null)
+        {
+            foreach (Transform llama in rotate)
+                llama.rotation = new Quaternion(0, 180, 0, 0);
+            rotate = null;
         }
     }
 }
