@@ -26,12 +26,13 @@ public class EndGame : MonoBehaviour
     [SerializeField]
     private float minHeight;
 
-    public Text player1Placement;
-    public Text player2Placement;
-    public Text player3Placement;
-    public Text player4Placement;
+    public Text platform1Placement;
+    public Text platform2Placement;
+    public Text platform3Placement;
+    public Text platform4Placement;
 
     private Text[] placements = new Text[4];
+    private int[] scoresAccordingToPlayer = new int[4];
 
     public struct TeamScore
     {
@@ -52,19 +53,20 @@ public class EndGame : MonoBehaviour
         {
             characterAdrenalines[i].ActivateFrenzy(delayBeforeGameEnd);
         }
+
+        placements[0] = platform1Placement;
+        placements[1] = platform2Placement;
+        placements[2] = platform3Placement;
+        placements[3] = platform4Placement;
+        for (int i = 0; i < 4; ++i)
+        {
+            placements[i].text = "0";
+        }
     }
 
     void Start()
     {
         timer = delayBeforeGameEnd;
-        placements[0] = player1Placement;
-        placements[1] = player2Placement;
-        placements[2] = player3Placement;
-        placements[3] = player4Placement;
-        for(int i = 0; i < 4; ++i)
-        {
-            placements[i].text = "0";
-        }
     }
 
     void Update()
@@ -118,17 +120,45 @@ public class EndGame : MonoBehaviour
             List<TeamScore> teamScores = GetPlacement(points);
 
             // find player with highest score
-            float highestScore = 0;
-            float lowestScore = teamScores[0].points;
+            int highestScore = 0;
+            int lowestScore = 10000;
             for(int i = 0; i < teamScores.Count; ++i)
             {
                 if(teamScores[i].points > highestScore)
-                {
                     highestScore = teamScores[i].points;
-                }
-                if (teamScores[i].points < lowestScore)
-                {
+                else if (teamScores[i].points < lowestScore)
                     lowestScore = teamScores[i].points;
+            }
+
+            // placements
+            for(int i = 0; i < 4; ++i)
+            {
+                scoresAccordingToPlayer[playerBases[i].playerID] = playerBases[i].fruitCount;
+            }
+            for (int i = 0; i < 4; ++i)
+            {
+                if (scoresAccordingToPlayer[i] == highestScore)
+                    placements[i].text = "1";
+                else if (scoresAccordingToPlayer[i] == lowestScore)
+                    placements[i].text = "4";
+                else
+                {
+                    for(int j = i + 1; j < 4; ++j)
+                    {
+                        if(scoresAccordingToPlayer[j] != highestScore && scoresAccordingToPlayer[j] != lowestScore)
+                        {
+                            if(scoresAccordingToPlayer[i] > scoresAccordingToPlayer[j])
+                            {
+                                placements[i].text = "2";
+                                placements[j].text = "3";
+                            }
+                            else
+                            {
+                                placements[i].text = "3";
+                                placements[j].text = "2";
+                            }
+                        }
+                    }
                 }
             }
 
@@ -142,11 +172,7 @@ public class EndGame : MonoBehaviour
                     // (score - lowestScore) / (highest score - lowestScore) * (max height - min height)
                     if (platforms[i].team == teamScores[j].teamName)
                     {
-                        platforms[i].testPoints = (((teamScores[j].points - lowestScore) / (highestScore - lowestScore)) * range) + minHeight;
-                        //if (teamScores[j].points == highestScore) // player with highest score
-                        //    platforms[i].testPoints = 2.2f;
-                        //else
-                        //    platforms[i].testPoints = (teamScores[j].points / highestScore) * 2.2f;
+                        platforms[i].testPoints = (((teamScores[j].points - (float)lowestScore) / ((float)highestScore - (float)lowestScore)) * range) + minHeight;
 
                         break;
                     }
