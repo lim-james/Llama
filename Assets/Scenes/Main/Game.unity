@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -360,7 +360,7 @@ MonoBehaviour:
   style: 0
   duration: 60
   delay: 21
-  time: -17.979994
+  time: -20.939999
   distance: 65
   followMultipler: 1
 --- !u!114 &36676511
@@ -1935,7 +1935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054b74710e3c5ec4196419799d1c2c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeGameEnd: 0
+  delayBeforeGameEnd: 15
   timerText: {fileID: 1840351960}
   endText: Time Up!
   endGameCamera: {fileID: 468952485}
@@ -2020,7 +2020,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384363002}
-  m_LocalRotation: {x: 0.14664565, y: 0.45027885, z: -0.0752458, w: 0.8775432}
+  m_LocalRotation: {x: 0.14664969, y: 0.45023662, z: -0.07523891, w: 0.8775648}
   m_LocalPosition: {x: -21, y: 28, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2521,7 +2521,7 @@ MonoBehaviour:
   style: 0
   duration: 60
   delay: 21
-  time: -17.979994
+  time: -20.939999
   distance: 65
   followMultipler: 1
 --- !u!114 &477282917
@@ -4426,7 +4426,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a90b4254231c22c44871a5db34356fba, type: 2}
+  - {fileID: 2100000, guid: 406c2f5bb2b7ce44ca8328b505033625, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4576,7 +4576,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972665132}
-  m_LocalRotation: {x: 0.00083595974, y: 0.9926693, z: -0.12066368, w: 0.0068772933}
+  m_LocalRotation: {x: 0.00084725826, y: 0.9926685, z: -0.120664425, w: 0.0069701774}
   m_LocalPosition: {x: 21, y: 28, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5821,7 +5821,7 @@ MonoBehaviour:
   style: 0
   duration: 20
   delay: 5
-  time: -1.9800001
+  time: -4.94
   distance: 65
   followMultipler: 1
 --- !u!114 &1088370995
@@ -6451,7 +6451,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a90b4254231c22c44871a5db34356fba, type: 2}
+  - {fileID: 2100000, guid: 406c2f5bb2b7ce44ca8328b505033625, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7003,7 +7003,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475759004}
-  m_LocalRotation: {x: 0.10226798, y: -0.045629483, z: 0.0046960213, w: 0.9936988}
+  m_LocalRotation: {x: 0.10221427, y: -0.045676224, z: 0.0046983175, w: 0.9937021}
   m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7604,7 +7604,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642112581}
-  m_LocalRotation: {x: 0.10825672, y: -0.76147807, z: 0.13182384, w: 0.6253433}
+  m_LocalRotation: {x: 0.10826391, y: -0.76142305, z: 0.1318085, w: 0.6254122}
   m_LocalPosition: {x: 21, y: 28, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9146,10 +9146,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af6843b84a881d42af42157b9319617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: []
+  players:
+  - characterType: 1
+    team: 0
+    isAI: 0
+  - characterType: 1
+    team: 0
+    isAI: 0
   container: {fileID: 1677704185}
   characters: {fileID: 11400000, guid: b8fdd0601afdfd940a59f9a0dbe5eeac, type: 2}
   teams: {fileID: 11400000, guid: f7ea20a7b0bd24440b00473755ae796b, type: 2}
+  map: {fileID: 946425764}
   bases: {fileID: 1689396795}
 --- !u!1 &2073131441
 GameObject:

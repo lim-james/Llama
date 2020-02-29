@@ -30,7 +30,7 @@ public class MapScaling : MonoBehaviour
     private void Update()
     {
         et += Time.deltaTime;
-        mesh.material.SetFloat("Vector1_DD476967", et);
+        mesh.material.SetFloat("_ShrinkTime", et);
 
         if (et >= 0.0f && et < duration)
         {

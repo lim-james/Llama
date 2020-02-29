@@ -28,7 +28,17 @@ public class PlayerManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField]
+    private Renderer map;
+    [SerializeField]
     private ScoreAreaScaling bases;
+
+    // hacky
+    private List<Transform> rotate;
+
+    private void Awake()
+    {
+        rotate = new List<Transform>();
+    }
 
     private void Start()
     {
@@ -46,10 +56,16 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
+        Material playerBase = map.material;
+
         // spawn 
         for (int i = 0; i < players.Count; ++i)
         {
             JoinInfo joinInfo = players[i];
+            Team team = teams.group[joinInfo.team];
+            // set map colour
+            playerBase.SetColor("_Player" + (i + 1), team.color);
+            // set player info
             CharacterData data = characters.characters[joinInfo.characterType];
             // create game object accordingly
             Transform llama = Instantiate(data.characterPrefab).transform;
@@ -59,7 +75,7 @@ public class PlayerManager : MonoBehaviour
             // Character info
             CharacterInfo info = llama.GetComponent<CharacterInfo>();
             info.playerID = i;
-            info.team = teams.group[joinInfo.team].name;
+            info.team = team.name;
             info.AI = joinInfo.isAI;
             // Character position
             Vector3 position = bases.scoringArea[i].transform.position;
@@ -69,10 +85,17 @@ public class PlayerManager : MonoBehaviour
             llama.parent = container;
             llama.GetComponent<CharacterInput>().moveable = false;
 
-            if(i < 2)
-            {
-                llama.transform.rotation = new Quaternion(0, 180, 0, 0);
-            }
+            if(i < 2) rotate.Add(llama);
+        }
+    }
+
+    private void Update()
+    {
+        if (rotate != null)
+        {
+            foreach (Transform llama in rotate)
+                llama.rotation = new Quaternion(0, 180, 0, 0);
+            rotate = null;
         }
     }
 }
