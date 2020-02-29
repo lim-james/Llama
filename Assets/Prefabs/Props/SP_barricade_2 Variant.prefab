@@ -91,10 +91,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 7dfc9efcb1e081748921c560098f4945,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e8f1af404957ae40867581bda1e7f28, type: 2}
     - target: {fileID: -927199367670048503, guid: 7dfc9efcb1e081748921c560098f4945,
         type: 3}
       propertyPath: m_Name
-      value: SP_barricade_2
+      value: SP_barricade_2 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dfc9efcb1e081748921c560098f4945, type: 3}
