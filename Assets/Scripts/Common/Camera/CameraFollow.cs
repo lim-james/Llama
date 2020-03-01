@@ -24,15 +24,33 @@ public class CameraFollow : MonoBehaviour
     public FollowStyle style;
 
 
-    [SerializeField]
-    private float duration;
-    [SerializeField]
-    private float delay;
-    [SerializeField]
-    private float time;
+    public float duration { private get; set; }
+
+    public float et
+    {
+        set
+        {
+            if (value < 0.0f)
+            {
+                offset = startOffset;
+                distance = startDistance;
+            }
+            else if (value < duration)
+            {
+                float m = value / duration;
+                offset = startOffset + (endOffset - startOffset) * m;
+                distance = startDistance + (endDistance - startDistance) * m;
+            }
+            else
+            {
+                offset = endOffset;
+                distance = endDistance;
+            }
+        }
+    }
 
     private Vector3 offset;
-    private float magnitude;
+    //private float magnitude;
     [SerializeField]
     private float distance;
 
@@ -49,35 +67,14 @@ public class CameraFollow : MonoBehaviour
             followCamera = GetComponent<Camera>();
             startPos = followCamera.transform.position;
         }
-
-        time = -delay;
-        magnitude = 1.0f / (startDistance - endDistance);
+        //magnitude = 1.0f / (startDistance - endDistance);
     }
 
     void Update()
     {
         if (!target)
             return;
-
-        time += Time.deltaTime;
-
-        if (time < 0.0f)
-        {
-            offset = startOffset;
-            distance = startDistance;
-        }
-        else if (time < duration)
-        {
-            float m = time / duration;
-            offset = startOffset + (endOffset - startOffset) * m;
-            distance = startDistance + (endDistance - startDistance) * m;
-        }
-        else
-        {
-            offset = endOffset;
-            distance = endDistance;
-        }
-
+        
         MoveCamera();
     }
 
