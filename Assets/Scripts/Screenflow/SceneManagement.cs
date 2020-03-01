@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
+
+    public Animator transitionAnim;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,13 +35,17 @@ public class SceneManagement : MonoBehaviour
         switch (gameObject.name)
         {
             case "Controls":
+                //SceneManager.LoadScene("Controls");
                 SceneManager.LoadScene("Controls");
+                //StartCoroutine(LoadScene("Controls"));
                 break;
             case "BackToHome":
-                SceneManager.LoadScene("Home");
+                //SceneManager.LoadScene("Home");
+                StartCoroutine(LoadScene("Home"));
                 break;
             case "Lobbies":
-                SceneManager.LoadScene("Lobby");
+                //SceneManager.LoadScene("Lobby");
+                StartCoroutine(LoadScene("Lobby"));
                 break;
             case "Quit":
 #if UNITY_STANDALONE
@@ -55,5 +62,12 @@ public class SceneManagement : MonoBehaviour
                 //SceneManager.LoadScene("Lobbies");
                 //break;
         }
+    }
+
+    IEnumerator LoadScene(string sceneName)
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(sceneName);
     }
 }
