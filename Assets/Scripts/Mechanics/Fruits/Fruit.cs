@@ -51,7 +51,6 @@ public class Fruit : MonoBehaviour
             else
                 collision.gameObject.transform.GetChild(4).gameObject.GetComponent<ParticleSystem>().Play();
 
-            //collision.gameObject.transform.GetChild(5).gameObject.GetComponent<ParticleSystem>().Play();
         }
 
         rig.velocity = Vector3.Reflect(rig.velocity.normalized, collision.contacts[0].normal);

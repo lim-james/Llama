@@ -11,8 +11,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: baby_Llama
-    second: {fileID: 5093430939128597115, guid: da8bd4a67a76dbc469a8b2bbbe153eaf,
-      type: 3}
+    second: {fileID: 2100000, guid: cbfd84e09f3ac1b418745cd153156516, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

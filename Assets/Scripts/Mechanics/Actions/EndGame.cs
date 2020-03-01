@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using System;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class EndGame : MonoBehaviour
     public GameObject[] fireworks;
     public Transform[] fireworksLocation;
     private bool doOnce = false;
+
+    private InputMaster input;
 
     [SerializeField]
     private float maxHeight;
@@ -64,9 +68,19 @@ public class EndGame : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        input = new InputMaster();
+        input.Enable();
+    }
+
     void Start()
     {
         timer = delayBeforeGameEnd;
+
+        input.devices = new[] { InputDevice.all[0] };
+        // restart
+        
     }
 
     void Update()
@@ -191,6 +205,8 @@ public class EndGame : MonoBehaviour
                 platforms[i].startMove = true;
             }
 
+            input.Player.Restart.performed += context => OnRestart(context);
+
             timerText.gameObject.SetActive(false);
             Camera.main.gameObject.SetActive(false);
             endGameCamera.gameObject.SetActive(true);
@@ -208,7 +224,7 @@ public class EndGame : MonoBehaviour
 
             // deactive the hue
             frenzyHue.SetActive(false);
-            
+
             //if()
             //{
             //    endGameCamera.transform.up += new Vector3(0, Time.deltaTime, 0);
@@ -243,5 +259,10 @@ public class EndGame : MonoBehaviour
         }
 
         return (teamScores.OrderByDescending(x => x.points).ToList());
+    }
+
+    private void OnRestart(InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene("Lobby");
     }
 }
