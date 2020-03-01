@@ -9638,4 +9638,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9871adee3ec5b8a4c854c8c256c54709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 5
+  timer: 2
