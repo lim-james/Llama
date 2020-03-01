@@ -73,7 +73,7 @@ Material:
     - Vector1_DD476967: 0
     - Vector1_E2BCDA9F: 0.25
     - _AlphaClip: 0
-    - _Ambient: 0.35
+    - _Ambient: 0
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -99,7 +99,7 @@ Material:
     - _UseAoMap: 1
     - _UseColorMap: 1
     - _UseEmissiveMap: 1
-    - _UseMetallicMap: 1
+    - _UseMetallicMap: 0
     - _UseNormalMap: 1
     - _UseRoughnessMap: 1
     - _WorkflowMode: 1
