@@ -10,6 +10,10 @@ public class SelectionInput : MonoBehaviour
     [SerializeField]
     private int controllerID = 0;
 
+    [Header("Scroll material")]
+    [SerializeField]
+    private Renderer scroll;
+
     [Header("Player input")]
     public int teamIndex;
     public int characterIndex;
@@ -38,6 +42,10 @@ public class SelectionInput : MonoBehaviour
 
     private MaterialManager selected;
 
+    // Hold
+    static private float progress;
+    private bool isHolding;
+
     // animation
     [SerializeField]
     private UnityEvent OnModeChange;
@@ -54,6 +62,9 @@ public class SelectionInput : MonoBehaviour
             input.devices = new[] { InputDevice.all[0] };
             input.Lobby.SwitchTeam.performed += context => SwitchTeamHandler(context);
             input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);
+            // hold to start
+            input.Lobby.StartGame.performed += context => HoldHandler(context);
+            input.Lobby.StartGame.canceled += context => HoldHandler(context);
         }
         else
         {
@@ -62,7 +73,10 @@ public class SelectionInput : MonoBehaviour
                 connected = true;
                 input.devices = new[] { Gamepad.all[controllerID - 1] };
                 input.Lobby.SwitchTeam.performed += context => SwitchTeamHandler(context);
-                input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);
+                input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);            
+                // hold to start
+                input.Lobby.StartGame.performed += context => HoldHandler(context);
+                input.Lobby.StartGame.canceled += context => HoldHandler(context);
             }
             else
             {
@@ -72,6 +86,8 @@ public class SelectionInput : MonoBehaviour
 
         background = GetComponent<RawImage>();
         label = GetComponentInChildren<Text>();
+
+        isHolding = false;
     }
 
     private void Start()
@@ -80,6 +96,16 @@ public class SelectionInput : MonoBehaviour
         background.texture = teams.group[teamIndex].teamBackground;
 
         UpdateCharacter();
+        progress = 0.0f;
+    }
+
+    private void Update()
+    {
+        if (isHolding)
+        {
+            progress += Time.deltaTime * 0.5f;
+            scroll.material.SetFloat("_Progress", progress);
+        }
     }
 
     private void FixedUpdate()
@@ -131,6 +157,11 @@ public class SelectionInput : MonoBehaviour
 
         Destroy(selected.gameObject);
         UpdateCharacter();
+    }
+
+    private void HoldHandler(InputAction.CallbackContext context)
+    {
+        isHolding = context.ReadValue<float>() == 1;
     }
 
     private void UpdateCharacter()
