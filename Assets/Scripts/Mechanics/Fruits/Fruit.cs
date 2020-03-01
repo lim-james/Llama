@@ -46,11 +46,17 @@ public class Fruit : MonoBehaviour
         {
             collision.gameObject.GetComponent<CharacterMovement>().GetAnimator.SetTrigger("TriggerDamage");
 
+            // Hit
             if (!collision.gameObject.transform.GetChild(4).gameObject.activeInHierarchy)
                 collision.gameObject.transform.GetChild(4).gameObject.SetActive(true);
             else
                 collision.gameObject.transform.GetChild(4).gameObject.GetComponent<ParticleSystem>().Play();
 
+            // Star
+            if (!collision.gameObject.transform.GetChild(3).gameObject.activeInHierarchy)
+                collision.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+            else
+                collision.gameObject.transform.GetChild(3).gameObject.GetComponent<ParticleSystem>().Play();
         }
 
         rig.velocity = Vector3.Reflect(rig.velocity.normalized, collision.contacts[0].normal);
