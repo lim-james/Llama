@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
     [SerializeField]
     private SelectionInput[] inputs;
+    [SerializeField]
+    private Animator transitionAnim;
 
     public void StartGame()
     {
@@ -20,6 +24,14 @@ public class LobbyManager : MonoBehaviour
             PlayerManager.playerQueue.Add(info);
         }
 
-        SceneManager.LoadScene("Game");
+        StartCoroutine(LoadScene("Game"));
+        //SceneManager.LoadScene("Game");
+    }
+
+    IEnumerator LoadScene(string sceneName)
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(sceneName);
     }
 }
