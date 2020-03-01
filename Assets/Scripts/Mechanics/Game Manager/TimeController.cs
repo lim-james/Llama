@@ -76,14 +76,14 @@ public class TimeController : MonoBehaviour
 
             float value = et / duration;
 
-            //pulse
-            barrier.material.SetFloat("Vector1_887D380D", startPulseSpeed + (endPulseSpeed - startPulseSpeed) * value);
-            //line
-            barrier.material.SetFloat("Vector1_2564F6BE", startLineSpeed + (endLineSpeed - startLineSpeed) * value);
-
             Color bg = Color.Lerp(startColor, endColor, value);
             mainCam.backgroundColor = bg;
             cineCam.backgroundColor = bg;
+
+            value *= value;
+            barrier.material.SetFloat("_et", et);
+            barrier.material.SetFloat("_PulseSpeed", startPulseSpeed + (endPulseSpeed - startPulseSpeed) * value);
+            barrier.material.SetFloat("_LineSpeed", startLineSpeed + (endLineSpeed - startLineSpeed) * value);
         }
 
         mainCameraFollow.et = et;
