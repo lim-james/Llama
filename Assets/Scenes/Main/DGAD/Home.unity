@@ -2670,6 +2670,9 @@ MonoBehaviour:
   Controls: {fileID: 697672875}
   Credits: {fileID: 1757224273}
   Exit: {fileID: 505728263}
+  player: {fileID: 1676361373}
+  switchAudio: {fileID: 8300000, guid: 7659292e4ee16a1498f90f8414b02910, type: 3}
+  normalAudio: {fileID: 8300000, guid: 3493bd935119a7f42a0996fb427df6a5, type: 3}
 --- !u!1 &1931825222
 GameObject:
   m_ObjectHideFlags: 0

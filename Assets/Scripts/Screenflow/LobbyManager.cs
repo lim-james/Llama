@@ -9,6 +9,37 @@ public class LobbyManager : MonoBehaviour
     private SelectionInput[] inputs;
     [SerializeField]
     private Animator transitionAnim;
+    [SerializeField]
+    private Renderer scroll;
+
+    private float timer;
+    [SerializeField]
+    private float startDelay = 3.0f;
+
+    private void Start()
+    {
+        scroll.material.SetFloat("_Delay", startDelay);
+    }
+
+    private void FixedUpdate()
+    {
+        // set player join info
+        foreach (SelectionInput input in inputs)
+        {
+            if (input.connected && !input.isHolding)
+            {
+                timer = 0;
+                scroll.material.SetFloat("_et", timer);
+                return;
+            }
+        }
+
+        timer += Time.fixedDeltaTime;
+        scroll.material.SetFloat("_et", timer);
+
+        if (timer >= startDelay)
+            StartGame();
+    }
 
     public void StartGame()
     {

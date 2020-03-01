@@ -29,6 +29,13 @@ public class HomeSelection : MonoBehaviour
     [SerializeField]
     private Button Exit;
 
+    [Header("Sound")]
+    public AudioPlayer player;
+    [SerializeField]
+    private AudioClip switchAudio;
+    [SerializeField]
+    private AudioClip normalAudio;
+
     public bool connected { get; private set; }
 
     private void Awake()
@@ -108,16 +115,21 @@ public class HomeSelection : MonoBehaviour
                 break;
 
         }
+
+        // Play Audio
+        player.Play(switchAudio);
     }
 
     private void Enter(InputAction.CallbackContext context)
     {
+        // Play Audio
+        player.Play(normalAudio);
+
         if (Lobbies.GetComponent<RawImage>().texture == selectedButton)
             SceneManager.LoadScene("Lobby");
         else if (Controls.GetComponent<RawImage>().texture == selectedButton)
             SceneManager.LoadScene("Controls");
         else if (Credits.GetComponent<RawImage>().texture == selectedButton)
             SceneManager.LoadScene("Credits");
-
     }
 }
