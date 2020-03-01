@@ -37,7 +37,7 @@ public class SceneManagement : MonoBehaviour
             case "Controls":
                 //SceneManager.LoadScene("Controls");
                 SceneManager.LoadScene("Controls");
-                StartCoroutine(LoadScene("Controls"));
+                //StartCoroutine(LoadScene("Controls"));
                 break;
             case "BackToHome":
                 //SceneManager.LoadScene("Home");
