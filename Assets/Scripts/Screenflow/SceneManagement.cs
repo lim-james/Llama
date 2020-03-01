@@ -40,6 +40,14 @@ public class SceneManagement : MonoBehaviour
             case "Lobbies":
                 SceneManager.LoadScene("Lobby");
                 break;
+            case "Quit":
+#if UNITY_STANDALONE
+                Application.Quit();
+#endif
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#endif
+                break;
             //case "BackToLobbies":
             //    SceneManager.LoadScene("Lobbies");
             //    break;
