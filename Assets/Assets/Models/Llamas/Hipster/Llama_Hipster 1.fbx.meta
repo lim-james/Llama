@@ -3,7 +3,12 @@ guid: c9449e49ac93d3244b106126a0001b1c
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hipster_Texture
+    second: {fileID: 2100000, guid: 43983e53248f1254bb9b0d5f13c18eb7, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

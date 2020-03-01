@@ -49,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MapTexture:
-        m_Texture: {fileID: 2800000, guid: 0d953e9dbca260247a5dc90ec95c8084, type: 3}
+        m_Texture: {fileID: 2800000, guid: 95b0a2c9859b7de409e0b63655054332, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -108,7 +108,9 @@ Material:
     - _Player3: {r: 0, g: 0, b: 1, a: 0}
     - _Player4: {r: 1, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _UvTiling: {r: 6, g: 6, b: 0, a: 0}
+    - _UvMax: {r: 0.773, g: 0.981, b: 0, a: 0}
+    - _UvMin: {r: 0.015, g: 0.223, b: 0, a: 0}
+    - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
 --- !u!114 &6403080212416545065
 MonoBehaviour:
   m_ObjectHideFlags: 11

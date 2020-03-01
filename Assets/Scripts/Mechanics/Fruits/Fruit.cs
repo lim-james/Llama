@@ -43,7 +43,16 @@ public class Fruit : MonoBehaviour
         collision.gameObject.GetComponent<Rigidbody>().AddForce(dir * rig.velocity.magnitude, ForceMode.Impulse);
 
         if(rig.velocity.magnitude > 1) // Fruit must be in motion to trigger damage?
+        {
             collision.gameObject.GetComponent<CharacterMovement>().GetAnimator.SetTrigger("TriggerDamage");
+
+            if (!collision.gameObject.transform.GetChild(4).gameObject.activeInHierarchy)
+                collision.gameObject.transform.GetChild(4).gameObject.SetActive(true);
+            else
+                collision.gameObject.transform.GetChild(4).gameObject.GetComponent<ParticleSystem>().Play();
+
+            //collision.gameObject.transform.GetChild(5).gameObject.GetComponent<ParticleSystem>().Play();
+        }
 
         rig.velocity = Vector3.Reflect(rig.velocity.normalized, collision.contacts[0].normal);
     }
