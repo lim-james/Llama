@@ -24,6 +24,8 @@ public class CharacterInput : MonoBehaviour
     [SerializeField]
     private float vertical = 0.0f;
 
+    public UIController ui;
+
     public bool moveable = true;
 
     private void Awake()
@@ -35,6 +37,9 @@ public class CharacterInput : MonoBehaviour
 
         input = new InputMaster();
         input.Enable();
+
+        
+        ui = GameObject.Find("UI Canvas").GetComponent<UIController>();
     }
 
     private void Start()
@@ -64,6 +69,8 @@ public class CharacterInput : MonoBehaviour
             };
             // consume
             input.Player.Consume.performed += _ => adrenaline.Consume();
+            // pause game
+            input.Player.Pause.performed += context => OnPause(context);
         }
     }
 
@@ -89,5 +96,10 @@ public class CharacterInput : MonoBehaviour
     private void OnSwitch(InputAction.CallbackContext context)
     {
         inventory.selectedIndex += (int)context.ReadValue<float>();
+    }
+
+    private void OnPause(InputAction.CallbackContext context)
+    {
+        ui.TogglePause();
     }
 }
