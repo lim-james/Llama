@@ -74,7 +74,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (!target)
             return;
-        
+
         MoveCamera();
     }
 

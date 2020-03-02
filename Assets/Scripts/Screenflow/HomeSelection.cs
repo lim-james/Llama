@@ -133,5 +133,15 @@ public class HomeSelection : MonoBehaviour
             SceneManager.LoadScene("Controls");
         else if (Credits.GetComponent<RawImage>().texture == selectedButton)
             SceneManager.LoadScene("Credits");
+        else if (Exit.GetComponent<RawImage>().texture == selectedButton)
+        {
+#if UNITY_STANDALONE
+            Application.Quit();
+#endif
+#if UNITY_EDITOR
+            Debug.Log("Exit from editor");
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
     }
 }

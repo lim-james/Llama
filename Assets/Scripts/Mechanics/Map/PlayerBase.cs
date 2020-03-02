@@ -13,7 +13,7 @@ public class PlayerBase : MonoBehaviour
         get { return _fruitCount; }
         set
         {
-            _fruitCount = value;
+            _fruitCount = Mathf.Max(0, value);
             scoreLabel.text = _fruitCount.ToString();
         }
     }

@@ -693,8 +693,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e9e2a696-c5f1-4948-8d26-fc13c5cf85fc"",
-                    ""path"": ""<Gamepad>/start"",
+                    ""id"": ""d3abbdd3-e319-4045-9f4f-bc26f7187312"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
