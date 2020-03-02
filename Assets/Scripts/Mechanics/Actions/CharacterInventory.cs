@@ -239,7 +239,7 @@ public class CharacterInventory : MonoBehaviour
             Fruit fruit = inventory[index];
             if (fruit == null) continue;
             fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-            fruit.transform.position = new Vector3(0.0f, -5.0f, 0.0f);
+            fruit.transform.position = transform.position + new Vector3(0.0f, -5.0f, 0.0f);
             fruit.GetComponent<Rigidbody>().useGravity = true;
             fruit.GetComponent<Collider>().enabled = true;
             fruit.GetComponent<RangeDetector>().active = true;
