@@ -15,6 +15,15 @@ public class PlatformRise : MonoBehaviour
     private bool up;
     private float time;
 
+    [SerializeField]
+    private Material RedMaterial;
+    [SerializeField]
+    private Material BlueMaterial;
+    [SerializeField]
+    private Material GreenMaterial;
+    [SerializeField]
+    private Material YellowMaterial;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +65,22 @@ public class PlatformRise : MonoBehaviour
                 transform.localScale -= new Vector3(Time.deltaTime * 1.5f, 0, Time.deltaTime * 1.5f);
             else
                 reached = false;
+        }
+
+        switch(team)
+        {
+            case TeamName.RED:
+                GetComponent<Renderer>().material = RedMaterial;
+                break;
+            case TeamName.BLUE:
+                GetComponent<Renderer>().material = BlueMaterial;
+                break;
+            case TeamName.GREEN:
+                GetComponent<Renderer>().material = GreenMaterial;
+                break;
+            case TeamName.YELLOW:
+                GetComponent<Renderer>().material = YellowMaterial;
+                break;
         }
     }
 }

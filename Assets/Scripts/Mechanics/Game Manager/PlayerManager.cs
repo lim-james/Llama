@@ -87,6 +87,9 @@ public class PlayerManager : MonoBehaviour
 
             if(i < 2) rotate.Add(llama);
         }
+
+        playerQueue.Clear();
+        players.Clear();
     }
 
     private void Update()

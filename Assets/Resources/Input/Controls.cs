@@ -694,7 +694,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e9e2a696-c5f1-4948-8d26-fc13c5cf85fc"",
-                    ""path"": ""<Gamepad>/start"",
+                    ""path"": ""<DualShockGamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
