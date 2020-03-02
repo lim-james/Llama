@@ -40,6 +40,8 @@ public class HomeSelection : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
+
         input = new InputMaster();
         input.Enable();
 

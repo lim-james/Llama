@@ -8,6 +8,7 @@ public class AudioPlayer : MonoBehaviour
     private void Awake()
     {
         source = GetComponent<AudioSource>();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Play(AudioClip clip)
