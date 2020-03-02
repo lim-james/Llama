@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ac14278b067884abb3eb657183d0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostDuration: 10
+  boostDuration: 5
   frenzy: 0
   frenzySpeedBoost: 20
   frenzyStrengthBoost: 20

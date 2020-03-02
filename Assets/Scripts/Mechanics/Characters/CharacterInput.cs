@@ -42,6 +42,7 @@ public class CharacterInput : MonoBehaviour
         // bind handlers
         if (!info.AI)
         {
+            input.Enable();
             if (info.playerID == 0)
                 input.devices = new[] { InputDevice.all[0] };
             else
@@ -64,6 +65,11 @@ public class CharacterInput : MonoBehaviour
             // consume
             input.Player.Consume.performed += _ => adrenaline.Consume();
         }
+    }
+
+    private void OnDestroy()
+    {
+        input.Disable();
     }
 
     private void FixedUpdate()

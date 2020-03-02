@@ -52,7 +52,6 @@ public class CharacterAdrenaline : MonoBehaviour
     public void Consume()
     {
         bool boosted = false;
-        inventory.itemCount = 0;
 
         foreach (Fruit fruit in inventory.inventory.Values)
         {
@@ -65,12 +64,11 @@ public class CharacterAdrenaline : MonoBehaviour
                     info.strengthBoost += fruit.stats.strength;
                     info.balanceBoost += fruit.stats.balance;
                 }
-
-                Destroy(fruit.gameObject);
             }
         }
 
-        if (boosted) boostTimeLeft += boostDuration; 
+        inventory.DiscardFruits();
+        if (boosted) boostTimeLeft = boostDuration;
     }
 
     public void ActivateFrenzy(float duration)

@@ -2767,7 +2767,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60
+  field of view: 40
   orthographic: 0
   orthographic size: 10
   m_Depth: 1
@@ -10071,7 +10071,7 @@ MonoBehaviour:
   startPulseSpeed: 1
   endPulseSpeed: 7
   startLineSpeed: 0.05
-  endLineSpeed: 0.2
+  endLineSpeed: 0.1
 --- !u!1 &2073131441
 GameObject:
   m_ObjectHideFlags: 0
