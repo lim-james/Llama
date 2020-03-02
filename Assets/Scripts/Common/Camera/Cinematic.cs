@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Shot {
     public enum Style {
         STICK, CHASE
@@ -10,15 +12,15 @@ public class Shot {
     public Style style;
 
     public float movementSpeed;
-    public float rotationSpeed;
+    public float zoomSpeed;
 
-    public List<Transform> targets;
+    public Transform target;
     public Vector3 targetOffset;
-
     public Vector3 offset;
+    public float zoomOffset;
 }
 
-
+[ExecuteInEditMode]
 public class Cinematic : MonoBehaviour
 {
 
@@ -28,7 +30,9 @@ public class Cinematic : MonoBehaviour
     private bool loop;
 
     private Shot current;
+    private float zoom;
 
+    private float et;
     private int _shotIndex;
     private int shotIndex
     {
@@ -49,7 +53,6 @@ public class Cinematic : MonoBehaviour
             current = shots[shotIndex];
         }
     }
-    private float et;
 
     private void Start()
     {
@@ -60,30 +63,35 @@ public class Cinematic : MonoBehaviour
     private void Update()
     {
         if (shots.Count == 0) return;
+        UpdateCamera();
+    }
 
-        Vector3 avgPosition = Vector3.zero;
-        
-        foreach (Transform target in current.targets)
-            avgPosition += target.position;
+    private void UpdateCamera()
+    {
+        Vector3 target = current.target.position;
 
-        avgPosition /= current.targets.Count;
-
-        Vector3 destination = avgPosition + current.targetOffset + current.offset;
+        Vector3 focus = target + current.targetOffset;
+        Vector3 direction = (focus - transform.position).normalized;
 
         if (current.style == Shot.Style.STICK)
         {
+            zoom = current.zoomOffset;
+            Vector3 destination = target + current.offset - direction * zoom;
             transform.position = destination;
+            transform.LookAt(focus);
         }
         else
         {
-            float t = Time.deltaTime * current.movementSpeed;
-            transform.position = Vector3.Lerp(transform.position, destination, t);
+            zoom += (current.zoomOffset - zoom) * Time.deltaTime * current.zoomSpeed;
+            Vector3 destination = target + current.offset - direction * zoom;
+            float mt = Time.deltaTime * current.movementSpeed;
+            transform.position = Vector3.Lerp(transform.position, destination, mt);
+            transform.LookAt(focus);
         }
         
         et += Time.deltaTime;
         if (current.duration >= 0 && et > current.duration)
             ++shotIndex;
     }
-
 
 }

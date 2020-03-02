@@ -47,6 +47,7 @@ public class LobbyManager : MonoBehaviour
         foreach (SelectionInput input in inputs)
         {
             JoinInfo info = new JoinInfo();
+            Debug.Log(input.characterIndex);
             info.characterType = input.characterIndex;
             info.team = input.teamIndex;
             info.isAI = !input.connected;
