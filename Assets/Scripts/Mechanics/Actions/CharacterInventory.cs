@@ -15,6 +15,8 @@ public class CharacterInventory : MonoBehaviour
     private Transform selected;
     [SerializeField]
     private Transform indicator;
+    [SerializeField]
+    private GameObject inventoryUI;
 
     [SerializeField]
     private float displacement;
@@ -256,4 +258,8 @@ public class CharacterInventory : MonoBehaviour
         itemCount = 0;
     }
 
+    public void SetInventoryUIVisibility(bool active)
+    {
+        inventoryUI.SetActive(active);
+    }
 }

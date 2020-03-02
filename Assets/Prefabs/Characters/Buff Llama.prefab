@@ -294,6 +294,7 @@ MonoBehaviour:
   - {fileID: 3993117655114371623}
   selected: {fileID: 1341381891625220969}
   indicator: {fileID: 525521629408978152}
+  inventoryUI: {fileID: 1341381891887440684}
   displacement: 0
 --- !u!114 &1341381891492109687
 MonoBehaviour:
