@@ -15,6 +15,7 @@ void MainLight_half(half3 WorldPosition, out half3 Direction, out half3 Color, o
 	Light light = GetMainLight(shadowCoord);
 	Direction = light.direction;
 	Color = light.color;
+	//Color = light.shadowAttenuation;
 	DistanceAttenuation = light.distanceAttenuation;
 	ShadowAttenuation = light.shadowAttenuation;
 #endif
