@@ -284,6 +284,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupRadius: 5
+  pickUpObjectLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   slots:
   - {fileID: 1341381890921496560}
   - {fileID: 0}
