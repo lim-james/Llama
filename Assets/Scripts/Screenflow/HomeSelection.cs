@@ -72,12 +72,18 @@ public class HomeSelection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        input.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    void OnDestroy()
+    {
+        input.Disable();
     }
 
     private void SwitchSelectedButton(InputAction.CallbackContext context)
