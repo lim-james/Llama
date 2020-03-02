@@ -65,6 +65,8 @@ public class SelectionInput : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
+
         input = new InputMaster();
         input.Enable();
 

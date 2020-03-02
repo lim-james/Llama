@@ -55,7 +55,7 @@ public class LobbyManager : MonoBehaviour
             PlayerManager.playerQueue.Add(info);
         }
 
-        StartCoroutine(LoadScene("Game"));
+        StartCoroutine(LoadScene("Loading"));
         //SceneManager.LoadScene("Game");
     }
 
