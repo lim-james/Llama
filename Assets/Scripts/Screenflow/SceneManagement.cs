@@ -52,6 +52,7 @@ public class SceneManagement : MonoBehaviour
                 Application.Quit();
 #endif
 #if UNITY_EDITOR
+                Debug.Log("Exit from editor");
                 UnityEditor.EditorApplication.isPlaying = false;
 #endif
                 break;
