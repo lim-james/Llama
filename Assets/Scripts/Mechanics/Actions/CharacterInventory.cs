@@ -8,6 +8,8 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField]
     private float pickupRadius = 3.0f;
     [SerializeField]
+    private LayerMask pickUpObjectLayer;
+    [SerializeField]
     private List<Container> slots = new List<Container>();
     [SerializeField]
     private Transform selected;
@@ -133,22 +135,18 @@ public class CharacterInventory : MonoBehaviour
     {
         if (itemCount == info.maxHold) return;
 
-        Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius);
+        Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius, pickUpObjectLayer.value);
 
         float nearestDist = float.MaxValue;
         GameObject nearestFruit = null;
 
         for (int i = 0; i < objectsNearBy.Length; ++i)
         {
-            if (!objectsNearBy[i].GetComponent<Fruit>())
-                continue;
-
             Vector3 dir = objectsNearBy[i].transform.position - transform.position;
             float dist = dir.magnitude;
 
             if (dist >= nearestDist)
                 continue;
-
             if (Vector3.Dot(transform.forward, dir) < 0)
                 continue;
 
@@ -168,12 +166,14 @@ public class CharacterInventory : MonoBehaviour
         nearestFruit.GetComponent<RangeDetector>().active = false;
         nearestFruit.GetComponent<Fruit>().throwing = false;
         nearestFruit.GetComponent<Fruit>().RemovePlayerBaseScore();
-        nearestFruit.layer = nearestFruit.GetComponent<Fruit>().defaultLayerMask;
+        nearestFruit.layer = LayerMask.NameToLayer(nearestFruit.GetComponent<Fruit>().defaultLayerMaskName);
         // TODO: Remove when all fruit now use the model gameobject as the child
+        /*
         if (nearestFruit.GetComponent<MeshRenderer>()) // Change to get MeshRenderer in gameobject child when theres a fruit. 
             nearestFruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         else
             nearestFruit.transform.GetChild(2).GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        */
 
         while (inventory.ContainsKey(selectedIndex) && inventory[selectedIndex] != null)
             ++selectedIndex;
@@ -209,13 +209,15 @@ public class CharacterInventory : MonoBehaviour
         fruit.GetComponent<Collider>().enabled = true;
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<Fruit>().throwing = true;
-        fruit.gameObject.layer = fruit.fruitLayer;
+        fruit.gameObject.layer = LayerMask.NameToLayer(fruit.fruitLayerName);
         fruit.AddPlayerBaseScore();
         // TODO: Remove when all fruit now use the model gameobject as the child
+        /*
         if (fruit.GetComponent<MeshRenderer>())
             fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         else
             fruit.transform.GetChild(2).GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+        */
 
         magnitude = 0.0f;
 

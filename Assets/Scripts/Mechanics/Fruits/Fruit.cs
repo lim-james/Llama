@@ -22,8 +22,8 @@ public class Fruit : MonoBehaviour
     [Header("Player Base Data")]
     [SerializeField]
     private LayerMask playerBaseIgnoreLayer;
-    public LayerMask defaultLayerMask;
-    public LayerMask fruitLayer;
+    public string defaultLayerMaskName = "Default";
+    public string fruitLayerName = "Fruit";
 
     public bool throwing = false;
 
