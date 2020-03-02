@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Textures/Model_Textures/BuffLlama.meta
 guid: a55cc3887f897a347b670694ccc4b3bd
+=======
+guid: 435c423447f2b544eb65863468f8536e
+>>>>>>> 9b3a9b3a40ff46ead8260964157fca6608fbfea9:Assets/Resources/Custom Materials/UI Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
