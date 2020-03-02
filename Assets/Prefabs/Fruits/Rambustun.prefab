@@ -134,8 +134,16 @@ MonoBehaviour:
   groundCheckIgnoreLayer:
     serializedVersion: 2
     m_Bits: 14902
+  playerBaseIgnoreLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  defaultLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  fruitLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   throwing: 0
-  forward: {x: 0, y: 0, z: 0}
   stats: {fileID: 11400000, guid: 1ec5504b879edaf489c6e6ff3e6b9c3b, type: 2}
 --- !u!114 &7369868421922548642
 MonoBehaviour:

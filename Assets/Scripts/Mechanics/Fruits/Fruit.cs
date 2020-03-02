@@ -7,17 +7,25 @@ public class Fruit : MonoBehaviour
 {
     private Rigidbody rig;
 
+    [Header("Ground Check Data")]
     [SerializeField]
     private float groundDistance = 0.3f;
     [SerializeField]
     private Vector3 transformOffset;
     public LayerMask groundCheckIgnoreLayer;
+
+    private bool grounded;
+    private Vector3 groundNormal;
+    private Vector3 forward;
     private RaycastHit hit;
-    Vector3 groundNormal;
+
+    [Header("Player Base Data")]
+    [SerializeField]
+    private LayerMask playerBaseIgnoreLayer;
+    public LayerMask defaultLayerMask;
+    public LayerMask fruitLayer;
 
     public bool throwing = false;
-    private bool grounded;
-    public Vector3 forward;
 
     //public string fruitName;
     public FruitStats stats;
@@ -54,6 +62,7 @@ public class Fruit : MonoBehaviour
         }
         else
         {
+            groundNormal = transform.up;
             forward = rig.velocity.normalized;
         }
     }
@@ -93,5 +102,31 @@ public class Fruit : MonoBehaviour
         }
 
         rig.velocity = Vector3.Reflect(rig.velocity.normalized, collision.contacts[0].normal);
+    }
+
+    public void RemovePlayerBaseScore()
+    {
+        Collider[] playerBases = Physics.OverlapSphere(transform.position, 1.0f, playerBaseIgnoreLayer);
+
+        if (playerBases.Length == 0)
+            return;
+
+        for (int i = 0; i < playerBases.Length; ++i)
+        {
+            playerBases[i].GetComponent<PlayerBase>().fruitCount -= stats.points;
+        }
+    }
+    
+    public void AddPlayerBaseScore()
+    {
+        Collider[] playerBases = Physics.OverlapSphere(transform.position, 1.0f, playerBaseIgnoreLayer);
+
+        if (playerBases.Length == 0)
+            return;
+
+        for (int i = 0; i < playerBases.Length; ++i)
+        {
+            playerBases[i].GetComponent<PlayerBase>().fruitCount += stats.points;
+        }
     }
 }
