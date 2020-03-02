@@ -28,7 +28,8 @@ public class LobbyManager : MonoBehaviour
         {
             if (input.connected && !input.isHolding)
             {
-                timer = 0;
+                timer -= Time.fixedDeltaTime * 2.0f;
+                timer = Mathf.Max(0.0f, timer);
                 scroll.material.SetFloat("_et", timer);
                 return;
             }
