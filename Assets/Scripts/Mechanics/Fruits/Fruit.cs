@@ -5,20 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Fruit : MonoBehaviour
 {
-    [SerializeField]
-    private uint id;
     private Rigidbody rig;
+
+    [SerializeField]
+    private float groundDistance = 0.3f;
+    [SerializeField]
+    private Vector3 transformOffset;
+    public LayerMask groundCheckIgnoreLayer;
+    private RaycastHit hit;
+    Vector3 groundNormal;
+
+    public bool throwing = false;
+    private bool grounded;
+    public Vector3 forward;
 
     //public string fruitName;
     public FruitStats stats;
-
-    public LayerMask layer;
-
-    public uint ID
-    {
-        set { id = value; }
-        get{ return id; }
-    }
 
     private void Start()
     {
@@ -26,16 +28,47 @@ public class Fruit : MonoBehaviour
         rig.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (!Physics.Raycast(transform.position, Vector3.down, float.MaxValue, layer))
+        if (!throwing)
+            return;
+
+        CheckGround();
+        CorrectVelocity();
+    }
+
+    private void CheckGround()
+    {
+        Ray ray = new Ray();
+        ray.origin = transform.position + transformOffset;
+        ray.direction = Vector3.down;
+
+        //Get if grounded (yes it is suppose to have = instead of ==)
+        if (grounded = Physics.Raycast(ray, out hit, groundDistance, groundCheckIgnoreLayer))
         {
-            rig.AddForce(Physics.gravity, ForceMode.Force);
+            groundNormal = hit.normal;
+            transform.position = new Vector3(transform.position.x, hit.point.y + groundDistance, transform.position.z);
+
+            Vector3 right = Vector3.Cross(rig.velocity.normalized, Vector3.up);
+            forward = Vector3.Cross(right, groundNormal);
         }
+        else
+        {
+            forward = rig.velocity.normalized;
+        }
+    }
+
+    private void CorrectVelocity()
+    {
+        float velMag = rig.velocity.magnitude;
+        Vector3 movingDir = Vector3.ProjectOnPlane(rig.velocity.normalized, groundNormal);
+        rig.velocity = movingDir * velMag;
     }
 
     public void OnCollisionEnter(Collision collision)
     {
+        throwing = false;
+
         if (!collision.gameObject.GetComponent<CharacterMovement>())
             return;
 
