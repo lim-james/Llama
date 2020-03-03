@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,17 +6,35 @@ public class LobbyManager : MonoBehaviour
 {
     [SerializeField]
     private SelectionInput[] inputs;
+
     [SerializeField]
     private Animator transitionAnim;
+
     [SerializeField]
     private Renderer scroll;
 
     private float timer;
+
     [SerializeField]
     private float startDelay = 3.0f;
 
+    [Header("Sound")]
+    public AudioPlayer player;
+
+    [SerializeField]
+    private AudioClip highAudio;
+
+    [SerializeField]
+    private AudioClip normalAudio;
+
+    [SerializeField]
+    private AudioClip lowAudio;
+
+    private bool playOnce = false;
+
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
         scroll.material.SetFloat("_Delay", startDelay);
     }
 
@@ -38,6 +55,12 @@ public class LobbyManager : MonoBehaviour
         timer += Time.fixedDeltaTime;
         scroll.material.SetFloat("_et", timer);
 
+        if (timer >= 1.5f && !playOnce)
+        {
+            playOnce = true;
+            player.PlaySFX(normalAudio);
+        }
+
         if (timer >= startDelay)
             StartGame();
     }
@@ -57,11 +80,12 @@ public class LobbyManager : MonoBehaviour
             PlayerManager.playerQueue.Add(info);
         }
 
+        player.PlaySFX(highAudio);
         StartCoroutine(LoadScene("Loading"));
         //SceneManager.LoadScene("Game");
     }
 
-    IEnumerator LoadScene(string sceneName)
+    private IEnumerator LoadScene(string sceneName)
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);

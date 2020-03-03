@@ -125,13 +125,13 @@ public class HomeSelection : MonoBehaviour
         }
 
         // Play Audio
-        player.Play(switchAudio);
+        player.PlaySFX(switchAudio);
     }
 
     private void Enter(InputAction.CallbackContext context)
     {
         // Play Audio
-        player.Play(normalAudio);
+        player.PlaySFX(normalAudio);
 
         if (Lobbies.GetComponent<RawImage>().texture == selectedButton)
             SceneManager.LoadScene("Lobby");

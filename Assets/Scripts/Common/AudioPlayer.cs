@@ -3,18 +3,38 @@
 [RequireComponent(typeof(AudioSource))]
 public class AudioPlayer : MonoBehaviour
 {
-    private AudioSource source;
-    
+    [SerializeField]
+    private AudioSource[] source;
+    [SerializeField]
+    private AudioClip hit;
+
     private void Awake()
     {
-        source = GetComponent<AudioSource>();
+        source = GetComponents<AudioSource>();
         DontDestroyOnLoad(gameObject);
     }
 
-    public void Play(AudioClip clip)
+    public void PlayHit()
     {
-        source.clip = clip;
-        source.Play();
+        source[0].clip = hit;
+        source[0].Play();
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        source[0].clip = clip;
+        source[0].Play();
+    }
+
+    public void PlayBGM(AudioClip clip)
+    {
+        source[1].clip = clip;
+        source[1].Play();
+    }
+
+    public void StopBGM()
+    {
+        source[1].Stop();
     }
 
 }

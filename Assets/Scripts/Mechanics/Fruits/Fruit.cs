@@ -30,10 +30,14 @@ public class Fruit : MonoBehaviour
     //public string fruitName;
     public FruitStats stats;
 
+    private AudioPlayer player;
+
     private void Start()
     {
         rig = GetComponent<Rigidbody>();
         rig.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
     }
 
     private void FixedUpdate()
@@ -84,7 +88,7 @@ public class Fruit : MonoBehaviour
         Vector3 dir = (collision.transform.position - transform.position).normalized;
         collision.gameObject.GetComponent<Rigidbody>().AddForce(dir * rig.velocity.magnitude, ForceMode.Impulse);
 
-        if(rig.velocity.magnitude > 1) // Fruit must be in motion to trigger damage?
+        if(rig.velocity.magnitude > 1.5f) // Fruit must be in motion to trigger damage?
         {
             collision.gameObject.GetComponent<CharacterMovement>().GetAnimator.SetTrigger("TriggerDamage");
 
@@ -99,6 +103,8 @@ public class Fruit : MonoBehaviour
                 collision.gameObject.transform.GetChild(3).gameObject.SetActive(true);
             else
                 collision.gameObject.transform.GetChild(3).gameObject.GetComponent<ParticleSystem>().Play();
+
+            player.PlayHit();
         }
 
         rig.velocity = Vector3.Reflect(rig.velocity.normalized, collision.contacts[0].normal);
