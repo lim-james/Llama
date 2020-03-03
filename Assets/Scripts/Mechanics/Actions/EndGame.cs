@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using System.Linq;
 using System;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
@@ -46,6 +45,8 @@ public class EndGame : MonoBehaviour
     [SerializeField]
     private GameObject Llamas;
 
+    public bool allowRestart;
+
     public struct TeamScore
     {
         public int points;
@@ -76,6 +77,8 @@ public class EndGame : MonoBehaviour
     {
         input = new InputMaster();
         input.Enable();
+
+        allowRestart = false;
     }
 
     void Start()
@@ -184,6 +187,7 @@ public class EndGame : MonoBehaviour
                 }
 
                 platforms[i].startMove = true;
+                allowRestart = true;
             }
 
             // placements
@@ -229,7 +233,7 @@ public class EndGame : MonoBehaviour
             //    }
             //}
 
-            input.Player.Restart.performed += context => OnRestart(context);
+            //input.Player.Restart.performed += context => OnRestart(context);
 
             timerText.gameObject.SetActive(false);
             Camera.main.gameObject.SetActive(false);
@@ -297,8 +301,5 @@ public class EndGame : MonoBehaviour
         return (teamScores.OrderByDescending(x => x.points).ToList());
     }
 
-    private void OnRestart(InputAction.CallbackContext context)
-    {
-        SceneManager.LoadScene("Lobby");
-    }
+    
 }

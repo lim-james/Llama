@@ -25,6 +25,8 @@ public class TimeController : MonoBehaviour
     private BarrierScript barrierScript;
     [SerializeField]
     private ScoreAreaScaling scoreAreaScaling;
+    [SerializeField]
+    private UIController uiController;
 
     // Skybox color change
     [Header("Skybox Color")]
@@ -95,6 +97,7 @@ public class TimeController : MonoBehaviour
             mainCameraFollow.et = et;
             cinemachineCameraFollow.et = et;
             scoreAreaScaling.et = et;
+            uiController.et = et;
         }
     }
 
