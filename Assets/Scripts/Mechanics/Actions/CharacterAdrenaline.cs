@@ -23,10 +23,13 @@ public class CharacterAdrenaline : MonoBehaviour
     [SerializeField]
     private int frenzyBalanceBoost = 5;
 
+    private MaterialManager materialManager;
+
     private void Awake()
     {
         info = GetComponent<CharacterInfo>();
         inventory = GetComponent<CharacterInventory>();
+        materialManager = GetComponentInChildren<MaterialManager>();
     }
 
     private void Start()
@@ -38,10 +41,12 @@ public class CharacterAdrenaline : MonoBehaviour
     {
         if (boostTimeLeft > 0)
         {
+            materialManager.currentPrimary.SetFloat("_Value", Mathf.Min(boostDuration - boostTimeLeft, 1.0f));
             boostTimeLeft -= Time.deltaTime;
         }
         else
         {
+            materialManager.currentPrimary.SetFloat("_Value", 0.0f);
             boostTimeLeft = 0.0f;
             info.speedBoost = 0.0f;
             info.strengthBoost = 0.0f;

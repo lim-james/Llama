@@ -11,6 +11,9 @@ public class MaterialManager : MonoBehaviour
     [SerializeField]
     private MaterialPack currentPack;
 
+    public Material currentPrimary { get; private set; }
+    public Material currentSecondary { get; private set; }
+
     private void Start()
     {
         SetMaterialPack(currentPack);
@@ -21,12 +24,17 @@ public class MaterialManager : MonoBehaviour
     {
         currentPack = pack;
 
+        currentPrimary = Instantiate(pack.primary);
+
         foreach (Renderer r in primary)
-            r.material = pack.primary;
+            r.material = currentPrimary;
 
         if (pack.secondary != null)
+        {
+            currentSecondary = Instantiate(pack.secondary);
             foreach (Renderer r in secondary)
-                r.material = pack.secondary;
+                r.material = currentSecondary;
+        }
     }
 
 }
