@@ -73,6 +73,22 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Change Selection"",
+                    ""type"": ""Button"",
+                    ""id"": ""8d33e838-049d-48f0-bfcc-3a356068c5fc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""74180280-30fb-4cae-9acf-b5098d68df4b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -342,6 +358,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""eb025c97-b32e-4c31-9856-b845eec15f0c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""7a671482-c6a4-4f89-9f57-ecbca615e3bc"",
                     ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
@@ -359,6 +386,127 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WS (Keyboard)"",
+                    ""id"": ""4ec58a1e-a32e-4a0f-96f7-6c28cd9802e3"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change Selection"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""609e8910-fd5d-4ed1-a5b7-e604dfceb9e7"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""8e23b792-adb3-4896-8dcf-c31e504f147e"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrows (Keyboard)"",
+                    ""id"": ""341560c2-2364-4edf-9132-5eb92f682be4"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change Selection"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""37a8ff46-98c3-45c1-9990-e8723735c7e6"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""1cf90fbb-5127-454c-a098-f319970a5b9b"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""DPad (Gamepad)"",
+                    ""id"": ""454e8457-5ce0-4750-bc8f-3d2b3b498316"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change Selection"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""eb687880-117e-4980-bbbc-fa2f1d792ce9"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""02f0a958-caf0-4e07-9ce2-dfd84d86fdfe"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f70b4b2d-7c30-4d72-9dee-88f7e5ef9095"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f14cb10b-2eac-4acc-a7ff-934e6e24c6f4"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -877,6 +1025,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Consume = m_Player.FindAction("Consume", throwIfNotFound: true);
         m_Player_Restart = m_Player.FindAction("Restart", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_ChangeSelection = m_Player.FindAction("Change Selection", throwIfNotFound: true);
+        m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
         // Lobby
         m_Lobby = asset.FindActionMap("Lobby", throwIfNotFound: true);
         m_Lobby_SwitchCharacter = m_Lobby.FindAction("Switch (Character)", throwIfNotFound: true);
@@ -944,6 +1094,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Consume;
     private readonly InputAction m_Player_Restart;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_ChangeSelection;
+    private readonly InputAction m_Player_Select;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -955,6 +1107,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Consume => m_Wrapper.m_Player_Consume;
         public InputAction @Restart => m_Wrapper.m_Player_Restart;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @ChangeSelection => m_Wrapper.m_Player_ChangeSelection;
+        public InputAction @Select => m_Wrapper.m_Player_Select;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -985,6 +1139,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @ChangeSelection.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeSelection;
+                @ChangeSelection.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeSelection;
+                @ChangeSelection.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeSelection;
+                @Select.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1010,6 +1170,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @ChangeSelection.started += instance.OnChangeSelection;
+                @ChangeSelection.performed += instance.OnChangeSelection;
+                @ChangeSelection.canceled += instance.OnChangeSelection;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
             }
         }
     }
@@ -1147,6 +1313,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnConsume(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnChangeSelection(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
     public interface ILobbyActions
     {

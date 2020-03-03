@@ -20,12 +20,7 @@ public class FruitSpawner : MonoBehaviour
     public LayerMask avoidLayer;
 
     // queued for resetting
-    private List<GameObject> queuedObjects;
-
-    private void Awake()
-    {
-        queuedObjects = new List<GameObject>();
-    }
+    private List<GameObject> queuedObjects = new List<GameObject>();
 
     private void Update()
     {
@@ -63,7 +58,6 @@ public class FruitSpawner : MonoBehaviour
         fruit.transform.position = position;
         fruit.transform.parent = container;
         GameObject spawnEffect = Instantiate(spawnEffectPrefab);
-
         Rigidbody rb = fruit.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         
@@ -91,7 +85,8 @@ public class FruitSpawner : MonoBehaviour
 
     public void ResetFruit(GameObject fruit)
     {
-        queuedObjects.Add(fruit);
+        if (!queuedObjects.Contains(fruit))
+            queuedObjects.Add(fruit);
     }
 
     public bool GetRandomPos(ref Vector3 position)

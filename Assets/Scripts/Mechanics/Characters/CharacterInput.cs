@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class MoveHandler : UnityEvent<Vector2> { }
@@ -26,7 +27,11 @@ public class CharacterInput : MonoBehaviour
 
     public UIController ui;
 
+    public EndGame endGame;
+
     public bool moveable = true;
+
+    private bool doOnce;
 
     private void Awake()
     {
@@ -40,6 +45,10 @@ public class CharacterInput : MonoBehaviour
 
         
         ui = GameObject.Find("UI Canvas").GetComponent<UIController>();
+
+        endGame = GameObject.Find("EndGame").GetComponent<EndGame>();
+
+        doOnce = false;
     }
 
     private void Start()
@@ -71,6 +80,8 @@ public class CharacterInput : MonoBehaviour
             input.Player.Consume.performed += _ => adrenaline.Consume();
             // pause game
             input.Player.Pause.performed += context => OnPause(context);
+            input.Player.ChangeSelection.performed += context => OnPauseSwitch(context);
+            input.Player.Select.performed += context => OnSelect(context);
         }
     }
 
@@ -84,8 +95,20 @@ public class CharacterInput : MonoBehaviour
         if (moveable) movement.Move(horizontal, vertical);
     }
 
+    private void Update()
+    {
+        if (endGame.allowRestart && !doOnce)
+        {
+            if (!info.AI)
+            {
+                input.Player.Restart.performed += context => OnRestart(context);
+                doOnce = true;
+            }
+        }
+    }
+
     /// Input handlers
-    
+
     private void OnMove(InputAction.CallbackContext context)
     {
         Vector2 v = context.ReadValue<Vector2>();
@@ -101,5 +124,22 @@ public class CharacterInput : MonoBehaviour
     private void OnPause(InputAction.CallbackContext context)
     {
         ui.TogglePause();
+    }
+
+    private void OnPauseSwitch(InputAction.CallbackContext context)
+    {
+        if (ui.paused)
+            ui.ToggleButton(context.ReadValue<float>());
+    }
+
+    private void OnSelect(InputAction.CallbackContext context)
+    {
+        if (ui.paused)
+            ui.Enter();
+    }
+
+    private void OnRestart(InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene("Lobby");
     }
 }
