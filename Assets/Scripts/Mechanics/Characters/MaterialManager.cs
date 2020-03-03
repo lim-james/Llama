@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class MaterialManager : MonoBehaviour
 {
     [SerializeField]

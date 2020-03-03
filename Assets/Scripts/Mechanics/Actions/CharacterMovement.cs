@@ -15,7 +15,8 @@ public class CharacterMovement : MonoBehaviour
     private Camera playerCamera;
 
     [SerializeField]
-    private bool grounded;
+    public bool grounded;
+    public bool canMove;
     public LayerMask groundLayer;
     private Vector3 groundNormal;
     private RaycastHit groundHit;
@@ -45,6 +46,7 @@ public class CharacterMovement : MonoBehaviour
         playerCamera = Camera.main;
 
         bt = 0.0f;
+        canMove = true;
     }
 
     private void Start()
@@ -77,64 +79,67 @@ public class CharacterMovement : MonoBehaviour
 
     public void Move(float x, float y)
     {
-        Vector3 move = new Vector3(x, 0, y);
-        Vector3 moveDir = transform.InverseTransformDirection(move);
-        moveDir = Vector3.ProjectOnPlane(moveDir, groundNormal);
-        float rotationAmount = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
-        float force = move.magnitude * info.speed;
-
-        if (groundAngle < maxGroundAngle)
+        if (canMove)
         {
-            Vector3 slope = Vector3.ProjectOnPlane(transform.forward, groundNormal);
-            animator.transform.forward = slope.normalized;
-        }
+            Vector3 move = new Vector3(x, 0, y);
+            Vector3 moveDir = transform.InverseTransformDirection(move);
+            moveDir = Vector3.ProjectOnPlane(moveDir, groundNormal);
+            float rotationAmount = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
+            float force = move.magnitude * info.speed;
 
-        if (groundAngle >= maxGroundAngle)
-            return;
-
-        if(animator)
-        {
-            if (move.magnitude != 0 && (!animator.GetCurrentAnimatorStateInfo(0).IsName("Damaged") || animator.GetCurrentAnimatorStateInfo(0).IsName("Pickup"))) 
-                animator.SetBool("IsWalking", true);
-            else 
-                animator.SetBool("IsWalking", false);
-        }
-
-        float rAngle = rig.transform.localEulerAngles.y + rotationAmount;
-
-        if (inventory.holding)
-        {
-            Collider[] nearbyPlayers = Physics.OverlapSphere(transform.position, 50.0f, LayerMask.GetMask("Character"));
-
-            Vector3 p1 = transform.position;
-
-            float closest = float.MaxValue;
-            float angle = 0.0f;
-
-            foreach (Collider player in nearbyPlayers)
+            if (groundAngle < maxGroundAngle)
             {
-                if (transform.position == player.transform.position) continue;
-                Vector3 p2 = player.transform.position;
-                Vector3 diff = p2 - p1;
-                if (Vector3.Dot(diff, transform.forward) < 0.0f) continue;
-
-                float temp = Mathf.Atan2(diff.x, diff.z) * Mathf.Rad2Deg;
-                float da = Mathf.Abs(temp - rAngle);
-
-                while (da > 360.0f) da -= 360.0f;
-
-                if (da > 60.0f || da > closest) continue;
-
-                closest = da;
-                angle = temp;
+                Vector3 slope = Vector3.ProjectOnPlane(transform.forward, groundNormal);
+                animator.transform.forward = slope.normalized;
             }
 
-            if (angle != 0.0f)
-                rAngle = angle;
-        }
+            if (groundAngle >= maxGroundAngle)
+                return;
 
-        rig.AddForce(forward * force, ForceMode.Impulse);
-        rig.rotation = Quaternion.RotateTowards(rig.rotation, Quaternion.Euler(0, rAngle, 0), turnSpeed);
+            if (animator)
+            {
+                if (move.magnitude != 0 && (!animator.GetCurrentAnimatorStateInfo(0).IsName("Damaged") || animator.GetCurrentAnimatorStateInfo(0).IsName("Pickup")))
+                    animator.SetBool("IsWalking", true);
+                else
+                    animator.SetBool("IsWalking", false);
+            }
+
+            float rAngle = rig.transform.localEulerAngles.y + rotationAmount;
+
+            if (inventory.holding)
+            {
+                Collider[] nearbyPlayers = Physics.OverlapSphere(transform.position, 50.0f, LayerMask.GetMask("Character"));
+
+                Vector3 p1 = transform.position;
+
+                float closest = float.MaxValue;
+                float angle = 0.0f;
+
+                foreach (Collider player in nearbyPlayers)
+                {
+                    if (transform.position == player.transform.position) continue;
+                    Vector3 p2 = player.transform.position;
+                    Vector3 diff = p2 - p1;
+                    if (Vector3.Dot(diff, transform.forward) < 0.0f) continue;
+
+                    float temp = Mathf.Atan2(diff.x, diff.z) * Mathf.Rad2Deg;
+                    float da = Mathf.Abs(temp - rAngle);
+
+                    while (da > 360.0f) da -= 360.0f;
+
+                    if (da > 60.0f || da > closest) continue;
+
+                    closest = da;
+                    angle = temp;
+                }
+
+                if (angle != 0.0f)
+                    rAngle = angle;
+            }
+
+            rig.AddForce(forward * force, ForceMode.Impulse);
+            rig.rotation = Quaternion.RotateTowards(rig.rotation, Quaternion.Euler(0, rAngle, 0), turnSpeed);
+        }
     }
 
     void CheckGround()
