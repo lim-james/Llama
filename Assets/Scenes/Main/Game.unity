@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -239,6 +239,7 @@ MonoBehaviour:
   pauseObj: {fileID: 190033919}
   timeController: {fileID: 2065878661}
   fruitsManager: {fileID: 1033371810}
+  playerManager: {fileID: 2065878659}
 --- !u!1 &36676505
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,7 +2115,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384363002}
-  m_LocalRotation: {x: 0.121310815, y: 0.4067229, z: -0.054590788, w: 0.9038142}
+  m_LocalRotation: {x: 0.121310845, y: 0.40672305, z: -0.05459074, w: 0.9038141}
   m_LocalPosition: {x: -21, y: 28, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2825,7 +2826,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60
+  field of view: 40
   orthographic: 0
   orthographic size: 10
   m_Depth: 1
@@ -2850,8 +2851,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477282912}
-  m_LocalRotation: {x: 0.50096846, y: 0.00022036764, z: -0.00012755822, w: 0.8654655}
-  m_LocalPosition: {x: -0.015201569, y: 51.9718, z: -29.851103}
+  m_LocalRotation: {x: 0.07787683, y: 0.89153147, z: -0.16794735, w: 0.41340122}
+  m_LocalPosition: {x: -46.160797, y: 23.623741, z: 39.072304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 100847213}
@@ -5043,7 +5044,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972665132}
-  m_LocalRotation: {x: -0.0037546072, y: 0.98574466, z: -0.1667355, w: -0.022197321}
+  m_LocalRotation: {x: -0.003754576, y: 0.98574466, z: -0.1667355, w: -0.022197412}
   m_LocalPosition: {x: 21, y: 28, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7631,7 +7632,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475759004}
-  m_LocalRotation: {x: 0.13991655, y: -0.012430671, z: 0.0017567147, w: 0.99008375}
+  m_LocalRotation: {x: 0.13991654, y: -0.012430849, z: 0.0017566606, w: 0.99008375}
   m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10162,6 +10163,7 @@ MonoBehaviour:
   teams: {fileID: 11400000, guid: f7ea20a7b0bd24440b00473755ae796b, type: 2}
   map: {fileID: 946425764}
   bases: {fileID: 1689396795}
+  playerRBList: []
 --- !u!114 &2065878660
 MonoBehaviour:
   m_ObjectHideFlags: 0

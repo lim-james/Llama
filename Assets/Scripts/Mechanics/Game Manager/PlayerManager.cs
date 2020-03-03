@@ -32,12 +32,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private ScoreAreaScaling bases;
 
+    public List<Rigidbody> playerRBList;
+    public List<Transform> playerList;
+
     // hacky
     private List<Transform> rotate;
 
     private void Awake()
     {
         rotate = new List<Transform>();
+        playerRBList = new List<Rigidbody>();
     }
 
     private void Start()
@@ -70,6 +74,9 @@ public class PlayerManager : MonoBehaviour
             CharacterData data = characters.characters[joinInfo.characterType];
             // create game object accordingly
             Transform llama = Instantiate(data.characterPrefab).transform;
+            // save llama rigidbody in list
+            playerRBList.Add(llama.GetComponent<Rigidbody>());
+            playerList.Add(llama);
             // Material
             MaterialPack pack =  data.teamMaterials[joinInfo.team];
             llama.GetComponentInChildren<MaterialManager>().SetMaterialPack(pack);

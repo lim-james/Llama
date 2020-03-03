@@ -10,6 +10,8 @@ public class UIController : MonoBehaviour
     private TimeController timeController;
     [SerializeField]
     private FruitManager fruitsManager;
+    [SerializeField]
+    private PlayerManager playerManager;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,10 @@ public class UIController : MonoBehaviour
             for(int i = 0; i < fruitsManager.fruitRBList.Count; ++i)
             {
                 fruitsManager.fruitRBList[i].constraints = RigidbodyConstraints.FreezePosition;
-                //fruitsManager.fruitRBList[i].isKinematic = true;
+            }
+            for(int i = 0; i < playerManager.playerRBList.Count; ++i)
+            {
+                playerManager.playerList[i].GetComponent<CharacterMovement>().canMove = false;
             }
         }
         else
@@ -43,7 +48,10 @@ public class UIController : MonoBehaviour
             for (int i = 0; i < fruitsManager.fruitRBList.Count; ++i)
             {
                 fruitsManager.fruitRBList[i].constraints = RigidbodyConstraints.None;
-                //fruitsManager.fruitRBList[i].isKinematic = true;
+            }
+            for (int i = 0; i < playerManager.playerRBList.Count; ++i)
+            {
+                playerManager.playerList[i].GetComponent<CharacterMovement>().canMove = true;
             }
         }
 
