@@ -137,12 +137,8 @@ MonoBehaviour:
   playerBaseIgnoreLayer:
     serializedVersion: 2
     m_Bits: 1024
-  defaultLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  fruitLayer:
-    serializedVersion: 2
-    m_Bits: 4096
+  defaultLayerMaskName: Default
+  fruitLayerName: Fruit
   throwing: 0
   stats: {fileID: 11400000, guid: 5d1cdbfaf96b9694ab1688a613c56cee, type: 2}
 --- !u!114 &7369868421922548642
@@ -939,6 +935,11 @@ PrefabInstance:
       value: Pomegrenade
       objectReference: {fileID: 0}
     - target: {fileID: 1318460613128657674, guid: 9985fc16724be49458e8a288d4eb100b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a9ea885efc9f34347b4c05826f777c30, type: 2}
+    - target: {fileID: 1969006008287958688, guid: 9985fc16724be49458e8a288d4eb100b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
