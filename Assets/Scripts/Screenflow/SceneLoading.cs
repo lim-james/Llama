@@ -8,16 +8,20 @@ public class SceneLoading : MonoBehaviour
     [SerializeField]
     private Animator transitionAnim;
 
+    private AudioPlayer player;
+
     private void Start()
     {
+       player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
        StartCoroutine(LoadScene());
     }
 
     private IEnumerator LoadScene()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
+        player.PlayBGM(1);
         SceneManager.LoadScene("Game");
     }
 
