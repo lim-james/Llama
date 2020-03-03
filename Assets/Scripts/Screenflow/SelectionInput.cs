@@ -2,6 +2,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class SelectionInput : MonoBehaviour
 {
@@ -34,6 +35,18 @@ public class SelectionInput : MonoBehaviour
     [SerializeField]
     private RawImage balance;
 
+    [Header("Sound")]
+    public AudioPlayer player;
+    [SerializeField]
+    private AudioClip switchAudio;
+    [SerializeField]
+    private AudioClip highAudio;
+    [SerializeField]
+    private AudioClip lowAudio;
+    [SerializeField]
+    private AudioClip normalAudio;
+    private bool played;
+
     // references
     //private Image background;
     private RawImage background;
@@ -44,7 +57,7 @@ public class SelectionInput : MonoBehaviour
 
     // Hold
     static private float progress;
-    private bool isHolding;
+    public bool isHolding { get; private set; }
 
     // animation
     [SerializeField]
@@ -52,6 +65,8 @@ public class SelectionInput : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
+
         input = new InputMaster();
         input.Enable();
 
@@ -88,6 +103,7 @@ public class SelectionInput : MonoBehaviour
         label = GetComponentInChildren<Text>();
 
         isHolding = false;
+        played = false;
     }
 
     private void Start()
@@ -105,7 +121,25 @@ public class SelectionInput : MonoBehaviour
         {
             progress += Time.deltaTime * 0.5f;
             scroll.material.SetFloat("_Progress", progress);
+            
+            // play audio
+            if(!played)
+            {
+                if (characterIndex == 0)
+                    player.Play(highAudio);
+                else if (characterIndex == 1)
+                    player.Play(normalAudio);
+                else
+                    player.Play(lowAudio);
+
+                played = true;
+            }
         }
+        else
+        {
+            played = false;
+        }
+
     }
 
     private void FixedUpdate()
@@ -157,6 +191,9 @@ public class SelectionInput : MonoBehaviour
 
         Destroy(selected.gameObject);
         UpdateCharacter();
+
+        // Play sound
+        player.Play(switchAudio);
     }
 
     private void HoldHandler(InputAction.CallbackContext context)

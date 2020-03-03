@@ -52,6 +52,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "642b2e45-5edc-4572-ac04-bf615c4532cb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -318,6 +326,28 @@
                     "action": "Restart",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7a671482-c6a4-4f89-9f57-ecbca615e3bc",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "af5d75c2-4ed9-4c4c-ad79-7c5179020012",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -426,39 +456,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Joystick (Gamepad)",
-                    "id": "7167f947-ae05-489a-b3b7-66075e8f5cab",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Switch (Character)",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "3357f5f8-6ac2-4077-8a76-a2a9bbe6e756",
-                    "path": "<Gamepad>/leftStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Switch (Character)",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "a6de73b2-2407-4a5d-8e3b-6e32786f588f",
-                    "path": "<Gamepad>/leftStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Switch (Character)",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "Arrows (Keyboard)",
                     "id": "23192b29-dcee-4f17-824d-85be081174b2",
                     "path": "1DAxis",
@@ -558,39 +555,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Joystick (Gamepad)",
-                    "id": "d66c851d-4406-407c-8ac3-fa9977043547",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Switch (Team)",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "positive",
-                    "id": "3b395565-d856-4041-9d1a-dc716e0e7865",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Switch (Team)",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "negative",
-                    "id": "a7167337-c424-4c9f-aa57-c1202ee1e15e",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Switch (Team)",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "WS (Keyboard)",
                     "id": "7808754a-a82b-402c-8f58-463e185bee89",
                     "path": "1DAxis",
@@ -680,8 +644,8 @@
                 },
                 {
                     "name": "",
-                    "id": "e9e2a696-c5f1-4948-8d26-fc13c5cf85fc",
-                    "path": "<Gamepad>/start",
+                    "id": "d3abbdd3-e319-4045-9f4f-bc26f7187312",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -816,39 +780,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Change Selection",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Joystick (Gamepad)",
-                    "id": "6c4c0402-09b9-43a3-83af-50d00672371e",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Change Selection",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "54a490ef-8a66-4e00-8f02-d04771d0f87b",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Change Selection",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "0bbc30ad-13e1-4371-87b3-07726c8f7989",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
                     "action": "Change Selection",
                     "isComposite": false,
                     "isPartOfComposite": true

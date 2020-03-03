@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1019,6 +1019,8 @@ MonoBehaviour:
   - {fileID: 2056280600}
   - {fileID: 1930599568}
   transitionAnim: {fileID: 1666623609}
+  scroll: {fileID: 16188350}
+  startDelay: 3
 --- !u!114 &248329637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1644,6 +1646,11 @@ MonoBehaviour:
   speed: {fileID: 1863810863}
   weight: {fileID: 145580502}
   balance: {fileID: 316489600}
+  player: {fileID: 0}
+  switchAudio: {fileID: 8300000, guid: 7659292e4ee16a1498f90f8414b02910, type: 3}
+  highAudio: {fileID: 8300000, guid: e440ba4c088df934b92601437f9f09c3, type: 3}
+  lowAudio: {fileID: 8300000, guid: 326a3fe39b8419442a573c53b0804026, type: 3}
+  normalAudio: {fileID: 8300000, guid: 3493bd935119a7f42a0996fb427df6a5, type: 3}
   OnModeChange:
     m_PersistentCalls:
       m_Calls:
@@ -1653,6 +1660,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 7659292e4ee16a1498f90f8414b02910,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3580,6 +3599,11 @@ MonoBehaviour:
   speed: {fileID: 962312164}
   weight: {fileID: 181081234}
   balance: {fileID: 48623343}
+  player: {fileID: 0}
+  switchAudio: {fileID: 8300000, guid: 7659292e4ee16a1498f90f8414b02910, type: 3}
+  highAudio: {fileID: 8300000, guid: e440ba4c088df934b92601437f9f09c3, type: 3}
+  lowAudio: {fileID: 8300000, guid: 326a3fe39b8419442a573c53b0804026, type: 3}
+  normalAudio: {fileID: 8300000, guid: 3493bd935119a7f42a0996fb427df6a5, type: 3}
   OnModeChange:
     m_PersistentCalls:
       m_Calls:
@@ -3589,6 +3613,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 7659292e4ee16a1498f90f8414b02910,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4503,7 +4539,7 @@ RectTransform:
   m_GameObject: {fileID: 1666623607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -461}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 248329634}
   m_RootOrder: 10
@@ -5065,6 +5101,11 @@ MonoBehaviour:
   speed: {fileID: 698999491}
   weight: {fileID: 553555726}
   balance: {fileID: 2105179499}
+  player: {fileID: 0}
+  switchAudio: {fileID: 8300000, guid: 7659292e4ee16a1498f90f8414b02910, type: 3}
+  highAudio: {fileID: 8300000, guid: e440ba4c088df934b92601437f9f09c3, type: 3}
+  lowAudio: {fileID: 8300000, guid: 326a3fe39b8419442a573c53b0804026, type: 3}
+  normalAudio: {fileID: 8300000, guid: 3493bd935119a7f42a0996fb427df6a5, type: 3}
   OnModeChange:
     m_PersistentCalls:
       m_Calls:
@@ -5074,6 +5115,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 7659292e4ee16a1498f90f8414b02910,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5331,7 +5384,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021120401}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 681964363}
@@ -5532,6 +5585,11 @@ MonoBehaviour:
   speed: {fileID: 1516670288}
   weight: {fileID: 1986750216}
   balance: {fileID: 931620682}
+  player: {fileID: 0}
+  switchAudio: {fileID: 8300000, guid: 7659292e4ee16a1498f90f8414b02910, type: 3}
+  highAudio: {fileID: 8300000, guid: e440ba4c088df934b92601437f9f09c3, type: 3}
+  lowAudio: {fileID: 8300000, guid: 326a3fe39b8419442a573c53b0804026, type: 3}
+  normalAudio: {fileID: 8300000, guid: 3493bd935119a7f42a0996fb427df6a5, type: 3}
   OnModeChange:
     m_PersistentCalls:
       m_Calls:
@@ -5541,6 +5599,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 7659292e4ee16a1498f90f8414b02910,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -4,15 +4,21 @@
 public class MapScaling : MonoBehaviour
 {
     [SerializeField]
-    private float duration;
-    [SerializeField]
-    private float delay;
-    [SerializeField]
     private Vector3 startSize;
     [SerializeField]
     private Vector3 endSize;
     
-    private float et;
+    public float duration { private get; set; }
+    
+    public float et
+    {
+        set
+        {
+            boxCollider.size = (endSize - startSize) * value / duration + startSize;
+            mesh.material.SetFloat("_ShrinkTime", value);
+        }
+    }
+
     private BoxCollider boxCollider;
     private MeshRenderer mesh;
 
@@ -20,21 +26,5 @@ public class MapScaling : MonoBehaviour
     {
         boxCollider = GetComponent<BoxCollider>();
         mesh = GetComponent<MeshRenderer>();
-    }
-
-    private void Start()
-    {
-        et = -delay;
-    }
-
-    private void Update()
-    {
-        et += Time.deltaTime;
-        mesh.material.SetFloat("_ShrinkTime", et);
-
-        if (et >= 0.0f && et < duration)
-        {
-            boxCollider.size = (endSize - startSize) * et / duration + startSize;
-        }
     }
 }

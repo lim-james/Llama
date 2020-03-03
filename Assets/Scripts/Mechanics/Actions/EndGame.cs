@@ -30,13 +30,21 @@ public class EndGame : MonoBehaviour
     [SerializeField]
     private float minHeight;
 
-    public Text platform1Placement;
-    public Text platform2Placement;
-    public Text platform3Placement;
-    public Text platform4Placement;
+    [SerializeField]
+    private TeamGroup teamGroup;
 
+    [SerializeField]
+    private PlayerBase[] playerBases = new PlayerBase[4];
+
+    [SerializeField]
+    private PlatformRise[] platforms = new PlatformRise[4];
+
+    [SerializeField]
     private Text[] placements = new Text[4];
     private int[] scoresAccordingToPlayer = new int[4];
+
+    [SerializeField]
+    private GameObject Llamas;
 
     public struct TeamScore
     {
@@ -58,10 +66,6 @@ public class EndGame : MonoBehaviour
             characterAdrenalines[i].ActivateFrenzy(delayBeforeGameEnd);
         }
 
-        placements[0] = platform1Placement;
-        placements[1] = platform2Placement;
-        placements[2] = platform3Placement;
-        placements[3] = platform4Placement;
         for (int i = 0; i < 4; ++i)
         {
             placements[i].text = "0";
@@ -93,8 +97,8 @@ public class EndGame : MonoBehaviour
         if (timer <= 0 && !doOnce)
         {
             CharacterInput[] characters = GameObject.FindObjectsOfType<CharacterInput>();
-            PlayerBase[] playerBases = GameObject.FindObjectsOfType<PlayerBase>();
-            PlatformRise[] platforms = GameObject.FindObjectsOfType<PlatformRise>();
+            //PlayerBase[] playerBases = GameObject.FindObjectsOfType<PlayerBase>();
+            //PlatformRise[] platforms = GameObject.FindObjectsOfType<PlatformRise>();
 
             timerText.text = endText;
 
@@ -133,7 +137,7 @@ public class EndGame : MonoBehaviour
             //Sort the score
             List<TeamScore> teamScores = GetPlacement(points);
 
-            // find player with highest score
+            // find team with highest score
             int highestScore = 0;
             int lowestScore = 10000;
             for(int i = 0; i < teamScores.Count; ++i)
@@ -144,66 +148,86 @@ public class EndGame : MonoBehaviour
                     lowestScore = teamScores[i].points;
             }
 
-            // placements
-            for(int i = 0; i < 4; ++i)
-            {
-                scoresAccordingToPlayer[playerBases[i].playerID] = playerBases[i].fruitCount;
-            }
-            for (int i = 0; i < 4; ++i)
-            {
-                if (scoresAccordingToPlayer[i] == highestScore)
-                    placements[i].text = "1";
-                else if (scoresAccordingToPlayer[i] == lowestScore)
-                    placements[i].text = "4";
-                else
-                {
-                    for(int j = i + 1; j < 4; ++j)
-                    {
-                        if(scoresAccordingToPlayer[j] != highestScore && scoresAccordingToPlayer[j] != lowestScore)
-                        {
-                            if(scoresAccordingToPlayer[i] > scoresAccordingToPlayer[j])
-                            {
-                                placements[i].text = "2";
-                                placements[j].text = "3";
-                            }
-                            else
-                            {
-                                placements[i].text = "3";
-                                placements[j].text = "2";
-                            }
-                        }
-                    }
-                }
-            }
-
             float range = maxHeight - minHeight;
 
             //Do Podium here
             for (int i = 0; i < platforms.Length; ++i)
             {
+                for (int j = 0; j < characters.Length; ++j)
+                {
+                    if (characters[j].GetComponent<CharacterInfo>().playerID == i)
+                    {
+                        // move character to their podiums
+                        characters[j].transform.position = platforms[i].transform.position;
+                        characters[j].transform.localEulerAngles = new Vector3(0, platforms[i].transform.localEulerAngles.y, 0);
+
+                        //Disable Character Inventory UI
+                        characters[j].GetComponent<CharacterInventory>().SetInventoryUIVisibility(false);
+
+                        // change podium colors
+                        platforms[i].team = characters[j].GetComponent<CharacterInfo>().team;
+                        
+                        break;
+                    }
+                }
+
                 for (int j = 0; j < teamScores.Count; ++j)
                 {
                     // (score - lowestScore) / (highest score - lowestScore) * (max height - min height)
                     if (platforms[i].team == teamScores[j].teamName)
                     {
+                        // scores based on team
                         platforms[i].testPoints = (((teamScores[j].points - (float)lowestScore) / ((float)highestScore - (float)lowestScore)) * range) + minHeight;
-
-                        break;
-                    }
-                }
-
-                for (int j = 0; j < characters.Length; ++j)
-                {
-                    if (characters[j].GetComponent<CharacterInfo>().team == platforms[i].team)
-                    {
-                        characters[j].transform.position = platforms[i].transform.position;
-                        characters[j].transform.localEulerAngles = new Vector3(0, platforms[i].transform.localEulerAngles.y, 0);
+                        placements[i].text = (j + 1).ToString();
                         break;
                     }
                 }
 
                 platforms[i].startMove = true;
             }
+
+            // placements
+            //for(int i = 0; i < teamScores.Count; ++i)
+            //{
+            //    for(int j = 0; j < platforms.Length; ++j)
+            //    {
+            //        if(platforms[j].team == teamScores[i].teamName)
+            //        {
+            //            placements[j].text = i.ToString();
+            //        }
+            //    }
+            //}
+
+            //for (int i = 0; i < 4; ++i)
+            //{
+            //    scoresAccordingToPlayer[playerBases[i].playerID] = playerBases[i].fruitCount;
+            //}
+            //for (int i = 0; i < 4; ++i)
+            //{
+            //    if (scoresAccordingToPlayer[i] == highestScore)
+            //        placements[i].text = "1";
+            //    else if (scoresAccordingToPlayer[i] == lowestScore)
+            //        placements[i].text = "4";
+            //    else
+            //    {
+            //        for (int j = i + 1; j < 4; ++j)
+            //        {
+            //            if (scoresAccordingToPlayer[j] != highestScore && scoresAccordingToPlayer[j] != lowestScore)
+            //            {
+            //                if (scoresAccordingToPlayer[i] > scoresAccordingToPlayer[j])
+            //                {
+            //                    placements[i].text = "2";
+            //                    placements[j].text = "3";
+            //                }
+            //                else
+            //                {
+            //                    placements[i].text = "3";
+            //                    placements[j].text = "2";
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
 
             input.Player.Restart.performed += context => OnRestart(context);
 
@@ -233,6 +257,18 @@ public class EndGame : MonoBehaviour
         else if(!doOnce)
         {
             timerText.text = Mathf.CeilToInt(timer).ToString();
+        }
+
+        // show text
+        for (int i = 0; i < platforms.Length; ++i)
+        {
+            if (platforms[i].transform.localScale.y >= maxHeight)
+            {
+                for (int k = 0; k < placements.Length; ++k)
+                {
+                    placements[k].gameObject.SetActive(true);
+                }
+            }
         }
     }
 

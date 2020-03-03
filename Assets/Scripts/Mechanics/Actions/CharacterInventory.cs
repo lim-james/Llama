@@ -8,11 +8,15 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField]
     private float pickupRadius = 3.0f;
     [SerializeField]
+    private LayerMask pickUpObjectLayer;
+    [SerializeField]
     private List<Container> slots = new List<Container>();
     [SerializeField]
     private Transform selected;
     [SerializeField]
     private Transform indicator;
+    [SerializeField]
+    private GameObject inventoryUI;
 
     [SerializeField]
     private float displacement;
@@ -28,7 +32,7 @@ public class CharacterInventory : MonoBehaviour
         {
             return _holding;
         }
-        private set
+        set
         {
             _holding = value;
 
@@ -133,23 +137,18 @@ public class CharacterInventory : MonoBehaviour
     {
         if (itemCount == info.maxHold) return;
 
-
-        Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius);
+        Collider[] objectsNearBy = Physics.OverlapSphere(transform.position, pickupRadius, pickUpObjectLayer.value);
 
         float nearestDist = float.MaxValue;
         GameObject nearestFruit = null;
 
         for (int i = 0; i < objectsNearBy.Length; ++i)
         {
-            if (!objectsNearBy[i].GetComponent<Fruit>())
-                continue;
-
             Vector3 dir = objectsNearBy[i].transform.position - transform.position;
             float dist = dir.magnitude;
 
             if (dist >= nearestDist)
                 continue;
-
             if (Vector3.Dot(transform.forward, dir) < 0)
                 continue;
 
@@ -167,11 +166,16 @@ public class CharacterInventory : MonoBehaviour
         nearestFruit.GetComponent<Rigidbody>().velocity = Vector3.zero;
         nearestFruit.GetComponent<Collider>().enabled = false;
         nearestFruit.GetComponent<RangeDetector>().active = false;
+        nearestFruit.GetComponent<Fruit>().throwing = false;
+        nearestFruit.GetComponent<Fruit>().RemovePlayerBaseScore();
+        nearestFruit.layer = LayerMask.NameToLayer(nearestFruit.GetComponent<Fruit>().defaultLayerMaskName);
         // TODO: Remove when all fruit now use the model gameobject as the child
+        /*
         if (nearestFruit.GetComponent<MeshRenderer>()) // Change to get MeshRenderer in gameobject child when theres a fruit. 
             nearestFruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         else
             nearestFruit.transform.GetChild(2).GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        */
 
         while (inventory.ContainsKey(selectedIndex) && inventory[selectedIndex] != null)
             ++selectedIndex;
@@ -196,20 +200,25 @@ public class CharacterInventory : MonoBehaviour
 
         if (fruit == null) return;
 
-        Debug.Log("Trigger attack");
         gameObject.GetComponent<CharacterMovement>().GetAnimator.SetTrigger("TriggerAttack");
 
         fruit.transform.position = indicator.position + transform.forward * displacement + new Vector3(0.0f, 3.0f, 0.0f);
         fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        fruit.transform.forward = transform.forward;
         fruit.GetComponent<Rigidbody>().useGravity = true;
         fruit.GetComponent<Rigidbody>().velocity = transform.forward * magnitude * info.strength * 10.0f;
         fruit.GetComponent<Collider>().enabled = true;
         fruit.GetComponent<RangeDetector>().active = true;
+        fruit.GetComponent<Fruit>().throwing = true;
+        fruit.gameObject.layer = LayerMask.NameToLayer(fruit.fruitLayerName);
+        fruit.AddPlayerBaseScore();
         // TODO: Remove when all fruit now use the model gameobject as the child
+        /*
         if (fruit.GetComponent<MeshRenderer>())
             fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         else
             fruit.transform.GetChild(2).GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+        */
 
         magnitude = 0.0f;
 
@@ -218,4 +227,39 @@ public class CharacterInventory : MonoBehaviour
         inventory[selectedIndex] = null;
     }
 
+    public void DiscardFruits()
+    {
+        holding = false;
+        magnitude = 0.0f;
+
+        if (itemCount == 0) return;
+
+        List<int> keys = new List<int>();
+
+        foreach (int index in inventory.Keys)
+        {
+            Fruit fruit = inventory[index];
+            if (fruit == null) continue;
+            fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            fruit.transform.position = transform.position + new Vector3(0.0f, -5.0f, 0.0f);
+            fruit.GetComponent<Rigidbody>().useGravity = true;
+            fruit.GetComponent<Collider>().enabled = true;
+            fruit.GetComponent<RangeDetector>().active = true;
+            fruit.GetComponent<Fruit>().throwing = true;
+            fruit.gameObject.layer = LayerMask.NameToLayer(fruit.fruitLayerName);
+
+            keys.Add(index);
+            slots[index].item.transform = null;
+        }
+
+        foreach (int index in keys)
+            inventory[index] = null;
+
+        itemCount = 0;
+    }
+
+    public void SetInventoryUIVisibility(bool active)
+    {
+        inventoryUI.SetActive(active);
+    }
 }

@@ -29,10 +29,19 @@ public class HomeSelection : MonoBehaviour
     [SerializeField]
     private Button Exit;
 
+    [Header("Sound")]
+    public AudioPlayer player;
+    [SerializeField]
+    private AudioClip switchAudio;
+    [SerializeField]
+    private AudioClip normalAudio;
+
     public bool connected { get; private set; }
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
+
         input = new InputMaster();
         input.Enable();
 
@@ -63,12 +72,18 @@ public class HomeSelection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        input.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    void OnDestroy()
+    {
+        input.Disable();
     }
 
     private void SwitchSelectedButton(InputAction.CallbackContext context)
@@ -108,16 +123,31 @@ public class HomeSelection : MonoBehaviour
                 break;
 
         }
+
+        // Play Audio
+        player.Play(switchAudio);
     }
 
     private void Enter(InputAction.CallbackContext context)
     {
+        // Play Audio
+        player.Play(normalAudio);
+
         if (Lobbies.GetComponent<RawImage>().texture == selectedButton)
             SceneManager.LoadScene("Lobby");
         else if (Controls.GetComponent<RawImage>().texture == selectedButton)
             SceneManager.LoadScene("Controls");
         else if (Credits.GetComponent<RawImage>().texture == selectedButton)
             SceneManager.LoadScene("Credits");
-
+        else if (Exit.GetComponent<RawImage>().texture == selectedButton)
+        {
+#if UNITY_STANDALONE
+            Application.Quit();
+#endif
+#if UNITY_EDITOR
+            Debug.Log("Exit from editor");
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
     }
 }

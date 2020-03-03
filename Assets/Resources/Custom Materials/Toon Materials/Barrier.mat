@@ -50,22 +50,32 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_1A80841F: 100
+    - Vector1_1B44B884: 0
     - Vector1_2564F6BE: 0.02
     - Vector1_473296A5: -2
     - Vector1_87E9FCA0: 3
     - Vector1_887D380D: 0.2
+    - Vector1_F7F964B6: 3
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DstBlend: 0
+    - _Duration: 5
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _IntersectionStrength: -2
+    - _LeadLineWeight: 0.01
+    - _LineAccuracy: 2
+    - _LineMultiplier: 40
+    - _LineSpeed: 0.05
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _Opacity: 0.5
+    - _PulseSpeed: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -75,6 +85,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _et: 0
     m_Colors:
     - Color_5209D503: {r: 0.49056602, g: 0.01397978, b: 0, a: 0}
     - Color_712A0399: {r: 0, g: 0, b: 0, a: 0}
@@ -82,7 +93,12 @@ Material:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EndTint: {r: 1, g: 0.77412665, b: 0, a: 0}
+    - _IntersectionColor: {r: 1, g: 0, b: 0, a: 0}
+    - _LeadLineColor: {r: 0.8207547, g: 0, b: 0, a: 0}
+    - _LineTint: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _StartTint: {r: 1, g: 0, b: 0, a: 0}
     - _Tint: {r: 1, g: 0.8352941, b: 0, a: 0}
 --- !u!114 &3647275501348559722
 MonoBehaviour:

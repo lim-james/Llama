@@ -11,17 +11,37 @@ public class ScoreAreaScaling : MonoBehaviour
     private List<Vector3> endPositions = new List<Vector3>();
     public List<Transform> scoringArea = new List<Transform>();
 
-    public float duration = 1.0f;
-    public float delay = 0.0f;
-
-    private float multipler = 0.0f;
-
-    [SerializeField]
-    private float timer = 0.0f;
-    public bool startTimer = false;
+    public float duration { private get; set; }
 
     private bool activatedEndGame = false;
     private bool activateStartGame = false;
+
+    public float et
+    {
+        set
+        {
+            if (value >= duration && !activatedEndGame)
+            {
+                GameObject.FindObjectOfType<EndGame>().StartEndGame();
+                activatedEndGame = true;
+            }
+
+            if (value >= 0 && !activateStartGame)
+            {
+                CharacterInput[] characterMovements = GameObject.FindObjectsOfType<CharacterInput>();
+                for (int i = 0; i < characterMovements.Length; ++i)
+                {
+                    characterMovements[i].moveable = true;
+                }
+                activateStartGame = true;
+            }
+
+            for (int i = 0; i < scoringArea.Count; ++i)
+            {
+                scoringArea[i].position = Vector3.Lerp(originalPositions[i], endPositions[i], value / duration);
+            }
+        }
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -31,42 +51,6 @@ public class ScoreAreaScaling : MonoBehaviour
             Vector3 dir = (scoringArea[i].position - target.position).Sign();
             originalPositions.Add(scoringArea[i].position);
             endPositions.Add(target.position + Vector3.Scale(dir, minOffset));
-        }
-
-        timer = -delay;
-        //multipler = 1f / duration;
-    }
-
-    private void Update()
-    {
-        timer += Time.deltaTime;
-
-        if (timer >= duration && !activatedEndGame)
-        {
-            GameObject.FindObjectOfType<EndGame>().StartEndGame();
-            activatedEndGame = true;
-        }
-
-        if (timer >= 0 && !activateStartGame)
-        {
-            CharacterInput[] characterMovements = GameObject.FindObjectsOfType<CharacterInput>();
-            for (int i = 0; i < characterMovements.Length; ++i)
-            {
-                characterMovements[i].moveable = true;
-            }
-            activateStartGame = true;
-        }
-    }
-
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        if (!startTimer || timer < 0.0f)
-            return;
-        
-        for (int i = 0; i < scoringArea.Count; ++i)
-        {
-            scoringArea[i].position = Vector3.Lerp(originalPositions[i], endPositions[i], timer / duration);
         }
     }
 

@@ -66,6 +66,7 @@ public class PlayerManager : MonoBehaviour
             // set map colour
             playerBase.SetColor("_Player" + (i + 1), team.color);
             // set player info
+            Debug.Log(joinInfo.characterType);
             CharacterData data = characters.characters[joinInfo.characterType];
             // create game object accordingly
             Transform llama = Instantiate(data.characterPrefab).transform;
@@ -87,6 +88,9 @@ public class PlayerManager : MonoBehaviour
 
             if(i < 2) rotate.Add(llama);
         }
+
+        playerQueue.Clear();
+        players.Clear();
     }
 
     private void Update()
