@@ -4,7 +4,7 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"c80d0f4b-1b02-41c5-ade4-5967fdb37bca\"\n    },\n    \"m_Name\": \"Ambient\",\n    \"m_DefaultReferenceName\": \"Vector1_32D3941A\",\n    \"m_OverrideReferenceName\": \"_Ambient\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 0.0,\n    \"m_FloatType\": 0,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 1.0\n    }\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"c80d0f4b-1b02-41c5-ade4-5967fdb37bca\"\n    },\n    \"m_Name\": \"Ambient\",\n    \"m_DefaultReferenceName\": \"Vector1_32D3941A\",\n    \"m_OverrideReferenceName\": \"_Ambient\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 0.3499999940395355,\n    \"m_FloatType\": 0,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 1.0\n    }\n}"
         },
         {
             "typeInfo": {

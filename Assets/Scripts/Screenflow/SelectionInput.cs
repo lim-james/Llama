@@ -136,7 +136,6 @@ public class SelectionInput : MonoBehaviour
 
                 played = true;
                 
-                character.GetComponent<BounceAnimation>().Start();
                 character.GetComponent<BounceAnimation>().Animate();
             }
         }
@@ -210,7 +209,6 @@ public class SelectionInput : MonoBehaviour
         
         if(context.ReadValue<float>() == 0)
         {
-            character.GetComponent<BounceAnimation>().Start();
             character.GetComponent<BounceAnimation>().Animate();
         }
     }
