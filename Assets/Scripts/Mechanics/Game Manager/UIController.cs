@@ -27,12 +27,22 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private int index;
 
+    [Header("Sound")]
+    public AudioPlayer player;
+    [SerializeField]
+    private AudioClip switchAudio;
+
     [SerializeField]
     private RawImage Controls;
     [SerializeField]
     private RawImage Exit;
 
     public float et;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +74,9 @@ public class UIController : MonoBehaviour
                 {
                     playerManager.playerList[i].GetComponent<CharacterMovement>().canMove = false;
                 }
+
+                // Play Audio
+                player.PlaySFX(switchAudio);
             }
             else
             {
@@ -79,6 +92,9 @@ public class UIController : MonoBehaviour
                 {
                     playerManager.playerList[i].GetComponent<CharacterMovement>().canMove = true;
                 }
+
+                // Play Audio
+                player.PlaySFX(switchAudio);
             }
 
             timeController.TogglePaused();
@@ -108,12 +124,12 @@ public class UIController : MonoBehaviour
         }
 
         // Play Audio
-        //player.Play(switchAudio);
+        player.PlaySFX(switchAudio);
     }
     public void Enter()
     {
         // Play Audio
-        //player.Play(normalAudio);
+        player.PlaySFX(switchAudio);
 
         if (Controls.texture == selectedButton)
         {
