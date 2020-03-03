@@ -161,6 +161,9 @@ public class EndGame : MonoBehaviour
                         characters[j].transform.position = platforms[i].transform.position;
                         characters[j].transform.localEulerAngles = new Vector3(0, platforms[i].transform.localEulerAngles.y, 0);
 
+                        //Disable Character Inventory UI
+                        characters[j].GetComponent<CharacterInventory>().SetInventoryUIVisibility(false);
+
                         // change podium colors
                         platforms[i].team = characters[j].GetComponent<CharacterInfo>().team;
                         
@@ -175,9 +178,7 @@ public class EndGame : MonoBehaviour
                     {
                         // scores based on team
                         platforms[i].testPoints = (((teamScores[j].points - (float)lowestScore) / ((float)highestScore - (float)lowestScore)) * range) + minHeight;
-
                         placements[i].text = (j + 1).ToString();
-
                         break;
                     }
                 }

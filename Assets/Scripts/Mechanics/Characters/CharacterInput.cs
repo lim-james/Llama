@@ -24,6 +24,8 @@ public class CharacterInput : MonoBehaviour
     [SerializeField]
     private float vertical = 0.0f;
 
+    public UIController ui;
+
     public bool moveable = true;
 
     private void Awake()
@@ -35,6 +37,9 @@ public class CharacterInput : MonoBehaviour
 
         input = new InputMaster();
         input.Enable();
+
+        
+        ui = GameObject.Find("UI Canvas").GetComponent<UIController>();
     }
 
     private void Start()
@@ -42,6 +47,7 @@ public class CharacterInput : MonoBehaviour
         // bind handlers
         if (!info.AI)
         {
+            input.Enable();
             if (info.playerID == 0)
                 input.devices = new[] { InputDevice.all[0] };
             else
@@ -63,7 +69,14 @@ public class CharacterInput : MonoBehaviour
             };
             // consume
             input.Player.Consume.performed += _ => adrenaline.Consume();
+            // pause game
+            input.Player.Pause.performed += context => OnPause(context);
         }
+    }
+
+    private void OnDestroy()
+    {
+        input.Disable();
     }
 
     private void FixedUpdate()
@@ -83,5 +96,10 @@ public class CharacterInput : MonoBehaviour
     private void OnSwitch(InputAction.CallbackContext context)
     {
         inventory.selectedIndex += (int)context.ReadValue<float>();
+    }
+
+    private void OnPause(InputAction.CallbackContext context)
+    {
+        ui.TogglePause();
     }
 }

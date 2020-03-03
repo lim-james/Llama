@@ -15,6 +15,8 @@ public class CharacterInventory : MonoBehaviour
     private Transform selected;
     [SerializeField]
     private Transform indicator;
+    [SerializeField]
+    private GameObject inventoryUI;
 
     [SerializeField]
     private float displacement;
@@ -30,7 +32,7 @@ public class CharacterInventory : MonoBehaviour
         {
             return _holding;
         }
-        private set
+        set
         {
             _holding = value;
 
@@ -198,7 +200,6 @@ public class CharacterInventory : MonoBehaviour
 
         if (fruit == null) return;
 
-        Debug.Log("Trigger attack");
         gameObject.GetComponent<CharacterMovement>().GetAnimator.SetTrigger("TriggerAttack");
 
         fruit.transform.position = indicator.position + transform.forward * displacement + new Vector3(0.0f, 3.0f, 0.0f);
@@ -226,4 +227,39 @@ public class CharacterInventory : MonoBehaviour
         inventory[selectedIndex] = null;
     }
 
+    public void DiscardFruits()
+    {
+        holding = false;
+        magnitude = 0.0f;
+
+        if (itemCount == 0) return;
+
+        List<int> keys = new List<int>();
+
+        foreach (int index in inventory.Keys)
+        {
+            Fruit fruit = inventory[index];
+            if (fruit == null) continue;
+            fruit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            fruit.transform.position = transform.position + new Vector3(0.0f, -5.0f, 0.0f);
+            fruit.GetComponent<Rigidbody>().useGravity = true;
+            fruit.GetComponent<Collider>().enabled = true;
+            fruit.GetComponent<RangeDetector>().active = true;
+            fruit.GetComponent<Fruit>().throwing = true;
+            fruit.gameObject.layer = LayerMask.NameToLayer(fruit.fruitLayerName);
+
+            keys.Add(index);
+            slots[index].item.transform = null;
+        }
+
+        foreach (int index in keys)
+            inventory[index] = null;
+
+        itemCount = 0;
+    }
+
+    public void SetInventoryUIVisibility(bool active)
+    {
+        inventoryUI.SetActive(active);
+    }
 }

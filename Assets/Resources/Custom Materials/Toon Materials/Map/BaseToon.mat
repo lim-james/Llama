@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BaseToon
-  m_Shader: {fileID: -6465566751694194690, guid: 8bac4b4f06ae5c2439605b27196af007,
+  m_Shader: {fileID: -6465566751694194690, guid: 2de29192fa30ad348a5e8a21625dee30,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -66,7 +66,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_1F1E2E73: 60
-    - Vector1_1FD11141: 0
+    - Vector1_1FD11141: 0.5
     - Vector1_23EC31D0: 0.4
     - Vector1_8C8F3359: 21
     - Vector1_ADF0C7B8: 0.25
@@ -74,6 +74,8 @@ Material:
     - Vector1_E2BCDA9F: 0.25
     - _AlphaClip: 0
     - _Ambient: 0
+    - _BaseScale: 0.25
+    - _BaseTransparency: 0.5
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -118,6 +120,7 @@ Material:
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _UvMax: {r: 0.773, g: 0.981, b: 0, a: 0}
     - _UvMin: {r: 0.015, g: 0.223, b: 0, a: 0}
+    - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
 --- !u!114 &6403080212416545065
 MonoBehaviour:

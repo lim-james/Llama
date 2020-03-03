@@ -13,12 +13,16 @@ public class FruitManager : MonoBehaviour
     private Dictionary<string, int> fruitCount;
     private List<int> spawnIndexes; // list of possible fruits left to spawn
 
+    // list of all fruit rigidbody
+    public List<Rigidbody> fruitRBList;
+
     private void Awake()
     {
         fruitGameObjectDic = new Dictionary<string, GameObject>();
         fruitMaxCount = new Dictionary<string, int>();
         fruitCount = new Dictionary<string, int>();
         spawnIndexes = new List<int>();
+        fruitRBList = new List<Rigidbody>();
     }
 
     private void Start()
@@ -55,7 +59,10 @@ public class FruitManager : MonoBehaviour
             fruitCount[fruitName] > fruitMaxCount[fruitName])
             return null;
 
-        return Instantiate(fruitGameObjectDic[fruitName]);
+        GameObject fruit = Instantiate(fruitGameObjectDic[fruitName]);
+        fruitRBList.Add(fruit.GetComponent<Rigidbody>());
+
+        return fruit;
     }
 
     public GameObject SpawnRandomFruit()
@@ -71,6 +78,9 @@ public class FruitManager : MonoBehaviour
         if (fruitCount[name] >= fruitMaxCount[name])
             spawnIndexes.RemoveAt(i);
 
-        return Instantiate(fruitDatabase.fruits[randomIndex].fruitPrefab);
+        GameObject fruitObj = Instantiate(fruitDatabase.fruits[randomIndex].fruitPrefab);
+        fruitRBList.Add(fruitObj.GetComponent<Rigidbody>());
+
+        return fruitObj;
     }
 }

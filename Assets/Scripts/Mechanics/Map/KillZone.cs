@@ -19,8 +19,15 @@ public class KillZone : MonoBehaviour
             ResetFruit(other.gameObject);
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<Fruit>())
+            ResetFruit(other.gameObject);
+    }
+
     public void ResetCharacter(GameObject character)
     {
+        character.GetComponent<CharacterInventory>().DiscardFruits();
         for (int i = 0; i < scoringAreas.scoringArea.Count; ++i)
         {
             if (scoringAreas.scoringArea[i].GetComponent<PlayerBase>().playerID != character.GetComponent<CharacterInfo>().playerID)
@@ -31,8 +38,6 @@ public class KillZone : MonoBehaviour
             character.transform.position = scoringAreas.scoringArea[i].transform.position + new Vector3(0, respawnHeightOffset, 0);
             break;
         }
-
-        //Trigger Inivisibility
     }
 
     public void ResetFruit(GameObject fruit)

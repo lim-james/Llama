@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Green
-  m_Shader: {fileID: -6465566751694194690, guid: bf4641cea51268b439b45dd0857996ab,
+  m_Shader: {fileID: -6465566751694194690, guid: c7f6753da5c2da143939670ae54be3f4,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -105,11 +105,14 @@ Material:
     - Vector1_E49B8461: 0
     - _AlphaClip: 0
     - _Ambient: 0.35
+    - _BaseScale: 0
+    - _BaseTransparency: 0
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DstBlend: 0
+    - _Duration: 1
     - _EmissionIntensity: 1
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -119,6 +122,7 @@ Material:
     - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _ShrinkTime: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -140,6 +144,13 @@ Material:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Outline: {r: 1, g: 0, b: 0, a: 0}
+    - _Player1: {r: 1, g: 0, b: 0, a: 0}
+    - _Player2: {r: 0, g: 1, b: 0, a: 0}
+    - _Player3: {r: 0, g: 0, b: 1, a: 0}
+    - _Player4: {r: 1, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _UvMax: {r: 1, g: 1, b: 0, a: 0}
+    - _UvMin: {r: 0, g: 0, b: 0, a: 0}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}

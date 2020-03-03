@@ -50,6 +50,8 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float endLineSpeed;
 
+    private bool paused;
+
     private void Start()
     {
         et = -delay;
@@ -62,32 +64,45 @@ public class TimeController : MonoBehaviour
         scoreAreaScaling.duration = duration;
 
         //startColor = mainCam.backgroundColor;
+
+        paused = false;
     }
 
     private void Update()
     {
-        et += Time.deltaTime;
-
-        if (et >= 0.0f && et < duration)
+        if (!paused)
         {
-            mainMapScaling.et = et;
-            endMapScaling.et = et;
-            barrierScript.et = et;
+            et += Time.deltaTime;
 
-            float value = et / duration;
+            if (et >= 0.0f && et < duration)
+            {
+                mainMapScaling.et = et;
+                endMapScaling.et = et;
+                barrierScript.et = et;
 
-            Color bg = Color.Lerp(startColor, endColor, value);
-            mainCam.backgroundColor = bg;
-            cineCam.backgroundColor = bg;
+                float value = et / duration;
 
-            value *= value;
-            barrier.material.SetFloat("_et", et);
-            barrier.material.SetFloat("_PulseSpeed", startPulseSpeed + (endPulseSpeed - startPulseSpeed) * value);
-            barrier.material.SetFloat("_LineSpeed", startLineSpeed + (endLineSpeed - startLineSpeed) * value);
+                Color bg = Color.Lerp(startColor, endColor, value);
+                mainCam.backgroundColor = bg;
+                cineCam.backgroundColor = bg;
+
+                value *= value;
+                barrier.material.SetFloat("_et", et);
+                barrier.material.SetFloat("_PulseSpeed", startPulseSpeed + (endPulseSpeed - startPulseSpeed) * value);
+                barrier.material.SetFloat("_LineSpeed", startLineSpeed + (endLineSpeed - startLineSpeed) * value);
+            }
+
+            mainCameraFollow.et = et;
+            cinemachineCameraFollow.et = et;
+            scoreAreaScaling.et = et;
         }
+    }
 
-        mainCameraFollow.et = et;
-        cinemachineCameraFollow.et = et;
-        scoreAreaScaling.et = et;
+    public void TogglePaused()
+    {
+        if (paused == false)
+            paused = true;
+        else
+            paused = false;
     }
 }
