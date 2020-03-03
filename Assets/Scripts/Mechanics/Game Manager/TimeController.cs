@@ -53,6 +53,8 @@ public class TimeController : MonoBehaviour
     private float endLineSpeed;
 
     private bool paused;
+    private bool playOnce;
+    private AudioPlayer player;
 
     private void Start()
     {
@@ -68,6 +70,7 @@ public class TimeController : MonoBehaviour
         //startColor = mainCam.backgroundColor;
 
         paused = false;
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
     }
 
     private void Update()
@@ -75,6 +78,12 @@ public class TimeController : MonoBehaviour
         if (!paused)
         {
             et += Time.deltaTime;
+            
+            if(et >= -6.0 && !playOnce)
+            {
+                playOnce = true;
+                player.PlayCountDown();
+            }
 
             if (et >= 0.0f && et < duration)
             {

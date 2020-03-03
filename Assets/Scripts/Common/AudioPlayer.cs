@@ -4,37 +4,56 @@
 public class AudioPlayer : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource[] source;
+    private AudioSource[] sources;
+
     [SerializeField]
-    private AudioClip hit;
+    [Header("SFX")]
+    private AudioClip[] sfxClips;
+
+    [SerializeField]
+    [Header("BGM")]
+    private AudioClip[] bgmClips;
+
+    [SerializeField]
+    private GameObject tempFeb;
 
     private void Awake()
     {
-        source = GetComponents<AudioSource>();
+        sources = GetComponents<AudioSource>();
         DontDestroyOnLoad(gameObject);
     }
 
     public void PlayHit()
     {
-        source[0].clip = hit;
-        source[0].Play();
+        sources[0].clip = sfxClips[4];
+        sources[0].Play();
+    }
+
+    public void PlayThrow(int value)
+    {
+        sources[0].clip = sfxClips[value];
+        sources[0].Play();
     }
 
     public void PlaySFX(AudioClip clip)
     {
-        source[0].clip = clip;
-        source[0].Play();
+        sources[0].clip = clip;
+        sources[0].Play();
     }
 
-    public void PlayBGM(AudioClip clip)
+    public void PlayBGM(int value)
     {
-        source[1].clip = clip;
-        source[1].Play();
+        sources[1].clip = bgmClips[value];
+        sources[1].Play();
+    }
+
+    public void PlayCountDown()
+    {
+        Instantiate(tempFeb);
     }
 
     public void StopBGM()
     {
-        source[1].Stop();
+        sources[1].Stop();
     }
-
 }

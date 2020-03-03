@@ -139,7 +139,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6b1465df199e5de408b61de8a5d63304, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -237,5 +237,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c98864e7b9086489cac724f3287769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: []
-  hit: {fileID: 8300000, guid: 86992b72e8495304680283f4e6afbe72, type: 3}
+  sources: []
+  sfxClips:
+  - {fileID: 8300000, guid: 81cf4dbf154b643408250786bf1dab07, type: 3}
+  - {fileID: 8300000, guid: d36301d8521b85e4d92212a945210866, type: 3}
+  - {fileID: 8300000, guid: 15caf48340578304a88604b18001b424, type: 3}
+  - {fileID: 8300000, guid: 474c8db917cccdc4db44b0c8c593ca68, type: 3}
+  - {fileID: 8300000, guid: 2539ab69a47de6040ab0e004bd48a9cc, type: 3}
+  bgmClips:
+  - {fileID: 8300000, guid: 6b1465df199e5de408b61de8a5d63304, type: 3}
+  - {fileID: 8300000, guid: ae712e925b3b65348b35267427365bc1, type: 3}
+  tempFeb: {fileID: 8358059794628588896, guid: 0e3c7db34d419214eb6010def77bb300, type: 3}

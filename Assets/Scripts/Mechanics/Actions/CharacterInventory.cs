@@ -23,6 +23,7 @@ public class CharacterInventory : MonoBehaviour
 
     // references
     private CharacterInfo info;
+    private AudioPlayer player;
 
     // member attributes
     private bool _holding; 
@@ -98,7 +99,8 @@ public class CharacterInventory : MonoBehaviour
     private void Awake()
     {
         info = GetComponent<CharacterInfo>();
-        
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
+
         holding = false;
         holdDelay = 0.4f;
 
@@ -212,6 +214,8 @@ public class CharacterInventory : MonoBehaviour
         fruit.GetComponent<Fruit>().throwing = true;
         fruit.gameObject.layer = LayerMask.NameToLayer(fruit.fruitLayerName);
         fruit.AddPlayerBaseScore();
+
+        player.PlayThrow((int)magnitude);
 
         magnitude = 0.0f;
 
