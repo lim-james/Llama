@@ -212,13 +212,6 @@ public class CharacterInventory : MonoBehaviour
         fruit.GetComponent<Fruit>().throwing = true;
         fruit.gameObject.layer = LayerMask.NameToLayer(fruit.fruitLayerName);
         fruit.AddPlayerBaseScore();
-        // TODO: Remove when all fruit now use the model gameobject as the child
-        /*
-        if (fruit.GetComponent<MeshRenderer>())
-            fruit.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-        else
-            fruit.transform.GetChild(2).GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-        */
 
         magnitude = 0.0f;
 

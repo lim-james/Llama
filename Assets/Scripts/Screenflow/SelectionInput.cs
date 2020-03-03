@@ -125,12 +125,12 @@ public class SelectionInput : MonoBehaviour
             // play audio
             if(!played)
             {
-                if (characterIndex == 0)
-                    player.Play(highAudio);
-                else if (characterIndex == 1)
-                    player.Play(normalAudio);
-                else
-                    player.Play(lowAudio);
+                //if (characterIndex == 0)
+                //    player.PlaySFX(highAudio);
+                //else if (characterIndex == 1)
+                //    player.PlaySFX(normalAudio);
+                //else
+                player.PlaySFX(lowAudio);
 
                 played = true;
             }
@@ -193,7 +193,7 @@ public class SelectionInput : MonoBehaviour
         UpdateCharacter();
 
         // Play sound
-        player.Play(switchAudio);
+        player.PlaySFX(switchAudio);
     }
 
     private void HoldHandler(InputAction.CallbackContext context)

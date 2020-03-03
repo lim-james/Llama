@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1021,6 +1021,10 @@ MonoBehaviour:
   transitionAnim: {fileID: 1666623609}
   scroll: {fileID: 16188350}
   startDelay: 3
+  player: {fileID: 0}
+  highAudio: {fileID: 8300000, guid: e440ba4c088df934b92601437f9f09c3, type: 3}
+  normalAudio: {fileID: 8300000, guid: 3493bd935119a7f42a0996fb427df6a5, type: 3}
+  lowAudio: {fileID: 8300000, guid: 326a3fe39b8419442a573c53b0804026, type: 3}
 --- !u!114 &248329637
 MonoBehaviour:
   m_ObjectHideFlags: 0
