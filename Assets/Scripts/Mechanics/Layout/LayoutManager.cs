@@ -24,7 +24,10 @@ public class LayoutManager : MonoBehaviour
         foreach (Transform point in spawnPoints)
         {
             Transform layout = Instantiate(GetRandomLayout()).transform;
-            layout.position = point.position;
+            Vector3 position = point.position;
+            position.y = 0.0f;
+            layout.position = position;
+            layout.localEulerAngles = point.localEulerAngles;
             layout.parent = container;
         }
     }

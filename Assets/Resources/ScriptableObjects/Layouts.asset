@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LayoutGroup
   group:
   - {fileID: 3718737127091160912, guid: da12bc20d54f4c140932a3ba7e3a6748, type: 3}
+  - {fileID: 3718737127091160912, guid: 1f247f1bb92fc4d4b953b04ab759e5f3, type: 3}
+  - {fileID: 3718737127091160912, guid: 512f8af95a6a42243a27692d6bfa066f, type: 3}
+  - {fileID: 3718737127091160912, guid: e4fdbf1971a15394f8a2549672e392b4, type: 3}
