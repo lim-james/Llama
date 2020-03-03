@@ -14,6 +14,9 @@ public class AudioPlayer : MonoBehaviour
     [Header("BGM")]
     private AudioClip[] bgmClips;
 
+    [SerializeField]
+    private GameObject tempFeb;
+
     private void Awake()
     {
         sources = GetComponents<AudioSource>();
@@ -42,6 +45,11 @@ public class AudioPlayer : MonoBehaviour
     {
         sources[1].clip = bgmClips[value];
         sources[1].Play();
+    }
+
+    public void PlayCountDown()
+    {
+        Instantiate(tempFeb);
     }
 
     public void StopBGM()

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -500,11 +500,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 925465002004813876, guid: 7721a1e039fa5ee4786e41238caeb5c3,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 6b1465df199e5de408b61de8a5d63304, type: 3}
     - target: {fileID: 928501979450388432, guid: 7721a1e039fa5ee4786e41238caeb5c3,
         type: 3}
       propertyPath: m_Name
@@ -565,51 +560,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 928501979450388435, guid: 7721a1e039fa5ee4786e41238caeb5c3,
-        type: 3}
-      propertyPath: sfxClips.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 928501979450388435, guid: 7721a1e039fa5ee4786e41238caeb5c3,
-        type: 3}
-      propertyPath: bgmClips.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 928501979450388435, guid: 7721a1e039fa5ee4786e41238caeb5c3,
-        type: 3}
-      propertyPath: sfxClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 81cf4dbf154b643408250786bf1dab07, type: 3}
-    - target: {fileID: 928501979450388435, guid: 7721a1e039fa5ee4786e41238caeb5c3,
-        type: 3}
-      propertyPath: sfxClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: d36301d8521b85e4d92212a945210866, type: 3}
-    - target: {fileID: 928501979450388435, guid: 7721a1e039fa5ee4786e41238caeb5c3,
-        type: 3}
-      propertyPath: sfxClips.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 474c8db917cccdc4db44b0c8c593ca68, type: 3}
-    - target: {fileID: 928501979450388435, guid: 7721a1e039fa5ee4786e41238caeb5c3,
-        type: 3}
-      propertyPath: sfxClips.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 15caf48340578304a88604b18001b424, type: 3}
-    - target: {fileID: 928501979450388435, guid: 7721a1e039fa5ee4786e41238caeb5c3,
-        type: 3}
-      propertyPath: sfxClips.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 2539ab69a47de6040ab0e004bd48a9cc, type: 3}
-    - target: {fileID: 928501979450388435, guid: 7721a1e039fa5ee4786e41238caeb5c3,
-        type: 3}
-      propertyPath: bgmClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 6b1465df199e5de408b61de8a5d63304, type: 3}
-    - target: {fileID: 928501979450388435, guid: 7721a1e039fa5ee4786e41238caeb5c3,
-        type: 3}
-      propertyPath: bgmClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: ae712e925b3b65348b35267427365bc1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7721a1e039fa5ee4786e41238caeb5c3, type: 3}
 --- !u!1 &1899366573
