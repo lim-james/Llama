@@ -55,6 +55,8 @@ public class SelectionInput : MonoBehaviour
 
     private MaterialManager selected;
 
+    private GameObject character;
+
     // Hold
     static private float progress;
     public bool isHolding { get; private set; }
@@ -133,6 +135,8 @@ public class SelectionInput : MonoBehaviour
                 player.PlaySFX(lowAudio);
 
                 played = true;
+                
+                character.GetComponent<BounceAnimation>().Animate();
             }
         }
         else
@@ -178,6 +182,9 @@ public class SelectionInput : MonoBehaviour
         selected.SetMaterialPack(pack);
 
         if (OnModeChange != null) OnModeChange.Invoke();
+
+        // Play sound
+        player.PlaySFX(switchAudio);
     }
 
     private void SwitchCharacterHandler(InputAction.CallbackContext context)
@@ -199,11 +206,17 @@ public class SelectionInput : MonoBehaviour
     private void HoldHandler(InputAction.CallbackContext context)
     {
         isHolding = context.ReadValue<float>() == 1;
+        
+        if(context.ReadValue<float>() == 0)
+        {
+            character.GetComponent<BounceAnimation>().Animate();
+        }
     }
 
     private void UpdateCharacter()
     {
         GameObject go = Instantiate(characters.group[characterIndex].model, characterModel.transform.localPosition, characterModel.transform.localRotation);
+        character = go;
 
         selected = go.GetComponent<MaterialManager>();
         selected.transform.localScale = characters.group[characterIndex].modelScale;
