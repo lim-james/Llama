@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Rambu Stats
   m_EditorClassIdentifier: 
   speed: 2
-  strength: 0
+  strength: 2
   balance: 0
-  points: 1
+  points: 3
