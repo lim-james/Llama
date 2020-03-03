@@ -100,7 +100,7 @@ public class CharacterInventory : MonoBehaviour
         info = GetComponent<CharacterInfo>();
         
         holding = false;
-        holdDelay = 0.2f;
+        holdDelay = 0.4f;
 
         selectedIndex = 0;
         inventory = new Dictionary<int, Fruit>();
@@ -181,13 +181,13 @@ public class CharacterInventory : MonoBehaviour
             ++selectedIndex;
 
         slots[selectedIndex].item.transform = nearestFruit.transform;
-        inventory[selectedIndex] = nearestFruit.GetComponent<Fruit>();
+        inventory.Add(selectedIndex, nearestFruit.GetComponent<Fruit>());
         ++itemCount;
     }
 
     public void HoldFruit()
     {
-        if (inventory[selectedIndex] == null) return;
+        if (!inventory.ContainsKey(selectedIndex)) return;
         holding = true;
     }
 
@@ -224,7 +224,15 @@ public class CharacterInventory : MonoBehaviour
 
         --itemCount;
         slots[selectedIndex].item.transform = null;
-        inventory[selectedIndex] = null;
+        inventory.Remove(selectedIndex);
+
+        if (itemCount > 0)
+        {
+            do
+            {
+                ++selectedIndex;
+            } while (!inventory.ContainsKey(selectedIndex));
+        }
     }
 
     public void DiscardFruits()
@@ -233,8 +241,6 @@ public class CharacterInventory : MonoBehaviour
         magnitude = 0.0f;
 
         if (itemCount == 0) return;
-
-        List<int> keys = new List<int>();
 
         foreach (int index in inventory.Keys)
         {
@@ -248,13 +254,10 @@ public class CharacterInventory : MonoBehaviour
             fruit.GetComponent<Fruit>().throwing = true;
             fruit.gameObject.layer = LayerMask.NameToLayer(fruit.fruitLayerName);
 
-            keys.Add(index);
             slots[index].item.transform = null;
         }
 
-        foreach (int index in keys)
-            inventory[index] = null;
-
+        inventory.Clear();
         itemCount = 0;
     }
 
