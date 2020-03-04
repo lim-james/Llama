@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioPlayer : MonoBehaviour
@@ -15,7 +16,7 @@ public class AudioPlayer : MonoBehaviour
     private AudioClip[] bgmClips;
 
     [SerializeField]
-    private GameObject tempFeb;
+    private GameObject[] tempFeb;
 
     private void Awake()
     {
@@ -41,15 +42,31 @@ public class AudioPlayer : MonoBehaviour
         sources[0].Play();
     }
 
-    public void PlayBGM(int value)
+    public void PlayBGM(int value, bool loop)
     {
         sources[1].clip = bgmClips[value];
+        sources[1].loop = loop;
         sources[1].Play();
     }
 
-    public void PlayCountDown()
+    public void PlayCountDown(int value)
     {
-        Instantiate(tempFeb);
+        Instantiate(tempFeb[value]);
+    }
+
+    public IEnumerator FadeOut(float FadeTime)
+    {
+        float startVolume = sources[1].volume;
+
+        while(sources[1].volume > 0)
+        {
+            sources[1].volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        sources[1].Stop();
+        sources[1].volume = startVolume;
     }
 
     public void BGNAudioPitching(float value,float min, float max)
@@ -57,8 +74,12 @@ public class AudioPlayer : MonoBehaviour
         sources[1].pitch = Mathf.Clamp(value, min, max);
     }
 
-    public void StopBGM()
+    public void reset()
     {
-        sources[1].Stop();
+        foreach (var i in sources)
+        {
+            i.Stop();
+            i.pitch = 1;
+        }
     }
 }

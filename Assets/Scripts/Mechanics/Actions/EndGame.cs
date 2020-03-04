@@ -47,8 +47,12 @@ public class EndGame : MonoBehaviour
 
     public bool allowRestart;
 
+<<<<<<< .merge_file_a22544
     [SerializeField]
     private GameObject crownPrefab;
+=======
+    private AudioPlayer player;
+>>>>>>> .merge_file_a14740
 
     public struct TeamScore
     {
@@ -90,7 +94,8 @@ public class EndGame : MonoBehaviour
 
         input.devices = new[] { InputDevice.all[0] };
         // restart
-        
+
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
     }
 
     void Update()
@@ -254,7 +259,8 @@ public class EndGame : MonoBehaviour
 
             // deactive the hue
             frenzyHue.SetActive(false);
-
+            player.reset();
+            player.PlayBGM(3,false); // plays the ending sound
             //if()
             //{
             //    endGameCamera.transform.up += new Vector3(0, Time.deltaTime, 0);

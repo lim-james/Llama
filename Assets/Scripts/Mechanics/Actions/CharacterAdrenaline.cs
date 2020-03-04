@@ -41,7 +41,7 @@ public class CharacterAdrenaline : MonoBehaviour
     {
         if (boostTimeLeft > 0)
         {
-            materialManager.currentPrimary.SetFloat("_Value", Mathf.Min(boostDuration - boostTimeLeft, 1.0f));
+            materialManager.currentPrimary.SetFloat("_Value", Mathf.Abs(boostDuration - boostTimeLeft));
             boostTimeLeft -= Time.deltaTime;
         }
         else
