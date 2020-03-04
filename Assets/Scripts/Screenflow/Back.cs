@@ -13,6 +13,11 @@ public class Back : MonoBehaviour
     [Header("Go Back To Scene")]
     public string SceneName;
 
+    [SerializeField]
+    private AudioClip lowClip;
+
+    private AudioPlayer player;
+
     public bool connected { get; private set; }
 
     private void Awake()
@@ -40,6 +45,13 @@ public class Back : MonoBehaviour
                 connected = false;
             }
         }
+
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
+    }
+
+    public void Unbind()
+    {
+        input.Disable();
     }
 
     // Start is called before the first frame update
@@ -56,6 +68,9 @@ public class Back : MonoBehaviour
 
     private void GoToScene(InputAction.CallbackContext context)
     {
+        Debug.Log("Poi");
+        player.PlaySFX(lowClip);
+        input.Disable();
         SceneManager.LoadScene(SceneName);
     }
 }

@@ -826,6 +826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerID: 0
   SceneName: Home
+  lowClip: {fileID: 8300000, guid: 326a3fe39b8419442a573c53b0804026, type: 3}
 --- !u!114 &1288854477
 MonoBehaviour:
   m_ObjectHideFlags: 0

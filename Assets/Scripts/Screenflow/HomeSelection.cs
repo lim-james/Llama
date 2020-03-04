@@ -36,6 +36,9 @@ public class HomeSelection : MonoBehaviour
     [SerializeField]
     private AudioClip normalAudio;
 
+    [SerializeField]
+    private Animator transitionAnim;
+
     public bool connected { get; private set; }
 
     private void Awake()
@@ -134,7 +137,7 @@ public class HomeSelection : MonoBehaviour
         player.PlaySFX(normalAudio);
 
         if (Lobbies.GetComponent<RawImage>().texture == selectedButton)
-            SceneManager.LoadScene("Lobby");
+            StartCoroutine(LoadScene("Lobby"));
         else if (Controls.GetComponent<RawImage>().texture == selectedButton)
             SceneManager.LoadScene("Controls");
         else if (Credits.GetComponent<RawImage>().texture == selectedButton)
@@ -149,5 +152,12 @@ public class HomeSelection : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
         }
+    }
+
+    private IEnumerator LoadScene(string scene)
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(scene);
     }
 }
