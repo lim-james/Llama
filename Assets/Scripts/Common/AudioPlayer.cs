@@ -52,6 +52,12 @@ public class AudioPlayer : MonoBehaviour
         Instantiate(tempFeb);
     }
 
+    public void BGNAudioPitching(float value,float min, float max)
+    {
+        sources[1].pitch += value;
+        sources[1].pitch = Mathf.Clamp(sources[1].pitch, min, max);
+    }
+
     public void StopBGM()
     {
         sources[1].Stop();
