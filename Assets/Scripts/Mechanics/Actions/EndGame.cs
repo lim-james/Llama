@@ -47,12 +47,9 @@ public class EndGame : MonoBehaviour
 
     public bool allowRestart;
 
-<<<<<<< .merge_file_a22544
     [SerializeField]
     private GameObject crownPrefab;
-=======
     private AudioPlayer player;
->>>>>>> .merge_file_a14740
 
     public struct TeamScore
     {
