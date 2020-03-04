@@ -78,7 +78,7 @@ public class TimeController : MonoBehaviour
         paused = false;
         player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
         player.PlayBGM(2, false); // play start jingle
-        StartCoroutine(player.FadeIn(1.5f));
+        StartCoroutine(player.FadeIn(2.5f));
     }
 
     private void Update()

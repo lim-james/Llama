@@ -68,7 +68,6 @@ public class Back : MonoBehaviour
 
     private void GoToScene(InputAction.CallbackContext context)
     {
-        Debug.Log("Poi");
         player.PlaySFX(lowClip);
         input.Disable();
         SceneManager.LoadScene(SceneName);

@@ -77,7 +77,6 @@ public class AudioPlayer : MonoBehaviour
         while (sources[1].volume < 1f)
         {
             sources[1].volume += 1f * Time.deltaTime / FadeTime;
-            
             yield return null;
         }
 
