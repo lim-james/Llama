@@ -41,9 +41,10 @@ public class AudioPlayer : MonoBehaviour
         sources[0].Play();
     }
 
-    public void PlayBGM(int value)
+    public void PlayBGM(int value, bool loop)
     {
         sources[1].clip = bgmClips[value];
+        sources[1].loop = loop;
         sources[1].Play();
     }
 
@@ -60,5 +61,14 @@ public class AudioPlayer : MonoBehaviour
     public void StopBGM()
     {
         sources[1].Stop();
+    }
+
+    public void reset()
+    {
+        foreach (var i in sources)
+        {
+            i.Stop();
+            i.pitch = 1;
+        }
     }
 }

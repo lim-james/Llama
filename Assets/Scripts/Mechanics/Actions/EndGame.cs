@@ -47,6 +47,8 @@ public class EndGame : MonoBehaviour
 
     public bool allowRestart;
 
+    private AudioPlayer player;
+
     public struct TeamScore
     {
         public int points;
@@ -87,7 +89,8 @@ public class EndGame : MonoBehaviour
 
         input.devices = new[] { InputDevice.all[0] };
         // restart
-        
+
+        player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
     }
 
     void Update()
@@ -251,7 +254,8 @@ public class EndGame : MonoBehaviour
 
             // deactive the hue
             frenzyHue.SetActive(false);
-
+            player.reset();
+            player.PlayBGM(3,false); // plays the ending sound
             //if()
             //{
             //    endGameCamera.transform.up += new Vector3(0, Time.deltaTime, 0);
