@@ -169,7 +169,6 @@ public class CharacterInventory : MonoBehaviour
         nearestFruit.GetComponent<Collider>().enabled = false;
         nearestFruit.GetComponent<RangeDetector>().active = false;
         nearestFruit.GetComponent<Fruit>().throwing = false;
-        nearestFruit.GetComponent<Fruit>().RemovePlayerBaseScore();
         nearestFruit.layer = LayerMask.NameToLayer(nearestFruit.GetComponent<Fruit>().defaultLayerMaskName);
         // TODO: Remove when all fruit now use the model gameobject as the child
         /*
@@ -213,7 +212,6 @@ public class CharacterInventory : MonoBehaviour
         fruit.GetComponent<RangeDetector>().active = true;
         fruit.GetComponent<Fruit>().throwing = true;
         fruit.gameObject.layer = LayerMask.NameToLayer(fruit.fruitLayerName);
-        fruit.AddPlayerBaseScore();
 
         player.PlayThrow((int)magnitude);
 
