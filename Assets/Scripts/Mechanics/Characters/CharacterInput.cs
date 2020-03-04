@@ -57,10 +57,24 @@ public class CharacterInput : MonoBehaviour
         if (!info.AI)
         {
             input.Enable();
-            if (info.playerID == 0)
+
+            ControllerManager manager = ControllerManager.Instance;
+
+            int controllerOffset = 0; ;
+
+            if (manager.type == ControllerManager.Type.STANDARD)
+                controllerOffset = 1;
+            else if (manager.type == ControllerManager.Type.SPLIT_KEYBOARD)
+                controllerOffset = 2;
+            else if (manager.type == ControllerManager.Type.ALL_CONTROLLER)
+                controllerOffset = 0;
+
+
+            if (info.playerID < controllerOffset)
                 input.devices = new[] { InputDevice.all[0] };
             else
-                input.devices = new[] { Gamepad.all[info.playerID - 1] };
+                input.devices = new[] { Gamepad.all[info.playerID - controllerOffset] };
+
             // movement
             input.Player.Move.performed += context => OnMove(context);
             input.Player.Move.canceled += context => OnMove(context);
