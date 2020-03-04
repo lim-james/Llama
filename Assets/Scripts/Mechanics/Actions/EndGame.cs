@@ -263,11 +263,12 @@ public class EndGame : MonoBehaviour
         }
 
         // show text
-        allowRestart = true;
         for (int i = 0; i < platforms.Length; ++i)
         {
             if (platforms[i].transform.localScale.y >= maxHeight)
             {
+                allowRestart = true;
+
                 for (int k = 0; k < placements.Length; ++k)
                 {
                     placements[k].gameObject.SetActive(true);
