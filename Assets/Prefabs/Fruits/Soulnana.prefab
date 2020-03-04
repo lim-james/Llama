@@ -88,12 +88,8 @@ MonoBehaviour:
   playerBaseIgnoreLayer:
     serializedVersion: 2
     m_Bits: 1024
-  defaultLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  fruitLayer:
-    serializedVersion: 2
-    m_Bits: 4096
+  defaultLayerMaskName: Default
+  fruitLayerName: Fruit
   throwing: 0
   stats: {fileID: 11400000, guid: 3eeaaa284309d7341b272c01f9e409d2, type: 2}
 --- !u!114 &7369868421922548642
