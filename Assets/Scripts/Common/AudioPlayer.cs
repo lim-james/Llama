@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioPlayer : MonoBehaviour
@@ -58,18 +58,34 @@ public class AudioPlayer : MonoBehaviour
     {
         float startVolume = sources[1].volume;
 
-        while(sources[1].volume > 0)
+        while (sources[1].volume > 0)
         {
             sources[1].volume -= startVolume * Time.deltaTime / FadeTime;
 
             yield return null;
         }
 
+        // Reset portion
         sources[1].Stop();
         sources[1].volume = startVolume;
     }
 
-    public void BGNAudioPitching(float value,float min, float max)
+    public IEnumerator FadeIn(float FadeTime)
+    {
+        sources[1].volume = 0.000f;
+        
+        while (sources[1].volume < 1f)
+        {
+            sources[1].volume += 1f * Time.deltaTime / FadeTime;
+            
+            yield return null;
+        }
+
+        // Reset portion
+        sources[1].volume = 1f;
+    }
+
+    public void BGNAudioPitching(float value, float min, float max)
     {
         sources[1].pitch = Mathf.Clamp(value, min, max);
     }
