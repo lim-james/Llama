@@ -43,16 +43,16 @@ public class PlatformRise : MonoBehaviour
         {
             time += Time.deltaTime;
 
-            transform.localPosition += new Vector3(0, posPerPoint * (Time.deltaTime * 1), 0);
+            transform.localPosition += new Vector3(0, posPerPoint * Time.deltaTime, 0);
             //transform.localScale += new Vector3(0, scalePerPoint * (Time.deltaTime * 3.0f), 0);
 
-            if (!up && transform.localScale.y < 1.2f * scalePerPoint * time * 1.5f)
-                transform.localScale += new Vector3(0, Time.deltaTime * 1.5f, 0);
+            if (!up && transform.localScale.y < 1.2f * scalePerPoint * time * 3f)
+                transform.localScale += new Vector3(0, Time.deltaTime * 3f, 0);
             else
                 up = true;
 
-            if (up && transform.localScale.y > scalePerPoint * time * 1.5f)
-                transform.localScale -= new Vector3(0, Time.deltaTime * 1.5f, 0);
+            if (up && transform.localScale.y > scalePerPoint * time * 3f)
+                transform.localScale -= new Vector3(0, Time.deltaTime * 3f, 0);
             else
                 up = false;
 

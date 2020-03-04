@@ -1013,6 +1013,11 @@ public class @InputMaster : IInputActionCollection, IDisposable
             ""name"": ""Keyboard"",
             ""bindingGroup"": ""Keyboard"",
             ""devices"": []
+        },
+        {
+            ""name"": ""Split keyboard"",
+            ""bindingGroup"": ""Split keyboard"",
+            ""devices"": []
         }
     ]
 }");
@@ -1302,6 +1307,15 @@ public class @InputMaster : IInputActionCollection, IDisposable
         {
             if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
             return asset.controlSchemes[m_KeyboardSchemeIndex];
+        }
+    }
+    private int m_SplitkeyboardSchemeIndex = -1;
+    public InputControlScheme SplitkeyboardScheme
+    {
+        get
+        {
+            if (m_SplitkeyboardSchemeIndex == -1) m_SplitkeyboardSchemeIndex = asset.FindControlSchemeIndex("Split keyboard");
+            return asset.controlSchemes[m_SplitkeyboardSchemeIndex];
         }
     }
     public interface IPlayerActions
