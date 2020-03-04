@@ -10,6 +10,7 @@ public class SelectionInput : MonoBehaviour
     private InputMaster input;
     [SerializeField]
     private int controllerID = 0;
+    private int controllerOffset;
 
     [Header("Scroll material")]
     [SerializeField]
@@ -72,34 +73,36 @@ public class SelectionInput : MonoBehaviour
         input = new InputMaster();
         input.Enable();
 
-        // bind handlers
-        if (controllerID == 0)
+        ControllerManager manager = ControllerManager.Instance;
+
+        if (manager.type == ControllerManager.Type.STANDARD)
+            controllerOffset = 1;
+        else if (manager.type == ControllerManager.Type.SPLIT_KEYBOARD)
+            controllerOffset = 2;
+        else if (manager.type == ControllerManager.Type.ALL_CONTROLLER)
+            controllerOffset = 0;
+
+        if (controllerID < controllerOffset)
         {
             connected = true;
             input.devices = new[] { InputDevice.all[0] };
-            input.Lobby.SwitchTeam.performed += context => SwitchTeamHandler(context);
-            input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);
-            // hold to start
-            input.Lobby.StartGame.performed += context => HoldHandler(context);
-            input.Lobby.StartGame.canceled += context => HoldHandler(context);
+            Bind();
         }
         else
         {
-            if (Gamepad.all.Count >= controllerID)
+            if (Gamepad.all.Count > controllerID + controllerOffset)
             {
                 connected = true;
-                input.devices = new[] { Gamepad.all[controllerID - 1] };
-                input.Lobby.SwitchTeam.performed += context => SwitchTeamHandler(context);
-                input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);            
-                // hold to start
-                input.Lobby.StartGame.performed += context => HoldHandler(context);
-                input.Lobby.StartGame.canceled += context => HoldHandler(context);
+                input.devices = new[] { Gamepad.all[controllerID - controllerOffset] };
+                Bind();
             }
             else
             {
                 connected = false;
             }
         }
+
+        // bind
 
         background = GetComponent<RawImage>();
         label = GetComponentInChildren<Text>();
@@ -150,14 +153,24 @@ public class SelectionInput : MonoBehaviour
     {
         if (!connected)
         {
-            if (Gamepad.all.Count >= controllerID)
+            ControllerManager manager = ControllerManager.Instance;
+
+            if (Gamepad.all.Count > controllerID + controllerOffset)
             {
                 connected = true;
-                input.devices = new[] { Gamepad.all[controllerID - 1] };
-                input.Lobby.SwitchTeam.performed += context => SwitchTeamHandler(context);
-                input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);
+                input.devices = new[] { Gamepad.all[controllerID - controllerOffset] };
+                Bind();
             }
         }
+    }
+
+    private void Bind()
+    {
+        input.Lobby.SwitchTeam.performed += context => SwitchTeamHandler(context);
+        input.Lobby.SwitchCharacter.performed += context => SwitchCharacterHandler(context);
+        // hold to start
+        input.Lobby.StartGame.performed += context => HoldHandler(context);
+        input.Lobby.StartGame.canceled += context => HoldHandler(context);
     }
 
     public void Unbind()

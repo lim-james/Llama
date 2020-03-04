@@ -41,16 +41,24 @@ public class LobbyManager : MonoBehaviour
     private void FixedUpdate()
     {
         // set player join info
+        int playerCount = 0;
         foreach (SelectionInput input in inputs)
         {
-            if (input.connected && !input.isHolding)
+            // player
+            if (input.connected)
             {
-                timer -= Time.fixedDeltaTime * 2.0f;
-                timer = Mathf.Max(0.0f, timer);
-                scroll.material.SetFloat("_et", timer);
-                return;
+                if (!input.isHolding)
+                {
+                    timer -= Time.fixedDeltaTime * 2.0f;
+                    timer = Mathf.Max(0.0f, timer);
+                    scroll.material.SetFloat("_et", timer);
+                    return;
+                }
+                ++playerCount;
             }
         }
+
+        if (playerCount == 0) return;
 
         timer += Time.fixedDeltaTime;
         scroll.material.SetFloat("_et", timer);

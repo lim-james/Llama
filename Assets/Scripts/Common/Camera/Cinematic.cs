@@ -35,8 +35,7 @@ public class Cinematic : MonoBehaviour
     [SerializeField]
     private bool loop;
 
-    [SerializeField]
-    private List<Shot> shots;
+    public List<Shot> shots;
 
     private void Start()
     {
