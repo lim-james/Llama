@@ -13,7 +13,21 @@ public class PlayerBase : MonoBehaviour
         get { return _fruitCount; }
         set
         {
-            _fruitCount = Mathf.Max(0, value);
+            if (_fruitCount == value)
+                return;
+
+            if (_fruitCount < value)
+            {
+                if (animator)
+                    animator.SetTrigger("Add");
+            }
+            else
+            {
+                if (animator)
+                    animator.SetTrigger("Minus");
+            }
+
+            _fruitCount = value;
             scoreLabel.text = _fruitCount.ToString();
         }
     }
@@ -22,33 +36,27 @@ public class PlayerBase : MonoBehaviour
     public GameObject animatorObj;
     private Text scoreLabel;
     private Animator animator;
+    private string scoreObjectLayerName = "Fruit";
 
     private void Awake()
     {
+        animator = animatorObj.GetComponent<Animator>();
         scoreLabel = GetComponentInChildren<Text>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void FixedUpdate()
     {
-        if (!other.GetComponent<Fruit>())
-            return;
+        Collider[] fruits = Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size);
 
-        fruitCount += other.GetComponent<Fruit>().stats.points;
+        int tempScore = 0;
+        for (int i = 0; i < fruits.Length; ++i)
+        {
+            if (!fruits[i].GetComponent<Fruit>())
+                continue;
 
-        animator = animatorObj.GetComponent<Animator>();
-        if (animator)
-            animator.SetTrigger("Add");
-    }
+            tempScore += fruits[i].GetComponent<Fruit>().stats.points;
+        }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.GetComponent<Fruit>())
-            return;
-
-        fruitCount -= other.GetComponent<Fruit>().stats.points;
-
-        animator = animatorObj.GetComponent<Animator>();
-        if (animator)
-            animator.SetTrigger("Minus");
+        fruitCount = tempScore;
     }
 }

@@ -187,7 +187,6 @@ public class EndGame : MonoBehaviour
                 }
 
                 platforms[i].startMove = true;
-                allowRestart = true;
             }
 
             // placements
@@ -264,6 +263,7 @@ public class EndGame : MonoBehaviour
         }
 
         // show text
+        allowRestart = true;
         for (int i = 0; i < platforms.Length; ++i)
         {
             if (platforms[i].transform.localScale.y >= maxHeight)
