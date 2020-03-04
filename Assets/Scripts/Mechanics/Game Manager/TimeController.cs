@@ -84,7 +84,7 @@ public class TimeController : MonoBehaviour
         if (!paused)
         {
             et += Time.deltaTime;
-            Debug.Log(et);
+
             if(et >= -5.25f && !playOnce)
             {
                 playOnce = true;
@@ -121,7 +121,7 @@ public class TimeController : MonoBehaviour
                 float t = currentLerpTime / lerpTime;
                 t = 1f - Mathf.Cos(t * Mathf.PI * 0.5f);
                 float final = Mathf.Lerp(1.0f, 1.25f, t);
-                Debug.Log(final);
+
                 player.BGNAudioPitching(final, 1.0f, 1.25f);
             }
 
