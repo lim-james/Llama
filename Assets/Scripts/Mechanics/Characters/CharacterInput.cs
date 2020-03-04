@@ -73,9 +73,16 @@ public class CharacterInput : MonoBehaviour
 
 
             if (info.playerID < controllerOffset)
+            {
                 input.devices = new[] { InputDevice.all[0] };
+            }
             else
-                input.devices = new[] { Gamepad.all[info.playerID - controllerOffset] };
+            {
+                if (Gamepad.all.Count > info.playerID + controllerOffset)
+                {
+                    input.devices = new[] { Gamepad.all[info.playerID - controllerOffset] };
+                }
+            }
 
             // movement
             input.Player.Move.performed += context => OnMove(context);
