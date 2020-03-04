@@ -1000,6 +1000,11 @@
             "name": "Keyboard",
             "bindingGroup": "Keyboard",
             "devices": []
+        },
+        {
+            "name": "Split keyboard",
+            "bindingGroup": "Split keyboard",
+            "devices": []
         }
     ]
 }

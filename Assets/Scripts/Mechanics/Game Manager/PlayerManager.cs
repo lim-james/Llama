@@ -32,6 +32,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private ScoreAreaScaling bases;
 
+    [Header("Cinematics")]
+    [SerializeField]
+    private List<Cinematic> cameras;
+    [SerializeField]
+    private CinematicManager cameraContainer;
+
     public List<Rigidbody> playerRBList;
     public List<Transform> playerList;
 
@@ -92,6 +98,14 @@ public class PlayerManager : MonoBehaviour
             // Add to container
             llama.parent = container;
             llama.GetComponent<CharacterInput>().moveable = false;
+
+            Cinematic camera = Instantiate(cameras[joinInfo.characterType]);
+            camera.gameObject.active = true;
+            camera.GetComponent<Camera>().enabled = false;
+            foreach (Shot shot in camera.shots)
+                shot.target = llama.transform;
+            cameraContainer.cameras.Add(camera);
+            camera.transform.parent = cameraContainer.transform;
 
             if(i < 2) rotate.Add(llama);
         }
