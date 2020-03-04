@@ -91,6 +91,7 @@ public class LobbyManager : MonoBehaviour
         player.PlaySFX(highAudio);
         StartCoroutine(player.FadeOut(1.5f));
         StartCoroutine(LoadScene("Loading"));
+        gameObject.GetComponent<Back>().Unbind();
         //SceneManager.LoadScene("Game");
     }
 
