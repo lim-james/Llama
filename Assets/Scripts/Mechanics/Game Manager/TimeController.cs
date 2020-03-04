@@ -53,9 +53,13 @@ public class TimeController : MonoBehaviour
     private float endLineSpeed;
 
     private bool paused;
-    private bool playOnce;
+    private bool playOnce = false;
+    private bool playOnce2 = false;
 
     private AudioPlayer player;
+
+    private float lerpTime = 1f;
+    private float currentLerpTime;
 
     private void Start()
     {
@@ -72,6 +76,7 @@ public class TimeController : MonoBehaviour
 
         paused = false;
         player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
+        player.PlayBGM(2);
     }
 
     private void Update()
@@ -79,15 +84,21 @@ public class TimeController : MonoBehaviour
         if (!paused)
         {
             et += Time.deltaTime;
-            
-            if(et >= -6.0 && !playOnce)
+            Debug.Log(et);
+            if(et >= -5.25f && !playOnce)
             {
                 playOnce = true;
                 player.PlayCountDown();
             }
-
+            
             if (et >= 0.0f && et < duration)
             {
+                if (!playOnce2)
+                {
+                    playOnce2 = true;
+                    player.PlayBGM(1);
+                }
+
                 mainMapScaling.et = et;
                 endMapScaling.et = et;
                 barrierScript.et = et;
@@ -103,8 +114,15 @@ public class TimeController : MonoBehaviour
                 barrier.material.SetFloat("_PulseSpeed", startPulseSpeed + (endPulseSpeed - startPulseSpeed) * value);
                 barrier.material.SetFloat("_LineSpeed", startLineSpeed + (endLineSpeed - startLineSpeed) * value);
 
-                // Audio pitching 
-                player.BGNAudioPitching(0.0001f, 1.0f, 1.25f);
+                // Audio pitching
+                currentLerpTime += Time.deltaTime * 0.02f;
+                if (currentLerpTime > lerpTime)
+                    currentLerpTime = lerpTime;
+                float t = currentLerpTime / lerpTime;
+                t = 1f - Mathf.Cos(t * Mathf.PI * 0.5f);
+                float final = Mathf.Lerp(1.0f, 1.25f, t);
+                Debug.Log(final);
+                player.BGNAudioPitching(final, 1.0f, 1.25f);
             }
 
             mainCameraFollow.et = et;

@@ -54,8 +54,7 @@ public class AudioPlayer : MonoBehaviour
 
     public void BGNAudioPitching(float value,float min, float max)
     {
-        sources[1].pitch += value;
-        sources[1].pitch = Mathf.Clamp(sources[1].pitch, min, max);
+        sources[1].pitch = Mathf.Clamp(value, min, max);
     }
 
     public void StopBGM()
