@@ -15,13 +15,11 @@ public class ControlsSelection : MonoBehaviour
     [SerializeField]
     private Texture selectedButton;
     [SerializeField]
-    private int index;
+    private bool allControllers;
 
     // references
     [SerializeField]
     private RawImage Keyboard;
-    [SerializeField]
-    private RawImage DualKeyboard;
     [SerializeField]
     private RawImage Controllers;
 
@@ -65,23 +63,18 @@ public class ControlsSelection : MonoBehaviour
     void Start()
     {
         input.Enable();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // do stuff here
-        if (Keyboard.texture == selectedButton)
+        ControllerManager manager = ControllerManager.Instance;
+
+        if (manager.type == ControllerManager.Type.ALL_CONTROLLER)
         {
-
+            Keyboard.texture = normalButton;
+            Controllers.texture = selectedButton;
         }
-        else if (DualKeyboard.texture == selectedButton)
+        else
         {
-
-        }
-        else if (Controllers.texture == selectedButton)
-        {
-
+            Keyboard.texture = selectedButton;
+            Controllers.texture = normalButton;
         }
     }
 
@@ -92,33 +85,40 @@ public class ControlsSelection : MonoBehaviour
 
     private void SwitchSelectedButton(InputAction.CallbackContext context)
     {
-        index += (int)context.ReadValue<float>();
+        allControllers = !allControllers;
 
-        if (index < 0)
-            index = 0;
-        else if (index > 2)
-            index = 2;
+        ControllerManager manager = ControllerManager.Instance;
 
-        switch (index)
+        if (allControllers)
         {
-            case 0:
-                Keyboard.texture = selectedButton;
-                DualKeyboard.texture = normalButton;
-                Controllers.texture = normalButton;
-                break;
-            case 1:
-                Keyboard.texture = normalButton;
-                DualKeyboard.texture = selectedButton;
-                Controllers.texture = normalButton;
-                break;
-            case 2:
-                Keyboard.texture = normalButton;
-                DualKeyboard.texture = normalButton;
-                Controllers.texture = selectedButton;
-                break;
+            manager.type = ControllerManager.Type.ALL_CONTROLLER;
+            Keyboard.texture = normalButton;
+            Controllers.texture = selectedButton;
+        }
+        else
+        {
+            manager.type = ControllerManager.Type.STANDARD;
+            Keyboard.texture = selectedButton;
+            Controllers.texture = normalButton;
         }
 
         // Play Audio
         player.PlaySFX(switchAudio);
+    }
+
+    public void KeyboardSelected()
+    {
+        allControllers = false;
+        ControllerManager.Instance.type = ControllerManager.Type.STANDARD;
+        Keyboard.texture = selectedButton;
+        Controllers.texture = normalButton;
+    }
+
+    public void ControllerSelected()
+    {
+        allControllers = true;
+        ControllerManager.Instance.type = ControllerManager.Type.ALL_CONTROLLER;
+        Keyboard.texture = normalButton;
+        Controllers.texture = selectedButton;
     }
 }
