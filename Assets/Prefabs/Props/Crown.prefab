@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4911585499274109890
+--- !u!1 &3907439535644376009
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8246703507955487185}
-  - component: {fileID: 1092452328552311783}
-  - component: {fileID: 6635388784615839518}
-  - component: {fileID: 62525665866155554}
-  - component: {fileID: 7357412729826691077}
-  - component: {fileID: 66008397355998997}
+  - component: {fileID: 27402402196916698}
+  - component: {fileID: 9023626963050279916}
+  - component: {fileID: 3316572932795551509}
+  - component: {fileID: 4497314840902599748}
   m_Layer: 0
-  m_Name: Whiteboard
+  m_Name: Crown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8246703507955487185
+--- !u!4 &27402402196916698
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4911585499274109890}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 3907439535644376009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.075, y: 0.075, z: 0.075}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1092452328552311783
+--- !u!33 &9023626963050279916
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4911585499274109890}
-  m_Mesh: {fileID: -168170644198681182, guid: 092082d20556f8642ab6111f72a814b7, type: 3}
---- !u!23 &6635388784615839518
+  m_GameObject: {fileID: 3907439535644376009}
+  m_Mesh: {fileID: -2124705421725058983, guid: c8668333f4568d040b2129abbb4f7ff3, type: 3}
+--- !u!23 &3316572932795551509
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4911585499274109890}
+  m_GameObject: {fileID: 3907439535644376009}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c0a2b1033807ef948885dcc59a84701c, type: 2}
+  - {fileID: 2100000, guid: 2bc1bc68957ddfe4c8acc391efc17645, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,47 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!54 &62525665866155554
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4911585499274109890}
-  serializedVersion: 2
-  m_Mass: 10
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &7357412729826691077
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4911585499274109890}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 16.326246, y: 45.347202, z: 55.06108}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &66008397355998997
+--- !u!114 &4497314840902599748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4911585499274109890}
+  m_GameObject: {fileID: 3907439535644376009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6416e3b253023854b89470a5c37f1372, type: 3}
+  m_Script: {fileID: 11500000, guid: d34e5f131fc19034c9f62a95c82ca4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collideLayer:
-    serializedVersion: 2
-    m_Bits: 4353
+  rotateSpeed: 60
+  hoveringDistance: 1
+  minOffset: 0
+  maxOffset: 1
+  originalHeightOffset: 0
