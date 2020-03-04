@@ -17,6 +17,8 @@ public class CharacterInput : MonoBehaviour
     private CharacterInventory inventory;
     private CharacterAdrenaline adrenaline;
 
+    private AudioPlayer player;
+
     private InputMaster input;
 
     [Header("Axes values")]
@@ -96,6 +98,8 @@ public class CharacterInput : MonoBehaviour
             input.Player.Pause.performed += context => OnPause(context);
             input.Player.ChangeSelection.performed += context => OnPauseSwitch(context);
             input.Player.Select.performed += context => OnSelect(context);
+
+            player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
         }
     }
 
@@ -154,6 +158,7 @@ public class CharacterInput : MonoBehaviour
 
     private void OnRestart(InputAction.CallbackContext context)
     {
+        player.PlayBGM(0,true);
         SceneManager.LoadScene("Lobby");
     }
 }

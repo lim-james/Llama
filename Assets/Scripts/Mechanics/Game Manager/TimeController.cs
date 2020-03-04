@@ -76,7 +76,7 @@ public class TimeController : MonoBehaviour
 
         paused = false;
         player = GameObject.FindGameObjectWithTag("System").GetComponent<AudioPlayer>();
-        player.PlayBGM(2);
+        player.PlayBGM(2, false);
     }
 
     private void Update()
@@ -85,7 +85,7 @@ public class TimeController : MonoBehaviour
         {
             et += Time.deltaTime;
 
-            if(et >= -5.25f && !playOnce)
+            if(et >= -6.0f && !playOnce)
             {
                 playOnce = true;
                 player.PlayCountDown();
@@ -96,7 +96,7 @@ public class TimeController : MonoBehaviour
                 if (!playOnce2)
                 {
                     playOnce2 = true;
-                    player.PlayBGM(1);
+                    player.PlayBGM(1,false);
                 }
 
                 mainMapScaling.et = et;
