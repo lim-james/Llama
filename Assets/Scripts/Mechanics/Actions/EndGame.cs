@@ -47,6 +47,8 @@ public class EndGame : MonoBehaviour
 
     public bool allowRestart;
 
+    [SerializeField]
+    private GameObject crownPrefab;
     private AudioPlayer player;
 
     public struct TeamScore
@@ -113,6 +115,7 @@ public class EndGame : MonoBehaviour
             {
                 characters[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
                 characters[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+                characters[i].GetComponent<CharacterMovement>().GetAnimator.gameObject.transform.localEulerAngles = Vector3.zero;
                 characters[i].moveable = false;
             }
 
@@ -172,7 +175,6 @@ public class EndGame : MonoBehaviour
 
                         // change podium colors
                         platforms[i].team = characters[j].GetComponent<CharacterInfo>().team;
-                        
                         break;
                     }
                 }
@@ -271,12 +273,26 @@ public class EndGame : MonoBehaviour
         {
             if (platforms[i].transform.localScale.y >= maxHeight)
             {
-                allowRestart = true;
-
                 for (int k = 0; k < placements.Length; ++k)
                 {
                     placements[k].gameObject.SetActive(true);
+
+                    if (placements[k].text == "1" && !allowRestart)
+                    {
+                        CharacterInfo[] charactersInfo = GameObject.FindObjectsOfType<CharacterInfo>();
+                        for (int j = 0; j < charactersInfo.Length; ++j)
+                        {
+                            if (charactersInfo[j].team == platforms[k].team)
+                            {
+                                GameObject tempCrown = Instantiate(crownPrefab, charactersInfo[j].gameObject.transform);
+                                tempCrown.transform.localPosition = new Vector3(0, 5.5f, 0);
+                                tempCrown.GetComponent<Crown>().originalHeightOffset = 5.5f;
+                            }
+                        }
+                    }
                 }
+
+                allowRestart = true;
             }
         }
     }
@@ -304,7 +320,5 @@ public class EndGame : MonoBehaviour
         }
 
         return (teamScores.OrderByDescending(x => x.points).ToList());
-    }
-
-    
+    }   
 }
