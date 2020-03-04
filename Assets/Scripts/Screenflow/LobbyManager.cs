@@ -31,6 +31,7 @@ public class LobbyManager : MonoBehaviour
     private AudioClip lowAudio;
 
     private bool playOnce = false;
+    private bool starting = false;
 
     private void Start()
     {
@@ -69,12 +70,13 @@ public class LobbyManager : MonoBehaviour
             player.PlaySFX(normalAudio);
         }
 
-        if (timer >= startDelay)
+        if (timer >= startDelay && !starting)
             StartGame();
     }
 
     public void StartGame()
     {
+        starting = true;
         // set player join info
         foreach (SelectionInput input in inputs)
         {
