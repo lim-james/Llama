@@ -54,6 +54,7 @@ public class TimeController : MonoBehaviour
 
     private bool paused;
     private bool playOnce;
+
     private AudioPlayer player;
 
     private void Start()
@@ -101,6 +102,9 @@ public class TimeController : MonoBehaviour
                 barrier.material.SetFloat("_et", et);
                 barrier.material.SetFloat("_PulseSpeed", startPulseSpeed + (endPulseSpeed - startPulseSpeed) * value);
                 barrier.material.SetFloat("_LineSpeed", startLineSpeed + (endLineSpeed - startLineSpeed) * value);
+
+                // Audio pitching 
+                player.BGNAudioPitching(0.0001f, 1.0f, 1.25f);
             }
 
             mainCameraFollow.et = et;
