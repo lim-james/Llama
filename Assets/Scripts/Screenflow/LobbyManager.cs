@@ -84,7 +84,6 @@ public class LobbyManager : MonoBehaviour
             info.team = input.teamIndex;
             info.isAI = !input.connected;
 
-            input.Unbind();
             PlayerManager.playerQueue.Add(info);
         }
 
