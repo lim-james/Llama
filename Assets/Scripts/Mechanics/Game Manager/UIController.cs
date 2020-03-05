@@ -139,6 +139,9 @@ public class UIController : MonoBehaviour
                 controlUI.active = false;
         }
         else if (Exit.texture == selectedButton)
+        {
+            player.PlayBGM(0, true);
             SceneManager.LoadScene("Lobby");
+        }
     }
 }

@@ -46,7 +46,7 @@ public class PlayerBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Collider[] fruits = Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size);
+        Collider[] fruits = Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size /2.0f);
 
         int tempScore = 0;
         for (int i = 0; i < fruits.Length; ++i)

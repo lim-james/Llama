@@ -120,6 +120,11 @@ public class SelectionInput : MonoBehaviour
         progress = 0.0f;
     }
 
+    private void OnDestroy()
+    {
+        input.Disable();
+    }
+
     private void Update()
     {
         if (isHolding)
@@ -171,11 +176,6 @@ public class SelectionInput : MonoBehaviour
         // hold to start
         input.Lobby.StartGame.performed += context => HoldHandler(context);
         input.Lobby.StartGame.canceled += context => HoldHandler(context);
-    }
-
-    public void Unbind()
-    {
-        input.Disable();
     }
 
     private void SwitchTeamHandler(InputAction.CallbackContext context)

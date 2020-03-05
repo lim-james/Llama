@@ -87,7 +87,7 @@ public class TimeController : MonoBehaviour
         {
             et += Time.deltaTime;
 
-            if(et >= -6.0f && !playOnce)
+            if(Time.timeSinceLevelLoad >= 15 && !playOnce)
             {
                 playOnce = true;
                 player.PlayCountDown(0);
